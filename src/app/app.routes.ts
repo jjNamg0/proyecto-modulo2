@@ -1,5 +1,10 @@
 import { Routes } from '@angular/router';
 
-// Las rutas de cada sección (inicio, listado, detalle, reservas...) se irán
-// agregando en próximos commits a medida que se construya cada pantalla.
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./components/homecomponent/homecomponent').then((m) => m.Homecomponent),
+    title: 'Nocturna Stays — Inicio',
+  },
+];

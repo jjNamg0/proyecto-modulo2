@@ -24,11 +24,12 @@
     </nav>
   </div>
 
-  @if (menuAbierto()) {
-    <nav class="d-lg-none container pb-3 d-flex flex-column gap-2 animate__animated animate__fadeIn">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill" (click)="cerrarMenu()">Inicio</a>
-      <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Listado</a>
-      <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Mis reservas</a>
-    </nav>
-  }
+  <nav
+    *ngIf="menuAbierto()"
+    class="d-lg-none container pb-3 d-flex flex-column gap-2 animate__animated animate__fadeIn"
+  >
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill" (click)="cerrarMenu()">Inicio</a>
+    <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Listado</a>
+    <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Mis reservas</a>
+  </nav>
 </header>

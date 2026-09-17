@@ -10,3 +10,32 @@ body {
 a {
   color: #6ea8fe;
 }
+
+.form-control,
+.form-select {
+  background-color: #0f131c;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #dfe2ef;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #0f131c;
+  color: #dfe2ef;
+  border-color: #6ea8fe;
+  box-shadow: 0 0 0 0.2rem rgba(110, 168, 254, 0.25);
+}
+
+.form-control::placeholder {
+  color: #6a7280;
+}
+
+.form-label {
+  color: #bec8d2;
+}
+
+.alert-secondary {
+  background-color: #181b25;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #dfe2ef;
+}
