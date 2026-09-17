@@ -7,7 +7,7 @@ describe('Navbarcomponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Navbarcomponent],
+      declarations: [Navbarcomponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Navbarcomponent);
