@@ -1,0 +1,14 @@
+.footer-marketplace {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #0a0e17;
+}
+
+.footer-link {
+  color: #bec8d2;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
