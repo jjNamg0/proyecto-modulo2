@@ -1,0 +1,34 @@
+<header class="navbar-marketplace">
+  <div class="container d-flex align-items-center justify-content-between py-2">
+    <a routerLink="/" class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" (click)="cerrarMenu()">
+      <i class="fa-solid fa-moon text-primary fs-4"></i>
+      <span class="d-flex flex-column lh-1">
+        <strong class="text-white">Nocturna Stays</strong>
+        <small class="text-secondary">Marketplace de Alojamientos</small>
+      </span>
+    </a>
+
+    <button
+      type="button"
+      class="btn btn-outline-light d-lg-none"
+      (click)="toggleMenu()"
+      aria-label="Abrir menú"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="d-none d-lg-flex align-items-center gap-2">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill">Inicio</a>
+      <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill">Listado</a>
+      <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill">Mis reservas</a>
+    </nav>
+  </div>
+
+  @if (menuAbierto()) {
+    <nav class="d-lg-none container pb-3 d-flex flex-column gap-2 animate__animated animate__fadeIn">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill" (click)="cerrarMenu()">Inicio</a>
+      <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Listado</a>
+      <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Mis reservas</a>
+    </nav>
+  }
+</header>
