@@ -1,0 +1,63 @@
+<section class="container py-4">
+  <h1 class="h4 text-white mb-4">
+    <i class="fa-solid fa-house-chimney me-2"></i>Explora alojamientos
+  </h1>
+
+  <div class="row g-4">
+    <aside class="col-12 col-lg-3">
+      <app-filtrospanelcomponent
+        [ciudades]="ciudades()"
+        [tipos]="tipos()"
+        (filtrosCambiados)="aplicarFiltros($event)"
+      />
+    </aside>
+
+    <div class="col-12 col-lg-9">
+      <p class="text-secondary" *ngIf="cargando()">Cargando alojamientos...</p>
+
+      <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert" *ngIf="!cargando() && alojamientos().length === 0">
+        <i class="fa-solid fa-circle-info"></i>
+        No se encontraron alojamientos con los filtros seleccionados.
+      </div>
+
+      <div *ngIf="!cargando() && alojamientos().length > 0">
+        <p class="text-secondary small mb-3">{{ alojamientos().length }} alojamientos encontrados</p>
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of alojamientos()">
+            <div class="card h-100 card-alojamiento animate__animated animate__fadeIn">
+              <div class="position-relative">
+                <img
+                  [src]="alojamiento.imagenPrincipal"
+                  (error)="onImgError($event, alojamiento.id)"
+                  class="card-img-top card-alojamiento__img"
+                  [alt]="alojamiento.nombre"
+                />
+                <span class="badge text-bg-dark position-absolute top-0 end-0 m-2">
+                  <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion }}
+                </span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h3>
+                <p class="text-secondary small mb-2">
+                  <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }} · {{ alojamiento.tipo }}
+                </p>
+                <p class="small mb-2">
+                  <i class="fa-solid fa-user-group me-1"></i>Capacidad: {{ alojamiento.capacidad }} huéspedes
+                </p>
+                <div class="mt-auto d-flex justify-content-between align-items-center">
+                  <span class="fw-bold">
+                    {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+                    <small class="text-secondary fw-normal">/ noche</small>
+                  </span>
+                  <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary">
+                    Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

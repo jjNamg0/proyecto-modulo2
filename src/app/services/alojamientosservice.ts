@@ -31,6 +31,20 @@ export interface Resena {
   comentario: string;
 }
 
+export interface Filtros {
+  ciudad: string;
+  huespedes: number | null;
+  tipo: string;
+  precioMaximo: number | null;
+}
+
+export const FILTROS_VACIOS: Filtros = {
+  ciudad: '',
+  huespedes: null,
+  tipo: '',
+  precioMaximo: null,
+};
+
 interface MarketplaceData {
   alojamientos: Alojamiento[];
   resenas: Resena[];
@@ -76,6 +90,32 @@ export class Alojamientosservice {
   obtenerResenasPorAlojamiento(alojamientoId: number): Observable<Resena[]> {
     return this.cargarDatos().pipe(
       map((datos) => datos.resenas.filter((r) => r.alojamientoId === alojamientoId)),
+    );
+  }
+
+  obtenerCiudades(): Observable<string[]> {
+    return this.obtenerAlojamientos().pipe(
+      map((alojamientos) => [...new Set(alojamientos.map((a) => a.ciudad))].sort()),
+    );
+  }
+
+  obtenerTipos(): Observable<string[]> {
+    return this.obtenerAlojamientos().pipe(
+      map((alojamientos) => [...new Set(alojamientos.map((a) => a.tipo))].sort()),
+    );
+  }
+
+  filtrar(filtros: Filtros): Observable<Alojamiento[]> {
+    return this.obtenerAlojamientos().pipe(
+      map((alojamientos) =>
+        alojamientos.filter((a) => {
+          const coincideCiudad = !filtros.ciudad || a.ciudad === filtros.ciudad;
+          const coincideHuespedes = !filtros.huespedes || a.capacidad >= filtros.huespedes;
+          const coincideTipo = !filtros.tipo || a.tipo === filtros.tipo;
+          const coincidePrecio = !filtros.precioMaximo || a.precioNoche <= filtros.precioMaximo;
+          return coincideCiudad && coincideHuespedes && coincideTipo && coincidePrecio;
+        }),
+      ),
     );
   }
 }

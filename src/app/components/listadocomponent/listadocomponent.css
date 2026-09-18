@@ -1,0 +1,16 @@
+.card-alojamiento {
+  background-color: #1c1f29;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #dfe2ef;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card-alojamiento:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card-alojamiento__img {
+  height: 190px;
+  object-fit: cover;
+}
