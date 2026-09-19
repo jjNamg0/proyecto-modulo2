@@ -1,0 +1,93 @@
+<section class="container py-4" *ngIf="!cargando()">
+  <div class="alert alert-danger d-flex align-items-center gap-2" role="alert" *ngIf="noEncontrado()">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    No encontramos ese alojamiento.
+    <a routerLink="/listado" class="alert-link ms-1">Volver al listado</a>
+  </div>
+
+  <div *ngIf="alojamiento() as a">
+    <a routerLink="/listado" class="btn btn-sm btn-outline-secondary mb-3">
+      <i class="fa-solid fa-arrow-left me-1"></i>Volver al listado
+    </a>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-7">
+        <img
+          [src]="imagenActiva()"
+          (error)="onImgError($event, a.id)"
+          class="img-fluid rounded detalle-imagen-principal"
+          [alt]="a.nombre"
+        />
+        <div class="d-flex gap-2 mt-2 flex-wrap">
+          <img
+            *ngFor="let img of a.imagenes"
+            [src]="img"
+            (error)="onImgError($event, a.id)"
+            (click)="cambiarImagen(img)"
+            class="detalle-miniatura"
+            [class.detalle-miniatura--activa]="img === imagenActiva()"
+            [alt]="a.nombre"
+          />
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <h1 class="h3 text-white">{{ a.nombre }}</h1>
+        <p class="text-secondary mb-2">
+          <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}
+        </p>
+        <p class="mb-3">
+          <span class="badge text-bg-dark">
+            <i class="fa-solid fa-star text-warning"></i> {{ a.calificacion }}
+          </span>
+          <span class="badge text-bg-secondary ms-1">{{ a.tipo }}</span>
+        </p>
+
+        <p>{{ a.descripcion }}</p>
+
+        <ul class="list-unstyled small text-secondary">
+          <li><i class="fa-solid fa-user-group me-2"></i>Capacidad: {{ a.capacidad }} huéspedes</li>
+          <li><i class="fa-solid fa-bed me-2"></i>{{ a.habitaciones }} habitaciones · {{ a.camas }} camas</li>
+          <li><i class="fa-solid fa-bath me-2"></i>{{ a.banos }} baños</li>
+        </ul>
+
+        <h2 class="h6 text-white mt-4">Servicios</h2>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge text-bg-dark" *ngFor="let servicio of a.servicios">{{ servicio }}</span>
+        </div>
+
+        <h2 class="h6 text-white mt-4">Reglas</h2>
+        <ul class="small text-secondary">
+          <li *ngFor="let regla of a.reglas">{{ regla }}</li>
+        </ul>
+
+        <div class="border-top border-secondary-subtle pt-3 mt-4">
+          <span class="fw-bold fs-5">
+            {{ a.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+          </span>
+          <small class="text-secondary"> / noche</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <h2 class="h5 text-white mb-3">Reseñas</h2>
+
+      <p class="text-secondary" *ngIf="resenas().length === 0">Este alojamiento todavía no tiene reseñas.</p>
+
+      <div class="row g-3" *ngIf="resenas().length > 0">
+        <div class="col-12 col-md-6" *ngFor="let resena of resenas()">
+          <div class="card h-100 card-alojamiento">
+            <div class="card-body">
+              <p class="mb-1">
+                <strong>{{ resena.usuario }}</strong>
+                <span class="text-warning ms-2"><i class="fa-solid fa-star"></i> {{ resena.calificacion }}</span>
+              </p>
+              <p class="small text-secondary mb-0">{{ resena.comentario }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
