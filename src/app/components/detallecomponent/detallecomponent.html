@@ -61,12 +61,14 @@
           <li *ngFor="let regla of a.reglas">{{ regla }}</li>
         </ul>
 
-        <div class="border-top border-secondary-subtle pt-3 mt-4">
+        <div class="border-top border-secondary-subtle pt-3 mt-4 mb-4">
           <span class="fw-bold fs-5">
             {{ a.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
           </span>
           <small class="text-secondary"> / noche</small>
         </div>
+
+        <app-cotizadorcomponent [alojamiento]="a" />
       </div>
     </div>
 

@@ -1,0 +1,66 @@
+<div class="cotizador-panel p-3">
+  <h2 class="h6 text-white mb-3">
+    <i class="fa-solid fa-calculator me-2"></i>Cotiza tu estancia
+  </h2>
+
+  <div class="row g-2 mb-2">
+    <div class="col-6">
+      <label class="form-label small text-secondary" for="fechaInicio">Entrada</label>
+      <input
+        id="fechaInicio"
+        type="date"
+        class="form-control form-control-sm"
+        [(ngModel)]="fechaInicio"
+        (ngModelChange)="calcular()"
+      />
+    </div>
+    <div class="col-6">
+      <label class="form-label small text-secondary" for="fechaFin">Salida</label>
+      <input
+        id="fechaFin"
+        type="date"
+        class="form-control form-control-sm"
+        [(ngModel)]="fechaFin"
+        (ngModelChange)="calcular()"
+      />
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label small text-secondary" for="huespedesCotizador">Huéspedes</label>
+    <input
+      id="huespedesCotizador"
+      type="number"
+      min="1"
+      class="form-control form-control-sm"
+      [(ngModel)]="huespedes"
+      (ngModelChange)="calcular()"
+    />
+  </div>
+
+  <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="errorFechas">
+    <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorFechas }}
+  </div>
+  <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="errorCapacidad">
+    <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorCapacidad }}
+  </div>
+
+  <div class="border-top border-secondary-subtle pt-3 mt-2" *ngIf="cotizacion as c">
+    <div class="d-flex justify-content-between small text-secondary mb-1">
+      <span>{{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }} x {{ c.noches }} noches</span>
+      <span>{{ c.subtotal | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+    </div>
+    <div class="d-flex justify-content-between small text-secondary mb-1">
+      <span>Tarifa de limpieza</span>
+      <span>{{ c.tarifaLimpieza | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+    </div>
+    <div class="d-flex justify-content-between small text-secondary mb-2">
+      <span>Tarifa de servicio (10%)</span>
+      <span>{{ c.tarifaServicio | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+    </div>
+    <div class="d-flex justify-content-between fw-bold border-top border-secondary-subtle pt-2">
+      <span>Total</span>
+      <span>{{ c.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+    </div>
+  </div>
+</div>
