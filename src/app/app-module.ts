@@ -11,6 +11,7 @@ import { Homecomponent } from './components/homecomponent/homecomponent';
 import { Listadocomponent } from './components/listadocomponent/listadocomponent';
 import { Filtrospanelcomponent } from './components/filtrospanelcomponent/filtrospanelcomponent';
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
+import { Cotizadorcomponent } from './components/cotizadorcomponent/cotizadorcomponent';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { Detallecomponent } from './components/detallecomponent/detallecomponent
     Listadocomponent,
     Filtrospanelcomponent,
     Detallecomponent,
+    Cotizadorcomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
