@@ -10,6 +10,7 @@ import { Footercomponent } from './components/footercomponent/footercomponent';
 import { Homecomponent } from './components/homecomponent/homecomponent';
 import { Listadocomponent } from './components/listadocomponent/listadocomponent';
 import { Filtrospanelcomponent } from './components/filtrospanelcomponent/filtrospanelcomponent';
+import { Detallecomponent } from './components/detallecomponent/detallecomponent';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { Filtrospanelcomponent } from './components/filtrospanelcomponent/filtro
     Homecomponent,
     Listadocomponent,
     Filtrospanelcomponent,
+    Detallecomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
