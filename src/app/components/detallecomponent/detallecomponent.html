@@ -68,7 +68,9 @@
           <small class="text-secondary"> / noche</small>
         </div>
 
-        <app-cotizadorcomponent [alojamiento]="a" />
+        <app-cotizadorcomponent [alojamiento]="a" (cotizacionLista)="onCotizacionLista($event)" />
+
+        <app-reservacomponent *ngIf="cotizacionActual() as cot" [alojamiento]="a" [cotizacion]="cot" />
       </div>
     </div>
 

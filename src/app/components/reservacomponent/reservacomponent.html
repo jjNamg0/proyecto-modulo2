@@ -1,0 +1,36 @@
+<div class="reserva-panel p-3 mt-3">
+  <h2 class="h6 text-white mb-3">
+    <i class="fa-solid fa-clipboard-check me-2"></i>Confirma tu reserva
+  </h2>
+
+  <div class="mb-2">
+    <label class="form-label small text-secondary" for="nombreReserva">Nombre completo</label>
+    <input
+      id="nombreReserva"
+      type="text"
+      class="form-control form-control-sm"
+      placeholder="Tu nombre"
+      [(ngModel)]="nombre"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label small text-secondary" for="correoReserva">Correo electrónico</label>
+    <input
+      id="correoReserva"
+      type="email"
+      class="form-control form-control-sm"
+      placeholder="tucorreo@ejemplo.com"
+      [(ngModel)]="correo"
+    />
+  </div>
+
+  <div class="alert alert-warning small py-2 mb-3" role="alert" *ngIf="errorFormulario">
+    <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorFormulario }}
+  </div>
+
+  <button type="button" class="btn btn-primary btn-sm w-100" (click)="reservar()">
+    <i class="fa-solid fa-check me-1"></i>
+    Reservar ({{ cotizacion.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }})
+  </button>
+</div>
