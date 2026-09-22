@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Homecomponent } from './components/homecomponent/homecomponent';
 import { Listadocomponent } from './components/listadocomponent/listadocomponent';
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
+import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 
 const routes: Routes = [
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
     path: 'alojamientos/:id',
     component: Detallecomponent,
     title: 'Nocturna Stays — Detalle del alojamiento',
+  },
+  {
+    path: 'mis-reservas',
+    component: Misreservascomponent,
+    title: 'Nocturna Stays — Mis reservas',
   },
 ];
 

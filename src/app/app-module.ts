@@ -13,6 +13,7 @@ import { Filtrospanelcomponent } from './components/filtrospanelcomponent/filtro
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
 import { Cotizadorcomponent } from './components/cotizadorcomponent/cotizadorcomponent';
 import { Reservacomponent } from './components/reservacomponent/reservacomponent';
+import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { Reservacomponent } from './components/reservacomponent/reservacomponent
     Detallecomponent,
     Cotizadorcomponent,
     Reservacomponent,
+    Misreservascomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
