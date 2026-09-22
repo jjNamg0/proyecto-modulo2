@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojamientosservice';
+import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
 
 @Component({
   selector: 'app-detallecomponent',
@@ -14,6 +15,7 @@ export class Detallecomponent implements OnInit {
   imagenActiva = signal('');
   cargando = signal(true);
   noEncontrado = signal(false);
+  cotizacionActual = signal<Cotizacion | null>(null);
 
   constructor(
     private route: ActivatedRoute,
@@ -21,15 +23,21 @@ export class Detallecomponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // uso paramMap x si el usuario navega de un detalle a otro sin q se destruya el componente
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
       this.cargarAlojamiento(id);
     });
   }
 
+  onCotizacionLista(cotizacion: Cotizacion | null): void {
+    this.cotizacionActual.set(cotizacion);
+  }
+
   private cargarAlojamiento(id: number): void {
     this.cargando.set(true);
     this.noEncontrado.set(false);
+    this.cotizacionActual.set(null);
 
     this.alojamientosService.obtenerPorId(id).subscribe((alojamiento) => {
       if (!alojamiento) {

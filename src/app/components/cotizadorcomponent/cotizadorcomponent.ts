@@ -1,7 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Alojamiento } from '../../services/alojamientosservice';
 
-interface Cotizacion {
+// esto lo consume tambien el reservacomponent, x eso lleva las fechas y huespedes completos
+export interface Cotizacion {
+  fechaInicio: string;
+  fechaFin: string;
+  huespedes: number;
   noches: number;
   subtotal: number;
   tarifaLimpieza: number;
@@ -17,6 +21,7 @@ interface Cotizacion {
 })
 export class Cotizadorcomponent implements OnChanges {
   @Input() alojamiento!: Alojamiento;
+  @Output() cotizacionLista = new EventEmitter<Cotizacion | null>();
 
   fechaInicio = '';
   fechaFin = '';
@@ -27,22 +32,23 @@ export class Cotizadorcomponent implements OnChanges {
   errorCapacidad = '';
 
   ngOnChanges(changes: SimpleChanges): void {
+    // si cambia el alojamiento (o sea entramos a otro detalle) reseteamos todo
     if (changes['alojamiento']) {
       this.fechaInicio = '';
       this.fechaFin = '';
       this.huespedes = 1;
-      this.cotizacion = null;
       this.errorFechas = '';
       this.errorCapacidad = '';
+      this.actualizarCotizacion(null);
     }
   }
 
   calcular(): void {
     this.errorFechas = '';
     this.errorCapacidad = '';
-    this.cotizacion = null;
 
     if (!this.fechaInicio || !this.fechaFin) {
+      this.actualizarCotizacion(null);
       return;
     }
 
@@ -52,16 +58,19 @@ export class Cotizadorcomponent implements OnChanges {
 
     if (noches <= 0) {
       this.errorFechas = 'La fecha de salida debe ser posterior a la de entrada.';
+      this.actualizarCotizacion(null);
       return;
     }
 
     if (this.huespedes < 1) {
       this.errorCapacidad = 'Debes cotizar para al menos 1 huésped.';
+      this.actualizarCotizacion(null);
       return;
     }
 
     if (this.huespedes > this.alojamiento.capacidad) {
       this.errorCapacidad = `Este alojamiento admite hasta ${this.alojamiento.capacidad} huéspedes.`;
+      this.actualizarCotizacion(null);
       return;
     }
 
@@ -69,12 +78,20 @@ export class Cotizadorcomponent implements OnChanges {
     const tarifaServicio = subtotal * 0.1;
     const total = subtotal + this.alojamiento.tarifaLimpieza + tarifaServicio;
 
-    this.cotizacion = {
+    this.actualizarCotizacion({
+      fechaInicio: this.fechaInicio,
+      fechaFin: this.fechaFin,
+      huespedes: this.huespedes,
       noches,
       subtotal,
       tarifaLimpieza: this.alojamiento.tarifaLimpieza,
       tarifaServicio,
       total,
-    };
+    });
+  }
+
+  private actualizarCotizacion(cotizacion: Cotizacion | null): void {
+    this.cotizacion = cotizacion;
+    this.cotizacionLista.emit(cotizacion);
   }
 }
