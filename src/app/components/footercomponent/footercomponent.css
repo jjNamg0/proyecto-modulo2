@@ -3,6 +3,12 @@
   background-color: #0a0e17;
 }
 
+.footer-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
 .footer-link {
   color: #bec8d2;
   text-decoration: none;

@@ -14,6 +14,8 @@ import { Detallecomponent } from './components/detallecomponent/detallecomponent
 import { Cotizadorcomponent } from './components/cotizadorcomponent/cotizadorcomponent';
 import { Reservacomponent } from './components/reservacomponent/reservacomponent';
 import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
+import { Logincomponent } from './components/logincomponent/logincomponent';
+import { Registrocomponent } from './components/registrocomponent/registrocomponent';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { Misreservascomponent } from './components/misreservascomponent/misreser
     Cotizadorcomponent,
     Reservacomponent,
     Misreservascomponent,
+    Logincomponent,
+    Registrocomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

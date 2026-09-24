@@ -35,6 +35,9 @@
         <h1 class="h3 text-white">{{ a.nombre }}</h1>
         <p class="text-secondary mb-2">
           <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}
+          <a *ngIf="ubicacionMapaUrl()" [href]="ubicacionMapaUrl()" target="_blank" rel="noopener" class="ms-1">
+            <i class="fa-solid fa-map-location-dot"></i> Ver en el mapa
+          </a>
         </p>
         <p class="mb-3">
           <span class="badge text-bg-dark">
@@ -66,6 +69,9 @@
             {{ a.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
           </span>
           <small class="text-secondary"> / noche</small>
+          <small class="text-secondary d-block" *ngIf="tasaUsdEur() as tasa">
+            <i class="fa-solid fa-money-bill-transfer me-1"></i>Tasa de referencia: 1 USD ≈ {{ tasa | number: '1.2-2' }} EUR
+          </small>
         </div>
 
         <app-cotizadorcomponent [alojamiento]="a" (cotizacionLista)="onCotizacionLista($event)" />

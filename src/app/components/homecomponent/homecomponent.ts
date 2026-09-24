@@ -13,6 +13,7 @@ export class Homecomponent implements OnInit {
   constructor(private alojamientosService: Alojamientosservice) {}
 
   ngOnInit(): void {
+    // trae 3 alojamientos al azar pa mostrar en el inicio cambian cada vez q se entra
     this.alojamientosService.obtenerDestacados(3).subscribe((alojamientos) => {
       this.destacados.set(alojamientos);
     });

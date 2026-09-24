@@ -45,6 +45,7 @@ export const FILTROS_VACIOS: Filtros = {
   precioMaximo: null,
 };
 
+// la forma completa del json esto lo usa el service nada mas
 interface MarketplaceData {
   alojamientos: Alojamiento[];
   resenas: Resena[];
@@ -58,6 +59,8 @@ export class Alojamientosservice {
 
   constructor(private http: HttpClient) {}
 
+  // el shareReplay es pa no leer el json de nuevo cada vez q alguien llama al servicio
+  // se guarda la primera respuesta y ya
   private cargarDatos(): Observable<MarketplaceData> {
     if (!this.datos$) {
       this.datos$ = this.http
@@ -73,11 +76,18 @@ export class Alojamientosservice {
     );
   }
 
+  // los destacados cambian cada vez q se llama se mezclan los activos y se toman los primeros
   obtenerDestacados(cantidad = 3): Observable<Alojamiento[]> {
     return this.obtenerAlojamientos().pipe(
-      map((alojamientos) =>
-        [...alojamientos].sort((a, b) => b.calificacion - a.calificacion).slice(0, cantidad),
-      ),
+      map((alojamientos) => {
+        const mezclados = [...alojamientos];
+        // fisher-yates, el sort con random queda sesgado
+        for (let i = mezclados.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [mezclados[i], mezclados[j]] = [mezclados[j], mezclados[i]];
+        }
+        return mezclados.slice(0, cantidad);
+      }),
     );
   }
 

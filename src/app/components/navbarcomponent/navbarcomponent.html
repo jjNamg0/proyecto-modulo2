@@ -1,7 +1,7 @@
 <header class="navbar-marketplace">
   <div class="container d-flex align-items-center justify-content-between py-2">
     <a routerLink="/" class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" (click)="cerrarMenu()">
-      <i class="fa-solid fa-moon text-primary fs-4"></i>
+      <img src="assets/images/logo.png" alt="Nocturna Stays" class="navbar-logo" />
       <span class="d-flex flex-column lh-1">
         <strong class="text-white">Nocturna Stays</strong>
         <small class="text-secondary">Marketplace de Alojamientos</small>
@@ -21,6 +21,17 @@
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill">Inicio</a>
       <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill">Listado</a>
       <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill">Mis reservas</a>
+
+      <ng-container *ngIf="usuarioActual() as usuario; else invitadoDesktop">
+        <span class="usuario-pill px-3 py-1 rounded-pill small">
+          <i class="fa-solid fa-circle-user me-1"></i>{{ usuario.nombre }}
+        </span>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="cerrarSesion()">Cerrar sesión</button>
+      </ng-container>
+      <ng-template #invitadoDesktop>
+        <a routerLink="/login" routerLinkActive="active" class="nav-link-pill">Iniciar sesión</a>
+        <a routerLink="/registro" routerLinkActive="active" class="nav-link-pill">Registrarse</a>
+      </ng-template>
     </nav>
   </div>
 
@@ -31,5 +42,16 @@
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill" (click)="cerrarMenu()">Inicio</a>
     <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Listado</a>
     <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Mis reservas</a>
+
+    <ng-container *ngIf="usuarioActual() as usuario; else invitadoMovil">
+      <span class="usuario-pill px-3 py-1 rounded-pill small">
+        <i class="fa-solid fa-circle-user me-1"></i>{{ usuario.nombre }}
+      </span>
+      <button type="button" class="btn btn-outline-light btn-sm" (click)="cerrarSesion()">Cerrar sesión</button>
+    </ng-container>
+    <ng-template #invitadoMovil>
+      <a routerLink="/login" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Iniciar sesión</a>
+      <a routerLink="/registro" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Registrarse</a>
+    </ng-template>
   </nav>
 </header>
