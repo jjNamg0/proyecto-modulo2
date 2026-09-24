@@ -23,6 +23,9 @@ export class Cotizadorcomponent implements OnChanges {
   @Input() alojamiento!: Alojamiento;
   @Output() cotizacionLista = new EventEmitter<Cotizacion | null>();
 
+  // pa no dejar elegir fechas pasadas desde el input mismo
+  fechaMinima = new Date().toISOString().split('T')[0];
+
   fechaInicio = '';
   fechaFin = '';
   huespedes = 1;
@@ -32,7 +35,6 @@ export class Cotizadorcomponent implements OnChanges {
   errorCapacidad = '';
 
   ngOnChanges(changes: SimpleChanges): void {
-    // si cambia el alojamiento (o sea entramos a otro detalle) reseteamos todo
     if (changes['alojamiento']) {
       this.fechaInicio = '';
       this.fechaFin = '';
@@ -48,6 +50,12 @@ export class Cotizadorcomponent implements OnChanges {
     this.errorCapacidad = '';
 
     if (!this.fechaInicio || !this.fechaFin) {
+      this.actualizarCotizacion(null);
+      return;
+    }
+
+    if (this.fechaInicio < this.fechaMinima) {
+      this.errorFechas = 'La fecha de entrada no puede ser anterior a hoy.';
       this.actualizarCotizacion(null);
       return;
     }

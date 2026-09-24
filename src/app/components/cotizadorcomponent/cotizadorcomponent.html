@@ -10,6 +10,7 @@
         id="fechaInicio"
         type="date"
         class="form-control form-control-sm"
+        [min]="fechaMinima"
         [(ngModel)]="fechaInicio"
         (ngModelChange)="calcular()"
       />
@@ -20,6 +21,7 @@
         id="fechaFin"
         type="date"
         class="form-control form-control-sm"
+        [min]="fechaMinima"
         [(ngModel)]="fechaFin"
         (ngModelChange)="calcular()"
       />

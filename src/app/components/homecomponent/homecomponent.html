@@ -25,8 +25,11 @@
   <p class="text-secondary" *ngIf="destacados().length === 0">Cargando alojamientos destacados...</p>
 
   <div class="row g-4" *ngIf="destacados().length > 0">
-    <div class="col-12 col-md-6 col-lg-4" *ngFor="let alojamiento of destacados()">
-      <div class="card h-100 card-alojamiento animate__animated animate__fadeIn">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let alojamiento of destacados(); let i = index">
+      <div
+        class="card h-100 card-alojamiento animate__animated animate__fadeInUp"
+        [style.animation-delay]="i * 150 + 'ms'"
+      >
         <div class="position-relative">
           <img
             [src]="alojamiento.imagenPrincipal"
@@ -43,11 +46,14 @@
           <p class="text-secondary small mb-2">
             <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }} · {{ alojamiento.tipo }}
           </p>
-          <div class="mt-auto">
+          <div class="mt-auto d-flex justify-content-between align-items-center">
             <span class="fw-bold">
               {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
               <small class="text-secondary fw-normal">/ noche</small>
             </span>
+            <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary stretched-link">
+              Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
           </div>
         </div>
       </div>

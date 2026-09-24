@@ -1,6 +1,8 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojamientosservice';
+import { Geocodingservice } from '../../services/geocodingservice';
+import { Exchangerateservice } from '../../services/exchangerateservice';
 import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
 
 @Component({
@@ -16,10 +18,14 @@ export class Detallecomponent implements OnInit {
   cargando = signal(true);
   noEncontrado = signal(false);
   cotizacionActual = signal<Cotizacion | null>(null);
+  ubicacionMapaUrl = signal<string | null>(null);
+  tasaUsdEur = signal<number | null>(null);
 
   constructor(
     private route: ActivatedRoute,
     private alojamientosService: Alojamientosservice,
+    private geocodingService: Geocodingservice,
+    private exchangeRateService: Exchangerateservice,
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +44,8 @@ export class Detallecomponent implements OnInit {
     this.cargando.set(true);
     this.noEncontrado.set(false);
     this.cotizacionActual.set(null);
+    this.ubicacionMapaUrl.set(null);
+    this.tasaUsdEur.set(null);
 
     this.alojamientosService.obtenerPorId(id).subscribe((alojamiento) => {
       if (!alojamiento) {
@@ -52,6 +60,15 @@ export class Detallecomponent implements OnInit {
 
       this.alojamientosService.obtenerResenasPorAlojamiento(id).subscribe((resenas) => {
         this.resenas.set(resenas);
+      });
+
+      const direccion = `${alojamiento.ubicacion}, ${alojamiento.ciudad}, Colombia`;
+      this.geocodingService.obtenerCoordenadas(direccion).subscribe((coords) => {
+        this.ubicacionMapaUrl.set(coords ? `https://www.google.com/maps?q=${coords.lat},${coords.lon}` : null);
+      });
+
+      this.exchangeRateService.obtenerTasaUsdEur().subscribe((tasa) => {
+        this.tasaUsdEur.set(tasa);
       });
     });
   }

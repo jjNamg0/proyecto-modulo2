@@ -1,0 +1,39 @@
+<section class="container py-4">
+  <h1 class="h4 text-white mb-4">
+    <i class="fa-solid fa-clipboard-list me-2"></i>Mis reservas
+  </h1>
+
+  <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert" *ngIf="reservas().length === 0">
+    <i class="fa-solid fa-circle-info"></i>
+    Todavía no tienes reservas. Ve al <a routerLink="/listado" class="alert-link">listado</a> y cotiza un alojamiento.
+  </div>
+
+  <div class="row g-3" *ngIf="reservas().length > 0">
+    <div class="col-12 col-md-6" *ngFor="let reserva of reservas()">
+      <div class="card h-100 card-reserva">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <h2 class="h6 card-title mb-0">{{ reserva.nombreAlojamiento }}</h2>
+            <span class="badge text-bg-success">{{ reserva.estado }}</span>
+          </div>
+
+          <p class="small text-secondary mb-1">
+            <i class="fa-solid fa-calendar-days me-1"></i>{{ reserva.fechaInicio }} — {{ reserva.fechaFin }}
+            ({{ reserva.noches }} noches)
+          </p>
+          <p class="small text-secondary mb-1">
+            <i class="fa-solid fa-user-group me-1"></i>{{ reserva.huespedes }} huéspedes
+          </p>
+          <p class="small text-secondary mb-2">
+            <i class="fa-solid fa-user me-1"></i>{{ reserva.nombreHuesped }} · {{ reserva.correoHuesped }}
+          </p>
+
+          <div class="border-top border-secondary-subtle pt-2 d-flex justify-content-between align-items-center">
+            <span class="text-secondary small">Reserva #{{ reserva.id }}</span>
+            <span class="fw-bold">{{ reserva.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
