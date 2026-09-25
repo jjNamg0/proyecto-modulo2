@@ -4,6 +4,19 @@
   </h2>
 
   <div class="mb-3">
+    <label class="form-label small text-secondary" for="filtroPais">País</label>
+    <select
+      id="filtroPais"
+      class="form-select form-select-sm"
+      [(ngModel)]="filtros.pais"
+      (ngModelChange)="cambiarPais()"
+    >
+      <option value="">Todos los países</option>
+      <option *ngFor="let pais of paises" [value]="pais">{{ pais }}</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
     <label class="form-label small text-secondary" for="filtroCiudad">Ciudad</label>
     <select
       id="filtroCiudad"

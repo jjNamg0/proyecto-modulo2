@@ -7,6 +7,7 @@ export interface Alojamiento {
   nombre: string;
   descripcion: string;
   ciudad: string;
+  pais: string;
   ubicacion: string;
   tipo: string;
   capacidad: number;
@@ -32,6 +33,7 @@ export interface Resena {
 }
 
 export interface Filtros {
+  pais: string;
   ciudad: string;
   huespedes: number | null;
   tipo: string;
@@ -39,13 +41,13 @@ export interface Filtros {
 }
 
 export const FILTROS_VACIOS: Filtros = {
+  pais: '',
   ciudad: '',
   huespedes: null,
   tipo: '',
   precioMaximo: null,
 };
 
-// la forma completa del json esto lo usa el service nada mas
 interface MarketplaceData {
   alojamientos: Alojamiento[];
   resenas: Resena[];
@@ -59,8 +61,6 @@ export class Alojamientosservice {
 
   constructor(private http: HttpClient) {}
 
-  // el shareReplay es pa no leer el json de nuevo cada vez q alguien llama al servicio
-  // se guarda la primera respuesta y ya
   private cargarDatos(): Observable<MarketplaceData> {
     if (!this.datos$) {
       this.datos$ = this.http
@@ -76,7 +76,6 @@ export class Alojamientosservice {
     );
   }
 
-  // los destacados cambian cada vez q se llama se mezclan los activos y se toman los primeros
   obtenerDestacados(cantidad = 3): Observable<Alojamiento[]> {
     return this.obtenerAlojamientos().pipe(
       map((alojamientos) => {
@@ -103,9 +102,21 @@ export class Alojamientosservice {
     );
   }
 
-  obtenerCiudades(): Observable<string[]> {
+  obtenerPaises(): Observable<string[]> {
     return this.obtenerAlojamientos().pipe(
-      map((alojamientos) => [...new Set(alojamientos.map((a) => a.ciudad))].sort()),
+      map((alojamientos) =>
+        [...new Set(alojamientos.map((a) => a.pais))].sort((a, b) => a.localeCompare(b, 'es')),
+      ),
+    );
+  }
+
+  obtenerCiudades(pais = ''): Observable<string[]> {
+    return this.obtenerAlojamientos().pipe(
+      map((alojamientos) =>
+        [...new Set(alojamientos.filter((a) => !pais || a.pais === pais).map((a) => a.ciudad))].sort(
+          (a, b) => a.localeCompare(b, 'es'),
+        ),
+      ),
     );
   }
 
@@ -119,11 +130,12 @@ export class Alojamientosservice {
     return this.obtenerAlojamientos().pipe(
       map((alojamientos) =>
         alojamientos.filter((a) => {
+          const coincidePais = !filtros.pais || a.pais === filtros.pais;
           const coincideCiudad = !filtros.ciudad || a.ciudad === filtros.ciudad;
           const coincideHuespedes = !filtros.huespedes || a.capacidad >= filtros.huespedes;
           const coincideTipo = !filtros.tipo || a.tipo === filtros.tipo;
           const coincidePrecio = !filtros.precioMaximo || a.precioNoche <= filtros.precioMaximo;
-          return coincideCiudad && coincideHuespedes && coincideTipo && coincidePrecio;
+          return coincidePais && coincideCiudad && coincideHuespedes && coincideTipo && coincidePrecio;
         }),
       ),
     );

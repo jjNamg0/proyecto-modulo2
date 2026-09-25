@@ -62,7 +62,7 @@ export class Detallecomponent implements OnInit {
         this.resenas.set(resenas);
       });
 
-      const direccion = `${alojamiento.ubicacion}, ${alojamiento.ciudad}, Colombia`;
+      const direccion = `${alojamiento.ubicacion}, ${alojamiento.ciudad}, ${alojamiento.pais}`;
       this.geocodingService.obtenerCoordenadas(direccion).subscribe((coords) => {
         this.ubicacionMapaUrl.set(coords ? `https://www.google.com/maps?q=${coords.lat},${coords.lon}` : null);
       });

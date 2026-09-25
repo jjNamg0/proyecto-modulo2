@@ -6,6 +6,7 @@
   <div class="row g-4">
     <aside class="col-12 col-lg-3">
       <app-filtrospanelcomponent
+        [paises]="paises()"
         [ciudades]="ciudades()"
         [tipos]="tipos()"
         (filtrosCambiados)="aplicarFiltros($event)"
@@ -28,6 +29,7 @@
               <div class="position-relative">
                 <img
                   [src]="alojamiento.imagenPrincipal"
+                  loading="lazy"
                   (error)="onImgError($event, alojamiento.id)"
                   class="card-img-top card-alojamiento__img"
                   [alt]="alojamiento.nombre"
@@ -39,7 +41,7 @@
               <div class="card-body d-flex flex-column">
                 <h3 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h3>
                 <p class="text-secondary small mb-2">
-                  <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }} · {{ alojamiento.tipo }}
+                  <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }}, {{ alojamiento.pais }} · {{ alojamiento.tipo }}
                 </p>
                 <p class="small mb-2">
                   <i class="fa-solid fa-user-group me-1"></i>Capacidad: {{ alojamiento.capacidad }} huéspedes
