@@ -34,7 +34,7 @@
       <div class="col-12 col-lg-5">
         <h1 class="h3 text-white">{{ a.nombre }}</h1>
         <p class="text-secondary mb-2">
-          <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}
+          <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}, {{ a.pais }}
           <a *ngIf="ubicacionMapaUrl()" [href]="ubicacionMapaUrl()" target="_blank" rel="noopener" class="ms-1">
             <i class="fa-solid fa-map-location-dot"></i> Ver en el mapa
           </a>
