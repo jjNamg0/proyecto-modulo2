@@ -46,6 +46,16 @@
           <span class="badge text-bg-secondary ms-1">{{ a.tipo }}</span>
         </p>
 
+        <div class="clima-actual d-flex align-items-center gap-3 rounded border border-secondary-subtle p-2 mb-3" *ngIf="clima() as c">
+          <i class="fa-solid {{ c.icono }} fs-3 text-info"></i>
+          <div>
+            <div class="fw-semibold">{{ c.temperatura }}°C · {{ c.descripcion }}</div>
+            <small class="text-secondary">
+              Sensación {{ c.sensacion }}°C · Humedad {{ c.humedad }}% · Viento {{ c.viento }} km/h
+            </small>
+          </div>
+        </div>
+
         <p>{{ a.descripcion }}</p>
 
         <ul class="list-unstyled small text-secondary">

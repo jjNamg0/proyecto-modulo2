@@ -2,6 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojamientosservice';
 import { Geocodingservice } from '../../services/geocodingservice';
+import { Climaservice, Clima } from '../../services/climaservice';
 import { Exchangerateservice } from '../../services/exchangerateservice';
 import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
 
@@ -20,11 +21,13 @@ export class Detallecomponent implements OnInit {
   cotizacionActual = signal<Cotizacion | null>(null);
   ubicacionMapaUrl = signal<string | null>(null);
   tasaUsdEur = signal<number | null>(null);
+  clima = signal<Clima | null>(null);
 
   constructor(
     private route: ActivatedRoute,
     private alojamientosService: Alojamientosservice,
     private geocodingService: Geocodingservice,
+    private climaService: Climaservice,
     private exchangeRateService: Exchangerateservice,
   ) {}
 
@@ -46,6 +49,7 @@ export class Detallecomponent implements OnInit {
     this.cotizacionActual.set(null);
     this.ubicacionMapaUrl.set(null);
     this.tasaUsdEur.set(null);
+    this.clima.set(null);
 
     this.alojamientosService.obtenerPorId(id).subscribe((alojamiento) => {
       if (!alojamiento) {
@@ -65,6 +69,13 @@ export class Detallecomponent implements OnInit {
       const direccion = `${alojamiento.ubicacion}, ${alojamiento.ciudad}, ${alojamiento.pais}`;
       this.geocodingService.obtenerCoordenadas(direccion).subscribe((coords) => {
         this.ubicacionMapaUrl.set(coords ? `https://www.google.com/maps?q=${coords.lat},${coords.lon}` : null);
+
+        // el clima se pide con las mismas coordenadas del geocoder si no hubo coords no se pide
+        if (coords) {
+          this.climaService.obtenerClima(coords.lat, coords.lon).subscribe((clima) => {
+            this.clima.set(clima);
+          });
+        }
       });
 
       this.exchangeRateService.obtenerTasaUsdEur().subscribe((tasa) => {
