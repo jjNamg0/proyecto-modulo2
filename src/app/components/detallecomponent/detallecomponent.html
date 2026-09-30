@@ -97,7 +97,7 @@
 
         <app-cotizadorcomponent [alojamiento]="a" (cotizacionLista)="onCotizacionLista($event)" />
 
-        <app-reservacomponent *ngIf="cotizacionActual() as cot" [alojamiento]="a" [cotizacion]="cot" />
+        <app-pagocomponent *ngIf="cotizacionActual() as cot" [alojamiento]="a" [cotizacion]="cot" />
       </div>
     </div>
 
