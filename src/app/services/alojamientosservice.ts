@@ -59,6 +59,9 @@ interface MarketplaceData {
 export class Alojamientosservice {
   private datos$: Observable<MarketplaceData> | null = null;
 
+  private resenasAgregadas: Resena[] = [];
+  private siguienteIdLocal = -1;
+
   constructor(private http: HttpClient) {}
 
   private cargarDatos(): Observable<MarketplaceData> {
@@ -72,7 +75,7 @@ export class Alojamientosservice {
 
   obtenerAlojamientos(): Observable<Alojamiento[]> {
     return this.cargarDatos().pipe(
-      map((datos) => datos.alojamientos.filter((a) => a.activo)),
+      map((datos) => datos.alojamientos.filter((a) => a.activo && a.precioNoche > 0)),
     );
   }
 
@@ -80,7 +83,6 @@ export class Alojamientosservice {
     return this.obtenerAlojamientos().pipe(
       map((alojamientos) => {
         const mezclados = [...alojamientos];
-        // fisher-yates, el sort con random queda sesgado
         for (let i = mezclados.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [mezclados[i], mezclados[j]] = [mezclados[j], mezclados[i]];
@@ -98,8 +100,17 @@ export class Alojamientosservice {
 
   obtenerResenasPorAlojamiento(alojamientoId: number): Observable<Resena[]> {
     return this.cargarDatos().pipe(
-      map((datos) => datos.resenas.filter((r) => r.alojamientoId === alojamientoId)),
+      map((datos) => [
+        ...datos.resenas.filter((r) => r.alojamientoId === alojamientoId),
+        ...this.resenasAgregadas.filter((r) => r.alojamientoId === alojamientoId),
+      ]),
     );
+  }
+
+  agregarResena(datos: Omit<Resena, 'id'>): Resena {
+    const resena: Resena = { ...datos, id: this.siguienteIdLocal-- };
+    this.resenasAgregadas.push(resena);
+    return resena;
   }
 
   obtenerPaises(): Observable<string[]> {

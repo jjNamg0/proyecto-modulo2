@@ -6,6 +6,8 @@ import { Detallecomponent } from './components/detallecomponent/detallecomponent
 import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
+import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
+import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 
 const routes: Routes = [
   {
@@ -37,6 +39,16 @@ const routes: Routes = [
     path: 'registro',
     component: Registrocomponent,
     title: 'Nocturna Stays — Crear cuenta',
+  },
+  {
+    path: 'favoritos',
+    component: Favoritoscomponent,
+    title: 'Nocturna Stays — Favoritos',
+  },
+  {
+    path: '**',
+    component: Notfoundcomponent,
+    title: 'Nocturna Stays — Página no encontrada',
   },
 ];
 

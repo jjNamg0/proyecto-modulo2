@@ -3,13 +3,14 @@ import { Alojamientosservice, Alojamiento } from '../../services/alojamientosser
 import { Favoritosservice } from '../../services/favoritosservice';
 
 @Component({
-  selector: 'app-homecomponent',
+  selector: 'app-favoritoscomponent',
   standalone: false,
-  styleUrl: './homecomponent.css',
-  templateUrl: './homecomponent.html',
+  styleUrl: './favoritoscomponent.css',
+  templateUrl: './favoritoscomponent.html',
 })
-export class Homecomponent implements OnInit {
-  destacados = signal<Alojamiento[]>([]);
+export class Favoritoscomponent implements OnInit {
+  favoritos = signal<Alojamiento[]>([]);
+  cargando = signal(true);
 
   constructor(
     private alojamientosService: Alojamientosservice,
@@ -17,19 +18,16 @@ export class Homecomponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.alojamientosService.obtenerDestacados(3).subscribe((alojamientos) => {
-      this.destacados.set(alojamientos);
+    const idsFavoritos = this.favoritosService.obtenerIds();
+    this.alojamientosService.obtenerAlojamientos().subscribe((alojamientos) => {
+      this.favoritos.set(alojamientos.filter((a) => idsFavoritos.includes(a.id)));
+      this.cargando.set(false);
     });
   }
 
-  esFavorito(id: number): boolean {
-    return this.favoritosService.esFavorito(id);
-  }
-
-  alternarFavorito(id: number, event: Event): void {
-    event.stopPropagation();
-    event.preventDefault();
+  quitarFavorito(id: number): void {
     this.favoritosService.alternar(id);
+    this.favoritos.update((lista) => lista.filter((a) => a.id !== id));
   }
 
   onImgError(event: Event, id: number): void {

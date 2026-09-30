@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Alojamiento } from '../../services/alojamientosservice';
 
-// esto lo consume tambien el reservacomponent, x eso lleva las fechas y huespedes completos
 export interface Cotizacion {
   fechaInicio: string;
   fechaFin: string;
@@ -23,8 +22,7 @@ export class Cotizadorcomponent implements OnChanges {
   @Input() alojamiento!: Alojamiento;
   @Output() cotizacionLista = new EventEmitter<Cotizacion | null>();
 
-  // pa no dejar elegir fechas pasadas desde el input mismo
-  fechaMinima = new Date().toISOString().split('T')[0];
+  fechaMinima = this.obtenerFechaLocalHoy();
 
   fechaInicio = '';
   fechaFin = '';
@@ -101,5 +99,13 @@ export class Cotizadorcomponent implements OnChanges {
   private actualizarCotizacion(cotizacion: Cotizacion | null): void {
     this.cotizacion = cotizacion;
     this.cotizacionLista.emit(cotizacion);
+  }
+
+  private obtenerFechaLocalHoy(): string {
+    const hoy = new Date();
+    const anio = hoy.getFullYear();
+    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dia = String(hoy.getDate()).padStart(2, '0');
+    return `${anio}-${mes}-${dia}`;
   }
 }

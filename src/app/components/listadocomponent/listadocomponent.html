@@ -37,6 +37,16 @@
                 <span class="badge text-bg-dark position-absolute top-0 end-0 m-2">
                   <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion }}
                 </span>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-dark position-absolute top-0 start-0 m-2"
+                  style="z-index: 2;"
+                  [class.text-danger]="esFavorito(alojamiento.id)"
+                  (click)="alternarFavorito(alojamiento.id, $event)"
+                  [attr.aria-label]="esFavorito(alojamiento.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+                >
+                  <i class="fa-solid fa-heart"></i>
+                </button>
               </div>
               <div class="card-body d-flex flex-column">
                 <h3 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h3>
@@ -46,6 +56,14 @@
                 <p class="small mb-2">
                   <i class="fa-solid fa-user-group me-1"></i>Capacidad: {{ alojamiento.capacidad }} huéspedes
                 </p>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <span class="badge text-bg-dark small" *ngFor="let servicio of alojamiento.servicios.slice(0, 3)">
+                    {{ servicio }}
+                  </span>
+                  <span class="badge text-bg-secondary small" *ngIf="alojamiento.servicios.length > 3">
+                    +{{ alojamiento.servicios.length - 3 }}
+                  </span>
+                </div>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
                   <span class="fw-bold">
                     {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
