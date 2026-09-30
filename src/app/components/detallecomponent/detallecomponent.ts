@@ -4,6 +4,7 @@ import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojami
 import { Geocodingservice } from '../../services/geocodingservice';
 import { Climaservice, Clima } from '../../services/climaservice';
 import { Exchangerateservice } from '../../services/exchangerateservice';
+import { Favoritosservice } from '../../services/favoritosservice';
 import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
 
 @Component({
@@ -29,10 +30,24 @@ export class Detallecomponent implements OnInit {
     private geocodingService: Geocodingservice,
     private climaService: Climaservice,
     private exchangeRateService: Exchangerateservice,
+    private favoritosService: Favoritosservice,
   ) {}
 
+  esFavorito(id: number): boolean {
+    return this.favoritosService.esFavorito(id);
+  }
+
+  alternarFavorito(id: number): void {
+    this.favoritosService.alternar(id);
+  }
+
+  recargarResenas(alojamientoId: number): void {
+    this.alojamientosService.obtenerResenasPorAlojamiento(alojamientoId).subscribe((resenas) => {
+      this.resenas.set(resenas);
+    });
+  }
+
   ngOnInit(): void {
-    // uso paramMap x si el usuario navega de un detalle a otro sin q se destruya el componente
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
       this.cargarAlojamiento(id);
@@ -70,7 +85,6 @@ export class Detallecomponent implements OnInit {
       this.geocodingService.obtenerCoordenadas(direccion).subscribe((coords) => {
         this.ubicacionMapaUrl.set(coords ? `https://www.google.com/maps?q=${coords.lat},${coords.lon}` : null);
 
-        // el clima se pide con las mismas coordenadas del geocoder si no hubo coords no se pide
         if (coords) {
           this.climaService.obtenerClima(coords.lat, coords.lon).subscribe((clima) => {
             this.clima.set(clima);

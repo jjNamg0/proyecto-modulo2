@@ -16,6 +16,9 @@ import { Reservacomponent } from './components/reservacomponent/reservacomponent
 import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
+import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
+import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
+import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { Registrocomponent } from './components/registrocomponent/registrocompon
     Misreservascomponent,
     Logincomponent,
     Registrocomponent,
+    Favoritoscomponent,
+    Notfoundcomponent,
+    Resenaformcomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

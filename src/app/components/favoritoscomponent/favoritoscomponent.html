@@ -1,0 +1,52 @@
+<section class="container py-4">
+  <h1 class="h4 text-white mb-4">
+    <i class="fa-solid fa-heart me-2"></i>Favoritos
+  </h1>
+
+  <p class="text-secondary" *ngIf="cargando()">Cargando favoritos...</p>
+
+  <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert" *ngIf="!cargando() && favoritos().length === 0">
+    <i class="fa-solid fa-circle-info"></i>
+    Todavía no tienes alojamientos marcados como favoritos. Ve al
+    <a routerLink="/listado" class="alert-link">listado</a> y marca los que te gusten.
+  </div>
+
+  <div class="row g-4" *ngIf="!cargando() && favoritos().length > 0">
+    <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of favoritos()">
+      <div class="card h-100 card-alojamiento">
+        <div class="position-relative">
+          <img
+            [src]="alojamiento.imagenPrincipal"
+            loading="lazy"
+            (error)="onImgError($event, alojamiento.id)"
+            class="card-img-top card-alojamiento__img"
+            [alt]="alojamiento.nombre"
+          />
+          <button
+            type="button"
+            class="btn btn-sm btn-dark position-absolute top-0 start-0 m-2"
+            (click)="quitarFavorito(alojamiento.id)"
+            aria-label="Quitar de favoritos"
+          >
+            <i class="fa-solid fa-heart text-danger"></i>
+          </button>
+        </div>
+        <div class="card-body d-flex flex-column">
+          <h3 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h3>
+          <p class="text-secondary small mb-2">
+            <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }}, {{ alojamiento.pais }} · {{ alojamiento.tipo }}
+          </p>
+          <div class="mt-auto d-flex justify-content-between align-items-center">
+            <span class="fw-bold">
+              {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+              <small class="text-secondary fw-normal">/ noche</small>
+            </span>
+            <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary">
+              Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

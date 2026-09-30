@@ -1,5 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Alojamientosservice, Alojamiento, Filtros, FILTROS_VACIOS } from '../../services/alojamientosservice';
+import { Favoritosservice } from '../../services/favoritosservice';
 
 @Component({
   selector: 'app-listadocomponent',
@@ -14,10 +15,22 @@ export class Listadocomponent implements OnInit {
   tipos = signal<string[]>([]);
   cargando = signal(true);
 
-  constructor(private alojamientosService: Alojamientosservice) {}
+  constructor(
+    private alojamientosService: Alojamientosservice,
+    private favoritosService: Favoritosservice,
+  ) {}
+
+  esFavorito(id: number): boolean {
+    return this.favoritosService.esFavorito(id);
+  }
+
+  alternarFavorito(id: number, event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+    this.favoritosService.alternar(id);
+  }
 
   ngOnInit(): void {
-    // las ciudades se cargan dentro de aplicarFiltros pq dependen del pais elegido
     this.alojamientosService.obtenerPaises().subscribe((paises) => this.paises.set(paises));
     this.alojamientosService.obtenerTipos().subscribe((tipos) => this.tipos.set(tipos));
     this.aplicarFiltros(FILTROS_VACIOS);

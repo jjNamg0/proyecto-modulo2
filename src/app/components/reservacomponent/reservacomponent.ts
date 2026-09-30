@@ -38,6 +38,7 @@ export class Reservacomponent {
     const reserva = this.reservasService.crearReserva({
       alojamientoId: this.alojamiento.id,
       nombreAlojamiento: this.alojamiento.nombre,
+      ciudad: this.alojamiento.ciudad,
       nombreHuesped: this.nombre.trim(),
       correoHuesped: this.correo.trim(),
       fechaInicio: this.cotizacion.fechaInicio,

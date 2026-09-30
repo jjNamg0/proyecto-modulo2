@@ -4,6 +4,7 @@ export interface Reserva {
   id: number;
   alojamientoId: number;
   nombreAlojamiento: string;
+  ciudad: string;
   nombreHuesped: string;
   correoHuesped: string;
   fechaInicio: string;
@@ -18,6 +19,7 @@ export interface Reserva {
 export interface DatosReserva {
   alojamientoId: number;
   nombreAlojamiento: string;
+  ciudad: string;
   nombreHuesped: string;
   correoHuesped: string;
   fechaInicio: string;
@@ -46,7 +48,6 @@ export class Reservasservice {
     return reserva;
   }
 
-  // las mas recientes primero
   obtenerReservas(): Reserva[] {
     return [...this.reservas].sort((a, b) => b.id - a.id);
   }

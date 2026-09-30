@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, map, catchError, of } from 'rxjs';
 
 export interface Clima {
@@ -11,7 +11,6 @@ export interface Clima {
   icono: string;
 }
 
-// solo lo q usamos de la respuesta de open-meteo
 interface RespuestaOpenMeteo {
   current: {
     temperature_2m: number;
@@ -27,20 +26,25 @@ interface RespuestaOpenMeteo {
   providedIn: 'root',
 })
 export class Climaservice {
-  private urlBase = 'https://api.open-meteo.com/v1/forecast';
+  private cliente: HttpClient = inject(HttpClient);
+  private readonly URL_BASE: string = 'https://api.open-meteo.com/v1';
 
-  constructor(private http: HttpClient) {}
-
-  // si la api falla devuelve null y el detalle simplemente no muestra el clima
-  obtenerClima(lat: number, lon: number): Observable<Clima | null> {
+  obtenerPronostico(lat: number, lon: number): Observable<HttpResponse<RespuestaOpenMeteo>> {
     const url =
-      `${this.urlBase}?latitude=${lat}&longitude=${lon}` +
+      `${this.URL_BASE}/forecast?latitude=${lat}&longitude=${lon}` +
       '&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,is_day' +
       '&timezone=auto';
 
-    return this.http.get<RespuestaOpenMeteo>(url).pipe(
+    return this.cliente.get<RespuestaOpenMeteo>(url, { observe: 'response' });
+  }
+
+  obtenerClima(lat: number, lon: number): Observable<Clima | null> {
+    return this.obtenerPronostico(lat, lon).pipe(
       map((respuesta) => {
-        const actual = respuesta.current;
+        const actual = respuesta.body?.current;
+        if (!actual) {
+          return null;
+        }
         const estado = this.interpretarCodigo(actual.weather_code, actual.is_day === 1);
         return {
           temperatura: Math.round(actual.temperature_2m),
@@ -55,7 +59,6 @@ export class Climaservice {
     );
   }
 
-  // open-meteo devuelve un codigo WMO (0 = despejado, 61 = lluvia, etc) aca lo pasamos a texto e icono
   private interpretarCodigo(codigo: number, esDeDia: boolean): { descripcion: string; icono: string } {
     if (codigo === 0) {
       return esDeDia
