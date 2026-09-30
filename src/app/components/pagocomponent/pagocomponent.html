@@ -1,0 +1,85 @@
+<div class="pago-panel p-3 mt-3" *ngIf="usuarioActual() as usuario; else invitado">
+  <h2 class="h6 text-white mb-3">
+    <i class="fa-solid fa-credit-card me-2"></i>Confirma tu pago
+  </h2>
+
+  <div class="pago-resumen d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom border-secondary-subtle">
+    <div>
+      <p class="small text-secondary mb-0">Pagando como</p>
+      <p class="mb-0">{{ usuario.nombre }} · {{ usuario.correo }}</p>
+    </div>
+    <div class="text-end">
+      <p class="small text-secondary mb-0">Total a pagar</p>
+      <p class="fw-bold fs-5 mb-0">{{ cotizacion.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</p>
+    </div>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label small text-secondary" for="nombreTarjeta">Nombre en la tarjeta</label>
+    <input
+      id="nombreTarjeta"
+      type="text"
+      class="form-control form-control-sm"
+      placeholder="Como aparece en la tarjeta"
+      [(ngModel)]="nombreTarjeta"
+    />
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label small text-secondary" for="numeroTarjeta">Número de tarjeta</label>
+    <input
+      id="numeroTarjeta"
+      type="text"
+      inputmode="numeric"
+      class="form-control form-control-sm"
+      placeholder="0000 0000 0000 0000"
+      maxlength="19"
+      [ngModel]="numeroTarjeta"
+      (ngModelChange)="formatearNumeroTarjeta($event)"
+    />
+  </div>
+
+  <div class="row g-2 mb-3">
+    <div class="col-6">
+      <label class="form-label small text-secondary" for="vencimiento">Vencimiento</label>
+      <input
+        id="vencimiento"
+        type="text"
+        inputmode="numeric"
+        class="form-control form-control-sm"
+        placeholder="MM/AA"
+        maxlength="5"
+        [ngModel]="vencimiento"
+        (ngModelChange)="formatearVencimiento($event)"
+      />
+    </div>
+    <div class="col-6">
+      <label class="form-label small text-secondary" for="cvv">CVV</label>
+      <input
+        id="cvv"
+        type="text"
+        inputmode="numeric"
+        class="form-control form-control-sm"
+        placeholder="123"
+        maxlength="3"
+        [(ngModel)]="cvv"
+      />
+    </div>
+  </div>
+
+  <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="errorPago">
+    <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorPago }}
+  </div>
+
+  <button type="button" class="btn btn-primary btn-sm w-100" (click)="pagar()">
+    <i class="fa-solid fa-lock me-1"></i>
+    Pagar ({{ cotizacion.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }})
+  </button>
+</div>
+
+<ng-template #invitado>
+  <div class="alert alert-secondary d-flex align-items-center gap-2 mt-3" role="alert">
+    <i class="fa-solid fa-circle-info"></i>
+    <span><a routerLink="/login">Inicia sesión</a> para completar el pago de tu reserva.</span>
+  </div>
+</ng-template>

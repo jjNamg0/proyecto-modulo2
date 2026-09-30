@@ -12,7 +12,7 @@ import { Listadocomponent } from './components/listadocomponent/listadocomponent
 import { Filtrospanelcomponent } from './components/filtrospanelcomponent/filtrospanelcomponent';
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
 import { Cotizadorcomponent } from './components/cotizadorcomponent/cotizadorcomponent';
-import { Reservacomponent } from './components/reservacomponent/reservacomponent';
+import { Pagocomponent } from './components/pagocomponent/pagocomponent';
 import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
@@ -30,7 +30,7 @@ import { Resenaformcomponent } from './components/resenaformcomponent/resenaform
     Filtrospanelcomponent,
     Detallecomponent,
     Cotizadorcomponent,
-    Reservacomponent,
+    Pagocomponent,
     Misreservascomponent,
     Logincomponent,
     Registrocomponent,
