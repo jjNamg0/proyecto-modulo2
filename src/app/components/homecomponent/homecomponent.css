@@ -2,19 +2,54 @@
   background: radial-gradient(circle at top, rgba(13, 110, 253, 0.15), transparent 60%);
 }
 
-.card-alojamiento {
-  background-color: #1c1f29;
-  border-color: rgba(255, 255, 255, 0.08);
-  color: #dfe2ef;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+.carrusel-destacados {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
-.card-alojamiento:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-}
-
-.card-alojamiento__img {
-  height: 190px;
+.carrusel-destacados__img {
+  height: 440px;
   object-fit: cover;
+}
+
+.carrusel-destacados__caption {
+  padding: 3rem 10% 3.25rem;
+  background: linear-gradient(to top, rgba(10, 12, 18, 0.95), rgba(10, 12, 18, 0.8) 55%, transparent);
+}
+
+.carrusel-destacados__ubicacion {
+  color: #c9ced8;
+}
+
+.carrusel-destacados .carousel-control-prev,
+.carrusel-destacados .carousel-control-next {
+  width: 8%;
+}
+
+.carrusel-destacados .carousel-control-prev-icon,
+.carrusel-destacados .carousel-control-next-icon {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.8));
+}
+
+.carrusel-destacados__indicador {
+  width: 28px;
+  height: 4px;
+  padding: 0;
+  margin: 0 4px;
+  border: 0;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.35);
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+
+.carrusel-destacados__indicador.active {
+  width: 40px;
+  background-color: #ffffff;
+}
+
+@media (max-width: 767.98px) {
+  .carrusel-destacados__img {
+    height: 320px;
+  }
 }

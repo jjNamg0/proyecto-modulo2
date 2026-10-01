@@ -17,56 +17,85 @@
 </section>
 
 <section class="container py-5">
-  <div class="mb-4">
-    <span class="text-primary text-uppercase small fw-semibold">Alojamientos destacados</span>
-    <h2 class="h3 text-white mb-0">Estancias recomendadas para ti</h2>
+  <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
+    <div>
+      <span class="text-primary text-uppercase small fw-semibold">Alojamientos destacados</span>
+      <h2 class="h3 text-white mb-0">Estancias recomendadas para ti</h2>
+    </div>
+    <a routerLink="/listado" class="small">
+      Ver todos los alojamientos <i class="fa-solid fa-arrow-right ms-1"></i>
+    </a>
   </div>
 
   <p class="text-secondary" *ngIf="destacados().length === 0">Cargando alojamientos destacados...</p>
 
-  <div class="row g-4" *ngIf="destacados().length > 0">
-    <div class="col-12 col-md-6 col-lg-4" *ngFor="let alojamiento of destacados(); let i = index">
+  <div
+    class="carousel carrusel-destacados animate__animated animate__fadeInUp"
+    *ngIf="destacados().length > 0"
+    (mouseenter)="detenerAutoplay()"
+    (mouseleave)="iniciarAutoplay()"
+  >
+    <div class="carousel-inner">
       <div
-        class="card h-100 card-alojamiento animate__animated animate__fadeInUp"
-        [style.animation-delay]="i * 150 + 'ms'"
+        class="carousel-item animate__animated animate__fadeIn"
+        *ngFor="let alojamiento of destacados(); let i = index"
+        [class.active]="i === indiceActivo()"
       >
-        <div class="position-relative">
-          <img
-            [src]="alojamiento.imagenPrincipal"
-            (error)="onImgError($event, alojamiento.id)"
-            class="card-img-top card-alojamiento__img"
-            [alt]="alojamiento.nombre"
-          />
-          <span class="badge text-bg-dark position-absolute top-0 end-0 m-2">
-            <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion }}
-          </span>
-          <button
-            type="button"
-            class="btn btn-sm btn-dark position-absolute top-0 start-0 m-2"
-            style="z-index: 2;"
-            [class.text-danger]="esFavorito(alojamiento.id)"
-            (click)="alternarFavorito(alojamiento.id, $event)"
-            [attr.aria-label]="esFavorito(alojamiento.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
-          >
-            <i class="fa-solid fa-heart"></i>
-          </button>
-        </div>
-        <div class="card-body d-flex flex-column">
-          <h3 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h3>
-          <p class="text-secondary small mb-2">
+        <img
+          [src]="alojamiento.imagenPrincipal"
+          (error)="onImgError($event, alojamiento.id)"
+          class="d-block w-100 carrusel-destacados__img"
+          [alt]="alojamiento.nombre"
+        />
+
+        <span class="badge text-bg-dark position-absolute top-0 end-0 m-3 fs-6">
+          <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion }}
+        </span>
+
+        <div class="carrusel-destacados__caption position-absolute bottom-0 start-0 end-0">
+          <p class="small carrusel-destacados__ubicacion mb-1">
             <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }}, {{ alojamiento.pais }} · {{ alojamiento.tipo }}
           </p>
-          <div class="mt-auto d-flex justify-content-between align-items-center">
-            <span class="fw-bold">
+          <h3 class="h4 text-white mb-2">{{ alojamiento.nombre }}</h3>
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <span class="fw-bold fs-5 text-white me-2">
               {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
-              <small class="text-secondary fw-normal">/ noche</small>
+              <small class="text-secondary fw-normal fs-6">/ noche</small>
             </span>
-            <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary stretched-link">
+            <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary">
               Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
             </a>
+            <button
+              type="button"
+              class="btn btn-sm btn-dark"
+              [class.text-danger]="esFavorito(alojamiento.id)"
+              (click)="alternarFavorito(alojamiento.id, $event)"
+              [attr.aria-label]="esFavorito(alojamiento.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+            >
+              <i class="fa-solid fa-heart"></i>
+            </button>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        class="carrusel-destacados__indicador"
+        *ngFor="let alojamiento of destacados(); let i = index"
+        [class.active]="i === indiceActivo()"
+        [attr.aria-current]="i === indiceActivo() ? 'true' : null"
+        [attr.aria-label]="'Ver ' + alojamiento.nombre"
+        (click)="irA(i)"
+      ></button>
+    </div>
+
+    <button type="button" class="carousel-control-prev" (click)="anterior()" aria-label="Anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="carousel-control-next" (click)="siguiente()" aria-label="Siguiente">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
   </div>
 </section>

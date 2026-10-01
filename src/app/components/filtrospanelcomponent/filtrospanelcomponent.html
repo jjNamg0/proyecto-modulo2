@@ -4,6 +4,23 @@
   </h2>
 
   <div class="mb-3">
+    <label class="form-label small text-secondary" for="filtroTexto">Buscar</label>
+    <div class="input-group input-group-sm">
+      <span class="input-group-text">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </span>
+      <input
+        id="filtroTexto"
+        type="search"
+        class="form-control"
+        placeholder="Nombre, ciudad, servicio..."
+        [(ngModel)]="filtros.texto"
+        (ngModelChange)="emitirCambio()"
+      />
+    </div>
+  </div>
+
+  <div class="mb-3">
     <label class="form-label small text-secondary" for="filtroPais">País</label>
     <select
       id="filtroPais"
