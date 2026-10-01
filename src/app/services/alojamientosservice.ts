@@ -33,6 +33,7 @@ export interface Resena {
 }
 
 export interface Filtros {
+  texto: string;
   pais: string;
   ciudad: string;
   huespedes: number | null;
@@ -41,6 +42,7 @@ export interface Filtros {
 }
 
 export const FILTROS_VACIOS: Filtros = {
+  texto: '',
   pais: '',
   ciudad: '',
   huespedes: null,
@@ -138,17 +140,35 @@ export class Alojamientosservice {
   }
 
   filtrar(filtros: Filtros): Observable<Alojamiento[]> {
+    const textoBuscado = this.normalizar(filtros.texto.trim());
+
     return this.obtenerAlojamientos().pipe(
       map((alojamientos) =>
         alojamientos.filter((a) => {
+          const coincideTexto = !textoBuscado || this.textoDeBusqueda(a).includes(textoBuscado);
           const coincidePais = !filtros.pais || a.pais === filtros.pais;
           const coincideCiudad = !filtros.ciudad || a.ciudad === filtros.ciudad;
           const coincideHuespedes = !filtros.huespedes || a.capacidad >= filtros.huespedes;
           const coincideTipo = !filtros.tipo || a.tipo === filtros.tipo;
           const coincidePrecio = !filtros.precioMaximo || a.precioNoche <= filtros.precioMaximo;
-          return coincidePais && coincideCiudad && coincideHuespedes && coincideTipo && coincidePrecio;
+          return (
+            coincideTexto && coincidePais && coincideCiudad && coincideHuespedes && coincideTipo && coincidePrecio
+          );
         }),
       ),
     );
+  }
+
+  private textoDeBusqueda(a: Alojamiento): string {
+    return this.normalizar(
+      [a.nombre, a.ciudad, a.pais, a.ubicacion, a.tipo, a.descripcion, ...a.servicios].join(' '),
+    );
+  }
+
+  private normalizar(texto: string): string {
+    return texto
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
   }
 }
