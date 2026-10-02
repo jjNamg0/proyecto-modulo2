@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Alojamiento } from '../../services/alojamientosservice';
 import { Reservasservice } from '../../services/reservasservice';
 import { Authservice, Usuario } from '../../services/authservice';
@@ -15,6 +15,7 @@ declare const Swal: any;
 export class Pagocomponent {
   @Input() alojamiento!: Alojamiento;
   @Input() cotizacion!: Cotizacion;
+  @Output() pagoRealizado = new EventEmitter<void>();
 
   nombreTarjeta = '';
   numeroTarjeta = '';
@@ -71,6 +72,16 @@ export class Pagocomponent {
       return;
     }
 
+    const disponible = this.reservasService.estaDisponible(
+      this.alojamiento.id,
+      this.cotizacion.fechaInicio,
+      this.cotizacion.fechaFin,
+    );
+    if (!disponible) {
+      this.errorPago = 'Este alojamiento ya está reservado en esas fechas.';
+      return;
+    }
+
     const reserva = this.reservasService.crearReserva({
       alojamientoId: this.alojamiento.id,
       nombreAlojamiento: this.alojamiento.nombre,
@@ -97,5 +108,7 @@ export class Pagocomponent {
       background: '#181b25',
       color: '#dfe2ef',
     });
+
+    this.pagoRealizado.emit();
   }
 }

@@ -9,26 +9,19 @@ import { Favoritosservice } from '../../services/favoritosservice';
   templateUrl: './listadocomponent.html',
 })
 export class Listadocomponent implements OnInit {
+  readonly TAMANO_PAGINA = 9;
+
   alojamientos = signal<Alojamiento[]>([]);
   paises = signal<string[]>([]);
   ciudades = signal<string[]>([]);
   tipos = signal<string[]>([]);
   cargando = signal(true);
+  paginaActual = signal(1);
 
   constructor(
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
   ) {}
-
-  esFavorito(id: number): boolean {
-    return this.favoritosService.esFavorito(id);
-  }
-
-  alternarFavorito(id: number, event: Event): void {
-    event.stopPropagation();
-    event.preventDefault();
-    this.favoritosService.alternar(id);
-  }
 
   ngOnInit(): void {
     this.alojamientosService.obtenerPaises().subscribe((paises) => this.paises.set(paises));
@@ -41,8 +34,40 @@ export class Listadocomponent implements OnInit {
     this.alojamientosService.obtenerCiudades(filtros.pais).subscribe((ciudades) => this.ciudades.set(ciudades));
     this.alojamientosService.filtrar(filtros).subscribe((alojamientos) => {
       this.alojamientos.set(alojamientos);
+      this.paginaActual.set(1);
       this.cargando.set(false);
     });
+  }
+
+  totalPaginas(): number {
+    return Math.ceil(this.alojamientos().length / this.TAMANO_PAGINA);
+  }
+
+  paginas(): number[] {
+    return Array.from({ length: this.totalPaginas() }, (_, indice) => indice + 1);
+  }
+
+  alojamientosDePagina(): Alojamiento[] {
+    const inicio = (this.paginaActual() - 1) * this.TAMANO_PAGINA;
+    return this.alojamientos().slice(inicio, inicio + this.TAMANO_PAGINA);
+  }
+
+  irAPagina(pagina: number): void {
+    if (pagina < 1 || pagina > this.totalPaginas()) {
+      return;
+    }
+    this.paginaActual.set(pagina);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  esFavorito(id: number): boolean {
+    return this.favoritosService.esFavorito(id);
+  }
+
+  alternarFavorito(id: number, event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+    this.favoritosService.alternar(id);
   }
 
   onImgError(event: Event, id: number): void {

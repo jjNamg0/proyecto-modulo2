@@ -40,6 +40,13 @@
     />
   </div>
 
+  <div class="small text-secondary mb-2" *ngIf="fechasOcupadas().length > 0">
+    <i class="fa-solid fa-calendar-xmark me-1"></i>Fechas ya reservadas:
+    <span class="badge text-bg-dark ms-1" *ngFor="let ocupada of fechasOcupadas()">
+      {{ ocupada.fechaInicio }} — {{ ocupada.fechaFin }}
+    </span>
+  </div>
+
   <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="errorFechas">
     <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorFechas }}
   </div>
