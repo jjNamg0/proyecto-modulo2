@@ -15,8 +15,8 @@
       "tarifaLimpieza": 45000,
       "calificacion": 4.8,
       "activo": true,
-      "imagenPrincipal": "assets/images/loft-bogota.jpg",
-      "imagenes": ["assets/images/loft-bogota.jpg", "assets/images/loft-bogota-2.jpg"],
+      "imagenPrincipal": "assets/images/loft-bogota.png",
+      "imagenes": ["assets/images/loft-bogota.png", "assets/images/loft-bogota-2.png"],
       "servicios": ["Wi-Fi", "Cocina", "Televisión", "Lavadora"],
       "reglas": ["No fumar", "No se permiten fiestas"]
     },
@@ -35,8 +35,8 @@
       "tarifaLimpieza": 70000,
       "calificacion": 4.9,
       "activo": true,
-      "imagenPrincipal": "assets/images/cartagena.jpg",
-      "imagenes": ["assets/images/cartagena.jpg", "assets/images/cartagena-2.jpg"],
+      "imagenPrincipal": "assets/images/cartagena.png",
+      "imagenes": ["assets/images/cartagena.png", "assets/images/cartagena-2.png"],
       "servicios": ["Wi-Fi", "Piscina", "Aire acondicionado", "Cocina", "Parqueadero"],
       "reglas": ["No fumar", "No mascotas"]
     },
@@ -55,8 +55,8 @@
       "tarifaLimpieza": 60000,
       "calificacion": 4.7,
       "activo": true,
-      "imagenPrincipal": "assets/images/guatape.jpg",
-      "imagenes": ["assets/images/guatape.jpg", "assets/images/guatape-2.jpg"],
+      "imagenPrincipal": "assets/images/guatape.png",
+      "imagenes": ["assets/images/guatape.png", "assets/images/guatape-2.png"],
       "servicios": ["Wi-Fi", "Cocina", "Parqueadero", "BBQ"],
       "reglas": ["No fumar", "Silencio después de las 10 PM"]
     },
@@ -75,8 +75,8 @@
       "tarifaLimpieza": 90000,
       "calificacion": 4.6,
       "activo": true,
-      "imagenPrincipal": "assets/images/villa-leyva.jpg",
-      "imagenes": ["assets/images/villa-leyva.jpg", "assets/images/villa-leyva-2.jpg"],
+      "imagenPrincipal": "assets/images/villa-leyva.png",
+      "imagenes": ["assets/images/villa-leyva.png", "assets/images/villa-leyva-2.png"],
       "servicios": ["Wi-Fi", "Cocina", "Chimenea", "Parqueadero"],
       "reglas": ["No fiestas", "Máximo 8 huéspedes"]
     },
@@ -95,8 +95,8 @@
       "tarifaLimpieza": 50000,
       "calificacion": 4.5,
       "activo": true,
-      "imagenPrincipal": "assets/images/medellin.jpg",
-      "imagenes": ["assets/images/medellin.jpg"],
+      "imagenPrincipal": "assets/images/medellin.png",
+      "imagenes": ["assets/images/medellin.png" ],
       "servicios": ["Wi-Fi", "Cocina", "Gimnasio", "Parqueadero"],
       "reglas": ["No fumar"]
     },
@@ -115,8 +115,8 @@
       "tarifaLimpieza": 120000,
       "calificacion": 4.4,
       "activo": false,
-      "imagenPrincipal": "assets/images/armenia.jpg",
-      "imagenes": ["assets/images/armenia.jpg"],
+      "imagenPrincipal": "assets/images/armenia.png",
+      "imagenes": ["assets/images/armenia.png"],
       "servicios": ["Piscina", "Parqueadero", "BBQ"],
       "reglas": ["No fiestas"]
     }

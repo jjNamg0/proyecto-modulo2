@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Authservice } from '../../services/authservice';
+import { ToastService } from '../../services/toastservice';
 
 @Component({
   selector: 'app-logincomponent',
@@ -12,6 +13,7 @@ export class Logincomponent {
   correo = '';
   password = '';
   errorLogin = '';
+  private toast = inject(ToastService);
 
   constructor(
     private authService: Authservice,
@@ -19,19 +21,18 @@ export class Logincomponent {
   ) {}
 
   iniciarSesion(): void {
-    this.errorLogin = '';
-
     if (!this.correo.trim() || !this.password.trim()) {
-      this.errorLogin = 'Ingresa tu correo y contraseña.';
+      this.toast.warning('Ingresa tu correo y contraseña.');
       return;
     }
 
     const resultado = this.authService.iniciarSesion(this.correo.trim(), this.password);
     if (!resultado.exito) {
-      this.errorLogin = resultado.error ?? 'No se pudo iniciar sesión.';
+      this.toast.error(resultado.error ?? 'No se pudo iniciar sesión.');
       return;
     }
 
+    this.toast.success('¡Bienvenido de nuevo!');
     this.router.navigateByUrl('/');
   }
 }

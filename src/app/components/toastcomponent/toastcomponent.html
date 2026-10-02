@@ -1,0 +1,24 @@
+@if (toast$ | async; as toast) {
+  <div
+    class="toast-container"
+    [class.success]="toast.type === 'success'"
+    [class.error]="toast.type === 'error'"
+    [class.warning]="toast.type === 'warning'"
+    role="alert"
+    aria-live="polite"
+  >
+    <span class="toast-message">
+      {{ toast.text }}
+    </span>
+
+    <button
+      type="button"
+      class="toast-close"
+      aria-label="Cerrar notificación"
+      (click)="close()"
+    >
+      &times;
+    </button>
+
+  </div>
+}

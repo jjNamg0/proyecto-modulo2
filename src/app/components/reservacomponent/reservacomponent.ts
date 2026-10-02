@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Alojamiento } from '../../services/alojamientosservice';
 import { Reservasservice } from '../../services/reservasservice';
+import { ToastService } from '../../services/toastservice';
 import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
-
-declare const Swal: any;
 
 @Component({
   selector: 'app-reservacomponent',
@@ -12,6 +11,8 @@ declare const Swal: any;
   templateUrl: './reservacomponent.html',
 })
 export class Reservacomponent {
+  private toast = inject(ToastService);
+
   @Input() alojamiento!: Alojamiento;
   @Input() cotizacion!: Cotizacion;
 
@@ -26,12 +27,14 @@ export class Reservacomponent {
 
     if (!this.nombre.trim() || !this.correo.trim()) {
       this.errorFormulario = 'Ingresa tu nombre y correo para reservar.';
+      this.toast.warning(this.errorFormulario);
       return;
     }
 
     const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.correo);
     if (!correoValido) {
       this.errorFormulario = 'Ingresa un correo válido.';
+      this.toast.warning(this.errorFormulario);
       return;
     }
 
@@ -50,13 +53,6 @@ export class Reservacomponent {
     this.nombre = '';
     this.correo = '';
 
-    Swal.fire({
-      icon: 'success',
-      title: '¡Reserva confirmada!',
-      html: `Reserva #${reserva.id} para <strong>${reserva.nombreAlojamiento}</strong><br>Estado: ${reserva.estado}`,
-      confirmButtonText: 'Listo',
-      background: '#181b25',
-      color: '#dfe2ef',
-    });
+    this.toast.success(`¡Reserva #${reserva.id} confirmada en ${reserva.nombreAlojamiento}!`);
   }
 }

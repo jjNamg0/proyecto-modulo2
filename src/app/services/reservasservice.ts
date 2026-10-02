@@ -46,7 +46,7 @@ export class Reservasservice {
     return reserva;
   }
 
-  // las mas recientes primero
+  // las xmas recientes primero
   obtenerReservas(): Reserva[] {
     return [...this.reservas].sort((a, b) => b.id - a.id);
   }
