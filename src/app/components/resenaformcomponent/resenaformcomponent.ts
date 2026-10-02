@@ -42,7 +42,7 @@ export class Resenaformcomponent {
     this.alojamientosService.agregarResena({
       alojamientoId: this.alojamientoId,
       usuario: usuario.nombre,
-      calificacion: this.calificacion,
+      calificacion: Number(this.calificacion),
       comentario: this.comentario.trim(),
     });
 

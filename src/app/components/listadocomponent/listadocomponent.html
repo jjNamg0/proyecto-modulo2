@@ -22,9 +22,12 @@
       </div>
 
       <div *ngIf="!cargando() && alojamientos().length > 0">
-        <p class="text-secondary small mb-3">{{ alojamientos().length }} alojamientos encontrados</p>
+        <p class="text-secondary small mb-3">
+          {{ alojamientos().length }} alojamientos encontrados
+          <span *ngIf="totalPaginas() > 1"> · página {{ paginaActual() }} de {{ totalPaginas() }}</span>
+        </p>
         <div class="row g-4">
-          <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of alojamientos()">
+          <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of alojamientosDePagina()">
             <div class="card h-100 card-alojamiento animate__animated animate__fadeIn">
               <div class="position-relative">
                 <img
@@ -77,6 +80,24 @@
             </div>
           </div>
         </div>
+
+        <nav class="mt-4" aria-label="Páginas del listado" *ngIf="totalPaginas() > 1">
+          <ul class="pagination pagination-sm justify-content-center flex-wrap mb-0">
+            <li class="page-item" [class.disabled]="paginaActual() === 1">
+              <button type="button" class="page-link" (click)="irAPagina(paginaActual() - 1)" aria-label="Página anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </li>
+            <li class="page-item" *ngFor="let pagina of paginas()" [class.active]="pagina === paginaActual()">
+              <button type="button" class="page-link" (click)="irAPagina(pagina)">{{ pagina }}</button>
+            </li>
+            <li class="page-item" [class.disabled]="paginaActual() === totalPaginas()">
+              <button type="button" class="page-link" (click)="irAPagina(paginaActual() + 1)" aria-label="Página siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>

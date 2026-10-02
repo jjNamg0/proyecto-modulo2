@@ -39,6 +39,7 @@ export interface Filtros {
   huespedes: number | null;
   tipo: string;
   precioMaximo: number | null;
+  orden: string;
 }
 
 export const FILTROS_VACIOS: Filtros = {
@@ -48,6 +49,7 @@ export const FILTROS_VACIOS: Filtros = {
   huespedes: null,
   tipo: '',
   precioMaximo: null,
+  orden: '',
 };
 
 interface MarketplaceData {
@@ -77,7 +79,11 @@ export class Alojamientosservice {
 
   obtenerAlojamientos(): Observable<Alojamiento[]> {
     return this.cargarDatos().pipe(
-      map((datos) => datos.alojamientos.filter((a) => a.activo && a.precioNoche > 0)),
+      map((datos) =>
+        datos.alojamientos
+          .filter((a) => a.activo && a.precioNoche > 0)
+          .map((a) => this.conCalificacionActualizada(a, datos.resenas)),
+      ),
     );
   }
 
@@ -95,9 +101,7 @@ export class Alojamientosservice {
   }
 
   obtenerPorId(id: number): Observable<Alojamiento | undefined> {
-    return this.cargarDatos().pipe(
-      map((datos) => datos.alojamientos.find((a) => a.id === id && a.activo)),
-    );
+    return this.obtenerAlojamientos().pipe(map((alojamientos) => alojamientos.find((a) => a.id === id)));
   }
 
   obtenerResenasPorAlojamiento(alojamientoId: number): Observable<Resena[]> {
@@ -144,7 +148,7 @@ export class Alojamientosservice {
 
     return this.obtenerAlojamientos().pipe(
       map((alojamientos) =>
-        alojamientos.filter((a) => {
+        this.ordenar(alojamientos, filtros.orden).filter((a) => {
           const coincideTexto = !textoBuscado || this.textoDeBusqueda(a).includes(textoBuscado);
           const coincidePais = !filtros.pais || a.pais === filtros.pais;
           const coincideCiudad = !filtros.ciudad || a.ciudad === filtros.ciudad;
@@ -157,6 +161,37 @@ export class Alojamientosservice {
         }),
       ),
     );
+  }
+
+  private ordenar(alojamientos: Alojamiento[], orden: string): Alojamiento[] {
+    const copia = [...alojamientos];
+
+    if (orden === 'precio-asc') {
+      return copia.sort((a, b) => a.precioNoche - b.precioNoche);
+    }
+    if (orden === 'precio-desc') {
+      return copia.sort((a, b) => b.precioNoche - a.precioNoche);
+    }
+    if (orden === 'calificacion-desc') {
+      return copia.sort((a, b) => b.calificacion - a.calificacion);
+    }
+    if (orden === 'nombre-asc') {
+      return copia.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+    }
+    return copia;
+  }
+
+  private conCalificacionActualizada(a: Alojamiento, resenasDelJson: Resena[]): Alojamiento {
+    const nuevas = this.resenasAgregadas.filter((r) => r.alojamientoId === a.id);
+    if (nuevas.length === 0) {
+      return a;
+    }
+
+    const cantidadBase = Math.max(1, resenasDelJson.filter((r) => r.alojamientoId === a.id).length);
+    const sumaNuevas = nuevas.reduce((total, r) => total + r.calificacion, 0);
+    const promedio = (a.calificacion * cantidadBase + sumaNuevas) / (cantidadBase + nuevas.length);
+
+    return { ...a, calificacion: Math.round(promedio * 10) / 10 };
   }
 
   private textoDeBusqueda(a: Alojamiento): string {

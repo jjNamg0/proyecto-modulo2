@@ -1,11 +1,11 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, ViewChild, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojamientosservice';
 import { Geocodingservice } from '../../services/geocodingservice';
 import { Climaservice, Clima } from '../../services/climaservice';
 import { Exchangerateservice } from '../../services/exchangerateservice';
 import { Favoritosservice } from '../../services/favoritosservice';
-import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
+import { Cotizacion, Cotizadorcomponent } from '../cotizadorcomponent/cotizadorcomponent';
 
 @Component({
   selector: 'app-detallecomponent',
@@ -14,6 +14,8 @@ import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
   templateUrl: './detallecomponent.html',
 })
 export class Detallecomponent implements OnInit {
+  @ViewChild(Cotizadorcomponent) cotizador?: Cotizadorcomponent;
+
   alojamiento = signal<Alojamiento | null>(null);
   resenas = signal<Resena[]>([]);
   imagenActiva = signal('');
@@ -45,6 +47,15 @@ export class Detallecomponent implements OnInit {
     this.alojamientosService.obtenerResenasPorAlojamiento(alojamientoId).subscribe((resenas) => {
       this.resenas.set(resenas);
     });
+    this.alojamientosService.obtenerPorId(alojamientoId).subscribe((alojamiento) => {
+      if (alojamiento) {
+        this.alojamiento.set(alojamiento);
+      }
+    });
+  }
+
+  onPagoRealizado(): void {
+    this.cotizador?.reiniciar();
   }
 
   ngOnInit(): void {

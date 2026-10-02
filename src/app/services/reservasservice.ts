@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+export type EstadoReserva = 'CONFIRMADA' | 'CANCELADA';
+
 export interface Reserva {
   id: number;
   alojamientoId: number;
@@ -12,7 +14,7 @@ export interface Reserva {
   noches: number;
   huespedes: number;
   total: number;
-  estado: 'CONFIRMADA';
+  estado: EstadoReserva;
   fechaCreacion: Date;
 }
 
@@ -27,6 +29,11 @@ export interface DatosReserva {
   noches: number;
   huespedes: number;
   total: number;
+}
+
+export interface RangoFechas {
+  fechaInicio: string;
+  fechaFin: string;
 }
 
 @Injectable({
@@ -48,7 +55,27 @@ export class Reservasservice {
     return reserva;
   }
 
-  obtenerReservas(): Reserva[] {
-    return [...this.reservas].sort((a, b) => b.id - a.id);
+  obtenerReservasDe(correo: string): Reserva[] {
+    return this.reservas.filter((r) => r.correoHuesped === correo).sort((a, b) => b.id - a.id);
+  }
+
+  cancelarReserva(id: number): void {
+    const reserva = this.reservas.find((r) => r.id === id);
+    if (reserva) {
+      reserva.estado = 'CANCELADA';
+    }
+  }
+
+  obtenerFechasOcupadas(alojamientoId: number): RangoFechas[] {
+    return this.reservas
+      .filter((r) => r.alojamientoId === alojamientoId && r.estado === 'CONFIRMADA')
+      .map((r) => ({ fechaInicio: r.fechaInicio, fechaFin: r.fechaFin }))
+      .sort((a, b) => a.fechaInicio.localeCompare(b.fechaInicio));
+  }
+
+  estaDisponible(alojamientoId: number, fechaInicio: string, fechaFin: string): boolean {
+    return !this.obtenerFechasOcupadas(alojamientoId).some(
+      (ocupada) => fechaInicio < ocupada.fechaFin && fechaFin > ocupada.fechaInicio,
+    );
   }
 }

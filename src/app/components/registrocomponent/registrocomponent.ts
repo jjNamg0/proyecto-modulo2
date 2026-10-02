@@ -27,6 +27,12 @@ export class Registrocomponent {
       return;
     }
 
+    const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.correo.trim());
+    if (!correoValido) {
+      this.errorRegistro = 'Ingresa un correo válido.';
+      return;
+    }
+
     if (this.password.length < 4) {
       this.errorRegistro = 'La contraseña debe tener al menos 4 caracteres.';
       return;

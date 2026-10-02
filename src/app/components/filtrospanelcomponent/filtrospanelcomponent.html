@@ -86,6 +86,22 @@
     />
   </div>
 
+  <div class="mb-3">
+    <label class="form-label small text-secondary" for="filtroOrden">Ordenar por</label>
+    <select
+      id="filtroOrden"
+      class="form-select form-select-sm"
+      [(ngModel)]="filtros.orden"
+      (ngModelChange)="emitirCambio()"
+    >
+      <option value="">Recomendados</option>
+      <option value="precio-asc">Precio: menor a mayor</option>
+      <option value="precio-desc">Precio: mayor a menor</option>
+      <option value="calificacion-desc">Mejor calificados</option>
+      <option value="nombre-asc">Nombre (A-Z)</option>
+    </select>
+  </div>
+
   <button type="button" class="btn btn-outline-light btn-sm w-100" (click)="limpiarFiltros()">
     <i class="fa-solid fa-rotate-left me-1"></i>Limpiar filtros
   </button>

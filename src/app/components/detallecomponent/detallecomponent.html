@@ -53,6 +53,7 @@
         <p class="mb-3">
           <span class="badge text-bg-dark">
             <i class="fa-solid fa-star text-warning"></i> {{ a.calificacion }}
+            <span class="fw-normal" *ngIf="resenas().length > 0"> · {{ resenas().length }} reseñas</span>
           </span>
           <span class="badge text-bg-secondary ms-1">{{ a.tipo }}</span>
         </p>
@@ -97,7 +98,12 @@
 
         <app-cotizadorcomponent [alojamiento]="a" (cotizacionLista)="onCotizacionLista($event)" />
 
-        <app-pagocomponent *ngIf="cotizacionActual() as cot" [alojamiento]="a" [cotizacion]="cot" />
+        <app-pagocomponent
+          *ngIf="cotizacionActual() as cot"
+          [alojamiento]="a"
+          [cotizacion]="cot"
+          (pagoRealizado)="onPagoRealizado()"
+        />
       </div>
     </div>
 
