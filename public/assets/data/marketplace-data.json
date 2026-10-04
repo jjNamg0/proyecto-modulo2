@@ -17,9 +17,21 @@
       "calificacion": 4.8,
       "activo": true,
       "imagenPrincipal": "assets/images/loft-chapinero-1.jpg",
-      "imagenes": ["assets/images/loft-chapinero-1.jpg", "assets/images/loft-chapinero-2.jpg", "assets/images/loft-chapinero-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Televisión", "Lavadora"],
-      "reglas": ["No fumar", "No se permiten fiestas"]
+      "imagenes": [
+        "assets/images/loft-chapinero-1.jpg",
+        "assets/images/loft-chapinero-2.jpg",
+        "assets/images/loft-chapinero-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Televisión",
+        "Lavadora"
+      ],
+      "reglas": [
+        "No fumar",
+        "No se permiten fiestas"
+      ]
     },
     {
       "id": 2,
@@ -38,9 +50,22 @@
       "calificacion": 4.9,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-bocagrande-1.jpg",
-      "imagenes": ["assets/images/apto-bocagrande-1.jpg", "assets/images/apto-bocagrande-2.jpg", "assets/images/apto-bocagrande-3.jpg"],
-      "servicios": ["Wi-Fi", "Piscina", "Aire acondicionado", "Cocina", "Parqueadero"],
-      "reglas": ["No fumar", "No mascotas"]
+      "imagenes": [
+        "assets/images/apto-bocagrande-1.jpg",
+        "assets/images/apto-bocagrande-2.jpg",
+        "assets/images/apto-bocagrande-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Piscina",
+        "Aire acondicionado",
+        "Cocina",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
     },
     {
       "id": 3,
@@ -59,9 +84,21 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/cabana-guatape-1.jpg",
-      "imagenes": ["assets/images/cabana-guatape-1.jpg", "assets/images/cabana-guatape-2.jpg", "assets/images/cabana-guatape-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Parqueadero", "BBQ"],
-      "reglas": ["No fumar", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/cabana-guatape-1.jpg",
+        "assets/images/cabana-guatape-2.jpg",
+        "assets/images/cabana-guatape-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Parqueadero",
+        "BBQ"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 4,
@@ -80,9 +117,21 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-villa-leyva-1.jpg",
-      "imagenes": ["assets/images/casa-villa-leyva-1.jpg", "assets/images/casa-villa-leyva-2.jpg", "assets/images/casa-villa-leyva-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Chimenea", "Parqueadero"],
-      "reglas": ["No fiestas", "Máximo 8 huéspedes"]
+      "imagenes": [
+        "assets/images/casa-villa-leyva-1.jpg",
+        "assets/images/casa-villa-leyva-2.jpg",
+        "assets/images/casa-villa-leyva-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Chimenea",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fiestas",
+        "Máximo 8 huéspedes"
+      ]
     },
     {
       "id": 5,
@@ -101,9 +150,20 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-poblado-1.jpg",
-      "imagenes": ["assets/images/apto-poblado-1.jpg", "assets/images/apto-poblado-2.jpg", "assets/images/apto-poblado-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Gimnasio", "Parqueadero"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-poblado-1.jpg",
+        "assets/images/apto-poblado-2.jpg",
+        "assets/images/apto-poblado-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Gimnasio",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 6,
@@ -122,9 +182,17 @@
       "calificacion": 4.4,
       "activo": false,
       "imagenPrincipal": "assets/images/armenia.jpg",
-      "imagenes": ["assets/images/armenia.jpg"],
-      "servicios": ["Piscina", "Parqueadero", "BBQ"],
-      "reglas": ["No fiestas"]
+      "imagenes": [
+        "assets/images/armenia.jpg"
+      ],
+      "servicios": [
+        "Piscina",
+        "Parqueadero",
+        "BBQ"
+      ],
+      "reglas": [
+        "No fiestas"
+      ]
     },
     {
       "id": 7,
@@ -143,9 +211,22 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-rodadero-1.jpg",
-      "imagenes": ["assets/images/apto-rodadero-1.jpg", "assets/images/apto-rodadero-2.jpg", "assets/images/apto-rodadero-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Piscina", "Balcón", "Cocina"],
-      "reglas": ["No fumar", "Check-out antes de las 11 AM"]
+      "imagenes": [
+        "assets/images/apto-rodadero-1.jpg",
+        "assets/images/apto-rodadero-2.jpg",
+        "assets/images/apto-rodadero-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Piscina",
+        "Balcón",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "Check-out antes de las 11 AM"
+      ]
     },
     {
       "id": 8,
@@ -164,9 +245,22 @@
       "calificacion": 4.9,
       "activo": true,
       "imagenPrincipal": "assets/images/finca-salento-1.jpg",
-      "imagenes": ["assets/images/finca-salento-1.jpg", "assets/images/finca-salento-2.jpg", "assets/images/finca-salento-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Parqueadero", "BBQ", "Jardín"],
-      "reglas": ["No fumar dentro de la casa", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/finca-salento-1.jpg",
+        "assets/images/finca-salento-2.jpg",
+        "assets/images/finca-salento-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Parqueadero",
+        "BBQ",
+        "Jardín"
+      ],
+      "reglas": [
+        "No fumar dentro de la casa",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 9,
@@ -185,9 +279,21 @@
       "calificacion": 4.8,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-barichara-1.jpg",
-      "imagenes": ["assets/images/casa-barichara-1.jpg", "assets/images/casa-barichara-2.jpg", "assets/images/casa-barichara-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Patio interior", "Hamacas"],
-      "reglas": ["No fiestas", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/casa-barichara-1.jpg",
+        "assets/images/casa-barichara-2.jpg",
+        "assets/images/casa-barichara-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Patio interior",
+        "Hamacas"
+      ],
+      "reglas": [
+        "No fiestas",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 10,
@@ -206,9 +312,20 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-san-antonio-1.jpg",
-      "imagenes": ["assets/images/apto-san-antonio-1.jpg", "assets/images/apto-san-antonio-2.jpg", "assets/images/apto-san-antonio-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Cocina", "Escritorio de trabajo"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-san-antonio-1.jpg",
+        "assets/images/apto-san-antonio-2.jpg",
+        "assets/images/apto-san-antonio-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Escritorio de trabajo"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 11,
@@ -227,9 +344,22 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-san-andres-1.jpg",
-      "imagenes": ["assets/images/casa-san-andres-1.jpg", "assets/images/casa-san-andres-2.jpg", "assets/images/casa-san-andres-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Terraza", "Cocina", "Equipo de snorkel"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/casa-san-andres-1.jpg",
+        "assets/images/casa-san-andres-2.jpg",
+        "assets/images/casa-san-andres-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Terraza",
+        "Cocina",
+        "Equipo de snorkel"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 12,
@@ -248,9 +378,22 @@
       "calificacion": 4.9,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-cartagena-centro-1.jpg",
-      "imagenes": ["assets/images/casa-cartagena-centro-1.jpg", "assets/images/casa-cartagena-centro-2.jpg", "assets/images/casa-cartagena-centro-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Piscina", "Patio interior", "Cocina"],
-      "reglas": ["No fiestas", "Máximo 8 huéspedes"]
+      "imagenes": [
+        "assets/images/casa-cartagena-centro-1.jpg",
+        "assets/images/casa-cartagena-centro-2.jpg",
+        "assets/images/casa-cartagena-centro-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Piscina",
+        "Patio interior",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fiestas",
+        "Máximo 8 huéspedes"
+      ]
     },
     {
       "id": 13,
@@ -269,9 +412,21 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/loft-getsemani-1.jpg",
-      "imagenes": ["assets/images/loft-getsemani-1.jpg", "assets/images/loft-getsemani-2.jpg", "assets/images/loft-getsemani-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Cocina", "Balcón"],
-      "reglas": ["No fumar", "Silencio después de las 11 PM"]
+      "imagenes": [
+        "assets/images/loft-getsemani-1.jpg",
+        "assets/images/loft-getsemani-2.jpg",
+        "assets/images/loft-getsemani-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Balcón"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 11 PM"
+      ]
     },
     {
       "id": 14,
@@ -290,9 +445,21 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-laureles-1.jpg",
-      "imagenes": ["assets/images/apto-laureles-1.jpg", "assets/images/apto-laureles-2.jpg", "assets/images/apto-laureles-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Lavadora", "Parqueadero", "Balcón"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-laureles-1.jpg",
+        "assets/images/apto-laureles-2.jpg",
+        "assets/images/apto-laureles-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Lavadora",
+        "Parqueadero",
+        "Balcón"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 15,
@@ -311,9 +478,21 @@
       "calificacion": 4.4,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-candelaria-1.jpg",
-      "imagenes": ["assets/images/casa-candelaria-1.jpg", "assets/images/casa-candelaria-2.jpg", "assets/images/casa-candelaria-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Chimenea", "Terraza"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/casa-candelaria-1.jpg",
+        "assets/images/casa-candelaria-2.jpg",
+        "assets/images/casa-candelaria-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Chimenea",
+        "Terraza"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 16,
@@ -332,9 +511,21 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/cabana-filandia-1.jpg",
-      "imagenes": ["assets/images/cabana-filandia-1.jpg", "assets/images/cabana-filandia-2.jpg", "assets/images/cabana-filandia-3.jpg"],
-      "servicios": ["Wi-Fi", "Chimenea", "Cocina", "Parqueadero"],
-      "reglas": ["No fumar", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/cabana-filandia-1.jpg",
+        "assets/images/cabana-filandia-2.jpg",
+        "assets/images/cabana-filandia-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Chimenea",
+        "Cocina",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 17,
@@ -353,9 +544,21 @@
       "calificacion": 4.8,
       "activo": true,
       "imagenPrincipal": "assets/images/glamping-palomino-1.jpg",
-      "imagenes": ["assets/images/glamping-palomino-1.jpg", "assets/images/glamping-palomino-2.jpg", "assets/images/glamping-palomino-3.jpg"],
-      "servicios": ["Desayuno incluido", "Wi-Fi", "Ventilador", "Acceso a la playa"],
-      "reglas": ["No fumar", "No mascotas"]
+      "imagenes": [
+        "assets/images/glamping-palomino-1.jpg",
+        "assets/images/glamping-palomino-2.jpg",
+        "assets/images/glamping-palomino-3.jpg"
+      ],
+      "servicios": [
+        "Desayuno incluido",
+        "Wi-Fi",
+        "Ventilador",
+        "Acceso a la playa"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
     },
     {
       "id": 18,
@@ -374,9 +577,20 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/cabana-san-gil-1.jpg",
-      "imagenes": ["assets/images/cabana-san-gil-1.jpg", "assets/images/cabana-san-gil-2.jpg", "assets/images/cabana-san-gil-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Parqueadero", "BBQ"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/cabana-san-gil-1.jpg",
+        "assets/images/cabana-san-gil-2.jpg",
+        "assets/images/cabana-san-gil-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Parqueadero",
+        "BBQ"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 19,
@@ -395,9 +609,21 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-barranquilla-1.jpg",
-      "imagenes": ["assets/images/apto-barranquilla-1.jpg", "assets/images/apto-barranquilla-2.jpg", "assets/images/apto-barranquilla-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Piscina", "Gimnasio", "Parqueadero"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-barranquilla-1.jpg",
+        "assets/images/apto-barranquilla-2.jpg",
+        "assets/images/apto-barranquilla-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Piscina",
+        "Gimnasio",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 20,
@@ -416,9 +642,21 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/depto-condesa-1.jpg",
-      "imagenes": ["assets/images/depto-condesa-1.jpg", "assets/images/depto-condesa-2.jpg", "assets/images/depto-condesa-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Balcón", "Escritorio de trabajo"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/depto-condesa-1.jpg",
+        "assets/images/depto-condesa-2.jpg",
+        "assets/images/depto-condesa-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Balcón",
+        "Escritorio de trabajo"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 21,
@@ -437,9 +675,22 @@
       "calificacion": 4.8,
       "activo": true,
       "imagenPrincipal": "assets/images/villa-tulum-1.jpg",
-      "imagenes": ["assets/images/villa-tulum-1.jpg", "assets/images/villa-tulum-2.jpg", "assets/images/villa-tulum-3.jpg"],
-      "servicios": ["Piscina", "Aire acondicionado", "Wi-Fi", "Cocina", "Jardín tropical"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/villa-tulum-1.jpg",
+        "assets/images/villa-tulum-2.jpg",
+        "assets/images/villa-tulum-3.jpg"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Cocina",
+        "Jardín tropical"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 22,
@@ -458,9 +709,21 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-oaxaca-1.jpg",
-      "imagenes": ["assets/images/casa-oaxaca-1.jpg", "assets/images/casa-oaxaca-2.jpg", "assets/images/casa-oaxaca-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Patio", "Desayuno incluido"],
-      "reglas": ["No fiestas", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/casa-oaxaca-1.jpg",
+        "assets/images/casa-oaxaca-2.jpg",
+        "assets/images/casa-oaxaca-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Patio",
+        "Desayuno incluido"
+      ],
+      "reglas": [
+        "No fiestas",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 23,
@@ -479,9 +742,20 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-cusco-1.jpg",
-      "imagenes": ["assets/images/casa-cusco-1.jpg", "assets/images/casa-cusco-2.jpg", "assets/images/casa-cusco-3.jpg"],
-      "servicios": ["Wi-Fi", "Calefacción", "Cocina", "Vista a la ciudad"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/casa-cusco-1.jpg",
+        "assets/images/casa-cusco-2.jpg",
+        "assets/images/casa-cusco-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Vista a la ciudad"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 24,
@@ -500,9 +774,20 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-miraflores-1.jpg",
-      "imagenes": ["assets/images/apto-miraflores-1.jpg", "assets/images/apto-miraflores-2.jpg", "assets/images/apto-miraflores-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Ascensor", "Recepción 24 horas"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-miraflores-1.jpg",
+        "assets/images/apto-miraflores-2.jpg",
+        "assets/images/apto-miraflores-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Ascensor",
+        "Recepción 24 horas"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 25,
@@ -521,9 +806,21 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-palermo-1.jpg",
-      "imagenes": ["assets/images/apto-palermo-1.jpg", "assets/images/apto-palermo-2.jpg", "assets/images/apto-palermo-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Cocina", "Balcón"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/apto-palermo-1.jpg",
+        "assets/images/apto-palermo-2.jpg",
+        "assets/images/apto-palermo-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Balcón"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 26,
@@ -542,9 +839,22 @@
       "calificacion": 4.9,
       "activo": true,
       "imagenPrincipal": "assets/images/cabana-bariloche-1.jpg",
-      "imagenes": ["assets/images/cabana-bariloche-1.jpg", "assets/images/cabana-bariloche-2.jpg", "assets/images/cabana-bariloche-3.jpg"],
-      "servicios": ["Wi-Fi", "Chimenea", "Cocina", "Parqueadero", "Deck con vista"],
-      "reglas": ["No fumar", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/cabana-bariloche-1.jpg",
+        "assets/images/cabana-bariloche-2.jpg",
+        "assets/images/cabana-bariloche-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Chimenea",
+        "Cocina",
+        "Parqueadero",
+        "Deck con vista"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 27,
@@ -563,9 +873,20 @@
       "calificacion": 4.4,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-mendoza-1.jpg",
-      "imagenes": ["assets/images/apto-mendoza-1.jpg", "assets/images/apto-mendoza-2.jpg", "assets/images/apto-mendoza-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Cocina", "Lavadora"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-mendoza-1.jpg",
+        "assets/images/apto-mendoza-2.jpg",
+        "assets/images/apto-mendoza-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Lavadora"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 28,
@@ -584,9 +905,20 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/loft-lastarria-1.jpg",
-      "imagenes": ["assets/images/loft-lastarria-1.jpg", "assets/images/loft-lastarria-2.jpg", "assets/images/loft-lastarria-3.jpg"],
-      "servicios": ["Wi-Fi", "Calefacción", "Cocina", "Escritorio de trabajo"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/loft-lastarria-1.jpg",
+        "assets/images/loft-lastarria-2.jpg",
+        "assets/images/loft-lastarria-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Escritorio de trabajo"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 29,
@@ -605,9 +937,21 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-valparaiso-1.jpg",
-      "imagenes": ["assets/images/casa-valparaiso-1.jpg", "assets/images/casa-valparaiso-2.jpg", "assets/images/casa-valparaiso-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Calefacción", "Terraza con vista"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/casa-valparaiso-1.jpg",
+        "assets/images/casa-valparaiso-2.jpg",
+        "assets/images/casa-valparaiso-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Calefacción",
+        "Terraza con vista"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 30,
@@ -626,9 +970,21 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-quito-1.jpg",
-      "imagenes": ["assets/images/casa-quito-1.jpg", "assets/images/casa-quito-2.jpg", "assets/images/casa-quito-3.jpg"],
-      "servicios": ["Wi-Fi", "Cocina", "Patio", "Calefacción"],
-      "reglas": ["No fumar", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/casa-quito-1.jpg",
+        "assets/images/casa-quito-2.jpg",
+        "assets/images/casa-quito-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Patio",
+        "Calefacción"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 31,
@@ -647,9 +1003,22 @@
       "calificacion": 4.8,
       "activo": true,
       "imagenPrincipal": "assets/images/cabana-arenal-1.jpg",
-      "imagenes": ["assets/images/cabana-arenal-1.jpg", "assets/images/cabana-arenal-2.jpg", "assets/images/cabana-arenal-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Terraza", "Cocina", "Desayuno incluido"],
-      "reglas": ["No fumar", "No mascotas"]
+      "imagenes": [
+        "assets/images/cabana-arenal-1.jpg",
+        "assets/images/cabana-arenal-2.jpg",
+        "assets/images/cabana-arenal-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Terraza",
+        "Cocina",
+        "Desayuno incluido"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
     },
     {
       "id": 32,
@@ -668,9 +1037,22 @@
       "calificacion": 4.8,
       "activo": true,
       "imagenPrincipal": "assets/images/villa-tamarindo-1.jpg",
-      "imagenes": ["assets/images/villa-tamarindo-1.jpg", "assets/images/villa-tamarindo-2.jpg", "assets/images/villa-tamarindo-3.jpg"],
-      "servicios": ["Piscina", "Aire acondicionado", "Wi-Fi", "Cocina", "BBQ"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/villa-tamarindo-1.jpg",
+        "assets/images/villa-tamarindo-2.jpg",
+        "assets/images/villa-tamarindo-3.jpg"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Cocina",
+        "BBQ"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 33,
@@ -689,9 +1071,20 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-casco-antiguo-1.jpg",
-      "imagenes": ["assets/images/apto-casco-antiguo-1.jpg", "assets/images/apto-casco-antiguo-2.jpg", "assets/images/apto-casco-antiguo-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Balcón", "Cocina"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-casco-antiguo-1.jpg",
+        "assets/images/apto-casco-antiguo-2.jpg",
+        "assets/images/apto-casco-antiguo-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Balcón",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 34,
@@ -710,9 +1103,20 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-ipanema-1.jpg",
-      "imagenes": ["assets/images/apto-ipanema-1.jpg", "assets/images/apto-ipanema-2.jpg", "assets/images/apto-ipanema-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Cocina", "Toallas de playa"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-ipanema-1.jpg",
+        "assets/images/apto-ipanema-2.jpg",
+        "assets/images/apto-ipanema-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Toallas de playa"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 35,
@@ -731,9 +1135,21 @@
       "calificacion": 4.4,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-pelourinho-1.jpg",
-      "imagenes": ["assets/images/casa-pelourinho-1.jpg", "assets/images/casa-pelourinho-2.jpg", "assets/images/casa-pelourinho-3.jpg"],
-      "servicios": ["Wi-Fi", "Ventilador", "Cocina", "Patio"],
-      "reglas": ["No fumar", "Silencio después de las 11 PM"]
+      "imagenes": [
+        "assets/images/casa-pelourinho-1.jpg",
+        "assets/images/casa-pelourinho-2.jpg",
+        "assets/images/casa-pelourinho-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Ventilador",
+        "Cocina",
+        "Patio"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 11 PM"
+      ]
     },
     {
       "id": 36,
@@ -752,9 +1168,21 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-sagrada-familia-1.jpg",
-      "imagenes": ["assets/images/apto-sagrada-familia-1.jpg", "assets/images/apto-sagrada-familia-2.jpg", "assets/images/apto-sagrada-familia-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Balcón", "Cocina"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/apto-sagrada-familia-1.jpg",
+        "assets/images/apto-sagrada-familia-2.jpg",
+        "assets/images/apto-sagrada-familia-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Balcón",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 37,
@@ -773,9 +1201,21 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-malasana-1.jpg",
-      "imagenes": ["assets/images/apto-malasana-1.jpg", "assets/images/apto-malasana-2.jpg", "assets/images/apto-malasana-3.jpg"],
-      "servicios": ["Wi-Fi", "Calefacción", "Cocina", "Lavadora"],
-      "reglas": ["No fumar", "Silencio después de las 11 PM"]
+      "imagenes": [
+        "assets/images/apto-malasana-1.jpg",
+        "assets/images/apto-malasana-2.jpg",
+        "assets/images/apto-malasana-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Lavadora"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 11 PM"
+      ]
     },
     {
       "id": 38,
@@ -794,9 +1234,21 @@
       "calificacion": 4.8,
       "activo": true,
       "imagenPrincipal": "assets/images/casa-santa-cruz-1.jpg",
-      "imagenes": ["assets/images/casa-santa-cruz-1.jpg", "assets/images/casa-santa-cruz-2.jpg", "assets/images/casa-santa-cruz-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Patio", "Cocina"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/casa-santa-cruz-1.jpg",
+        "assets/images/casa-santa-cruz-2.jpg",
+        "assets/images/casa-santa-cruz-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Patio",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 39,
@@ -815,9 +1267,20 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-alfama-1.jpg",
-      "imagenes": ["assets/images/apto-alfama-1.jpg", "assets/images/apto-alfama-2.jpg", "assets/images/apto-alfama-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Cocina", "Vista al río"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-alfama-1.jpg",
+        "assets/images/apto-alfama-2.jpg",
+        "assets/images/apto-alfama-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Vista al río"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 40,
@@ -836,9 +1299,21 @@
       "calificacion": 4.7,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-piazza-navona-1.jpg",
-      "imagenes": ["assets/images/apto-piazza-navona-1.jpg", "assets/images/apto-piazza-navona-2.jpg", "assets/images/apto-piazza-navona-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Cocina", "Ascensor"],
-      "reglas": ["No fumar", "No fiestas"]
+      "imagenes": [
+        "assets/images/apto-piazza-navona-1.jpg",
+        "assets/images/apto-piazza-navona-2.jpg",
+        "assets/images/apto-piazza-navona-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Ascensor"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
     },
     {
       "id": 41,
@@ -857,9 +1332,21 @@
       "calificacion": 4.6,
       "activo": true,
       "imagenPrincipal": "assets/images/loft-marais-1.jpg",
-      "imagenes": ["assets/images/loft-marais-1.jpg", "assets/images/loft-marais-2.jpg", "assets/images/loft-marais-3.jpg"],
-      "servicios": ["Wi-Fi", "Calefacción", "Cocina", "Escritorio de trabajo"],
-      "reglas": ["No fumar", "Silencio después de las 10 PM"]
+      "imagenes": [
+        "assets/images/loft-marais-1.jpg",
+        "assets/images/loft-marais-2.jpg",
+        "assets/images/loft-marais-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Escritorio de trabajo"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
     },
     {
       "id": 42,
@@ -878,9 +1365,21 @@
       "calificacion": 4.5,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-miami-beach-1.jpg",
-      "imagenes": ["assets/images/apto-miami-beach-1.jpg", "assets/images/apto-miami-beach-2.jpg", "assets/images/apto-miami-beach-3.jpg"],
-      "servicios": ["Wi-Fi", "Aire acondicionado", "Piscina", "Gimnasio", "Parqueadero"],
-      "reglas": ["No fumar"]
+      "imagenes": [
+        "assets/images/apto-miami-beach-1.jpg",
+        "assets/images/apto-miami-beach-2.jpg",
+        "assets/images/apto-miami-beach-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Piscina",
+        "Gimnasio",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
     },
     {
       "id": 43,
@@ -899,76 +1398,2795 @@
       "calificacion": 4.4,
       "activo": true,
       "imagenPrincipal": "assets/images/apto-greenwich-village-1.jpg",
-      "imagenes": ["assets/images/apto-greenwich-village-1.jpg", "assets/images/apto-greenwich-village-2.jpg", "assets/images/apto-greenwich-village-3.jpg"],
-      "servicios": ["Wi-Fi", "Calefacción", "Cocina", "Ascensor"],
-      "reglas": ["No fumar", "No fiestas"]
-    }
+      "imagenes": [
+        "assets/images/apto-greenwich-village-1.jpg",
+        "assets/images/apto-greenwich-village-2.jpg",
+        "assets/images/apto-greenwich-village-3.jpg"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Ascensor"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 44,
+      "nombre": "Casa de campo en Jardín",
+      "descripcion": "Casa con jardín florido a una cuadra del parque principal de Jardín, uno de los pueblos más lindos de Antioquia.",
+      "ciudad": "Jardín",
+      "pais": "Colombia",
+      "ubicacion": "Parque Principal de Jardín",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 380000,
+      "tarifaLimpieza": 65000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-jardin-1.png",
+      "imagenes": [
+        "assets/images/casa-jardin-1.png",
+        "assets/images/casa-jardin-2.png",
+        "assets/images/casa-jardin-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Jardín",
+        "Chimenea"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 45,
+      "nombre": "Apartamento en el Chicó",
+      "descripcion": "Apartamento moderno en el Chicó, a pocas cuadras del Parque El Virrey, con restaurantes y ciclovía cerca.",
+      "ciudad": "Bogotá",
+      "pais": "Colombia",
+      "ubicacion": "Parque El Virrey",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 2,
+      "precioNoche": 290000,
+      "tarifaLimpieza": 50000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-chico-1.png",
+      "imagenes": [
+        "assets/images/apto-chico-1.png",
+        "assets/images/apto-chico-2.png",
+        "assets/images/apto-chico-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Gimnasio",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 46,
+      "nombre": "Cabaña junto al embalse de Tominé",
+      "descripcion": "Cabaña de madera con vista al embalse, ideal para desconectarse a menos de dos horas de Bogotá.",
+      "ciudad": "Guatavita",
+      "pais": "Colombia",
+      "ubicacion": "Plaza de Guatavita La Nueva",
+      "tipo": "Cabaña",
+      "capacidad": 5,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 1,
+      "precioNoche": 270000,
+      "tarifaLimpieza": 50000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-guatavita-1.png",
+      "imagenes": [
+        "assets/images/cabana-guatavita-1.png",
+        "assets/images/cabana-guatavita-2.png",
+        "assets/images/cabana-guatavita-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Chimenea",
+        "Cocina",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 47,
+      "nombre": "Finca con piscina en Pereira",
+      "descripcion": "Finca amplia con piscina y zona de asados, a pocos minutos de la Plaza de Bolívar y del Eje Cafetero.",
+      "ciudad": "Pereira",
+      "pais": "Colombia",
+      "ubicacion": "Plaza de Bolívar",
+      "tipo": "Finca",
+      "capacidad": 10,
+      "habitaciones": 5,
+      "camas": 6,
+      "banos": 4,
+      "precioNoche": 560000,
+      "tarifaLimpieza": 100000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/finca-pereira-1.png",
+      "imagenes": [
+        "assets/images/finca-pereira-1.png",
+        "assets/images/finca-pereira-2.png",
+        "assets/images/finca-pereira-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "BBQ",
+        "Wi-Fi",
+        "Cocina",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar dentro de la casa",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 48,
+      "nombre": "Apartamento con vista a la montaña",
+      "descripcion": "Apartamento luminoso con vista a los nevados, cerca de la Catedral Basílica de Manizales y del Cable Aéreo.",
+      "ciudad": "Manizales",
+      "pais": "Colombia",
+      "ubicacion": "Catedral Basílica de Manizales",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 210000,
+      "tarifaLimpieza": 40000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-manizales-1.png",
+      "imagenes": [
+        "assets/images/apto-manizales-1.png",
+        "assets/images/apto-manizales-2.png",
+        "assets/images/apto-manizales-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Vista a la montaña"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 49,
+      "nombre": "Apartamento en Cabecera",
+      "descripcion": "Apartamento fresco y cómodo cerca del Parque García Rovira, con restaurantes y zonas comerciales a pocos pasos.",
+      "ciudad": "Bucaramanga",
+      "pais": "Colombia",
+      "ubicacion": "Parque García Rovira",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 175000,
+      "tarifaLimpieza": 35000,
+      "calificacion": 4.4,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-bucaramanga-1.png",
+      "imagenes": [
+        "assets/images/apto-bucaramanga-1.png",
+        "assets/images/apto-bucaramanga-2.png",
+        "assets/images/apto-bucaramanga-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 50,
+      "nombre": "Casa frente a la bahía de Taganga",
+      "descripcion": "Casa con terraza a pocos pasos del agua en el pueblo pesquero de Taganga, perfecta para buceadores y familias.",
+      "ciudad": "Santa Marta",
+      "pais": "Colombia",
+      "ubicacion": "Bahía de Taganga",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 360000,
+      "tarifaLimpieza": 60000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-taganga-1.png",
+      "imagenes": [
+        "assets/images/casa-taganga-1.png",
+        "assets/images/casa-taganga-2.png",
+        "assets/images/casa-taganga-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Terraza",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 51,
+      "nombre": "Casa colonial en Mompox",
+      "descripcion": "Casa con patio interior frente al río Magdalena en uno de los pueblos coloniales mejor conservados del país.",
+      "ciudad": "Mompox",
+      "pais": "Colombia",
+      "ubicacion": "Calle de la Albarrada",
+      "tipo": "Casa",
+      "capacidad": 7,
+      "habitaciones": 4,
+      "camas": 5,
+      "banos": 3,
+      "precioNoche": 400000,
+      "tarifaLimpieza": 70000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-mompox-1.png",
+      "imagenes": [
+        "assets/images/casa-mompox-1.png",
+        "assets/images/casa-mompox-2.png",
+        "assets/images/casa-mompox-3.png"
+      ],
+      "servicios": [
+        "Ventilador",
+        "Patio",
+        "Wi-Fi",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 52,
+      "nombre": "Casa blanca en Popayán",
+      "descripcion": "Casa tradicional en el centro histórico de la Ciudad Blanca, a una cuadra del Parque Caldas.",
+      "ciudad": "Popayán",
+      "pais": "Colombia",
+      "ubicacion": "Parque Caldas",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 310000,
+      "tarifaLimpieza": 55000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-popayan-1.png",
+      "imagenes": [
+        "assets/images/casa-popayan-1.png",
+        "assets/images/casa-popayan-2.png",
+        "assets/images/casa-popayan-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Patio",
+        "Calefacción"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 53,
+      "nombre": "Cabaña en Nuquí",
+      "descripcion": "Cabaña rústica sobre la playa en el Pacífico chocoano, ideal para avistar ballenas y recorrer termales.",
+      "ciudad": "Nuquí",
+      "pais": "Colombia",
+      "ubicacion": "Playa Guachalito",
+      "tipo": "Cabaña",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 1,
+      "precioNoche": 450000,
+      "tarifaLimpieza": 60000,
+      "calificacion": 4.9,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-nuqui-1.png",
+      "imagenes": [
+        "assets/images/cabana-nuqui-1.png",
+        "assets/images/cabana-nuqui-2.png",
+        "assets/images/cabana-nuqui-3.png"
+      ],
+      "servicios": [
+        "Desayuno incluido",
+        "Mosquitero",
+        "Acceso a la playa",
+        "Ventilador"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
+    },
+    {
+      "id": 54,
+      "nombre": "Bungalow caribeño en Providencia",
+      "descripcion": "Bungalow de madera a pasos del mar de los siete colores, perfecto para hacer snorkel y recorrer la isla en moto.",
+      "ciudad": "Providencia",
+      "pais": "Colombia",
+      "ubicacion": "Bahía Suroeste",
+      "tipo": "Bungalow",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 480000,
+      "tarifaLimpieza": 70000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/bungalow-providencia-1.png",
+      "imagenes": [
+        "assets/images/bungalow-providencia-1.png",
+        "assets/images/bungalow-providencia-2.png",
+        "assets/images/bungalow-providencia-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Ventilador",
+        "Terraza",
+        "Equipo de snorkel"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 55,
+      "nombre": "Cabaña amazónica en Leticia",
+      "descripcion": "Cabaña con mosquitero y terraza a orillas del río Amazonas, con excursiones por la selva disponibles.",
+      "ciudad": "Leticia",
+      "pais": "Colombia",
+      "ubicacion": "Río Amazonas",
+      "tipo": "Cabaña",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 330000,
+      "tarifaLimpieza": 55000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-leticia-1.png",
+      "imagenes": [
+        "assets/images/cabana-leticia-1.png",
+        "assets/images/cabana-leticia-2.png",
+        "assets/images/cabana-leticia-3.png"
+      ],
+      "servicios": [
+        "Ventilador",
+        "Mosquitero",
+        "Desayuno incluido",
+        "Wi-Fi"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
+    },
+    {
+      "id": 56,
+      "nombre": "Apartamento en Provenza",
+      "descripcion": "Apartamento moderno en el corazón gastronómico de El Poblado, con piscina en la terraza del edificio.",
+      "ciudad": "Medellín",
+      "pais": "Colombia",
+      "ubicacion": "Calle 10 Provenza",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 2,
+      "precioNoche": 270000,
+      "tarifaLimpieza": 50000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-provenza-1.png",
+      "imagenes": [
+        "assets/images/apto-provenza-1.png",
+        "assets/images/apto-provenza-2.png",
+        "assets/images/apto-provenza-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Piscina",
+        "Gimnasio",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 57,
+      "nombre": "Finca en Santa Fe de Antioquia",
+      "descripcion": "Finca con piscina y zona de asados a pocos minutos del Puente de Occidente, ideal para grupos grandes.",
+      "ciudad": "Santa Fe de Antioquia",
+      "pais": "Colombia",
+      "ubicacion": "Puente de Occidente",
+      "tipo": "Finca",
+      "capacidad": 12,
+      "habitaciones": 5,
+      "camas": 7,
+      "banos": 4,
+      "precioNoche": 620000,
+      "tarifaLimpieza": 110000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/finca-santa-fe-1.png",
+      "imagenes": [
+        "assets/images/finca-santa-fe-1.png",
+        "assets/images/finca-santa-fe-2.png",
+        "assets/images/finca-santa-fe-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "BBQ",
+        "Aire acondicionado",
+        "Parqueadero",
+        "Wi-Fi"
+      ],
+      "reglas": [
+        "No fumar",
+        "Máximo 12 huéspedes"
+      ]
+    },
+    {
+      "id": 58,
+      "nombre": "Casa junto al lago Sochagota",
+      "descripcion": "Casa amplia con chimenea cerca del lago Sochagota y de los termales de Paipa, perfecta para escapadas en familia.",
+      "ciudad": "Paipa",
+      "pais": "Colombia",
+      "ubicacion": "Lago Sochagota",
+      "tipo": "Casa",
+      "capacidad": 8,
+      "habitaciones": 4,
+      "camas": 5,
+      "banos": 3,
+      "precioNoche": 450000,
+      "tarifaLimpieza": 80000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-paipa-1.png",
+      "imagenes": [
+        "assets/images/casa-paipa-1.png",
+        "assets/images/casa-paipa-2.png",
+        "assets/images/casa-paipa-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Chimenea",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 59,
+      "nombre": "Loft en la Zona T",
+      "descripcion": "Loft de diseño a pasos de la Zona T, con restaurantes, bares y centros comerciales a la puerta.",
+      "ciudad": "Bogotá",
+      "pais": "Colombia",
+      "ubicacion": "Zona T",
+      "tipo": "Loft",
+      "capacidad": 2,
+      "habitaciones": 1,
+      "camas": 1,
+      "banos": 1,
+      "precioNoche": 240000,
+      "tarifaLimpieza": 40000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/loft-zona-t-1.png",
+      "imagenes": [
+        "assets/images/loft-zona-t-1.png",
+        "assets/images/loft-zona-t-2.png",
+        "assets/images/loft-zona-t-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Escritorio de trabajo",
+        "Ascensor"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 60,
+      "nombre": "Apartamento en Castillogrande",
+      "descripcion": "Apartamento amplio con piscina y vista al mar en Castillogrande, a pocos minutos del centro histórico de Cartagena.",
+      "ciudad": "Cartagena",
+      "pais": "Colombia",
+      "ubicacion": "Playa de Castillogrande",
+      "tipo": "Apartamento",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 3,
+      "precioNoche": 520000,
+      "tarifaLimpieza": 85000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-castillogrande-1.png",
+      "imagenes": [
+        "assets/images/apto-castillogrande-1.png",
+        "assets/images/apto-castillogrande-2.png",
+        "assets/images/apto-castillogrande-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Parqueadero",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
+    },
+    {
+      "id": 61,
+      "nombre": "Cabaña frente al mar en Barú",
+      "descripcion": "Cabaña sencilla y encantadora con hamacas a pasos de Playa Blanca, con aguas cristalinas y mucha tranquilidad.",
+      "ciudad": "Barú",
+      "pais": "Colombia",
+      "ubicacion": "Playa Blanca",
+      "tipo": "Cabaña",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 540000,
+      "tarifaLimpieza": 90000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-baru-1.png",
+      "imagenes": [
+        "assets/images/cabana-baru-1.png",
+        "assets/images/cabana-baru-2.png",
+        "assets/images/cabana-baru-3.png"
+      ],
+      "servicios": [
+        "Ventilador",
+        "Hamacas",
+        "Acceso a la playa",
+        "Mosquitero"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 62,
+      "nombre": "Glamping en Villa de Leyva",
+      "descripcion": "Domo con cama king, jacuzzi privado y vista a las montañas, a pocos minutos de Pozos Azules.",
+      "ciudad": "Villa de Leyva",
+      "pais": "Colombia",
+      "ubicacion": "Pozos Azules",
+      "tipo": "Glamping",
+      "capacidad": 2,
+      "habitaciones": 1,
+      "camas": 1,
+      "banos": 1,
+      "precioNoche": 310000,
+      "tarifaLimpieza": 45000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/glamping-villa-leyva-1.png",
+      "imagenes": [
+        "assets/images/glamping-villa-leyva-1.png",
+        "assets/images/glamping-villa-leyva-2.png",
+        "assets/images/glamping-villa-leyva-3.png"
+      ],
+      "servicios": [
+        "Desayuno incluido",
+        "Wi-Fi",
+        "Jacuzzi",
+        "Calefacción"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
+    },
+    {
+      "id": 63,
+      "nombre": "Casa en el barrio Granada",
+      "descripcion": "Casa con terraza en el barrio Granada, una de las mejores zonas de Cali para salir a comer y a bailar.",
+      "ciudad": "Cali",
+      "pais": "Colombia",
+      "ubicacion": "Barrio Granada",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 3,
+      "banos": 2,
+      "precioNoche": 330000,
+      "tarifaLimpieza": 55000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-granada-cali-1.png",
+      "imagenes": [
+        "assets/images/casa-granada-cali-1.png",
+        "assets/images/casa-granada-cali-2.png",
+        "assets/images/casa-granada-cali-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Terraza"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 11 PM"
+      ]
+    },
+    {
+      "id": 64,
+      "nombre": "Departamento en Chapultepec",
+      "descripcion": "Departamento moderno sobre la Avenida Chapultepec, entre cafés, galerías y la vida nocturna tapatía.",
+      "ciudad": "Guadalajara",
+      "pais": "México",
+      "ubicacion": "Avenida Chapultepec",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 340000,
+      "tarifaLimpieza": 55000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/depto-guadalajara-1.png",
+      "imagenes": [
+        "assets/images/depto-guadalajara-1.png",
+        "assets/images/depto-guadalajara-2.png",
+        "assets/images/depto-guadalajara-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Balcón"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 65,
+      "nombre": "Casa colonial en San Miguel de Allende",
+      "descripcion": "Casa con terraza y vista a la Parroquia, a pocas cuadras del Jardín Principal.",
+      "ciudad": "San Miguel de Allende",
+      "pais": "México",
+      "ubicacion": "Jardín Principal",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 3,
+      "precioNoche": 780000,
+      "tarifaLimpieza": 120000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-san-miguel-1.png",
+      "imagenes": [
+        "assets/images/casa-san-miguel-1.png",
+        "assets/images/casa-san-miguel-2.png",
+        "assets/images/casa-san-miguel-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Terraza",
+        "Cocina",
+        "Chimenea"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 66,
+      "nombre": "Apartamento en Playa del Carmen",
+      "descripcion": "Apartamento con piscina a pocas cuadras de la playa y de la Quinta Avenida.",
+      "ciudad": "Playa del Carmen",
+      "pais": "México",
+      "ubicacion": "Quinta Avenida",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 2,
+      "precioNoche": 560000,
+      "tarifaLimpieza": 85000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-playa-carmen-1.png",
+      "imagenes": [
+        "assets/images/apto-playa-carmen-1.png",
+        "assets/images/apto-playa-carmen-2.png",
+        "assets/images/apto-playa-carmen-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Gimnasio"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 67,
+      "nombre": "Casa en Paseo de Montejo",
+      "descripcion": "Casa yucateca restaurada con piscina y patio, a pasos del Paseo de Montejo.",
+      "ciudad": "Mérida",
+      "pais": "México",
+      "ubicacion": "Paseo de Montejo",
+      "tipo": "Casa",
+      "capacidad": 8,
+      "habitaciones": 4,
+      "camas": 5,
+      "banos": 3,
+      "precioNoche": 640000,
+      "tarifaLimpieza": 95000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-merida-1.png",
+      "imagenes": [
+        "assets/images/casa-merida-1.png",
+        "assets/images/casa-merida-2.png",
+        "assets/images/casa-merida-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Patio",
+        "Cocina",
+        "Wi-Fi"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 68,
+      "nombre": "Departamento en el centro de Guanajuato",
+      "descripcion": "Departamento con balcón en un callejón colorido, a pasos del Callejón del Beso.",
+      "ciudad": "Guanajuato",
+      "pais": "México",
+      "ubicacion": "Callejón del Beso",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 1,
+      "precioNoche": 330000,
+      "tarifaLimpieza": 50000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/depto-guanajuato-1.png",
+      "imagenes": [
+        "assets/images/depto-guanajuato-1.png",
+        "assets/images/depto-guanajuato-2.png",
+        "assets/images/depto-guanajuato-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Calefacción",
+        "Balcón"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 69,
+      "nombre": "Villa con piscina en Puerto Vallarta",
+      "descripcion": "Villa con piscina privada y vista al mar, a pocos minutos del Malecón y de la zona romántica.",
+      "ciudad": "Puerto Vallarta",
+      "pais": "México",
+      "ubicacion": "Malecón de Puerto Vallarta",
+      "tipo": "Villa",
+      "capacidad": 8,
+      "habitaciones": 4,
+      "camas": 5,
+      "banos": 4,
+      "precioNoche": 1050000,
+      "tarifaLimpieza": 160000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/villa-puerto-vallarta-1.png",
+      "imagenes": [
+        "assets/images/villa-puerto-vallarta-1.png",
+        "assets/images/villa-puerto-vallarta-2.png",
+        "assets/images/villa-puerto-vallarta-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Cocina",
+        "Terraza"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 70,
+      "nombre": "Apartamento en la Plaza de Armas",
+      "descripcion": "Apartamento con vista a los volcanes en pleno centro histórico de la Ciudad Blanca.",
+      "ciudad": "Arequipa",
+      "pais": "Perú",
+      "ubicacion": "Plaza de Armas",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 270000,
+      "tarifaLimpieza": 45000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-arequipa-1.png",
+      "imagenes": [
+        "assets/images/apto-arequipa-1.png",
+        "assets/images/apto-arequipa-2.png",
+        "assets/images/apto-arequipa-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Calefacción",
+        "Vista a los volcanes"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 71,
+      "nombre": "Cabaña cerca de Machu Picchu",
+      "descripcion": "Cabaña junto al río Vilcanota, a pocos minutos de la estación y de las termas de Aguas Calientes.",
+      "ciudad": "Aguas Calientes",
+      "pais": "Perú",
+      "ubicacion": "Río Vilcanota",
+      "tipo": "Cabaña",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 390000,
+      "tarifaLimpieza": 55000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-aguas-calientes-1.png",
+      "imagenes": [
+        "assets/images/cabana-aguas-calientes-1.png",
+        "assets/images/cabana-aguas-calientes-2.png",
+        "assets/images/cabana-aguas-calientes-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Desayuno incluido"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 72,
+      "nombre": "Casa con piscina en Paracas",
+      "descripcion": "Casa con piscina y zona de BBQ cerca del malecón, ideal para visitar las Islas Ballestas.",
+      "ciudad": "Paracas",
+      "pais": "Perú",
+      "ubicacion": "Malecón de Paracas",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 480000,
+      "tarifaLimpieza": 75000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-paracas-1.png",
+      "imagenes": [
+        "assets/images/casa-paracas-1.png",
+        "assets/images/casa-paracas-2.png",
+        "assets/images/casa-paracas-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Wi-Fi",
+        "BBQ",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 73,
+      "nombre": "Cabaña frente al canal Beagle",
+      "descripcion": "Cabaña de madera con chimenea y vista al canal Beagle, en el fin del mundo.",
+      "ciudad": "Ushuaia",
+      "pais": "Argentina",
+      "ubicacion": "Canal Beagle",
+      "tipo": "Cabaña",
+      "capacidad": 5,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 1,
+      "precioNoche": 580000,
+      "tarifaLimpieza": 90000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-ushuaia-1.png",
+      "imagenes": [
+        "assets/images/cabana-ushuaia-1.png",
+        "assets/images/cabana-ushuaia-2.png",
+        "assets/images/cabana-ushuaia-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Chimenea",
+        "Calefacción",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 74,
+      "nombre": "Casa colonial en Salta",
+      "descripcion": "Casa con patio a pocas cuadras de la Plaza 9 de Julio, ideal para recorrer los Valles Calchaquíes.",
+      "ciudad": "Salta",
+      "pais": "Argentina",
+      "ubicacion": "Plaza 9 de Julio",
+      "tipo": "Casa",
+      "capacidad": 7,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 360000,
+      "tarifaLimpieza": 60000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-salta-1.png",
+      "imagenes": [
+        "assets/images/casa-salta-1.png",
+        "assets/images/casa-salta-2.png",
+        "assets/images/casa-salta-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Patio",
+        "Cocina",
+        "Aire acondicionado"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 75,
+      "nombre": "Apartamento en Nueva Córdoba",
+      "descripcion": "Apartamento económico y bien ubicado frente al Parque Sarmiento, rodeado de universidades y bares.",
+      "ciudad": "Córdoba",
+      "pais": "Argentina",
+      "ubicacion": "Parque Sarmiento",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 210000,
+      "tarifaLimpieza": 40000,
+      "calificacion": 4.4,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-cordoba-1.png",
+      "imagenes": [
+        "assets/images/apto-cordoba-1.png",
+        "assets/images/apto-cordoba-2.png",
+        "assets/images/apto-cordoba-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Calefacción"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 76,
+      "nombre": "Cabaña con tina caliente en Pucón",
+      "descripcion": "Cabaña con tina caliente y vista al lago y al volcán Villarrica, a minutos del centro de Pucón.",
+      "ciudad": "Pucón",
+      "pais": "Chile",
+      "ubicacion": "Lago Villarrica",
+      "tipo": "Cabaña",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 520000,
+      "tarifaLimpieza": 85000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-pucon-1.png",
+      "imagenes": [
+        "assets/images/cabana-pucon-1.png",
+        "assets/images/cabana-pucon-2.png",
+        "assets/images/cabana-pucon-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Tina caliente",
+        "Cocina",
+        "Chimenea",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 77,
+      "nombre": "Casa de adobe en San Pedro de Atacama",
+      "descripcion": "Casa de adobe con patio a pocos pasos de la calle Caracoles, ideal para tours al desierto y a las lagunas.",
+      "ciudad": "San Pedro de Atacama",
+      "pais": "Chile",
+      "ubicacion": "Calle Caracoles",
+      "tipo": "Casa",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 460000,
+      "tarifaLimpieza": 70000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-atacama-1.png",
+      "imagenes": [
+        "assets/images/casa-atacama-1.png",
+        "assets/images/casa-atacama-2.png",
+        "assets/images/casa-atacama-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Patio"
+      ],
+      "reglas": [
+        "No fumar",
+        "Ahorrar agua"
+      ]
+    },
+    {
+      "id": 78,
+      "nombre": "Apartamento en el centro de Cuenca",
+      "descripcion": "Apartamento a pasos del Parque Calderón y de la Catedral Nueva, en el corazón de Cuenca.",
+      "ciudad": "Cuenca",
+      "pais": "Ecuador",
+      "ubicacion": "Parque Calderón",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 230000,
+      "tarifaLimpieza": 40000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-cuenca-1.png",
+      "imagenes": [
+        "assets/images/apto-cuenca-1.png",
+        "assets/images/apto-cuenca-2.png",
+        "assets/images/apto-cuenca-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Calefacción"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 79,
+      "nombre": "Casa en Baños de Agua Santa",
+      "descripcion": "Casa con terraza cerca de las termas y de las rutas de aventura de Baños.",
+      "ciudad": "Baños",
+      "pais": "Ecuador",
+      "ubicacion": "Parque Central de Baños",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 290000,
+      "tarifaLimpieza": 50000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-banos-1.png",
+      "imagenes": [
+        "assets/images/casa-banos-1.png",
+        "assets/images/casa-banos-2.png",
+        "assets/images/casa-banos-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Terraza",
+        "Parqueadero"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 80,
+      "nombre": "Casa en Puerto Ayora",
+      "descripcion": "Casa cómoda a pocos minutos del muelle de Puerto Ayora, perfecta para explorar Galápagos.",
+      "ciudad": "Puerto Ayora",
+      "pais": "Ecuador",
+      "ubicacion": "Bahía Academia",
+      "tipo": "Casa",
+      "capacidad": 5,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 2,
+      "precioNoche": 820000,
+      "tarifaLimpieza": 120000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-galapagos-1.png",
+      "imagenes": [
+        "assets/images/casa-galapagos-1.png",
+        "assets/images/casa-galapagos-2.png",
+        "assets/images/casa-galapagos-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Terraza"
+      ],
+      "reglas": [
+        "No fumar",
+        "No tocar la fauna"
+      ]
+    },
+    {
+      "id": 81,
+      "nombre": "Apartamento en el centro de La Paz",
+      "descripcion": "Apartamento con vista a la ciudad y al Illimani, cerca de la Plaza Murillo.",
+      "ciudad": "La Paz",
+      "pais": "Bolivia",
+      "ubicacion": "Plaza Murillo",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 220000,
+      "tarifaLimpieza": 40000,
+      "calificacion": 4.4,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-la-paz-1.png",
+      "imagenes": [
+        "assets/images/apto-la-paz-1.png",
+        "assets/images/apto-la-paz-2.png",
+        "assets/images/apto-la-paz-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 82,
+      "nombre": "Apartamento en Pocitos",
+      "descripcion": "Apartamento a pocas cuadras de la Rambla de Pocitos, con vista parcial al río de la Plata.",
+      "ciudad": "Montevideo",
+      "pais": "Uruguay",
+      "ubicacion": "Rambla de Pocitos",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 330000,
+      "tarifaLimpieza": 55000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-montevideo-1.png",
+      "imagenes": [
+        "assets/images/apto-montevideo-1.png",
+        "assets/images/apto-montevideo-2.png",
+        "assets/images/apto-montevideo-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Calefacción",
+        "Balcón"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 83,
+      "nombre": "Casa en el Barrio Histórico de Colonia",
+      "descripcion": "Casa con patio en las calles empedradas de Colonia del Sacramento, a minutos del faro.",
+      "ciudad": "Colonia del Sacramento",
+      "pais": "Uruguay",
+      "ubicacion": "Barrio Histórico",
+      "tipo": "Casa",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 410000,
+      "tarifaLimpieza": 65000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-colonia-1.png",
+      "imagenes": [
+        "assets/images/casa-colonia-1.png",
+        "assets/images/casa-colonia-2.png",
+        "assets/images/casa-colonia-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Patio",
+        "Cocina",
+        "Bicicletas"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 84,
+      "nombre": "Villa en Punta del Este",
+      "descripcion": "Villa con piscina y jardín a pocos minutos de Playa Mansa, ideal para grupos y familias.",
+      "ciudad": "Punta del Este",
+      "pais": "Uruguay",
+      "ubicacion": "Playa Mansa",
+      "tipo": "Villa",
+      "capacidad": 8,
+      "habitaciones": 4,
+      "camas": 5,
+      "banos": 4,
+      "precioNoche": 1100000,
+      "tarifaLimpieza": 170000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/villa-punta-del-este-1.png",
+      "imagenes": [
+        "assets/images/villa-punta-del-este-1.png",
+        "assets/images/villa-punta-del-este-2.png",
+        "assets/images/villa-punta-del-este-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Wi-Fi",
+        "BBQ",
+        "Cocina",
+        "Jardín"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 85,
+      "nombre": "Cabaña en el bosque nuboso de Monteverde",
+      "descripcion": "Cabaña rodeada de bosque nuboso con terraza ideal para observar aves, a minutos de la Reserva de Monteverde.",
+      "ciudad": "Monteverde",
+      "pais": "Costa Rica",
+      "ubicacion": "Reserva Bosque Nuboso",
+      "tipo": "Cabaña",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 390000,
+      "tarifaLimpieza": 60000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/cabana-monteverde-1.png",
+      "imagenes": [
+        "assets/images/cabana-monteverde-1.png",
+        "assets/images/cabana-monteverde-2.png",
+        "assets/images/cabana-monteverde-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Terraza",
+        "Chimenea",
+        "Desayuno incluido"
+      ],
+      "reglas": [
+        "No fumar",
+        "No mascotas"
+      ]
+    },
+    {
+      "id": 86,
+      "nombre": "Villa en Manuel Antonio",
+      "descripcion": "Villa con piscina y jardín tropical a pocos minutos del Parque Nacional Manuel Antonio.",
+      "ciudad": "Manuel Antonio",
+      "pais": "Costa Rica",
+      "ubicacion": "Playa Espadilla",
+      "tipo": "Villa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 3,
+      "precioNoche": 900000,
+      "tarifaLimpieza": 135000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/villa-manuel-antonio-1.png",
+      "imagenes": [
+        "assets/images/villa-manuel-antonio-1.png",
+        "assets/images/villa-manuel-antonio-2.png",
+        "assets/images/villa-manuel-antonio-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Cocina",
+        "Jardín tropical"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 87,
+      "nombre": "Bungalow sobre el agua en Bocas del Toro",
+      "descripcion": "Bungalow de madera sobre el mar con acceso directo al agua y hamacas, en Isla Colón.",
+      "ciudad": "Bocas del Toro",
+      "pais": "Panamá",
+      "ubicacion": "Isla Colón",
+      "tipo": "Bungalow",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 460000,
+      "tarifaLimpieza": 70000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/bungalow-bocas-1.png",
+      "imagenes": [
+        "assets/images/bungalow-bocas-1.png",
+        "assets/images/bungalow-bocas-2.png",
+        "assets/images/bungalow-bocas-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Ventilador",
+        "Terraza sobre el agua",
+        "Kayaks"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 88,
+      "nombre": "Apartamento sobre la Avenida Paulista",
+      "descripcion": "Apartamento moderno a pasos de la Avenida Paulista, rodeado de museos, restaurantes y metro.",
+      "ciudad": "São Paulo",
+      "pais": "Brasil",
+      "ubicacion": "Avenida Paulista",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 410000,
+      "tarifaLimpieza": 65000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-sao-paulo-1.png",
+      "imagenes": [
+        "assets/images/apto-sao-paulo-1.png",
+        "assets/images/apto-sao-paulo-2.png",
+        "assets/images/apto-sao-paulo-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Ascensor"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 89,
+      "nombre": "Casa cerca de la playa Joaquina",
+      "descripcion": "Casa amplia con jardín y parrilla, a pocos minutos de la Praia da Joaquina en Florianópolis.",
+      "ciudad": "Florianópolis",
+      "pais": "Brasil",
+      "ubicacion": "Praia da Joaquina",
+      "tipo": "Casa",
+      "capacidad": 8,
+      "habitaciones": 4,
+      "camas": 5,
+      "banos": 3,
+      "precioNoche": 640000,
+      "tarifaLimpieza": 100000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-florianopolis-1.png",
+      "imagenes": [
+        "assets/images/casa-florianopolis-1.png",
+        "assets/images/casa-florianopolis-2.png",
+        "assets/images/casa-florianopolis-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "BBQ",
+        "Parqueadero",
+        "Jardín"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 90,
+      "nombre": "Casa colonial en Paraty",
+      "descripcion": "Casa de estilo portugués en el centro histórico de Paraty, con patio y cocina equipada.",
+      "ciudad": "Paraty",
+      "pais": "Brasil",
+      "ubicacion": "Centro Histórico de Paraty",
+      "tipo": "Casa",
+      "capacidad": 6,
+      "habitaciones": 3,
+      "camas": 4,
+      "banos": 2,
+      "precioNoche": 520000,
+      "tarifaLimpieza": 80000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-paraty-1.png",
+      "imagenes": [
+        "assets/images/casa-paraty-1.png",
+        "assets/images/casa-paraty-2.png",
+        "assets/images/casa-paraty-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Patio",
+        "Cocina",
+        "Ventilador"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 91,
+      "nombre": "Apartamento en Playa Bávaro",
+      "descripcion": "Apartamento con piscina en un complejo frente a la playa de Bávaro, ideal para familias.",
+      "ciudad": "Punta Cana",
+      "pais": "República Dominicana",
+      "ubicacion": "Playa Bávaro",
+      "tipo": "Apartamento",
+      "capacidad": 5,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 2,
+      "precioNoche": 580000,
+      "tarifaLimpieza": 90000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-punta-cana-1.png",
+      "imagenes": [
+        "assets/images/apto-punta-cana-1.png",
+        "assets/images/apto-punta-cana-2.png",
+        "assets/images/apto-punta-cana-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Acceso a la playa",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 92,
+      "nombre": "Apartamento cerca de la Ciudad de las Artes",
+      "descripcion": "Apartamento luminoso junto a la Ciudad de las Artes y las Ciencias, con conexión directa al centro.",
+      "ciudad": "Valencia",
+      "pais": "España",
+      "ubicacion": "Ciudad de las Artes y las Ciencias",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 540000,
+      "tarifaLimpieza": 85000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-valencia-1.png",
+      "imagenes": [
+        "assets/images/apto-valencia-1.png",
+        "assets/images/apto-valencia-2.png",
+        "assets/images/apto-valencia-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Balcón"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 93,
+      "nombre": "Casa en el Albaicín",
+      "descripcion": "Casa con terraza en el Albaicín, con vista a la Alhambra y a pocos pasos del Mirador de San Nicolás.",
+      "ciudad": "Granada",
+      "pais": "España",
+      "ubicacion": "Mirador de San Nicolás",
+      "tipo": "Casa",
+      "capacidad": 5,
+      "habitaciones": 2,
+      "camas": 3,
+      "banos": 2,
+      "precioNoche": 580000,
+      "tarifaLimpieza": 90000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-granada-1.png",
+      "imagenes": [
+        "assets/images/casa-granada-1.png",
+        "assets/images/casa-granada-2.png",
+        "assets/images/casa-granada-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Terraza con vista",
+        "Cocina",
+        "Calefacción"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 11 PM"
+      ]
+    },
+    {
+      "id": 94,
+      "nombre": "Apartamento frente al Guggenheim",
+      "descripcion": "Apartamento con vista a la ría, a pocos pasos del Museo Guggenheim y del casco viejo.",
+      "ciudad": "Bilbao",
+      "pais": "España",
+      "ubicacion": "Museo Guggenheim",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 520000,
+      "tarifaLimpieza": 80000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-bilbao-1.png",
+      "imagenes": [
+        "assets/images/apto-bilbao-1.png",
+        "assets/images/apto-bilbao-2.png",
+        "assets/images/apto-bilbao-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Ascensor"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 95,
+      "nombre": "Apartamento en la Ribeira",
+      "descripcion": "Apartamento con vista al río Duero en la zona de la Ribeira, rodeado de miradores y bodegas.",
+      "ciudad": "Oporto",
+      "pais": "Portugal",
+      "ubicacion": "Ribeira",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 450000,
+      "tarifaLimpieza": 70000,
+      "calificacion": 4.7,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-oporto-1.png",
+      "imagenes": [
+        "assets/images/apto-oporto-1.png",
+        "assets/images/apto-oporto-2.png",
+        "assets/images/apto-oporto-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Cocina",
+        "Calefacción",
+        "Vista al río"
+      ],
+      "reglas": [
+        "No fumar"
+      ]
+    },
+    {
+      "id": 96,
+      "nombre": "Apartamento cerca del Ponte Vecchio",
+      "descripcion": "Apartamento con techos altos y vigas de madera a pocos pasos del Ponte Vecchio y de los Uffizi.",
+      "ciudad": "Florencia",
+      "pais": "Italia",
+      "ubicacion": "Ponte Vecchio",
+      "tipo": "Apartamento",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 760000,
+      "tarifaLimpieza": 110000,
+      "calificacion": 4.6,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-florencia-1.png",
+      "imagenes": [
+        "assets/images/apto-florencia-1.png",
+        "assets/images/apto-florencia-2.png",
+        "assets/images/apto-florencia-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Ascensor"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    },
+    {
+      "id": 97,
+      "nombre": "Apartamento cerca del Rialto",
+      "descripcion": "Apartamento en un edificio histórico a pocos pasos del Puente de Rialto, con vista a un canal.",
+      "ciudad": "Venecia",
+      "pais": "Italia",
+      "ubicacion": "Puente de Rialto",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 820000,
+      "tarifaLimpieza": 120000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-venecia-1.png",
+      "imagenes": [
+        "assets/images/apto-venecia-1.png",
+        "assets/images/apto-venecia-2.png",
+        "assets/images/apto-venecia-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Cocina",
+        "Vista al canal"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 98,
+      "nombre": "Villa con vista a la caldera en Oia",
+      "descripcion": "Villa blanca con piscina privada y vista a la caldera, ideal para ver el atardecer en Oia.",
+      "ciudad": "Oia",
+      "pais": "Grecia",
+      "ubicacion": "Oia",
+      "tipo": "Villa",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 2,
+      "precioNoche": 1300000,
+      "tarifaLimpieza": 190000,
+      "calificacion": 4.9,
+      "activo": true,
+      "imagenPrincipal": "assets/images/villa-santorini-1.png",
+      "imagenes": [
+        "assets/images/villa-santorini-1.png",
+        "assets/images/villa-santorini-2.png",
+        "assets/images/villa-santorini-3.png"
+      ],
+      "servicios": [
+        "Piscina",
+        "Aire acondicionado",
+        "Wi-Fi",
+        "Terraza con vista",
+        "Cocina"
+      ],
+      "reglas": [
+        "No fumar",
+        "Solo adultos"
+      ]
+    },
+    {
+      "id": 99,
+      "nombre": "Apartamento junto al canal Prinsengracht",
+      "descripcion": "Apartamento con vista al canal en una casa típica del siglo XVII, a pocos pasos de los museos.",
+      "ciudad": "Ámsterdam",
+      "pais": "Países Bajos",
+      "ubicacion": "Canal Prinsengracht",
+      "tipo": "Apartamento",
+      "capacidad": 3,
+      "habitaciones": 1,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 900000,
+      "tarifaLimpieza": 130000,
+      "calificacion": 4.5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/apto-amsterdam-1.png",
+      "imagenes": [
+        "assets/images/apto-amsterdam-1.png",
+        "assets/images/apto-amsterdam-2.png",
+        "assets/images/apto-amsterdam-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Bicicletas"
+      ],
+      "reglas": [
+        "No fumar",
+        "Silencio después de las 10 PM"
+      ]
+    },
+    {
+      "id": 100,
+      "nombre": "Casa tradicional en Gion",
+      "descripcion": "Casa de madera tipo machiya con jardín interior, a pasos de las calles tradicionales de Gion.",
+      "ciudad": "Kioto",
+      "pais": "Japón",
+      "ubicacion": "Gion",
+      "tipo": "Casa",
+      "capacidad": 4,
+      "habitaciones": 2,
+      "camas": 2,
+      "banos": 1,
+      "precioNoche": 700000,
+      "tarifaLimpieza": 100000,
+      "calificacion": 4.8,
+      "activo": true,
+      "imagenPrincipal": "assets/images/casa-kioto-1.png",
+      "imagenes": [
+        "assets/images/casa-kioto-1.png",
+        "assets/images/casa-kioto-2.png",
+        "assets/images/casa-kioto-3.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Aire acondicionado",
+        "Jardín interior",
+        "Cocina",
+        "Futones"
+      ],
+      "reglas": [
+        "No fumar",
+        "Quitarse los zapatos al entrar"
+      ]
+    },
+
+{
+  "id": 101,
+  "nombre": "Casa en Jerico",
+  "descripcion": "Casa en jerico Boyaca esquinera y cerca a la iglesia del pueblo ",
+  "ciudad": "Jerico",
+  "pais": "Colombia",
+  "ubicacion": "jerico,boyaca",
+  "tipo": "Casa",
+  "capacidad": 10,
+  "habitaciones": 5,
+  "camas": 5,
+  "banos": 3,
+  "precioNoche": 1100000,
+  "tarifaLimpieza": 150000,
+  "calificacion": 5,
+  "activo": true,
+  "imagenPrincipal": "assets/images/jerico-1.png",
+  "imagenes": [
+    "assets/images/jerico-1.png",
+    "assets/images/jerico-2.png",
+    "assets/images/jerico-3.png"
+  ],
+  "servicios": [
+    "Wi-Fi",
+    "Calefacción",
+    "Cocina",
+    "Ascensor"
+  ],
+  "reglas": [
+    "No fumar",
+    "No fiestas"
+  ]
+}
   ],
   "resenas": [
-    { "id": 1, "alojamientoId": 1, "usuario": "Laura Gómez", "calificacion": 5, "comentario": "Excelente ubicación y apartamento muy cómodo." },
-    { "id": 2, "alojamientoId": 1, "usuario": "Carlos Ruiz", "calificacion": 4, "comentario": "Muy buena experiencia." },
-    { "id": 3, "alojamientoId": 2, "usuario": "Andrea López", "calificacion": 5, "comentario": "La vista es excelente y la ubicación muy conveniente." },
-    { "id": 4, "alojamientoId": 3, "usuario": "Miguel Torres", "calificacion": 5, "comentario": "Excelente lugar para descansar." },
-    { "id": 5, "alojamientoId": 4, "usuario": "Natalia Pérez", "calificacion": 4, "comentario": "La casa es amplia y está muy bien ubicada." },
-    { "id": 6, "alojamientoId": 7, "usuario": "Valentina Ríos", "calificacion": 5, "comentario": "Desde el balcón se ve el mar y a dos cuadras está la playa. Muy cómodo para ir con niños." },
-    { "id": 7, "alojamientoId": 7, "usuario": "Jorge Medina", "calificacion": 4, "comentario": "Buen apartamento y muy bien ubicado, el aire acondicionado funciona perfecto." },
-    { "id": 8, "alojamientoId": 8, "usuario": "Camila Herrera", "calificacion": 5, "comentario": "Despertar entre cafetales fue lo mejor del viaje. La finca es hermosa y los anfitriones muy amables." },
-    { "id": 9, "alojamientoId": 8, "usuario": "Sebastián Ortega", "calificacion": 5, "comentario": "El recorrido por el cultivo de café estuvo genial y el Valle del Cocora queda muy cerca." },
-    { "id": 10, "alojamientoId": 9, "usuario": "Daniela Cárdenas", "calificacion": 5, "comentario": "Una casa preciosa, fresca y con un patio para tomar tinto en las tardes." },
-    { "id": 11, "alojamientoId": 9, "usuario": "Andrés Quintero", "calificacion": 4, "comentario": "Muy bien ubicada, a una cuadra del parque. Las noches son tranquilas." },
-    { "id": 12, "alojamientoId": 10, "usuario": "Laura Sánchez", "calificacion": 4, "comentario": "Apartamento limpio y luminoso, con cafés y restaurantes a la vuelta de la esquina." },
-    { "id": 13, "alojamientoId": 11, "usuario": "Mateo Ruiz", "calificacion": 5, "comentario": "A pasos del mar y con una terraza perfecta para ver el atardecer." },
-    { "id": 14, "alojamientoId": 11, "usuario": "Isabella Torres", "calificacion": 4, "comentario": "La casa es amplia y tiene todo lo necesario. Ideal para ir en grupo." },
-    { "id": 15, "alojamientoId": 12, "usuario": "Carolina Vélez", "calificacion": 5, "comentario": "La casa es espectacular, el patio y la piscina son un lujo en pleno centro histórico." },
-    { "id": 16, "alojamientoId": 12, "usuario": "Felipe Arango", "calificacion": 5, "comentario": "Ubicación inmejorable, todo se recorre caminando." },
-    { "id": 17, "alojamientoId": 13, "usuario": "Mariana Gil", "calificacion": 5, "comentario": "Un loft con mucho estilo en el mejor barrio para salir de noche." },
-    { "id": 18, "alojamientoId": 13, "usuario": "Tomás Cortés", "calificacion": 4, "comentario": "Muy bonito y bien equipado, solo hay que tener paciencia con el ruido de la plaza los fines de semana." },
-    { "id": 19, "alojamientoId": 14, "usuario": "Natalia Osorio", "calificacion": 5, "comentario": "Barrio tranquilo, lleno de buenos restaurantes. El apartamento es amplio y cómodo." },
-    { "id": 20, "alojamientoId": 15, "usuario": "Julián Moreno", "calificacion": 4, "comentario": "Casa con mucho carácter en el centro histórico. Perfecta para recorrer los museos a pie." },
-    { "id": 21, "alojamientoId": 15, "usuario": "Paula Jiménez", "calificacion": 4, "comentario": "Bonita y bien ubicada; en las noches hace frío, así que se agradece la chimenea." },
-    { "id": 22, "alojamientoId": 16, "usuario": "Sofía Duarte", "calificacion": 5, "comentario": "La cabaña es muy acogedora y la vista desde el mirador es increíble." },
-    { "id": 23, "alojamientoId": 16, "usuario": "Nicolás Vargas", "calificacion": 5, "comentario": "Justo lo que buscábamos para descansar en el Eje Cafetero." },
-    { "id": 24, "alojamientoId": 17, "usuario": "Gabriela Peña", "calificacion": 5, "comentario": "Dormir a pocos metros del mar en un domo con cama king es inolvidable." },
-    { "id": 25, "alojamientoId": 17, "usuario": "Esteban Navarro", "calificacion": 4, "comentario": "Muy bonito y bien atendido. Recomiendo llevar repelente." },
-    { "id": 26, "alojamientoId": 18, "usuario": "Ricardo Beltrán", "calificacion": 4, "comentario": "Cabaña cómoda, muy cerca de todas las actividades de aventura." },
-    { "id": 27, "alojamientoId": 19, "usuario": "Lucía Barrios", "calificacion": 4, "comentario": "Apartamento moderno y con buen aire acondicionado, que en Barranquilla se agradece." },
-    { "id": 28, "alojamientoId": 19, "usuario": "Camilo Pardo", "calificacion": 5, "comentario": "Muy limpio y con excelente ubicación. La piscina del edificio es un plus." },
-    { "id": 29, "alojamientoId": 20, "usuario": "Diana Solís", "calificacion": 5, "comentario": "Justo frente al Parque México, con cafés increíbles a la vuelta. Un departamento hermoso." },
-    { "id": 30, "alojamientoId": 20, "usuario": "Rodrigo Fuentes", "calificacion": 4, "comentario": "Muy bien ubicado y silencioso a pesar de estar en la Condesa." },
-    { "id": 31, "alojamientoId": 21, "usuario": "Alejandra Mora", "calificacion": 5, "comentario": "La villa es un sueño, la piscina privada y el jardín tropical son perfectos." },
-    { "id": 32, "alojamientoId": 21, "usuario": "Emilio Castañeda", "calificacion": 5, "comentario": "Un lugar ideal para ir en familia; la playa queda a pocos minutos." },
-    { "id": 33, "alojamientoId": 22, "usuario": "Renata Aguilar", "calificacion": 5, "comentario": "La casa tiene un patio precioso y está a pasos del centro. El desayuno incluido fue delicioso." },
-    { "id": 34, "alojamientoId": 23, "usuario": "Martín Huamán", "calificacion": 4, "comentario": "Casa muy bonita en San Blas. Con la altura el primer día se siente, pero la vista lo compensa." },
-    { "id": 35, "alojamientoId": 23, "usuario": "Fernanda Cruz", "calificacion": 5, "comentario": "El barrio es mágico y la casa muy calientita en las noches." },
-    { "id": 36, "alojamientoId": 24, "usuario": "Patricia Salazar", "calificacion": 4, "comentario": "Apartamento moderno a dos cuadras del parque Kennedy. Muy seguro y práctico." },
-    { "id": 37, "alojamientoId": 25, "usuario": "Luciana Ferreyra", "calificacion": 5, "comentario": "Ubicación perfecta en Palermo Soho, con bares y restaurantes a pocos pasos." },
-    { "id": 38, "alojamientoId": 25, "usuario": "Bruno Acosta", "calificacion": 4, "comentario": "Cómodo y bien equipado. El balcón da a una calle muy animada." },
-    { "id": 39, "alojamientoId": 26, "usuario": "Agustina Paz", "calificacion": 5, "comentario": "Ver el lago desde el deck con la chimenea prendida fue lo mejor. Cabaña impecable." },
-    { "id": 40, "alojamientoId": 26, "usuario": "Joaquín Ledesma", "calificacion": 5, "comentario": "Muy cálida y con una vista increíble, volveríamos sin dudarlo." },
-    { "id": 41, "alojamientoId": 27, "usuario": "Florencia Rojas", "calificacion": 4, "comentario": "Ideal para conocer las bodegas y con todo cerca en el centro." },
-    { "id": 42, "alojamientoId": 28, "usuario": "Camilo Reyes", "calificacion": 5, "comentario": "Lastarria es un barrio encantador y el loft es moderno y muy cómodo." },
-    { "id": 43, "alojamientoId": 29, "usuario": "Javiera Muñoz", "calificacion": 5, "comentario": "La vista de los cerros de colores desde la terraza no tiene precio." },
-    { "id": 44, "alojamientoId": 29, "usuario": "Ignacio Soto", "calificacion": 4, "comentario": "Una casa muy linda con mucho encanto, aunque hay que subir varias escaleras." },
-    { "id": 45, "alojamientoId": 30, "usuario": "Andrea Paredes", "calificacion": 4, "comentario": "Casa muy bonita sobre La Ronda; se escucha algo de música los fines de semana." },
-    { "id": 46, "alojamientoId": 31, "usuario": "Marcela Rojas", "calificacion": 5, "comentario": "Vimos el volcán desde la terraza cada mañana. Las aguas termales quedan cerca." },
-    { "id": 47, "alojamientoId": 31, "usuario": "Kevin Salazar", "calificacion": 4, "comentario": "Cabaña rodeada de naturaleza, muy tranquila y bien equipada." },
-    { "id": 48, "alojamientoId": 32, "usuario": "Adriana Solano", "calificacion": 5, "comentario": "La villa es perfecta para grupos, con piscina y a pocos minutos de la playa." },
-    { "id": 49, "alojamientoId": 33, "usuario": "Raúl Espinosa", "calificacion": 4, "comentario": "El apartamento tiene un balcón precioso sobre el Casco Antiguo." },
-    { "id": 50, "alojamientoId": 33, "usuario": "Melissa Ortiz", "calificacion": 5, "comentario": "Ubicación ideal, se camina a todo. El aire acondicionado ayuda mucho con el calor." },
-    { "id": 51, "alojamientoId": 34, "usuario": "Thiago Almeida", "calificacion": 5, "comentario": "A pocas cuadras de la playa y con excelente feria artesanal los domingos." },
-    { "id": 52, "alojamientoId": 34, "usuario": "Carla Mendes", "calificacion": 4, "comentario": "Apartamento cómodo y limpio en una zona muy segura." },
-    { "id": 53, "alojamientoId": 35, "usuario": "Beatriz Souza", "calificacion": 4, "comentario": "Casa con mucho carácter en pleno Pelourinho, rodeada de música y color." },
-    { "id": 54, "alojamientoId": 36, "usuario": "Marta Vidal", "calificacion": 5, "comentario": "Se ve la Sagrada Familia desde la calle y el metro queda muy cerca." },
-    { "id": 55, "alojamientoId": 36, "usuario": "Pablo Serrano", "calificacion": 4, "comentario": "Apartamento cómodo y luminoso. Los balcones son un gran plus." },
-    { "id": 56, "alojamientoId": 37, "usuario": "Lorena Campos", "calificacion": 4, "comentario": "Malasaña en su máximo esplendor: bares, tiendas y mucha vida. Ojo con el ruido de noche." },
-    { "id": 57, "alojamientoId": 38, "usuario": "Inés Delgado", "calificacion": 5, "comentario": "La casa con patio es de película. Está a dos pasos de la Catedral." },
-    { "id": 58, "alojamientoId": 38, "usuario": "Álvaro Prieto", "calificacion": 5, "comentario": "Muy bien decorada y en el corazón de Santa Cruz." },
-    { "id": 59, "alojamientoId": 39, "usuario": "Sara Figueiredo", "calificacion": 5, "comentario": "La vista al río desde el apartamento es preciosa y Alfama está lleno de fado." },
-    { "id": 60, "alojamientoId": 40, "usuario": "Chiara Bianchi", "calificacion": 5, "comentario": "A cinco minutos de la Piazza Navona, con techos de madera hermosos." },
-    { "id": 61, "alojamientoId": 40, "usuario": "Lucas Pereira", "calificacion": 4, "comentario": "Apartamento acogedor en una ubicación inmejorable." },
-    { "id": 62, "alojamientoId": 41, "usuario": "Élodie Martin", "calificacion": 4, "comentario": "Un loft muy elegante en Le Marais, cerca de todo, aunque algo pequeño." },
-    { "id": 63, "alojamientoId": 42, "usuario": "Andrés Bermúdez", "calificacion": 4, "comentario": "Buen apartamento cerca del mar, con gimnasio y piscina en el edificio." },
-    { "id": 64, "alojamientoId": 43, "usuario": "Valeria Lozano", "calificacion": 4, "comentario": "Ubicación de ensueño junto a Washington Square Park. El espacio es reducido, pero muy bien aprovechado." },
-    { "id": 65, "alojamientoId": 43, "usuario": "Diego Salinas", "calificacion": 5, "comentario": "Un clásico apartamento neoyorquino, muy limpio y con excelente ubicación." }
+    {
+      "id": 1,
+      "alojamientoId": 1,
+      "usuario": "Laura Gómez",
+      "calificacion": 5,
+      "comentario": "Excelente ubicación y apartamento muy cómodo."
+    },
+    {
+      "id": 2,
+      "alojamientoId": 1,
+      "usuario": "Carlos Ruiz",
+      "calificacion": 4,
+      "comentario": "Muy buena experiencia."
+    },
+    {
+      "id": 3,
+      "alojamientoId": 2,
+      "usuario": "Andrea López",
+      "calificacion": 5,
+      "comentario": "La vista es excelente y la ubicación muy conveniente."
+    },
+    {
+      "id": 4,
+      "alojamientoId": 3,
+      "usuario": "Miguel Torres",
+      "calificacion": 5,
+      "comentario": "Excelente lugar para descansar."
+    },
+    {
+      "id": 5,
+      "alojamientoId": 4,
+      "usuario": "Natalia Pérez",
+      "calificacion": 4,
+      "comentario": "La casa es amplia y está muy bien ubicada."
+    },
+    {
+      "id": 6,
+      "alojamientoId": 7,
+      "usuario": "Valentina Ríos",
+      "calificacion": 5,
+      "comentario": "Desde el balcón se ve el mar y a dos cuadras está la playa. Muy cómodo para ir con niños."
+    },
+    {
+      "id": 7,
+      "alojamientoId": 7,
+      "usuario": "Jorge Medina",
+      "calificacion": 4,
+      "comentario": "Buen apartamento y muy bien ubicado, el aire acondicionado funciona perfecto."
+    },
+    {
+      "id": 8,
+      "alojamientoId": 8,
+      "usuario": "Camila Herrera",
+      "calificacion": 5,
+      "comentario": "Despertar entre cafetales fue lo mejor del viaje. La finca es hermosa y los anfitriones muy amables."
+    },
+    {
+      "id": 9,
+      "alojamientoId": 8,
+      "usuario": "Sebastián Ortega",
+      "calificacion": 5,
+      "comentario": "El recorrido por el cultivo de café estuvo genial y el Valle del Cocora queda muy cerca."
+    },
+    {
+      "id": 10,
+      "alojamientoId": 9,
+      "usuario": "Daniela Cárdenas",
+      "calificacion": 5,
+      "comentario": "Una casa preciosa, fresca y con un patio para tomar tinto en las tardes."
+    },
+    {
+      "id": 11,
+      "alojamientoId": 9,
+      "usuario": "Andrés Quintero",
+      "calificacion": 4,
+      "comentario": "Muy bien ubicada, a una cuadra del parque. Las noches son tranquilas."
+    },
+    {
+      "id": 12,
+      "alojamientoId": 10,
+      "usuario": "Laura Sánchez",
+      "calificacion": 4,
+      "comentario": "Apartamento limpio y luminoso, con cafés y restaurantes a la vuelta de la esquina."
+    },
+    {
+      "id": 13,
+      "alojamientoId": 11,
+      "usuario": "Mateo Ruiz",
+      "calificacion": 5,
+      "comentario": "A pasos del mar y con una terraza perfecta para ver el atardecer."
+    },
+    {
+      "id": 14,
+      "alojamientoId": 11,
+      "usuario": "Isabella Torres",
+      "calificacion": 4,
+      "comentario": "La casa es amplia y tiene todo lo necesario. Ideal para ir en grupo."
+    },
+    {
+      "id": 15,
+      "alojamientoId": 12,
+      "usuario": "Carolina Vélez",
+      "calificacion": 5,
+      "comentario": "La casa es espectacular, el patio y la piscina son un lujo en pleno centro histórico."
+    },
+    {
+      "id": 16,
+      "alojamientoId": 12,
+      "usuario": "Felipe Arango",
+      "calificacion": 5,
+      "comentario": "Ubicación inmejorable, todo se recorre caminando."
+    },
+    {
+      "id": 17,
+      "alojamientoId": 13,
+      "usuario": "Mariana Gil",
+      "calificacion": 5,
+      "comentario": "Un loft con mucho estilo en el mejor barrio para salir de noche."
+    },
+    {
+      "id": 18,
+      "alojamientoId": 13,
+      "usuario": "Tomás Cortés",
+      "calificacion": 4,
+      "comentario": "Muy bonito y bien equipado, solo hay que tener paciencia con el ruido de la plaza los fines de semana."
+    },
+    {
+      "id": 19,
+      "alojamientoId": 14,
+      "usuario": "Natalia Osorio",
+      "calificacion": 5,
+      "comentario": "Barrio tranquilo, lleno de buenos restaurantes. El apartamento es amplio y cómodo."
+    },
+    {
+      "id": 20,
+      "alojamientoId": 15,
+      "usuario": "Julián Moreno",
+      "calificacion": 4,
+      "comentario": "Casa con mucho carácter en el centro histórico. Perfecta para recorrer los museos a pie."
+    },
+    {
+      "id": 21,
+      "alojamientoId": 15,
+      "usuario": "Paula Jiménez",
+      "calificacion": 4,
+      "comentario": "Bonita y bien ubicada; en las noches hace frío, así que se agradece la chimenea."
+    },
+    {
+      "id": 22,
+      "alojamientoId": 16,
+      "usuario": "Sofía Duarte",
+      "calificacion": 5,
+      "comentario": "La cabaña es muy acogedora y la vista desde el mirador es increíble."
+    },
+    {
+      "id": 23,
+      "alojamientoId": 16,
+      "usuario": "Nicolás Vargas",
+      "calificacion": 5,
+      "comentario": "Justo lo que buscábamos para descansar en el Eje Cafetero."
+    },
+    {
+      "id": 24,
+      "alojamientoId": 17,
+      "usuario": "Gabriela Peña",
+      "calificacion": 5,
+      "comentario": "Dormir a pocos metros del mar en un domo con cama king es inolvidable."
+    },
+    {
+      "id": 25,
+      "alojamientoId": 17,
+      "usuario": "Esteban Navarro",
+      "calificacion": 4,
+      "comentario": "Muy bonito y bien atendido. Recomiendo llevar repelente."
+    },
+    {
+      "id": 26,
+      "alojamientoId": 18,
+      "usuario": "Ricardo Beltrán",
+      "calificacion": 4,
+      "comentario": "Cabaña cómoda, muy cerca de todas las actividades de aventura."
+    },
+    {
+      "id": 27,
+      "alojamientoId": 19,
+      "usuario": "Lucía Barrios",
+      "calificacion": 4,
+      "comentario": "Apartamento moderno y con buen aire acondicionado, que en Barranquilla se agradece."
+    },
+    {
+      "id": 28,
+      "alojamientoId": 19,
+      "usuario": "Camilo Pardo",
+      "calificacion": 5,
+      "comentario": "Muy limpio y con excelente ubicación. La piscina del edificio es un plus."
+    },
+    {
+      "id": 29,
+      "alojamientoId": 20,
+      "usuario": "Diana Solís",
+      "calificacion": 5,
+      "comentario": "Justo frente al Parque México, con cafés increíbles a la vuelta. Un departamento hermoso."
+    },
+    {
+      "id": 30,
+      "alojamientoId": 20,
+      "usuario": "Rodrigo Fuentes",
+      "calificacion": 4,
+      "comentario": "Muy bien ubicado y silencioso a pesar de estar en la Condesa."
+    },
+    {
+      "id": 31,
+      "alojamientoId": 21,
+      "usuario": "Alejandra Mora",
+      "calificacion": 5,
+      "comentario": "La villa es un sueño, la piscina privada y el jardín tropical son perfectos."
+    },
+    {
+      "id": 32,
+      "alojamientoId": 21,
+      "usuario": "Emilio Castañeda",
+      "calificacion": 5,
+      "comentario": "Un lugar ideal para ir en familia; la playa queda a pocos minutos."
+    },
+    {
+      "id": 33,
+      "alojamientoId": 22,
+      "usuario": "Renata Aguilar",
+      "calificacion": 5,
+      "comentario": "La casa tiene un patio precioso y está a pasos del centro. El desayuno incluido fue delicioso."
+    },
+    {
+      "id": 34,
+      "alojamientoId": 23,
+      "usuario": "Martín Huamán",
+      "calificacion": 4,
+      "comentario": "Casa muy bonita en San Blas. Con la altura el primer día se siente, pero la vista lo compensa."
+    },
+    {
+      "id": 35,
+      "alojamientoId": 23,
+      "usuario": "Fernanda Cruz",
+      "calificacion": 5,
+      "comentario": "El barrio es mágico y la casa muy calientita en las noches."
+    },
+    {
+      "id": 36,
+      "alojamientoId": 24,
+      "usuario": "Patricia Salazar",
+      "calificacion": 4,
+      "comentario": "Apartamento moderno a dos cuadras del parque Kennedy. Muy seguro y práctico."
+    },
+    {
+      "id": 37,
+      "alojamientoId": 25,
+      "usuario": "Luciana Ferreyra",
+      "calificacion": 5,
+      "comentario": "Ubicación perfecta en Palermo Soho, con bares y restaurantes a pocos pasos."
+    },
+    {
+      "id": 38,
+      "alojamientoId": 25,
+      "usuario": "Bruno Acosta",
+      "calificacion": 4,
+      "comentario": "Cómodo y bien equipado. El balcón da a una calle muy animada."
+    },
+    {
+      "id": 39,
+      "alojamientoId": 26,
+      "usuario": "Agustina Paz",
+      "calificacion": 5,
+      "comentario": "Ver el lago desde el deck con la chimenea prendida fue lo mejor. Cabaña impecable."
+    },
+    {
+      "id": 40,
+      "alojamientoId": 26,
+      "usuario": "Joaquín Ledesma",
+      "calificacion": 5,
+      "comentario": "Muy cálida y con una vista increíble, volveríamos sin dudarlo."
+    },
+    {
+      "id": 41,
+      "alojamientoId": 27,
+      "usuario": "Florencia Rojas",
+      "calificacion": 4,
+      "comentario": "Ideal para conocer las bodegas y con todo cerca en el centro."
+    },
+    {
+      "id": 42,
+      "alojamientoId": 28,
+      "usuario": "Camilo Reyes",
+      "calificacion": 5,
+      "comentario": "Lastarria es un barrio encantador y el loft es moderno y muy cómodo."
+    },
+    {
+      "id": 43,
+      "alojamientoId": 29,
+      "usuario": "Javiera Muñoz",
+      "calificacion": 5,
+      "comentario": "La vista de los cerros de colores desde la terraza no tiene precio."
+    },
+    {
+      "id": 44,
+      "alojamientoId": 29,
+      "usuario": "Ignacio Soto",
+      "calificacion": 4,
+      "comentario": "Una casa muy linda con mucho encanto, aunque hay que subir varias escaleras."
+    },
+    {
+      "id": 45,
+      "alojamientoId": 30,
+      "usuario": "Andrea Paredes",
+      "calificacion": 4,
+      "comentario": "Casa muy bonita sobre La Ronda; se escucha algo de música los fines de semana."
+    },
+    {
+      "id": 46,
+      "alojamientoId": 31,
+      "usuario": "Marcela Rojas",
+      "calificacion": 5,
+      "comentario": "Vimos el volcán desde la terraza cada mañana. Las aguas termales quedan cerca."
+    },
+    {
+      "id": 47,
+      "alojamientoId": 31,
+      "usuario": "Kevin Salazar",
+      "calificacion": 4,
+      "comentario": "Cabaña rodeada de naturaleza, muy tranquila y bien equipada."
+    },
+    {
+      "id": 48,
+      "alojamientoId": 32,
+      "usuario": "Adriana Solano",
+      "calificacion": 5,
+      "comentario": "La villa es perfecta para grupos, con piscina y a pocos minutos de la playa."
+    },
+    {
+      "id": 49,
+      "alojamientoId": 33,
+      "usuario": "Raúl Espinosa",
+      "calificacion": 4,
+      "comentario": "El apartamento tiene un balcón precioso sobre el Casco Antiguo."
+    },
+    {
+      "id": 50,
+      "alojamientoId": 33,
+      "usuario": "Melissa Ortiz",
+      "calificacion": 5,
+      "comentario": "Ubicación ideal, se camina a todo. El aire acondicionado ayuda mucho con el calor."
+    },
+    {
+      "id": 51,
+      "alojamientoId": 34,
+      "usuario": "Thiago Almeida",
+      "calificacion": 5,
+      "comentario": "A pocas cuadras de la playa y con excelente feria artesanal los domingos."
+    },
+    {
+      "id": 52,
+      "alojamientoId": 34,
+      "usuario": "Carla Mendes",
+      "calificacion": 4,
+      "comentario": "Apartamento cómodo y limpio en una zona muy segura."
+    },
+    {
+      "id": 53,
+      "alojamientoId": 35,
+      "usuario": "Beatriz Souza",
+      "calificacion": 4,
+      "comentario": "Casa con mucho carácter en pleno Pelourinho, rodeada de música y color."
+    },
+    {
+      "id": 54,
+      "alojamientoId": 36,
+      "usuario": "Marta Vidal",
+      "calificacion": 5,
+      "comentario": "Se ve la Sagrada Familia desde la calle y el metro queda muy cerca."
+    },
+    {
+      "id": 55,
+      "alojamientoId": 36,
+      "usuario": "Pablo Serrano",
+      "calificacion": 4,
+      "comentario": "Apartamento cómodo y luminoso. Los balcones son un gran plus."
+    },
+    {
+      "id": 56,
+      "alojamientoId": 37,
+      "usuario": "Lorena Campos",
+      "calificacion": 4,
+      "comentario": "Malasaña en su máximo esplendor: bares, tiendas y mucha vida. Ojo con el ruido de noche."
+    },
+    {
+      "id": 57,
+      "alojamientoId": 38,
+      "usuario": "Inés Delgado",
+      "calificacion": 5,
+      "comentario": "La casa con patio es de película. Está a dos pasos de la Catedral."
+    },
+    {
+      "id": 58,
+      "alojamientoId": 38,
+      "usuario": "Álvaro Prieto",
+      "calificacion": 5,
+      "comentario": "Muy bien decorada y en el corazón de Santa Cruz."
+    },
+    {
+      "id": 59,
+      "alojamientoId": 39,
+      "usuario": "Sara Figueiredo",
+      "calificacion": 5,
+      "comentario": "La vista al río desde el apartamento es preciosa y Alfama está lleno de fado."
+    },
+    {
+      "id": 60,
+      "alojamientoId": 40,
+      "usuario": "Chiara Bianchi",
+      "calificacion": 5,
+      "comentario": "A cinco minutos de la Piazza Navona, con techos de madera hermosos."
+    },
+    {
+      "id": 61,
+      "alojamientoId": 40,
+      "usuario": "Lucas Pereira",
+      "calificacion": 4,
+      "comentario": "Apartamento acogedor en una ubicación inmejorable."
+    },
+    {
+      "id": 62,
+      "alojamientoId": 41,
+      "usuario": "Élodie Martin",
+      "calificacion": 4,
+      "comentario": "Un loft muy elegante en Le Marais, cerca de todo, aunque algo pequeño."
+    },
+    {
+      "id": 63,
+      "alojamientoId": 42,
+      "usuario": "Andrés Bermúdez",
+      "calificacion": 4,
+      "comentario": "Buen apartamento cerca del mar, con gimnasio y piscina en el edificio."
+    },
+    {
+      "id": 64,
+      "alojamientoId": 43,
+      "usuario": "Valeria Lozano",
+      "calificacion": 4,
+      "comentario": "Ubicación de ensueño junto a Washington Square Park. El espacio es reducido, pero muy bien aprovechado."
+    },
+    {
+      "id": 65,
+      "alojamientoId": 43,
+      "usuario": "Diego Salinas",
+      "calificacion": 5,
+      "comentario": "Un clásico apartamento neoyorquino, muy limpio y con excelente ubicación."
+    },
+    {
+      "id": 66,
+      "alojamientoId": 44,
+      "usuario": "Laura Rincon",
+      "calificacion": 5,
+      "comentario": "Muy bonitas vistas y buen sector"
+    },
+    {
+      "id": 67,
+      "alojamientoId": 45,
+      "usuario": "Santiago Mejía",
+      "calificacion": 4,
+      "comentario": "Apartamento muy pequeño pero buena ubicación"
+    },
+    {
+      "id": 68,
+      "alojamientoId": 46,
+      "usuario": "Mónica Herrera",
+      "calificacion": 5,
+      "comentario": "Sector muy colonial y muy bonito"
+    },
+    {
+      "id": 69,
+      "alojamientoId": 47,
+      "usuario": "Óscar Valencia",
+      "calificacion": 3,
+      "comentario": "Agua sucia de la piscina pero buenas vistas"
+    },
+    {
+      "id": 70,
+      "alojamientoId": 48,
+      "usuario": "Yesid Gaitán",
+      "calificacion": 1,
+      "comentario": "La vista a la montaña muy mala pero al menos tenia cerca la basílica"
+    },
+    {
+      "id": 71,
+      "alojamientoId": 49,
+      "usuario": "Sandra Zapata",
+      "calificacion": 2,
+      "comentario": "Buen apartamento, pero la ciudad es demasiada fea"
+    },
+    {
+      "id": 72,
+      "alojamientoId": 50,
+      "usuario": "Hernán Calle",
+      "calificacion": 5,
+      "comentario": "Muy bonita casa"
+    },
+    {
+      "id": 73,
+      "alojamientoId": 51,
+      "usuario": "Paola Rincón",
+      "calificacion": 4,
+      "comentario": "Clima muy feo, pero bonita casa"
+    },
+    {
+      "id": 74,
+      "alojamientoId": 52,
+      "usuario": "Gustavo Uribe",
+      "calificacion": 5,
+      "comentario": "Muy bonito sector y bonita casa"
+    },
+    {
+      "id": 75,
+      "alojamientoId": 53,
+      "usuario": "Yuliana Montes",
+      "calificacion": 5,
+      "comentario": "Los termales y las caminatas por la selva fueron un plus. Nos cocinaron pescado fresco todos los días."
+    },
+    {
+      "id": 76,
+      "alojamientoId": 54,
+      "usuario": "Karen Bolaños",
+      "calificacion": 5,
+      "comentario": "Alquilamos una moto para recorrer la isla y el bungalow fue la base perfecta. Los atardeceres son increíbles."
+    },
+    {
+      "id": 77,
+      "alojamientoId": 55,
+      "usuario": "Rafael Escobar",
+      "calificacion": 5,
+      "comentario": "Cruzar a Tabatinga y navegar por el río fue inolvidable. La cabaña está muy bien protegida contra los mosquitos."
+    },
+    {
+      "id": 78,
+      "alojamientoId": 56,
+      "usuario": "Juliana Mosquera",
+      "calificacion": 5,
+      "comentario": "Ubicación perfecta y la piscina del edificio es genial. En las noches se escucha algo de música de los bares."
+    },
+    {
+      "id": 79,
+      "alojamientoId": 57,
+      "usuario": "Daniel Ocampo",
+      "calificacion": 5,
+      "comentario": "Fuimos 11 personas y cabíamos de sobra. La piscina es enorme y el calor de la zona se disfruta."
+    },
+    {
+      "id": 80,
+      "alojamientoId": 58,
+      "usuario": "Estefanía Pineda",
+      "calificacion": 5,
+      "comentario": "Casa cómoda y calientita gracias a la chimenea. Los termales quedan a pocos minutos."
+    },
+    {
+      "id": 81,
+      "alojamientoId": 59,
+      "usuario": "Mauricio Páez",
+      "calificacion": 5,
+      "comentario": "Ideal para dos personas, con todo a la mano. Un poco ruidoso los viernes por la noche."
+    },
+    {
+      "id": 82,
+      "alojamientoId": 60,
+      "usuario": "Lorena Cano",
+      "calificacion": 5,
+      "comentario": "Apartamento espacioso, con vista al mar y piscina. Perfecto para ir con la familia."
+    },
+    {
+      "id": 83,
+      "alojamientoId": 61,
+      "usuario": "Manuela Restrepo",
+      "calificacion": 5,
+      "comentario": "Playa Blanca de día es hermosa y de noche el cielo se llena de estrellas. Hay que llevar repelente."
+    },
+    {
+      "id": 84,
+      "alojamientoId": 62,
+      "usuario": "Fabián Gallego",
+      "calificacion": 5,
+      "comentario": "El jacuzzi con vista a las montañas fue lo mejor. Estar en medio de la naturaleza pero con toda la comodidad."
+    },
+    {
+      "id": 85,
+      "alojamientoId": 63,
+      "usuario": "Tatiana Mendoza",
+      "calificacion": 5,
+      "comentario": "A pocos pasos de los mejores restaurantes del barrio, con terraza fresca y aire en las habitaciones."
+    },
+    {
+      "id": 86,
+      "alojamientoId": 64,
+      "usuario": "Nicolás Barrios",
+      "calificacion": 5,
+      "comentario": "Departamento céntrico con un balcón muy agradable. Probamos los mejores tacos de la zona a la vuelta."
+    },
+    {
+      "id": 87,
+      "alojamientoId": 65,
+      "usuario": "Alexandra Ríos",
+      "calificacion": 5,
+      "comentario": "La terraza al atardecer, con la Parroquia iluminada, es de postal. Todo muy cuidado."
+    },
+    {
+      "id": 88,
+      "alojamientoId": 66,
+      "usuario": "Simón Naranjo",
+      "calificacion": 5,
+      "comentario": "La piscina y el gimnasio son muy buenos, y la playa queda a unos minutos caminando."
+    },
+    {
+      "id": 89,
+      "alojamientoId": 67,
+      "usuario": "Ximena Ortega",
+      "calificacion": 5,
+      "comentario": "Casa hermosa y fresca por dentro. Recomiendo usar el aire acondicionado en las horas de más calor."
+    },
+    {
+      "id": 90,
+      "alojamientoId": 68,
+      "usuario": "Verónica Salgado",
+      "calificacion": 5,
+      "comentario": "Las calles del centro y el callejón son preciosos. Hay muchas escaleras, pero vale la pena."
+    },
+    {
+      "id": 91,
+      "alojamientoId": 69,
+      "usuario": "Hugo Villarreal",
+      "calificacion": 5,
+      "comentario": "Vista espectacular y alberca privada. El acceso es en subida, así que conviene llevar auto."
+    },
+    {
+      "id": 92,
+      "alojamientoId": 70,
+      "usuario": "Cristina Estrada",
+      "calificacion": 5,
+      "comentario": "El volcán Misti desde la ventana al amanecer es impresionante. Ubicación inmejorable para caminar por la ciudad."
+    },
+    {
+      "id": 93,
+      "alojamientoId": 71,
+      "usuario": "Isaac Cervantes",
+      "calificacion": 5,
+      "comentario": "Pequeña pero muy acogedora. El sonido del río de noche es relajante y el desayuno estuvo muy bien."
+    },
+    {
+      "id": 94,
+      "alojamientoId": 72,
+      "usuario": "Regina Palacios",
+      "calificacion": 5,
+      "comentario": "Excelente para ir en familia. La piscina y el BBQ nos facilitaron todo después del tour a las Ballestas."
+    },
+    {
+      "id": 95,
+      "alojamientoId": 73,
+      "usuario": "Rosario Quispe",
+      "calificacion": 5,
+      "comentario": "La vista al canal Beagle desde la ventana no se olvida. La calefacción funcionó impecable."
+    },
+    {
+      "id": 96,
+      "alojamientoId": 74,
+      "usuario": "Matías Lagos",
+      "calificacion": 5,
+      "comentario": "Casa amplia con un patio muy lindo. Buena base para excursiones a Cafayate y Cachi."
+    },
+    {
+      "id": 97,
+      "alojamientoId": 75,
+      "usuario": "Francisca Araya",
+      "calificacion": 5,
+      "comentario": "Muy bien ubicado en Nueva Córdoba y a buen precio. Algo ruidoso los fines de semana por los bares."
+    },
+    {
+      "id": 98,
+      "alojamientoId": 76,
+      "usuario": "Cristóbal Vega",
+      "calificacion": 5,
+      "comentario": "Con el volcán de fondo y la tina caliente, perfecta para descansar después de una excursión."
+    },
+    {
+      "id": 99,
+      "alojamientoId": 77,
+      "usuario": "Paula Andrade",
+      "calificacion": 5,
+      "comentario": "Las noches de estrellas son increíbles. La casa es fresca de día y calientita de noche."
+    },
+    {
+      "id": 100,
+      "alojamientoId": 78,
+      "usuario": "Federico Silva",
+      "calificacion": 5,
+      "comentario": "Apartamento limpio en pleno centro, a pasos de la catedral. Se camina a todo."
+    },
+    {
+      "id": 101,
+      "alojamientoId": 79,
+      "usuario": "Melany Brenes",
+      "calificacion": 5,
+      "comentario": "Terraza muy agradable y termas cerca. Buena base para hacer canopy y salir en bicicleta."
+    },
+    {
+      "id": 102,
+      "alojamientoId": 80,
+      "usuario": "Esteban Chaves",
+      "calificacion": 5,
+      "comentario": "Cómoda, con buen aire acondicionado y a poca distancia de la playa y del muelle."
+    },
+    {
+      "id": 103,
+      "alojamientoId": 81,
+      "usuario": "Natasha Rivera",
+      "calificacion": 5,
+      "comentario": "Cómodo y con vista a la ciudad. Con la altura conviene aclimatarse el primer día."
+    },
+    {
+      "id": 104,
+      "alojamientoId": 82,
+      "usuario": "Gabriel Moura",
+      "calificacion": 5,
+      "comentario": "Muy bien ubicado cerca de la Rambla, donde caminamos todas las tardes."
+    },
+    {
+      "id": 105,
+      "alojamientoId": 83,
+      "usuario": "Juliana Costa",
+      "calificacion": 5,
+      "comentario": "Casa encantadora en el barrio histórico. Usamos las bicicletas del alojamiento para recorrer todo."
+    },
+    {
+      "id": 106,
+      "alojamientoId": 84,
+      "usuario": "Elena Navarro",
+      "calificacion": 5,
+      "comentario": "La villa tiene un jardín enorme y una piscina muy cuidada. Ideal para ir en grupo."
+    },
+    {
+      "id": 107,
+      "alojamientoId": 85,
+      "usuario": "Rocío Montes",
+      "calificacion": 5,
+      "comentario": "Escuchar a los pájaros desde la terraza al despertar fue lo mejor del viaje."
+    },
+    {
+      "id": 108,
+      "alojamientoId": 86,
+      "usuario": "Tiago Ferreira",
+      "calificacion": 5,
+      "comentario": "Villa con jardín tropical y una piscina muy cómoda. A la playa se llega en pocos minutos."
+    },
+    {
+      "id": 109,
+      "alojamientoId": 87,
+      "usuario": "Giulia Romano",
+      "calificacion": 5,
+      "comentario": "Nadar desde el bungalow y usar los kayaks fue divertidísimo. Hay que tener paciencia con el Wi-Fi."
+    },
+    {
+      "id": 110,
+      "alojamientoId": 88,
+      "usuario": "Katerina Papas",
+      "calificacion": 5,
+      "comentario": "Muy bien ubicado sobre la Paulista, cerca del metro. Apartamento limpio y práctico."
+    },
+    {
+      "id": 111,
+      "alojamientoId": 89,
+      "usuario": "Haruka Tanaka",
+      "calificacion": 5,
+      "comentario": "Casa grande con jardín y parrilla, ideal para pasar el fin de semana cerca de la playa."
+    },
+    {
+      "id": 112,
+      "alojamientoId": 90,
+      "usuario": "Marcos Peña",
+      "calificacion": 5,
+      "comentario": "Despertar en el centro histórico y caminar por las calles empedradas temprano fue un lujo."
+    },
+    {
+      "id": 113,
+      "alojamientoId": 91,
+      "usuario": "Jimena Ibarra",
+      "calificacion": 5,
+      "comentario": "Piscina y acceso a la playa en el mismo complejo. Perfecto para ir con los niños."
+    },
+    {
+      "id": 114,
+      "alojamientoId": 92,
+      "usuario": "Federico Duarte",
+      "calificacion": 5,
+      "comentario": "Apartamento luminoso, muy cerca de la Ciudad de las Artes. Se llega en bici al centro."
+    },
+    {
+      "id": 115,
+      "alojamientoId": 93,
+      "usuario": "Camille Dubois",
+      "calificacion": 5,
+      "comentario": "Las vistas a la Alhambra desde la terraza son brutales. Las cuestas del Albaicín cansan, pero valen la pena."
+    },
+    {
+      "id": 116,
+      "alojamientoId": 94,
+      "usuario": "Anouk Visser",
+      "calificacion": 5,
+      "comentario": "Frente al Guggenheim y con buenos pintxos en la calle de abajo. Muy cómodo."
+    },
+    {
+      "id": 117,
+      "alojamientoId": 95,
+      "usuario": "Alirio Mccornick",
+      "calificacion": 5,
+      "comentario": "La Ribeira de noche es mágica. El apartamento está perfectamente ubicado para recorrer a pie."
+    },
+    {
+      "id": 118,
+      "alojamientoId": 96,
+      "usuario": "Anna Ariza",
+      "calificacion": 5,
+      "comentario": "Techos con vigas, cerca de los Uffizi y de todo el centro. Muy bien cuidado."
+    },
+    {
+      "id": 119,
+      "alojamientoId": 97,
+      "usuario": "Carol Portela",
+      "calificacion": 5,
+      "comentario": "Vista preciosa al canal. Es pequeño, pero muy práctico para dos o tres personas."
+    },
+    {
+      "id": 120,
+      "alojamientoId": 98,
+      "usuario": "Laura Saganome",
+      "calificacion": 5,
+      "comentario": "Una de las mejores vistas del viaje. La piscina privada con la caldera de fondo es de otro mundo."
+    },
+    {
+      "id": 121,
+      "alojamientoId": 99,
+      "usuario": "Camila Rojas",
+      "calificacion": 5,
+      "comentario": "Ubicación espectacular junto al canal. Las bicicletas incluidas fueron una gran idea."
+    },
+    {
+      "id": 122,
+      "alojamientoId": 100,
+      "usuario": "Andrey Rodriguez",
+      "calificacion": 5,
+      "comentario": "Una experiencia auténtica. Dormir en futón y caminar por Gion al amanecer es algo que recomiendo."
+    },
+    {
+      "id": 123,
+      "alojamientoId": 101,
+      "usuario": "Diego Fernando Montoya Montoya",
+      "calificacion": 4,
+      "comentario": "Buena casa y muy bien ubicado, el aire acondicionado funciona perfecto, ademas yo nací allá entonces recorde mi infancia."
+    }
   ]
 }
