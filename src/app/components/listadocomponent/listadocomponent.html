@@ -6,6 +6,7 @@
   <div class="row g-4">
     <aside class="col-12 col-lg-3">
       <app-filtrospanelcomponent
+        [paises]="paises()"
         [ciudades]="ciudades()"
         [tipos]="tipos()"
         (filtrosCambiados)="aplicarFiltros($event)"
@@ -21,29 +22,51 @@
       </div>
 
       <div *ngIf="!cargando() && alojamientos().length > 0">
-        <p class="text-secondary small mb-3">{{ alojamientos().length }} alojamientos encontrados</p>
+        <p class="text-secondary small mb-3">
+          {{ alojamientos().length }} alojamientos encontrados
+          <span *ngIf="totalPaginas() > 1"> · página {{ paginaActual() }} de {{ totalPaginas() }}</span>
+        </p>
         <div class="row g-4">
-          <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of alojamientos()">
+          <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of alojamientosDePagina()">
             <div class="card h-100 card-alojamiento animate__animated animate__fadeIn">
               <div class="position-relative">
                 <img
                   [src]="alojamiento.imagenPrincipal"
+                  loading="lazy"
                   (error)="onImgError($event, alojamiento.id)"
                   class="card-img-top card-alojamiento__img"
                   [alt]="alojamiento.nombre"
                 />
                 <span class="badge text-bg-dark position-absolute top-0 end-0 m-2">
-                  <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion }}
+                  <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion || 'Nuevo' }}
                 </span>
+                <button
+                  type="button"
+                  class="btn btn-sm btn-dark position-absolute top-0 start-0 m-2"
+                  style="z-index: 2;"
+                  [class.text-danger]="esFavorito(alojamiento.id)"
+                  (click)="alternarFavorito(alojamiento.id, $event)"
+                  [attr.aria-label]="esFavorito(alojamiento.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+                >
+                  <i class="fa-solid fa-heart"></i>
+                </button>
               </div>
               <div class="card-body d-flex flex-column">
                 <h3 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h3>
                 <p class="text-secondary small mb-2">
-                  <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }} · {{ alojamiento.tipo }}
+                  <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }}, {{ alojamiento.pais }} · {{ alojamiento.tipo }}
                 </p>
                 <p class="small mb-2">
                   <i class="fa-solid fa-user-group me-1"></i>Capacidad: {{ alojamiento.capacidad }} huéspedes
                 </p>
+                <div class="d-flex flex-wrap gap-1 mb-2">
+                  <span class="badge text-bg-dark small" *ngFor="let servicio of alojamiento.servicios.slice(0, 3)">
+                    {{ servicio }}
+                  </span>
+                  <span class="badge text-bg-secondary small" *ngIf="alojamiento.servicios.length > 3">
+                    +{{ alojamiento.servicios.length - 3 }}
+                  </span>
+                </div>
                 <div class="mt-auto d-flex justify-content-between align-items-center">
                   <span class="fw-bold">
                     {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
@@ -57,6 +80,24 @@
             </div>
           </div>
         </div>
+
+        <nav class="mt-4" aria-label="Páginas del listado" *ngIf="totalPaginas() > 1">
+          <ul class="pagination pagination-sm justify-content-center flex-wrap mb-0">
+            <li class="page-item" [class.disabled]="paginaActual() === 1">
+              <button type="button" class="page-link" (click)="irAPagina(paginaActual() - 1)" aria-label="Página anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+            </li>
+            <li class="page-item" *ngFor="let pagina of paginas()" [class.active]="pagina === paginaActual()">
+              <button type="button" class="page-link" (click)="irAPagina(pagina)">{{ pagina }}</button>
+            </li>
+            <li class="page-item" [class.disabled]="paginaActual() === totalPaginas()">
+              <button type="button" class="page-link" (click)="irAPagina(paginaActual() + 1)" aria-label="Página siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>

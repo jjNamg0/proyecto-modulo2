@@ -12,10 +12,14 @@ import { Listadocomponent } from './components/listadocomponent/listadocomponent
 import { Filtrospanelcomponent } from './components/filtrospanelcomponent/filtrospanelcomponent';
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
 import { Cotizadorcomponent } from './components/cotizadorcomponent/cotizadorcomponent';
-import { Reservacomponent } from './components/reservacomponent/reservacomponent';
+import { Pagocomponent } from './components/pagocomponent/pagocomponent';
 import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
+import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
+import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
+import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
+import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
 
 @NgModule({
   declarations: [
@@ -27,17 +31,14 @@ import { Registrocomponent } from './components/registrocomponent/registrocompon
     Filtrospanelcomponent,
     Detallecomponent,
     Cotizadorcomponent,
-    Reservacomponent,
+    Pagocomponent,
     Misreservascomponent,
     Logincomponent,
     Registrocomponent,
-<<<<<<< Updated upstream
-=======
     Favoritoscomponent,
     Notfoundcomponent,
     Resenaformcomponent,
-
->>>>>>> Stashed changes
+    Publicarcomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

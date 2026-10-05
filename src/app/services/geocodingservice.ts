@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, map, catchError, of } from 'rxjs';
 
 export interface Coordenadas {
@@ -16,16 +16,21 @@ interface ResultadoGeocode {
   providedIn: 'root',
 })
 export class Geocodingservice {
-  private apiKey = '6a985c659026e977256665fgk8cfe67';
+  private cliente: HttpClient = inject(HttpClient);
+  private readonly URL_BASE: string = 'https://geocode.maps.co';
+  private readonly API_KEY: string = '6a985c659026e977256665fgk8cfe67';
 
-  constructor(private http: HttpClient) {}
+  buscarDireccion(direccion: string): Observable<HttpResponse<ResultadoGeocode[]>> {
+    return this.cliente.get<ResultadoGeocode[]>(
+      `${this.URL_BASE}/search?q=${encodeURIComponent(direccion)}&api_key=${this.API_KEY}`,
+      { observe: 'response' },
+    );
+  }
 
-  // si la api falla el detalle simplemente no muestra el link del mapa
   obtenerCoordenadas(direccion: string): Observable<Coordenadas | null> {
-    const url = `https://geocode.maps.co/search?q=${encodeURIComponent(direccion)}&api_key=${this.apiKey}`;
-
-    return this.http.get<ResultadoGeocode[]>(url).pipe(
-      map((resultados) => {
+    return this.buscarDireccion(direccion).pipe(
+      map((respuesta) => {
+        const resultados = respuesta.body;
         if (!resultados || resultados.length === 0) {
           return null;
         }

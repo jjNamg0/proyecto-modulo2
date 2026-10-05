@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { Homecomponent } from './components/homecomponent/homecomponent';
 import { Listadocomponent } from './components/listadocomponent/listadocomponent';
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
 import { Misreservascomponent } from './components/misreservascomponent/misreservascomponent';
 import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
-<<<<<<< Updated upstream
-=======
 import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
 import { Asistenteiacomponent } from './components/asistenteiacomponent/asistenteiacomponent';
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
->>>>>>> Stashed changes
+import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
 
 const routes: Routes = [
   {
@@ -44,8 +43,6 @@ const routes: Routes = [
     component: Registrocomponent,
     title: 'Nocturna Stays — Crear cuenta',
   },
-<<<<<<< Updated upstream
-=======
   {
     path: 'favoritos',
     component: Favoritoscomponent,
@@ -57,12 +54,15 @@ const routes: Routes = [
     title: 'Nocturna Stays — Asistente IA',
   },
   {
+    path: 'publicar',
+    component: Publicarcomponent,
+    title: 'Nocturna Stays — Publicar alojamiento',
+  },
+  {
     path: '**',
     component: Notfoundcomponent,
     title: 'Nocturna Stays — Página no encontrada',
   },
-
->>>>>>> Stashed changes
 ];
 
 @NgModule({

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Alojamiento } from '../../services/alojamientosservice';
+import { Reservasservice, RangoFechas } from '../../services/reservasservice';
+import { Exchangerateservice, Moneda } from '../../services/exchangerateservice';
 
-// esto lo consume tambien el reservacomponent, x eso lleva las fechas y huespedes completos
 export interface Cotizacion {
   fechaInicio: string;
   fechaFin: string;
@@ -23,8 +24,7 @@ export class Cotizadorcomponent implements OnChanges {
   @Input() alojamiento!: Alojamiento;
   @Output() cotizacionLista = new EventEmitter<Cotizacion | null>();
 
-  // pa no dejar elegir fechas pasadas desde el input mismo
-  fechaMinima = new Date().toISOString().split('T')[0];
+  fechaMinima = this.obtenerFechaLocalHoy();
 
   fechaInicio = '';
   fechaFin = '';
@@ -34,15 +34,41 @@ export class Cotizadorcomponent implements OnChanges {
   errorFechas = '';
   errorCapacidad = '';
 
+  constructor(
+    private reservasService: Reservasservice,
+    private exchangeRateService: Exchangerateservice,
+  ) {}
+
+  convertir(valorEnCop: number): number {
+    return this.exchangeRateService.convertir(valorEnCop);
+  }
+
+  monedaActiva(): Moneda {
+    return this.exchangeRateService.monedaActiva();
+  }
+
+  formatoDecimales(): string {
+    return this.exchangeRateService.formatoDecimales();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['alojamiento']) {
-      this.fechaInicio = '';
-      this.fechaFin = '';
-      this.huespedes = 1;
-      this.errorFechas = '';
-      this.errorCapacidad = '';
-      this.actualizarCotizacion(null);
+    const cambio = changes['alojamiento'];
+    if (cambio && cambio.previousValue?.id !== cambio.currentValue?.id) {
+      this.reiniciar();
     }
+  }
+
+  fechasOcupadas(): RangoFechas[] {
+    return this.reservasService.obtenerFechasOcupadas(this.alojamiento.id);
+  }
+
+  reiniciar(): void {
+    this.fechaInicio = '';
+    this.fechaFin = '';
+    this.huespedes = 1;
+    this.errorFechas = '';
+    this.errorCapacidad = '';
+    this.actualizarCotizacion(null);
   }
 
   calcular(): void {
@@ -66,6 +92,12 @@ export class Cotizadorcomponent implements OnChanges {
 
     if (noches <= 0) {
       this.errorFechas = 'La fecha de salida debe ser posterior a la de entrada.';
+      this.actualizarCotizacion(null);
+      return;
+    }
+
+    if (!this.reservasService.estaDisponible(this.alojamiento.id, this.fechaInicio, this.fechaFin)) {
+      this.errorFechas = 'Este alojamiento ya está reservado en esas fechas.';
       this.actualizarCotizacion(null);
       return;
     }
@@ -101,5 +133,13 @@ export class Cotizadorcomponent implements OnChanges {
   private actualizarCotizacion(cotizacion: Cotizacion | null): void {
     this.cotizacion = cotizacion;
     this.cotizacionLista.emit(cotizacion);
+  }
+
+  private obtenerFechaLocalHoy(): string {
+    const hoy = new Date();
+    const anio = hoy.getFullYear();
+    const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dia = String(hoy.getDate()).padStart(2, '0');
+    return `${anio}-${mes}-${dia}`;
   }
 }

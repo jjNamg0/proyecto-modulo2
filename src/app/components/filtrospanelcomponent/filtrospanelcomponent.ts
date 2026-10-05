@@ -8,6 +8,7 @@ import { Filtros, FILTROS_VACIOS } from '../../services/alojamientosservice';
   templateUrl: './filtrospanelcomponent.html',
 })
 export class Filtrospanelcomponent {
+  @Input() paises: string[] = [];
   @Input() ciudades: string[] = [];
   @Input() tipos: string[] = [];
   @Output() filtrosCambiados = new EventEmitter<Filtros>();
@@ -16,6 +17,11 @@ export class Filtrospanelcomponent {
 
   emitirCambio(): void {
     this.filtrosCambiados.emit({ ...this.filtros });
+  }
+
+  cambiarPais(): void {
+    this.filtros.ciudad = '';
+    this.emitirCambio();
   }
 
   limpiarFiltros(): void {

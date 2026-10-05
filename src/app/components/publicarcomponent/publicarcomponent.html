@@ -1,0 +1,174 @@
+<section class="container py-4">
+  <h1 class="h4 text-white mb-4">
+    <i class="fa-solid fa-house-circle-check me-2"></i>Publica tu alojamiento
+  </h1>
+
+  <div *ngIf="usuarioActual() as usuario; else invitado">
+    <p class="text-secondary small mb-4">
+      Publicando como {{ usuario.nombre }}. Tu alojamiento aparecerá en el listado y en las búsquedas apenas lo publiques.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-7">
+        <div class="publicar-panel p-3 mb-4">
+          <h2 class="h6 text-white mb-3">
+            <i class="fa-solid fa-circle-info me-2"></i>Información general
+          </h2>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="nombrePublicar">Nombre del alojamiento</label>
+            <input id="nombrePublicar" type="text" class="form-control form-control-sm" placeholder="Ej: Cabaña con vista al lago" [(ngModel)]="nombre" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="descripcionPublicar">Descripción</label>
+            <textarea id="descripcionPublicar" class="form-control form-control-sm" rows="3" placeholder="Cuéntale a los huéspedes qué hace especial tu alojamiento" [(ngModel)]="descripcion"></textarea>
+          </div>
+
+          <div class="row g-2 mb-3">
+            <div class="col-12 col-md-6">
+              <label class="form-label small text-secondary" for="paisPublicar">País</label>
+              <input id="paisPublicar" type="text" class="form-control form-control-sm" list="listaPaises" placeholder="Ej: Colombia" [(ngModel)]="pais" />
+              <datalist id="listaPaises">
+                <option *ngFor="let p of paises()" [value]="p"></option>
+              </datalist>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label small text-secondary" for="ciudadPublicar">Ciudad</label>
+              <input id="ciudadPublicar" type="text" class="form-control form-control-sm" list="listaCiudades" placeholder="Ej: Medellín" [(ngModel)]="ciudad" />
+              <datalist id="listaCiudades">
+                <option *ngFor="let c of ciudades()" [value]="c"></option>
+              </datalist>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="ubicacionPublicar">Dirección o sector</label>
+            <input id="ubicacionPublicar" type="text" class="form-control form-control-sm" placeholder="Ej: Parque Lleras" [(ngModel)]="ubicacion" />
+            <div class="form-text">Se usa para ubicarlo en el mapa y consultar el clima, mientras más precisa mejor.</div>
+          </div>
+
+          <div class="mb-0">
+            <label class="form-label small text-secondary" for="tipoPublicar">Tipo de alojamiento</label>
+            <select id="tipoPublicar" class="form-select form-select-sm" [(ngModel)]="tipo">
+              <option value="">Selecciona un tipo</option>
+              <option *ngFor="let t of tipos()" [value]="t">{{ t }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="publicar-panel p-3 mb-4">
+          <h2 class="h6 text-white mb-3">
+            <i class="fa-solid fa-bed me-2"></i>Espacios y precio
+          </h2>
+
+          <div class="row g-2 mb-3">
+            <div class="col-6 col-md-3">
+              <label class="form-label small text-secondary" for="capacidadPublicar">Huéspedes</label>
+              <input id="capacidadPublicar" type="number" min="1" class="form-control form-control-sm" [(ngModel)]="capacidad" />
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label small text-secondary" for="habitacionesPublicar">Habitaciones</label>
+              <input id="habitacionesPublicar" type="number" min="1" class="form-control form-control-sm" [(ngModel)]="habitaciones" />
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label small text-secondary" for="camasPublicar">Camas</label>
+              <input id="camasPublicar" type="number" min="1" class="form-control form-control-sm" [(ngModel)]="camas" />
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="form-label small text-secondary" for="banosPublicar">Baños</label>
+              <input id="banosPublicar" type="number" min="1" class="form-control form-control-sm" [(ngModel)]="banos" />
+            </div>
+          </div>
+
+          <div class="row g-2">
+            <div class="col-12 col-md-6">
+              <label class="form-label small text-secondary" for="precioPublicar">Precio por noche (COP)</label>
+              <input id="precioPublicar" type="number" min="1" step="10000" class="form-control form-control-sm" placeholder="Ej: 250000" [(ngModel)]="precioNoche" />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label small text-secondary" for="limpiezaPublicar">Tarifa de limpieza (COP)</label>
+              <input id="limpiezaPublicar" type="number" min="0" step="5000" class="form-control form-control-sm" placeholder="Ej: 50000" [(ngModel)]="tarifaLimpieza" />
+            </div>
+          </div>
+        </div>
+
+        <div class="publicar-panel p-3">
+          <h2 class="h6 text-white mb-3">
+            <i class="fa-solid fa-list-check me-2"></i>Servicios y reglas
+          </h2>
+
+          <p class="small text-secondary mb-2">Servicios disponibles</p>
+          <div class="row g-1 mb-3">
+            <div class="col-6 col-md-4" *ngFor="let servicio of serviciosComunes(); let i = index">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  [id]="'servicio' + i"
+                  [checked]="estaSeleccionado(servicio)"
+                  (change)="alternarServicio(servicio)"
+                />
+                <label class="form-check-label small" [for]="'servicio' + i">{{ servicio }}</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="otrosServiciosPublicar">Otros servicios</label>
+            <input id="otrosServiciosPublicar" type="text" class="form-control form-control-sm" placeholder="Separados por coma, ej: Jacuzzi, Hamacas" [(ngModel)]="otrosServicios" />
+          </div>
+
+          <div class="mb-0">
+            <label class="form-label small text-secondary" for="reglasPublicar">Reglas de la casa</label>
+            <textarea id="reglasPublicar" class="form-control form-control-sm" rows="3" placeholder="Una regla por línea, ej: No fumar" [(ngModel)]="reglasTexto"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="publicar-panel p-3 mb-4">
+          <h2 class="h6 text-white mb-3">
+            <i class="fa-solid fa-images me-2"></i>Fotos
+          </h2>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="imagenPublicar">Foto principal (enlace)</label>
+            <input id="imagenPublicar" type="url" class="form-control form-control-sm" placeholder="https://..." [(ngModel)]="imagenPrincipal" />
+          </div>
+
+          <img
+            *ngIf="esUrlValida(imagenPrincipal)"
+            [src]="imagenPrincipal"
+            class="publicar-vista-previa w-100 rounded mb-3"
+            alt="Vista previa de la foto principal"
+          />
+
+          <div class="mb-0">
+            <label class="form-label small text-secondary" for="imagenesExtraPublicar">Más fotos (opcional)</label>
+            <textarea id="imagenesExtraPublicar" class="form-control form-control-sm" rows="3" placeholder="Un enlace por línea" [(ngModel)]="imagenesExtra"></textarea>
+            <div class="form-text">No hay servidor para subir archivos, por eso las fotos van como enlace (por ejemplo de Unsplash).</div>
+          </div>
+        </div>
+
+        <div class="alert alert-warning small py-2 mb-3" role="alert" *ngIf="errorPublicar">
+          <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorPublicar }}
+        </div>
+
+        <button type="button" class="btn btn-primary w-100" (click)="publicar()">
+          <i class="fa-solid fa-upload me-1"></i>Publicar alojamiento
+        </button>
+        <p class="small text-secondary mt-2 mb-0">
+          Como la app no tiene backend, el alojamiento se guarda solo mientras no recargues la página.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #invitado>
+    <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert">
+      <i class="fa-solid fa-circle-info"></i>
+      <span><a routerLink="/login" class="alert-link">Inicia sesión</a> para publicar tu alojamiento.</span>
+    </div>
+  </ng-template>
+</section>

@@ -1,0 +1,42 @@
+<div class="resena-form p-3 mt-3" *ngIf="usuarioActual() as usuario; else invitado">
+  <h2 class="h6 text-white mb-3">
+    <i class="fa-solid fa-pen me-2"></i>Deja tu reseña
+  </h2>
+
+  <div class="mb-2">
+    <label class="form-label small text-secondary" for="calificacionResena">Calificación</label>
+    <select id="calificacionResena" class="form-select form-select-sm" [(ngModel)]="calificacion">
+      <option [value]="5">5 - Excelente</option>
+      <option [value]="4">4 - Muy buena</option>
+      <option [value]="3">3 - Buena</option>
+      <option [value]="2">2 - Regular</option>
+      <option [value]="1">1 - Mala</option>
+    </select>
+  </div>
+
+  <div class="mb-2">
+    <label class="form-label small text-secondary" for="comentarioResena">Comentario</label>
+    <textarea
+      id="comentarioResena"
+      class="form-control form-control-sm"
+      rows="3"
+      placeholder="Cuéntanos cómo fue tu estancia..."
+      [(ngModel)]="comentario"
+    ></textarea>
+  </div>
+
+  <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="errorResena">
+    <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorResena }}
+  </div>
+
+  <button type="button" class="btn btn-outline-light btn-sm" (click)="enviarResena()">
+    <i class="fa-solid fa-paper-plane me-1"></i>Publicar reseña
+  </button>
+</div>
+
+<ng-template #invitado>
+  <div class="alert alert-secondary d-flex align-items-center gap-2 mt-3" role="alert">
+    <i class="fa-solid fa-circle-info"></i>
+    <span><a routerLink="/login">Inicia sesión</a> para dejar tu reseña de este alojamiento.</span>
+  </div>
+</ng-template>

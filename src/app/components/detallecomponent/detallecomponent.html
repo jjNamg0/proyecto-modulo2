@@ -29,22 +29,61 @@
             [alt]="a.nombre"
           />
         </div>
+
+        <div class="mt-4" *ngIf="mapaIncrustadoUrl() as mapa">
+          <h2 class="h6 text-white mb-2">
+            <i class="fa-solid fa-map-location-dot me-2"></i>Ubicación
+          </h2>
+          <iframe
+            class="detalle-mapa w-100 rounded border border-secondary-subtle"
+            [src]="mapa"
+            [title]="'Mapa de ' + a.nombre"
+            loading="lazy"
+          ></iframe>
+          <a *ngIf="ubicacionMapaUrl()" [href]="ubicacionMapaUrl()" target="_blank" rel="noopener" class="small">
+            Abrir en Google Maps <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+          </a>
+        </div>
       </div>
 
       <div class="col-12 col-lg-5">
-        <h1 class="h3 text-white">{{ a.nombre }}</h1>
+        <div class="d-flex justify-content-between align-items-start gap-2">
+          <h1 class="h3 text-white">{{ a.nombre }}</h1>
+          <button
+            type="button"
+            class="btn btn-outline-light btn-sm flex-shrink-0"
+            [class.text-danger]="esFavorito(a.id)"
+            (click)="alternarFavorito(a.id)"
+            [attr.aria-label]="esFavorito(a.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+          >
+            <i class="fa-solid fa-heart"></i>
+          </button>
+        </div>
         <p class="text-secondary mb-2">
-          <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}
-          <a *ngIf="ubicacionMapaUrl()" [href]="ubicacionMapaUrl()" target="_blank" rel="noopener" class="ms-1">
-            <i class="fa-solid fa-map-location-dot"></i> Ver en el mapa
-          </a>
+          <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}, {{ a.pais }}
+        </p>
+        <p class="small text-secondary mb-2" *ngIf="a.publicadoPor">
+          <i class="fa-solid fa-user-pen me-1"></i>Publicado por {{ a.publicadoPor }}
         </p>
         <p class="mb-3">
           <span class="badge text-bg-dark">
-            <i class="fa-solid fa-star text-warning"></i> {{ a.calificacion }}
+            <i class="fa-solid fa-star text-warning"></i> {{ a.calificacion || 'Nuevo' }}
+            <span class="fw-normal" *ngIf="resenas().length > 0">
+              · {{ resenas().length }} {{ resenas().length === 1 ? 'reseña' : 'reseñas' }}
+            </span>
           </span>
           <span class="badge text-bg-secondary ms-1">{{ a.tipo }}</span>
         </p>
+
+        <div class="clima-actual d-flex align-items-center gap-3 rounded border border-secondary-subtle p-2 mb-3" *ngIf="clima() as c">
+          <i class="fa-solid {{ c.icono }} fs-3 text-info"></i>
+          <div>
+            <div class="fw-semibold">{{ c.temperatura }}°C · {{ c.descripcion }}</div>
+            <small class="text-secondary">
+              Sensación {{ c.sensacion }}°C · Humedad {{ c.humedad }}% · Viento {{ c.viento }} km/h
+            </small>
+          </div>
+        </div>
 
         <p>{{ a.descripcion }}</p>
 
@@ -65,18 +104,80 @@
         </ul>
 
         <div class="border-top border-secondary-subtle pt-3 mt-4 mb-4">
-          <span class="fw-bold fs-5">
-            {{ a.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
-          </span>
-          <small class="text-secondary"> / noche</small>
-          <small class="text-secondary d-block" *ngIf="tasaUsdEur() as tasa">
-            <i class="fa-solid fa-money-bill-transfer me-1"></i>Tasa de referencia: 1 USD ≈ {{ tasa | number: '1.2-2' }} EUR
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+              <span class="fw-bold fs-5">
+                {{ convertir(a.precioNoche) | currency: monedaActiva() : 'symbol-narrow' : formatoDecimales() }}
+                {{ monedaActiva() }}
+              </span>
+              <small class="text-secondary"> / noche</small>
+            </div>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Moneda" *ngIf="hayTasas()">
+              <button
+                type="button"
+                class="btn"
+                *ngFor="let moneda of monedas()"
+                [class.btn-primary]="moneda === monedaActiva()"
+                [class.btn-outline-secondary]="moneda !== monedaActiva()"
+                (click)="cambiarMoneda(moneda)"
+              >
+                {{ moneda }}
+              </button>
+            </div>
+          </div>
+          <small class="text-secondary d-block mt-1" *ngIf="monedaActiva() !== 'COP'">
+            <i class="fa-solid fa-money-bill-transfer me-1"></i>Precio convertido con la tasa del día. El pago se cobra en pesos colombianos.
           </small>
         </div>
 
         <app-cotizadorcomponent [alojamiento]="a" (cotizacionLista)="onCotizacionLista($event)" />
 
-        <app-reservacomponent *ngIf="cotizacionActual() as cot" [alojamiento]="a" [cotizacion]="cot" />
+        <div class="pronostico-panel p-3 mt-3" *ngIf="cotizacionActual() && coordenadas()">
+          <h2 class="h6 text-white mb-3">
+            <i class="fa-solid fa-cloud-sun-rain me-2"></i>Pronóstico para tu estancia
+          </h2>
+
+          <p class="small text-secondary mb-0" *ngIf="pronosticoFueraDeRango()">
+            El pronóstico solo está disponible hasta el {{ fechaLimitePronostico() }}. Vuelve a revisarlo cuando se acerque tu viaje.
+          </p>
+
+          <p class="small text-secondary mb-0" *ngIf="cargandoPronostico()">Consultando el pronóstico...</p>
+
+          <div *ngIf="pronostico() as p">
+            <div
+              class="alert small py-2 d-flex align-items-center gap-2 mb-3"
+              [class.alert-success]="p.tipoVeredicto === 'bueno'"
+              [class.alert-info]="p.tipoVeredicto === 'mixto' || p.tipoVeredicto === 'frio'"
+              [class.alert-warning]="p.tipoVeredicto === 'lluvia' || p.tipoVeredicto === 'calor'"
+              role="status"
+            >
+              <i class="fa-solid {{ p.iconoVeredicto }}"></i>
+              <span>{{ p.veredicto }}</span>
+            </div>
+
+            <div class="d-flex gap-2 overflow-auto pb-1">
+              <div class="pronostico-dia text-center rounded p-2" *ngFor="let dia of p.dias">
+                <div class="small text-secondary">{{ dia.etiqueta }}</div>
+                <i class="fa-solid {{ dia.icono }} text-info my-1" [title]="dia.descripcion"></i>
+                <div class="small fw-semibold">{{ dia.maxima }}° / {{ dia.minima }}°</div>
+                <div class="small text-secondary">
+                  <i class="fa-solid fa-droplet me-1"></i>{{ dia.probabilidadLluvia }}%
+                </div>
+              </div>
+            </div>
+
+            <small class="text-secondary d-block mt-2" *ngIf="p.incompleto">
+              Solo se muestran los días hasta el {{ p.dias[p.dias.length - 1].etiqueta }}, que es lo que alcanza el pronóstico.
+            </small>
+          </div>
+        </div>
+
+        <app-pagocomponent
+          *ngIf="cotizacionActual() as cot"
+          [alojamiento]="a"
+          [cotizacion]="cot"
+          (pagoRealizado)="onPagoRealizado()"
+        />
       </div>
     </div>
 
@@ -98,6 +199,8 @@
           </div>
         </div>
       </div>
+
+      <app-resenaformcomponent [alojamientoId]="a.id" (resenaAgregada)="recargarResenas(a.id)" />
     </div>
   </div>
 </section>

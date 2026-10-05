@@ -1,9 +1,12 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, ViewChild, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojamientosservice';
-import { Geocodingservice } from '../../services/geocodingservice';
-import { Exchangerateservice } from '../../services/exchangerateservice';
-import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
+import { Geocodingservice, Coordenadas } from '../../services/geocodingservice';
+import { Climaservice, Clima, PronosticoEstancia } from '../../services/climaservice';
+import { Exchangerateservice, Moneda } from '../../services/exchangerateservice';
+import { Favoritosservice } from '../../services/favoritosservice';
+import { Cotizacion, Cotizadorcomponent } from '../cotizadorcomponent/cotizadorcomponent';
 
 @Component({
   selector: 'app-detallecomponent',
@@ -12,40 +15,116 @@ import { Cotizacion } from '../cotizadorcomponent/cotizadorcomponent';
   templateUrl: './detallecomponent.html',
 })
 export class Detallecomponent implements OnInit {
+  @ViewChild(Cotizadorcomponent) cotizador?: Cotizadorcomponent;
+
   alojamiento = signal<Alojamiento | null>(null);
   resenas = signal<Resena[]>([]);
   imagenActiva = signal('');
   cargando = signal(true);
   noEncontrado = signal(false);
   cotizacionActual = signal<Cotizacion | null>(null);
+  coordenadas = signal<Coordenadas | null>(null);
   ubicacionMapaUrl = signal<string | null>(null);
-  tasaUsdEur = signal<number | null>(null);
+  mapaIncrustadoUrl = signal<SafeResourceUrl | null>(null);
+  clima = signal<Clima | null>(null);
+  pronostico = signal<PronosticoEstancia | null>(null);
+  cargandoPronostico = signal(false);
+  pronosticoFueraDeRango = signal(false);
 
   constructor(
     private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
     private alojamientosService: Alojamientosservice,
     private geocodingService: Geocodingservice,
+    private climaService: Climaservice,
     private exchangeRateService: Exchangerateservice,
+    private favoritosService: Favoritosservice,
   ) {}
 
   ngOnInit(): void {
-    // uso paramMap x si el usuario navega de un detalle a otro sin q se destruya el componente
+    this.exchangeRateService.cargarTasas().subscribe();
     this.route.paramMap.subscribe((params) => {
       const id = Number(params.get('id'));
       this.cargarAlojamiento(id);
     });
   }
 
+  esFavorito(id: number): boolean {
+    return this.favoritosService.esFavorito(id);
+  }
+
+  alternarFavorito(id: number): void {
+    this.favoritosService.alternar(id);
+  }
+
+  monedas(): Moneda[] {
+    return this.exchangeRateService.MONEDAS;
+  }
+
+  monedaActiva(): Moneda {
+    return this.exchangeRateService.monedaActiva();
+  }
+
+  hayTasas(): boolean {
+    return this.exchangeRateService.tasas() !== null;
+  }
+
+  cambiarMoneda(moneda: Moneda): void {
+    this.exchangeRateService.cambiarMoneda(moneda);
+  }
+
+  convertir(valorEnCop: number): number {
+    return this.exchangeRateService.convertir(valorEnCop);
+  }
+
+  formatoDecimales(): string {
+    return this.exchangeRateService.formatoDecimales();
+  }
+
+  fechaLimitePronostico(): string {
+    return this.climaService.fechaLimitePronostico();
+  }
+
+  recargarResenas(alojamientoId: number): void {
+    this.alojamientosService.obtenerResenasPorAlojamiento(alojamientoId).subscribe((resenas) => {
+      this.resenas.set(resenas);
+    });
+    this.alojamientosService.obtenerPorId(alojamientoId).subscribe((alojamiento) => {
+      if (alojamiento) {
+        this.alojamiento.set(alojamiento);
+      }
+    });
+  }
+
+  onPagoRealizado(): void {
+    this.cotizador?.reiniciar();
+  }
+
   onCotizacionLista(cotizacion: Cotizacion | null): void {
     this.cotizacionActual.set(cotizacion);
+    this.consultarPronostico(cotizacion);
+  }
+
+  cambiarImagen(url: string): void {
+    this.imagenActiva.set(url);
+  }
+
+  onImgError(event: Event, id: number): void {
+    const img = event.target as HTMLImageElement;
+    img.onerror = null;
+    img.src = `https://picsum.photos/seed/alojamiento-${id}/800/500`;
   }
 
   private cargarAlojamiento(id: number): void {
     this.cargando.set(true);
     this.noEncontrado.set(false);
     this.cotizacionActual.set(null);
+    this.coordenadas.set(null);
     this.ubicacionMapaUrl.set(null);
-    this.tasaUsdEur.set(null);
+    this.mapaIncrustadoUrl.set(null);
+    this.clima.set(null);
+    this.pronostico.set(null);
+    this.pronosticoFueraDeRango.set(false);
 
     this.alojamientosService.obtenerPorId(id).subscribe((alojamiento) => {
       if (!alojamiento) {
@@ -62,24 +141,57 @@ export class Detallecomponent implements OnInit {
         this.resenas.set(resenas);
       });
 
-      const direccion = `${alojamiento.ubicacion}, ${alojamiento.ciudad}, Colombia`;
+      const direccion = `${alojamiento.ubicacion}, ${alojamiento.ciudad}, ${alojamiento.pais}`;
       this.geocodingService.obtenerCoordenadas(direccion).subscribe((coords) => {
-        this.ubicacionMapaUrl.set(coords ? `https://www.google.com/maps?q=${coords.lat},${coords.lon}` : null);
-      });
+        if (!coords) {
+          return;
+        }
 
-      this.exchangeRateService.obtenerTasaUsdEur().subscribe((tasa) => {
-        this.tasaUsdEur.set(tasa);
+        this.coordenadas.set(coords);
+        this.ubicacionMapaUrl.set(`https://www.google.com/maps?q=${coords.lat},${coords.lon}`);
+        this.mapaIncrustadoUrl.set(this.armarMapaIncrustado(coords));
+
+        this.climaService.obtenerClima(coords.lat, coords.lon).subscribe((clima) => {
+          this.clima.set(clima);
+        });
+
+        this.consultarPronostico(this.cotizacionActual());
       });
     });
   }
 
-  cambiarImagen(url: string): void {
-    this.imagenActiva.set(url);
+  private consultarPronostico(cotizacion: Cotizacion | null): void {
+    this.pronostico.set(null);
+    this.pronosticoFueraDeRango.set(false);
+    this.cargandoPronostico.set(false);
+
+    const coords = this.coordenadas();
+    if (!cotizacion || !coords) {
+      return;
+    }
+
+    if (cotizacion.fechaInicio > this.climaService.fechaLimitePronostico()) {
+      this.pronosticoFueraDeRango.set(true);
+      return;
+    }
+
+    this.cargandoPronostico.set(true);
+    this.climaService
+      .obtenerPronosticoEstancia(coords.lat, coords.lon, cotizacion.fechaInicio, cotizacion.fechaFin)
+      .subscribe((pronostico) => {
+        if (this.cotizacionActual() !== cotizacion) {
+          return;
+        }
+        this.pronostico.set(pronostico);
+        this.cargandoPronostico.set(false);
+      });
   }
 
-  onImgError(event: Event, id: number): void {
-    const img = event.target as HTMLImageElement;
-    img.onerror = null;
-    img.src = `https://picsum.photos/seed/alojamiento-${id}/800/500`;
+  private armarMapaIncrustado(coords: Coordenadas): SafeResourceUrl {
+    const margenLon = 0.01;
+    const margenLat = 0.006;
+    const caja = [coords.lon - margenLon, coords.lat - margenLat, coords.lon + margenLon, coords.lat + margenLat].join(',');
+    const url = `https://www.openstreetmap.org/export/embed.html?bbox=${caja}&layer=mapnik&marker=${coords.lat},${coords.lon}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
