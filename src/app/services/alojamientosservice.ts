@@ -22,7 +22,10 @@ export interface Alojamiento {
   imagenes: string[];
   servicios: string[];
   reglas: string[];
+  publicadoPor?: string;
 }
+
+export type DatosNuevoAlojamiento = Omit<Alojamiento, 'id' | 'activo' | 'calificacion'>;
 
 export interface Resena {
   id: number;
@@ -66,6 +69,9 @@ export class Alojamientosservice {
   private resenasAgregadas: Resena[] = [];
   private siguienteIdLocal = -1;
 
+  private alojamientosAgregados: Alojamiento[] = [];
+  private siguienteIdAlojamiento = 1000;
+
   constructor(private http: HttpClient) {}
 
   private cargarDatos(): Observable<MarketplaceData> {
@@ -80,10 +86,34 @@ export class Alojamientosservice {
   obtenerAlojamientos(): Observable<Alojamiento[]> {
     return this.cargarDatos().pipe(
       map((datos) =>
-        datos.alojamientos
+        [...datos.alojamientos, ...this.alojamientosAgregados]
           .filter((a) => a.activo && a.precioNoche > 0)
           .map((a) => this.conCalificacionActualizada(a, datos.resenas)),
       ),
+    );
+  }
+
+  agregarAlojamiento(datos: DatosNuevoAlojamiento): Alojamiento {
+    const alojamiento: Alojamiento = {
+      ...datos,
+      id: this.siguienteIdAlojamiento++,
+      activo: true,
+      calificacion: 0,
+    };
+    this.alojamientosAgregados.push(alojamiento);
+    return alojamiento;
+  }
+
+  obtenerServiciosComunes(cantidad: number): Observable<string[]> {
+    return this.obtenerAlojamientos().pipe(
+      map((alojamientos) => {
+        const conteo = new Map<string, number>();
+        alojamientos.forEach((a) => a.servicios.forEach((s) => conteo.set(s, (conteo.get(s) ?? 0) + 1)));
+        return [...conteo.entries()]
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, cantidad)
+          .map(([servicio]) => servicio);
+      }),
     );
   }
 
@@ -187,7 +217,8 @@ export class Alojamientosservice {
       return a;
     }
 
-    const cantidadBase = Math.max(1, resenasDelJson.filter((r) => r.alojamientoId === a.id).length);
+    const cantidadBase =
+      a.calificacion > 0 ? Math.max(1, resenasDelJson.filter((r) => r.alojamientoId === a.id).length) : 0;
     const sumaNuevas = nuevas.reduce((total, r) => total + r.calificacion, 0);
     const promedio = (a.calificacion * cantidadBase + sumaNuevas) / (cantidadBase + nuevas.length);
 

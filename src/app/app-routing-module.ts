@@ -8,6 +8,7 @@ import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
 import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
+import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
 
 const routes: Routes = [
   {
@@ -44,6 +45,11 @@ const routes: Routes = [
     path: 'favoritos',
     component: Favoritoscomponent,
     title: 'Nocturna Stays — Favoritos',
+  },
+  {
+    path: 'publicar',
+    component: Publicarcomponent,
+    title: 'Nocturna Stays — Publicar alojamiento',
   },
   {
     path: '**',

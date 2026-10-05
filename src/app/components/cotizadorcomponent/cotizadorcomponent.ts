@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Alojamiento } from '../../services/alojamientosservice';
 import { Reservasservice, RangoFechas } from '../../services/reservasservice';
+import { Exchangerateservice, Moneda } from '../../services/exchangerateservice';
 
 export interface Cotizacion {
   fechaInicio: string;
@@ -33,7 +34,22 @@ export class Cotizadorcomponent implements OnChanges {
   errorFechas = '';
   errorCapacidad = '';
 
-  constructor(private reservasService: Reservasservice) {}
+  constructor(
+    private reservasService: Reservasservice,
+    private exchangeRateService: Exchangerateservice,
+  ) {}
+
+  convertir(valorEnCop: number): number {
+    return this.exchangeRateService.convertir(valorEnCop);
+  }
+
+  monedaActiva(): Moneda {
+    return this.exchangeRateService.monedaActiva();
+  }
+
+  formatoDecimales(): string {
+    return this.exchangeRateService.formatoDecimales();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     const cambio = changes['alojamiento'];

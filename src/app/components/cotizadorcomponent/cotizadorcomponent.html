@@ -56,20 +56,20 @@
 
   <div class="border-top border-secondary-subtle pt-3 mt-2" *ngIf="cotizacion as c">
     <div class="d-flex justify-content-between small text-secondary mb-1">
-      <span>{{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }} x {{ c.noches }} noches</span>
-      <span>{{ c.subtotal | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+      <span>{{ convertir(alojamiento.precioNoche) | currency: monedaActiva() : 'symbol-narrow' : formatoDecimales() }} x {{ c.noches }} noches</span>
+      <span>{{ convertir(c.subtotal) | currency: monedaActiva() : 'symbol-narrow' : formatoDecimales() }}</span>
     </div>
     <div class="d-flex justify-content-between small text-secondary mb-1">
       <span>Tarifa de limpieza</span>
-      <span>{{ c.tarifaLimpieza | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+      <span>{{ convertir(c.tarifaLimpieza) | currency: monedaActiva() : 'symbol-narrow' : formatoDecimales() }}</span>
     </div>
     <div class="d-flex justify-content-between small text-secondary mb-2">
       <span>Tarifa de servicio (10%)</span>
-      <span>{{ c.tarifaServicio | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+      <span>{{ convertir(c.tarifaServicio) | currency: monedaActiva() : 'symbol-narrow' : formatoDecimales() }}</span>
     </div>
     <div class="d-flex justify-content-between fw-bold border-top border-secondary-subtle pt-2">
       <span>Total</span>
-      <span>{{ c.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+      <span>{{ convertir(c.total) | currency: monedaActiva() : 'symbol-narrow' : formatoDecimales() }} {{ monedaActiva() }}</span>
     </div>
   </div>
 </div>

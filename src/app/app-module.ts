@@ -19,6 +19,7 @@ import { Registrocomponent } from './components/registrocomponent/registrocompon
 import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
+import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { Resenaformcomponent } from './components/resenaformcomponent/resenaform
     Favoritoscomponent,
     Notfoundcomponent,
     Resenaformcomponent,
+    Publicarcomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
