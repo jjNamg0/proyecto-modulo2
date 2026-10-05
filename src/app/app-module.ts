@@ -31,6 +31,13 @@ import { Registrocomponent } from './components/registrocomponent/registrocompon
     Misreservascomponent,
     Logincomponent,
     Registrocomponent,
+<<<<<<< Updated upstream
+=======
+    Favoritoscomponent,
+    Notfoundcomponent,
+    Resenaformcomponent,
+
+>>>>>>> Stashed changes
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

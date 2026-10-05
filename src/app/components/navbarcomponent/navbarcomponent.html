@@ -1,7 +1,7 @@
 <header class="navbar-marketplace">
   <div class="container d-flex align-items-center justify-content-between py-2">
     <a routerLink="/" class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" (click)="cerrarMenu()">
-      <img src="assets/images/logo.png" alt="Nocturna Stays" class="navbar-logo" />
+      <img src="assets/images/logo.png" alt="Nocturna Stays" class="navbar-logo"/>
       <span class="d-flex flex-column lh-1">
         <strong class="text-white">Nocturna Stays</strong>
         <small class="text-secondary">Marketplace de Alojamientos</small>
@@ -21,6 +21,13 @@
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill">Inicio</a>
       <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill">Listado</a>
       <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill">Mis reservas</a>
+<<<<<<< Updated upstream
+=======
+      <a routerLink="/favoritos" routerLinkActive="active" class="nav-link-pill">Favoritos</a>
+      <a routerLink="/asistente-ia" routerLinkActive="active" class="nav-link-pill">
+         Asistente IA
+      </a>
+>>>>>>> Stashed changes
 
       <ng-container *ngIf="usuarioActual() as usuario; else invitadoDesktop">
         <span class="usuario-pill px-3 py-1 rounded-pill small">
@@ -39,9 +46,25 @@
     *ngIf="menuAbierto()"
     class="d-lg-none container pb-3 d-flex flex-column gap-2 animate__animated animate__fadeIn"
   >
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill" (click)="cerrarMenu()">Inicio</a>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill"
+       (click)="cerrarMenu()">Inicio</a>
     <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Listado</a>
+<<<<<<< Updated upstream
     <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Mis reservas</a>
+=======
+    <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Mis
+      reservas</a>
+    <a routerLink="/favoritos" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Favoritos</a>
+    <a
+      routerLink="/asistente-ia"
+      routerLinkActive="active"
+      class="nav-link-pill"
+      (click)="cerrarMenu()"
+    >
+      <i class="fa-solid fa-robot me-1"></i> Asistente IA
+    </a>
+
+>>>>>>> Stashed changes
 
     <ng-container *ngIf="usuarioActual() as usuario; else invitadoMovil">
       <span class="usuario-pill px-3 py-1 rounded-pill small">
