@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { Alojamientosservice, Alojamiento } from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
 
@@ -18,6 +19,7 @@ export class Homecomponent implements OnInit, OnDestroy {
   constructor(
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -66,7 +68,9 @@ export class Homecomponent implements OnInit, OnDestroy {
   alternarFavorito(id: number, event: Event): void {
     event.stopPropagation();
     event.preventDefault();
-    this.favoritosService.alternar(id);
+    if (!this.favoritosService.alternar(id)) {
+      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+    }
   }
 
   onImgError(event: Event, id: number): void {

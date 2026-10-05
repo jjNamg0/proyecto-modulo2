@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojamientosservice';
 import { Geocodingservice, Coordenadas } from '../../services/geocodingservice';
 import { Climaservice, Clima, PronosticoEstancia } from '../../services/climaservice';
 import { Exchangerateservice, Moneda } from '../../services/exchangerateservice';
 import { Favoritosservice } from '../../services/favoritosservice';
+import { Paisesservice, DatosPais, Festivo } from '../../services/paisesservice';
 import { Cotizacion, Cotizadorcomponent } from '../cotizadorcomponent/cotizadorcomponent';
 
 @Component({
@@ -30,6 +31,8 @@ export class Detallecomponent implements OnInit {
   pronostico = signal<PronosticoEstancia | null>(null);
   cargandoPronostico = signal(false);
   pronosticoFueraDeRango = signal(false);
+  datosPais = signal<DatosPais | null>(null);
+  festivos = signal<Festivo[]>([]);
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +42,8 @@ export class Detallecomponent implements OnInit {
     private climaService: Climaservice,
     private exchangeRateService: Exchangerateservice,
     private favoritosService: Favoritosservice,
+    private paisesService: Paisesservice,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +59,9 @@ export class Detallecomponent implements OnInit {
   }
 
   alternarFavorito(id: number): void {
-    this.favoritosService.alternar(id);
+    if (!this.favoritosService.alternar(id)) {
+      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+    }
   }
 
   monedas(): Moneda[] {
@@ -103,6 +110,7 @@ export class Detallecomponent implements OnInit {
   onCotizacionLista(cotizacion: Cotizacion | null): void {
     this.cotizacionActual.set(cotizacion);
     this.consultarPronostico(cotizacion);
+    this.consultarFestivos(cotizacion);
   }
 
   cambiarImagen(url: string): void {
@@ -125,6 +133,8 @@ export class Detallecomponent implements OnInit {
     this.clima.set(null);
     this.pronostico.set(null);
     this.pronosticoFueraDeRango.set(false);
+    this.datosPais.set(null);
+    this.festivos.set([]);
 
     this.alojamientosService.obtenerPorId(id).subscribe((alojamiento) => {
       if (!alojamiento) {
@@ -136,6 +146,10 @@ export class Detallecomponent implements OnInit {
       this.alojamiento.set(alojamiento);
       this.imagenActiva.set(alojamiento.imagenPrincipal);
       this.cargando.set(false);
+
+      this.paisesService.obtenerDatosPais(alojamiento.pais).subscribe((datos) => {
+        this.datosPais.set(datos);
+      });
 
       this.alojamientosService.obtenerResenasPorAlojamiento(id).subscribe((resenas) => {
         this.resenas.set(resenas);
@@ -184,6 +198,22 @@ export class Detallecomponent implements OnInit {
         }
         this.pronostico.set(pronostico);
         this.cargandoPronostico.set(false);
+      });
+  }
+
+  private consultarFestivos(cotizacion: Cotizacion | null): void {
+    this.festivos.set([]);
+    const alojamiento = this.alojamiento();
+    if (!cotizacion || !alojamiento) {
+      return;
+    }
+
+    this.paisesService
+      .obtenerFestivosEnEstancia(alojamiento.pais, cotizacion.fechaInicio, cotizacion.fechaFin)
+      .subscribe((festivos) => {
+        if (this.cotizacionActual() === cotizacion) {
+          this.festivos.set(festivos);
+        }
       });
   }
 

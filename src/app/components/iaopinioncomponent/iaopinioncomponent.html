@@ -1,0 +1,70 @@
+<div class="ia-panel mt-3 pt-3 border-top border-secondary-subtle">
+  <h3 class="h6 text-white mb-2">
+    <i class="fa-solid fa-robot me-2"></i>Opinión de la IA
+  </h3>
+
+  <div *ngIf="!keyConfigurada() || mostrarFormularioKey()">
+    <p class="small text-secondary mb-2">
+      Pega tu API key de Gemini para que la IA opine si conviene reservar en estas fechas. La key no se muestra
+      nunca y se borra al recargar la página.
+    </p>
+
+    <div class="input-group input-group-sm">
+      <input
+        #campoKey
+        type="password"
+        name="claveIaGemini"
+        class="form-control"
+        placeholder="API key de Gemini"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="API key de Gemini"
+        [disabled]="validandoKey()"
+        (keyup.enter)="guardarKey(campoKey)"
+      />
+      <button type="button" class="btn btn-outline-light" [disabled]="validandoKey()" (click)="guardarKey(campoKey)">
+        Guardar
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        *ngIf="keyConfigurada()"
+        [disabled]="validandoKey()"
+        (click)="cancelarCambio()"
+      >
+        Cancelar
+      </button>
+    </div>
+
+    <p class="small text-secondary mt-2 mb-0" *ngIf="validandoKey()">Comprobando la key con Gemini...</p>
+
+    <div class="alert alert-warning small py-2 mt-2 mb-0" role="alert" *ngIf="errorKey()">
+      <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorKey() }}
+    </div>
+  </div>
+
+  <div *ngIf="keyConfigurada() && !mostrarFormularioKey()">
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+      <span class="badge text-bg-success">
+        <i class="fa-solid fa-key me-1"></i>{{ mensajeKey() || 'API key configurada' }}
+      </span>
+      <button type="button" class="btn btn-link btn-sm p-0" (click)="cambiarKey()">Cambiar key</button>
+      <button type="button" class="btn btn-link btn-sm p-0 text-danger" (click)="quitarKey()">Quitar key</button>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-sm" [disabled]="consultando() || !!opinion()" (click)="pedirOpinion()">
+      <i class="fa-solid fa-wand-magic-sparkles me-1"></i>Pedir opinión a la IA
+    </button>
+
+    <p class="small text-secondary mt-2 mb-0" *ngIf="consultando()">La IA está analizando el pronóstico...</p>
+
+    <div class="ia-respuesta small p-2 mt-2 rounded" *ngIf="opinion()">
+      <i class="fa-solid fa-robot text-info me-1"></i>{{ opinion() }}
+    </div>
+
+    <div class="alert alert-warning small py-2 mt-2 mb-0" role="alert" *ngIf="errorOpinion()">
+      <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorOpinion() }} El veredicto de arriba sigue siendo válido.
+    </div>
+  </div>
+</div>

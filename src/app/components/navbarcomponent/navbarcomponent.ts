@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { Authservice, Usuario } from '../../services/authservice';
 
 @Component({
@@ -10,7 +11,12 @@ import { Authservice, Usuario } from '../../services/authservice';
 export class Navbarcomponent {
   menuAbierto = signal(false);
 
-  constructor(private authService: Authservice) {}
+  private readonly RUTAS_CON_SESION = ['/mis-reservas', '/favoritos', '/publicar', '/perfil'];
+
+  constructor(
+    private authService: Authservice,
+    private router: Router,
+  ) {}
 
   usuarioActual(): Usuario | null {
     return this.authService.usuarioActual();
@@ -27,5 +33,9 @@ export class Navbarcomponent {
   cerrarSesion(): void {
     this.authService.cerrarSesion();
     this.cerrarMenu();
+
+    if (this.RUTAS_CON_SESION.some((ruta) => this.router.url.startsWith(ruta))) {
+      this.router.navigateByUrl('/');
+    }
   }
 }

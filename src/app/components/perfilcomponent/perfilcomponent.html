@@ -1,0 +1,168 @@
+<section class="container py-4">
+  <h1 class="h4 text-white mb-4">
+    <i class="fa-solid fa-circle-user me-2"></i>Mi perfil
+  </h1>
+
+  <div *ngIf="usuarioActual() as usuario; else invitado">
+    <div class="row g-3 mb-4">
+      <div class="col-12 col-md-4">
+        <a routerLink="/mis-reservas" class="perfil-resumen d-block p-3 text-decoration-none h-100">
+          <div class="small text-secondary">Reservas activas</div>
+          <div class="fs-3 fw-bold text-white">{{ reservasActivas() }}</div>
+        </a>
+      </div>
+      <div class="col-12 col-md-4">
+        <a routerLink="/favoritos" class="perfil-resumen d-block p-3 text-decoration-none h-100">
+          <div class="small text-secondary">Favoritos</div>
+          <div class="fs-3 fw-bold text-white">{{ cantidadFavoritos() }}</div>
+        </a>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="perfil-resumen p-3 h-100">
+          <div class="small text-secondary">Alojamientos publicados</div>
+          <div class="fs-3 fw-bold text-white">{{ publicaciones().length }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-5">
+        <div class="perfil-panel p-3 mb-4">
+          <h2 class="h6 text-white mb-3">
+            <i class="fa-solid fa-id-card me-2"></i>Mis datos
+          </h2>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="nombrePerfil">Nombre</label>
+            <input id="nombrePerfil" type="text" class="form-control form-control-sm" [(ngModel)]="nombre" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="correoPerfil">Correo electrónico</label>
+            <input id="correoPerfil" type="email" class="form-control form-control-sm" [value]="usuario.correo" disabled />
+            <div class="form-text">El correo identifica tu cuenta y tus reservas, por eso no se puede cambiar.</div>
+          </div>
+
+          <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="errorNombre">
+            <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorNombre }}
+          </div>
+          <div class="alert alert-success small py-2 mb-2" role="status" *ngIf="mensajeNombre">
+            <i class="fa-solid fa-check me-1"></i>{{ mensajeNombre }}
+          </div>
+
+          <button type="button" class="btn btn-outline-light btn-sm" (click)="guardarNombre()">
+            <i class="fa-solid fa-floppy-disk me-1"></i>Guardar nombre
+          </button>
+        </div>
+
+        <div class="perfil-panel p-3">
+          <h2 class="h6 text-white mb-3">
+            <i class="fa-solid fa-key me-2"></i>Cambiar contraseña
+          </h2>
+
+          <div class="mb-2">
+            <label class="form-label small text-secondary" for="passwordActualPerfil">Contraseña actual</label>
+            <input id="passwordActualPerfil" type="password" class="form-control form-control-sm" autocomplete="current-password" [(ngModel)]="passwordActual" />
+          </div>
+          <div class="mb-2">
+            <label class="form-label small text-secondary" for="passwordNuevaPerfil">Contraseña nueva</label>
+            <input id="passwordNuevaPerfil" type="password" class="form-control form-control-sm" autocomplete="new-password" [(ngModel)]="passwordNueva" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label small text-secondary" for="passwordConfirmacionPerfil">Confirmar contraseña nueva</label>
+            <input id="passwordConfirmacionPerfil" type="password" class="form-control form-control-sm" autocomplete="new-password" [(ngModel)]="passwordConfirmacion" />
+          </div>
+
+          <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="errorPassword">
+            <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorPassword }}
+          </div>
+          <div class="alert alert-success small py-2 mb-2" role="status" *ngIf="mensajePassword">
+            <i class="fa-solid fa-check me-1"></i>{{ mensajePassword }}
+          </div>
+
+          <button type="button" class="btn btn-outline-light btn-sm" (click)="cambiarPassword()">
+            <i class="fa-solid fa-key me-1"></i>Cambiar contraseña
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h6 text-white mb-0">
+            <i class="fa-solid fa-house-user me-2"></i>Mis publicaciones
+          </h2>
+          <a routerLink="/publicar" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-plus me-1"></i>Publicar otro
+          </a>
+        </div>
+
+        <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert" *ngIf="publicaciones().length === 0">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>
+            Todavía no has publicado alojamientos. <a routerLink="/publicar" class="alert-link">Publica el primero</a>.
+          </span>
+        </div>
+
+        <div class="d-flex flex-column gap-3">
+          <div
+            class="perfil-publicacion d-flex gap-3 p-2"
+            [class.perfil-publicacion--inactiva]="!publicacion.activo"
+            *ngFor="let publicacion of publicaciones()"
+          >
+            <img
+              [src]="publicacion.imagenPrincipal"
+              (error)="onImgError($event, publicacion.id)"
+              class="perfil-publicacion__img rounded"
+              [alt]="publicacion.nombre"
+            />
+            <div class="flex-grow-1 d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2">
+                <h3 class="h6 text-white mb-1">{{ publicacion.nombre }}</h3>
+                <span
+                  class="badge"
+                  [class.text-bg-success]="publicacion.activo"
+                  [class.text-bg-secondary]="!publicacion.activo"
+                >
+                  {{ publicacion.activo ? 'Publicado' : 'Desactivado' }}
+                </span>
+              </div>
+              <p class="small text-secondary mb-2">
+                {{ publicacion.ciudad }}, {{ publicacion.pais }} ·
+                {{ publicacion.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }} / noche
+              </p>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a
+                  *ngIf="publicacion.activo"
+                  [routerLink]="['/alojamientos', publicacion.id]"
+                  class="btn btn-outline-secondary btn-sm"
+                >
+                  <i class="fa-solid fa-eye me-1"></i>Ver
+                </a>
+                <a [routerLink]="['/publicar', publicacion.id]" class="btn btn-outline-light btn-sm">
+                  <i class="fa-solid fa-pen me-1"></i>Editar
+                </a>
+                <button
+                  type="button"
+                  class="btn btn-sm"
+                  [class.btn-outline-danger]="publicacion.activo"
+                  [class.btn-outline-success]="!publicacion.activo"
+                  (click)="cambiarEstado(publicacion)"
+                >
+                  <span *ngIf="publicacion.activo"><i class="fa-solid fa-eye-slash me-1"></i>Desactivar</span>
+                  <span *ngIf="!publicacion.activo"><i class="fa-solid fa-rotate-left me-1"></i>Activar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #invitado>
+    <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert">
+      <i class="fa-solid fa-circle-info"></i>
+      <span><a routerLink="/login" class="alert-link">Inicia sesión</a> para ver tu perfil.</span>
+    </div>
+  </ng-template>
+</section>
