@@ -1,0 +1,22 @@
+.perfil-panel,
+.perfil-resumen,
+.perfil-publicacion {
+  background-color: #181b25;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+}
+
+a.perfil-resumen:hover {
+  border-color: rgba(13, 110, 253, 0.5);
+}
+
+.perfil-publicacion__img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.perfil-publicacion--inactiva {
+  opacity: 0.65;
+}

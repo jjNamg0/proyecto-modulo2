@@ -23,6 +23,7 @@ export interface Alojamiento {
   servicios: string[];
   reglas: string[];
   publicadoPor?: string;
+  correoPublicador?: string;
 }
 
 export type DatosNuevoAlojamiento = Omit<Alojamiento, 'id' | 'activo' | 'calificacion'>;
@@ -102,6 +103,34 @@ export class Alojamientosservice {
     };
     this.alojamientosAgregados.push(alojamiento);
     return alojamiento;
+  }
+
+  obtenerPublicacionesDe(correo: string): Alojamiento[] {
+    return this.alojamientosAgregados.filter((a) => a.correoPublicador === correo);
+  }
+
+  obtenerPublicacion(id: number, correo: string): Alojamiento | undefined {
+    return this.obtenerPublicacionesDe(correo).find((a) => a.id === id);
+  }
+
+  actualizarAlojamiento(id: number, correo: string, datos: DatosNuevoAlojamiento): boolean {
+    const alojamiento = this.obtenerPublicacion(id, correo);
+    if (!alojamiento) {
+      return false;
+    }
+    Object.assign(alojamiento, datos);
+    return true;
+  }
+
+  cambiarEstadoAlojamiento(id: number, correo: string, activo: boolean): void {
+    const alojamiento = this.obtenerPublicacion(id, correo);
+    if (alojamiento) {
+      alojamiento.activo = activo;
+    }
+  }
+
+  actualizarNombrePublicador(correo: string, nombre: string): void {
+    this.obtenerPublicacionesDe(correo).forEach((a) => (a.publicadoPor = nombre));
   }
 
   obtenerServiciosComunes(cantidad: number): Observable<string[]> {

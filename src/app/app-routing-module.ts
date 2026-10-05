@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
+import { NgModule, inject } from '@angular/core';
+import { CanActivateFn, RouterModule, Routes } from '@angular/router';
 import { Homecomponent } from './components/homecomponent/homecomponent';
 import { Listadocomponent } from './components/listadocomponent/listadocomponent';
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
@@ -8,9 +7,12 @@ import { Misreservascomponent } from './components/misreservascomponent/misreser
 import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
 import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
-import { Asistenteiacomponent } from './components/asistenteiacomponent/asistenteiacomponent';
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
+import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
+import { Authguardservice } from './services/authguardservice';
+
+const requiereSesion: CanActivateFn = (_ruta, estado) => inject(Authguardservice).verificarSesion(estado.url);
 
 const routes: Routes = [
   {
@@ -31,6 +33,7 @@ const routes: Routes = [
   {
     path: 'mis-reservas',
     component: Misreservascomponent,
+    canActivate: [requiereSesion],
     title: 'Nocturna Stays — Mis reservas',
   },
   {
@@ -46,17 +49,26 @@ const routes: Routes = [
   {
     path: 'favoritos',
     component: Favoritoscomponent,
+    canActivate: [requiereSesion],
     title: 'Nocturna Stays — Favoritos',
-  },
-  {
-    path: 'asistente-ia',
-    component: Asistenteiacomponent,
-    title: 'Nocturna Stays — Asistente IA',
   },
   {
     path: 'publicar',
     component: Publicarcomponent,
+    canActivate: [requiereSesion],
     title: 'Nocturna Stays — Publicar alojamiento',
+  },
+  {
+    path: 'publicar/:id',
+    component: Publicarcomponent,
+    canActivate: [requiereSesion],
+    title: 'Nocturna Stays — Editar alojamiento',
+  },
+  {
+    path: 'perfil',
+    component: Perfilcomponent,
+    canActivate: [requiereSesion],
+    title: 'Nocturna Stays — Mi perfil',
   },
   {
     path: '**',

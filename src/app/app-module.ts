@@ -20,6 +20,8 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
+import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
+import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { Publicarcomponent } from './components/publicarcomponent/publicarcompon
     Notfoundcomponent,
     Resenaformcomponent,
     Publicarcomponent,
+    Perfilcomponent,
+    Iaopinioncomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
