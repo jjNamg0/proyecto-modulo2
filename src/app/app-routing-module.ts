@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { Homecomponent } from './components/homecomponent/homecomponent';
 import { Listadocomponent } from './components/listadocomponent/listadocomponent';
 import { Detallecomponent } from './components/detallecomponent/detallecomponent';
@@ -7,6 +8,7 @@ import { Misreservascomponent } from './components/misreservascomponent/misreser
 import { Logincomponent } from './components/logincomponent/logincomponent';
 import { Registrocomponent } from './components/registrocomponent/registrocomponent';
 import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscomponent';
+import { Asistenteiacomponent } from './components/asistenteiacomponent/asistenteiacomponent';
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
 
@@ -45,6 +47,11 @@ const routes: Routes = [
     path: 'favoritos',
     component: Favoritoscomponent,
     title: 'Nocturna Stays — Favoritos',
+  },
+  {
+    path: 'asistente-ia',
+    component: Asistenteiacomponent,
+    title: 'Nocturna Stays — Asistente IA',
   },
   {
     path: 'publicar',
