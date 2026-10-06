@@ -20,6 +20,12 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
+<<<<<<< Updated upstream
+=======
+import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
+import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
+import{Toastcomponent} from './components/toastcomponent/toastcomponent';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -40,7 +46,7 @@ import { Publicarcomponent } from './components/publicarcomponent/publicarcompon
     Resenaformcomponent,
     Publicarcomponent,
   ],
-  imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule,Toastcomponent ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

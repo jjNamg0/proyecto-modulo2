@@ -7,6 +7,7 @@ import { Climaservice, Clima, PronosticoEstancia } from '../../services/climaser
 import { Exchangerateservice, Moneda } from '../../services/exchangerateservice';
 import { Favoritosservice } from '../../services/favoritosservice';
 import { Cotizacion, Cotizadorcomponent } from '../cotizadorcomponent/cotizadorcomponent';
+import {ToastService} from '../../services/toastservice';
 
 @Component({
   selector: 'app-detallecomponent',
@@ -39,6 +40,12 @@ export class Detallecomponent implements OnInit {
     private climaService: Climaservice,
     private exchangeRateService: Exchangerateservice,
     private favoritosService: Favoritosservice,
+<<<<<<< Updated upstream
+=======
+    private paisesService: Paisesservice,
+    private router: Router,
+    private toastService: ToastService,
+>>>>>>> Stashed changes
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +61,22 @@ export class Detallecomponent implements OnInit {
   }
 
   alternarFavorito(id: number): void {
+<<<<<<< Updated upstream
     this.favoritosService.alternar(id);
+=======
+    const resultado = this.favoritosService.alternar(id);
+
+    if (!resultado) {
+      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+      return;
+    }
+
+    if (this.favoritosService.esFavorito(id)) {
+      this.toastService.mostrar('Alojamiento agregado a favoritos');
+    } else {
+      this.toastService.mostrar('Alojamiento eliminado de favoritos');
+    }
+>>>>>>> Stashed changes
   }
 
   monedas(): Moneda[] {
