@@ -43,17 +43,9 @@ export class Detallecomponent implements OnInit {
     private climaService: Climaservice,
     private exchangeRateService: Exchangerateservice,
     private favoritosService: Favoritosservice,
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
     private paisesService: Paisesservice,
     private router: Router,
     private toastService: ToastService,
->>>>>>> Stashed changes
-=======
-    private paisesService: Paisesservice,
-    private router: Router,
->>>>>>> main
   ) {}
 
   ngOnInit(): void {
@@ -69,14 +61,12 @@ export class Detallecomponent implements OnInit {
   }
 
   alternarFavorito(id: number): void {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    this.favoritosService.alternar(id);
-=======
     const resultado = this.favoritosService.alternar(id);
 
     if (!resultado) {
-      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+      this.router.navigate(['/login'], {
+        queryParams: { volverA: this.router.url }
+      });
       return;
     }
 
@@ -85,14 +75,7 @@ export class Detallecomponent implements OnInit {
     } else {
       this.toastService.mostrar('Alojamiento eliminado de favoritos');
     }
->>>>>>> Stashed changes
-=======
-    if (!this.favoritosService.alternar(id)) {
-      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
-    }
->>>>>>> main
   }
-
   monedas(): Moneda[] {
     return this.exchangeRateService.MONEDAS;
   }

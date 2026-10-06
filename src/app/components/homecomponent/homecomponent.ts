@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Alojamientosservice, Alojamiento } from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
-import{ToastService} from '../../services/toastservice';
+import { ToastService } from '../../services/toastservice';
 
 @Component({
   selector: 'app-homecomponent',
@@ -20,15 +20,8 @@ export class Homecomponent implements OnInit, OnDestroy {
   constructor(
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
     private router: Router,
     private toastService: ToastService,
->>>>>>> Stashed changes
-=======
-    private router: Router,
->>>>>>> main
   ) {}
 
   ngOnInit(): void {
@@ -58,8 +51,12 @@ export class Homecomponent implements OnInit, OnDestroy {
 
   iniciarAutoplay(): void {
     this.detenerAutoplay();
+
     if (this.destacados().length > 1) {
-      this.intervalo = setInterval(() => this.siguiente(), this.TIEMPO_POR_SLIDE);
+      this.intervalo = setInterval(
+        () => this.siguiente(),
+        this.TIEMPO_POR_SLIDE
+      );
     }
   }
 
@@ -77,15 +74,13 @@ export class Homecomponent implements OnInit, OnDestroy {
   alternarFavorito(id: number, event: Event): void {
     event.stopPropagation();
     event.preventDefault();
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    this.favoritosService.alternar(id);
-=======
 
     const resultado = this.favoritosService.alternar(id);
 
     if (!resultado) {
-      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+      this.router.navigate(['/login'], {
+        queryParams: { volverA: this.router.url }
+      });
       return;
     }
 
@@ -94,12 +89,6 @@ export class Homecomponent implements OnInit, OnDestroy {
     } else {
       this.toastService.mostrar('Alojamiento eliminado de favoritos');
     }
->>>>>>> Stashed changes
-=======
-    if (!this.favoritosService.alternar(id)) {
-      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
-    }
->>>>>>> main
   }
 
   onImgError(event: Event, id: number): void {
