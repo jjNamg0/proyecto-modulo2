@@ -1,0 +1,11 @@
+<div
+  *ngIf="toastService.mensaje()"
+  class="toast-notificacion"
+  [class.toast-error]="toastService.tipo() === 'error'"
+>
+
+
+  <span>
+    {{ toastService.mensaje() }}
+  </span>
+</div>

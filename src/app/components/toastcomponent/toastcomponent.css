@@ -1,0 +1,73 @@
+.toast-notificacion {
+  position: fixed;
+  top: 90px;
+  right: 25px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 280px;
+  max-width: 380px;
+
+  padding: 15px 18px;
+
+  background: #ffffff;
+  color: #1f2937;
+
+  border-left: 4px solid #4f46e5;
+  border-radius: 10px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  animation: aparecerToast 0.3s ease;
+}
+
+.toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  background: #4f46e5;
+  color: white;
+
+  border-radius: 50%;
+
+  font-weight: bold;
+}
+
+.toast-error {
+  border-left-color: #dc2626;
+}
+
+.toast-error .toast-icon {
+  background: #dc2626;
+}
+
+@keyframes aparecerToast {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 576px) {
+  .toast-notificacion {
+    top: 75px;
+    left: 15px;
+    right: 15px;
+    min-width: auto;
+  }
+}
