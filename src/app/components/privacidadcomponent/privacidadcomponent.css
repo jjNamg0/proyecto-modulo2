@@ -1,0 +1,11 @@
+.container {
+  min-height: 60vh;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h3 {
+  margin-top: 30px;
+}
