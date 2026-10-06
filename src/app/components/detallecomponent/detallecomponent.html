@@ -62,6 +62,13 @@
         <p class="text-secondary mb-2">
           <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}, {{ a.pais }}
         </p>
+        <div class="d-flex align-items-center gap-2 small text-secondary mb-2" *ngIf="datosPais() as pais">
+          <img [src]="pais.bandera" [alt]="'Bandera de ' + pais.nombre" class="detalle-bandera rounded-1" />
+          <span>
+            {{ pais.nombre }} · {{ pais.region }}
+            <span *ngIf="pais.vecinos.length > 0"> · Limita con {{ pais.vecinos.join(', ') }}</span>
+          </span>
+        </div>
         <p class="small text-secondary mb-2" *ngIf="a.publicadoPor">
           <i class="fa-solid fa-user-pen me-1"></i>Publicado por {{ a.publicadoPor }}
         </p>
@@ -132,6 +139,17 @@
 
         <app-cotizadorcomponent [alojamiento]="a" (cotizacionLista)="onCotizacionLista($event)" />
 
+        <div class="alert alert-info small py-2 mt-3 mb-0 d-flex gap-2" role="status" *ngIf="cotizacionActual() && festivos().length > 0">
+          <i class="fa-solid fa-calendar-day mt-1"></i>
+          <div>
+            <strong>Tu estancia incluye {{ festivos().length === 1 ? 'un festivo' : festivos().length + ' festivos' }} en {{ a.pais }}:</strong>
+            <span *ngFor="let festivo of festivos(); let ultimo = last">
+              {{ festivo.etiqueta }} {{ festivo.nombre }}{{ ultimo ? '.' : ',' }}
+            </span>
+            <div class="mt-1">Puede haber más demanda y algunos comercios cerrados esos días.</div>
+          </div>
+        </div>
+
         <div class="pronostico-panel p-3 mt-3" *ngIf="cotizacionActual() && coordenadas()">
           <h2 class="h6 text-white mb-3">
             <i class="fa-solid fa-cloud-sun-rain me-2"></i>Pronóstico para tu estancia
@@ -169,6 +187,13 @@
             <small class="text-secondary d-block mt-2" *ngIf="p.incompleto">
               Solo se muestran los días hasta el {{ p.dias[p.dias.length - 1].etiqueta }}, que es lo que alcanza el pronóstico.
             </small>
+
+            <app-iaopinioncomponent
+              *ngIf="cotizacionActual() as cot"
+              [alojamiento]="a"
+              [cotizacion]="cot"
+              [pronostico]="p"
+            />
           </div>
         </div>
 

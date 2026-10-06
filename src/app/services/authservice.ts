@@ -52,4 +52,34 @@ export class Authservice {
   cerrarSesion(): void {
     this.usuarioActual.set(null);
   }
+
+  actualizarNombre(nombre: string): ResultadoAuth {
+    const usuario = this.usuarioGuardado();
+    if (!usuario) {
+      return { exito: false, error: 'No hay una sesión iniciada.' };
+    }
+
+    usuario.nombre = nombre;
+    this.usuarioActual.set({ ...usuario });
+    return { exito: true };
+  }
+
+  cambiarPassword(passwordActual: string, passwordNueva: string): ResultadoAuth {
+    const usuario = this.usuarioGuardado();
+    if (!usuario) {
+      return { exito: false, error: 'No hay una sesión iniciada.' };
+    }
+    if (usuario.password !== passwordActual) {
+      return { exito: false, error: 'La contraseña actual no es correcta.' };
+    }
+
+    usuario.password = passwordNueva;
+    this.usuarioActual.set({ ...usuario });
+    return { exito: true };
+  }
+
+  private usuarioGuardado(): Usuario | undefined {
+    const actual = this.usuarioActual();
+    return actual ? this.usuarios.find((u) => u.id === actual.id) : undefined;
+  }
 }

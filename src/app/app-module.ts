@@ -20,12 +20,17 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
 import{Toastcomponent} from './components/toastcomponent/toastcomponent';
 >>>>>>> Stashed changes
+=======
+import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
+import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
+>>>>>>> main
 
 @NgModule({
   declarations: [
@@ -45,6 +50,8 @@ import{Toastcomponent} from './components/toastcomponent/toastcomponent';
     Notfoundcomponent,
     Resenaformcomponent,
     Publicarcomponent,
+    Perfilcomponent,
+    Iaopinioncomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule,Toastcomponent ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

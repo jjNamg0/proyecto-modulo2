@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Alojamientosservice, Alojamiento, Resena } from '../../services/alojamientosservice';
 import { Geocodingservice, Coordenadas } from '../../services/geocodingservice';
 import { Climaservice, Clima, PronosticoEstancia } from '../../services/climaservice';
 import { Exchangerateservice, Moneda } from '../../services/exchangerateservice';
 import { Favoritosservice } from '../../services/favoritosservice';
+import { Paisesservice, DatosPais, Festivo } from '../../services/paisesservice';
 import { Cotizacion, Cotizadorcomponent } from '../cotizadorcomponent/cotizadorcomponent';
 import {ToastService} from '../../services/toastservice';
 
@@ -31,6 +32,8 @@ export class Detallecomponent implements OnInit {
   pronostico = signal<PronosticoEstancia | null>(null);
   cargandoPronostico = signal(false);
   pronosticoFueraDeRango = signal(false);
+  datosPais = signal<DatosPais | null>(null);
+  festivos = signal<Festivo[]>([]);
 
   constructor(
     private route: ActivatedRoute,
@@ -40,12 +43,17 @@ export class Detallecomponent implements OnInit {
     private climaService: Climaservice,
     private exchangeRateService: Exchangerateservice,
     private favoritosService: Favoritosservice,
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     private paisesService: Paisesservice,
     private router: Router,
     private toastService: ToastService,
 >>>>>>> Stashed changes
+=======
+    private paisesService: Paisesservice,
+    private router: Router,
+>>>>>>> main
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +69,7 @@ export class Detallecomponent implements OnInit {
   }
 
   alternarFavorito(id: number): void {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     this.favoritosService.alternar(id);
 =======
@@ -77,6 +86,11 @@ export class Detallecomponent implements OnInit {
       this.toastService.mostrar('Alojamiento eliminado de favoritos');
     }
 >>>>>>> Stashed changes
+=======
+    if (!this.favoritosService.alternar(id)) {
+      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+    }
+>>>>>>> main
   }
 
   monedas(): Moneda[] {
@@ -125,6 +139,7 @@ export class Detallecomponent implements OnInit {
   onCotizacionLista(cotizacion: Cotizacion | null): void {
     this.cotizacionActual.set(cotizacion);
     this.consultarPronostico(cotizacion);
+    this.consultarFestivos(cotizacion);
   }
 
   cambiarImagen(url: string): void {
@@ -147,6 +162,8 @@ export class Detallecomponent implements OnInit {
     this.clima.set(null);
     this.pronostico.set(null);
     this.pronosticoFueraDeRango.set(false);
+    this.datosPais.set(null);
+    this.festivos.set([]);
 
     this.alojamientosService.obtenerPorId(id).subscribe((alojamiento) => {
       if (!alojamiento) {
@@ -158,6 +175,10 @@ export class Detallecomponent implements OnInit {
       this.alojamiento.set(alojamiento);
       this.imagenActiva.set(alojamiento.imagenPrincipal);
       this.cargando.set(false);
+
+      this.paisesService.obtenerDatosPais(alojamiento.pais).subscribe((datos) => {
+        this.datosPais.set(datos);
+      });
 
       this.alojamientosService.obtenerResenasPorAlojamiento(id).subscribe((resenas) => {
         this.resenas.set(resenas);
@@ -206,6 +227,22 @@ export class Detallecomponent implements OnInit {
         }
         this.pronostico.set(pronostico);
         this.cargandoPronostico.set(false);
+      });
+  }
+
+  private consultarFestivos(cotizacion: Cotizacion | null): void {
+    this.festivos.set([]);
+    const alojamiento = this.alojamiento();
+    if (!cotizacion || !alojamiento) {
+      return;
+    }
+
+    this.paisesService
+      .obtenerFestivosEnEstancia(alojamiento.pais, cotizacion.fechaInicio, cotizacion.fechaFin)
+      .subscribe((festivos) => {
+        if (this.cotizacionActual() === cotizacion) {
+          this.festivos.set(festivos);
+        }
       });
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { Router } from '@angular/router';
-import { Alojamientosservice } from '../../services/alojamientosservice';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Alojamientosservice, DatosNuevoAlojamiento } from '../../services/alojamientosservice';
 import { Authservice, Usuario } from '../../services/authservice';
 
 declare const Swal: any;
@@ -16,6 +16,8 @@ export class Publicarcomponent implements OnInit {
   paises = signal<string[]>([]);
   ciudades = signal<string[]>([]);
   serviciosComunes = signal<string[]>([]);
+  idEdicion = signal<number | null>(null);
+  publicacionNoEncontrada = signal(false);
 
   nombre = '';
   descripcion = '';
@@ -39,18 +41,29 @@ export class Publicarcomponent implements OnInit {
   constructor(
     private alojamientosService: Alojamientosservice,
     private authService: Authservice,
+    private route: ActivatedRoute,
     private router: Router,
   ) {}
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.idEdicion.set(id ? Number(id) : null);
+
     this.alojamientosService.obtenerTipos().subscribe((tipos) => this.tipos.set(tipos));
     this.alojamientosService.obtenerPaises().subscribe((paises) => this.paises.set(paises));
     this.alojamientosService.obtenerCiudades().subscribe((ciudades) => this.ciudades.set(ciudades));
-    this.alojamientosService.obtenerServiciosComunes(12).subscribe((servicios) => this.serviciosComunes.set(servicios));
+    this.alojamientosService.obtenerServiciosComunes(12).subscribe((servicios) => {
+      this.serviciosComunes.set(servicios);
+      this.cargarPublicacionParaEditar(servicios);
+    });
   }
 
   usuarioActual(): Usuario | null {
     return this.authService.usuarioActual();
+  }
+
+  esEdicion(): boolean {
+    return this.idEdicion() !== null;
   }
 
   estaSeleccionado(servicio: string): boolean {
@@ -115,7 +128,7 @@ export class Publicarcomponent implements OnInit {
     }
 
     const imagenPrincipal = this.imagenPrincipal.trim();
-    const nuevo = this.alojamientosService.agregarAlojamiento({
+    const datos: DatosNuevoAlojamiento = {
       nombre: this.nombre.trim(),
       descripcion: this.descripcion.trim(),
       pais: this.pais.trim(),
@@ -133,7 +146,16 @@ export class Publicarcomponent implements OnInit {
       servicios,
       reglas: this.separarLineas(this.reglasTexto),
       publicadoPor: usuario.nombre,
-    });
+      correoPublicador: usuario.correo,
+    };
+
+    const idEdicion = this.idEdicion();
+    if (idEdicion !== null) {
+      this.guardarCambios(idEdicion, usuario.correo, datos);
+      return;
+    }
+
+    const nuevo = this.alojamientosService.agregarAlojamiento(datos);
 
     Swal.fire({
       icon: 'success',
@@ -145,6 +167,56 @@ export class Publicarcomponent implements OnInit {
     });
 
     this.router.navigate(['/alojamientos', nuevo.id]);
+  }
+
+  private guardarCambios(id: number, correo: string, datos: DatosNuevoAlojamiento): void {
+    if (!this.alojamientosService.actualizarAlojamiento(id, correo, datos)) {
+      this.errorPublicar = 'No se encontró la publicación que estás editando.';
+      return;
+    }
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Cambios guardados',
+      html: `<strong>${datos.nombre}</strong> quedó actualizado.`,
+      confirmButtonText: 'Listo',
+      background: '#181b25',
+      color: '#dfe2ef',
+    });
+
+    this.router.navigateByUrl('/perfil');
+  }
+
+  private cargarPublicacionParaEditar(serviciosComunes: string[]): void {
+    const id = this.idEdicion();
+    const usuario = this.usuarioActual();
+    if (id === null || !usuario) {
+      return;
+    }
+
+    const publicacion = this.alojamientosService.obtenerPublicacion(id, usuario.correo);
+    if (!publicacion) {
+      this.publicacionNoEncontrada.set(true);
+      return;
+    }
+
+    this.nombre = publicacion.nombre;
+    this.descripcion = publicacion.descripcion;
+    this.pais = publicacion.pais;
+    this.ciudad = publicacion.ciudad;
+    this.ubicacion = publicacion.ubicacion;
+    this.tipo = publicacion.tipo;
+    this.capacidad = publicacion.capacidad;
+    this.habitaciones = publicacion.habitaciones;
+    this.camas = publicacion.camas;
+    this.banos = publicacion.banos;
+    this.precioNoche = publicacion.precioNoche;
+    this.tarifaLimpieza = publicacion.tarifaLimpieza;
+    this.imagenPrincipal = publicacion.imagenPrincipal;
+    this.imagenesExtra = publicacion.imagenes.filter((url) => url !== publicacion.imagenPrincipal).join('\n');
+    this.serviciosSeleccionados = publicacion.servicios.filter((s) => serviciosComunes.includes(s));
+    this.otrosServicios = publicacion.servicios.filter((s) => !serviciosComunes.includes(s)).join(', ');
+    this.reglasTexto = publicacion.reglas.join('\n');
   }
 
   private separarLineas(texto: string): string[] {

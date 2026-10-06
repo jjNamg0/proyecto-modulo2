@@ -1,4 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { Alojamientosservice, Alojamiento, Filtros, FILTROS_VACIOS } from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
 import {ToastService} from '../../services/toastservice';
@@ -22,11 +23,15 @@ export class Listadocomponent implements OnInit {
   constructor(
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
     private router: Router,
     private toastService: ToastService,
 >>>>>>> Stashed changes
+=======
+    private router: Router,
+>>>>>>> main
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +78,7 @@ export class Listadocomponent implements OnInit {
   alternarFavorito(id: number, event: Event): void {
     event.stopPropagation();
     event.preventDefault();
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     this.favoritosService.alternar(id);
 =======
@@ -90,6 +96,11 @@ export class Listadocomponent implements OnInit {
       this.toastService.mostrar('Alojamiento eliminado de favoritos');
     }
 >>>>>>> Stashed changes
+=======
+    if (!this.favoritosService.alternar(id)) {
+      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+    }
+>>>>>>> main
   }
 
   onImgError(event: Event, id: number): void {

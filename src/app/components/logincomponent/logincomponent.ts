@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Authservice } from '../../services/authservice';
+import { Authguardservice } from '../../services/authguardservice';
 
 @Component({
   selector: 'app-logincomponent',
@@ -15,8 +16,14 @@ export class Logincomponent {
 
   constructor(
     private authService: Authservice,
+    private authguardService: Authguardservice,
+    private route: ActivatedRoute,
     private router: Router,
   ) {}
+
+  vieneDeRutaProtegida(): boolean {
+    return this.route.snapshot.queryParamMap.has('volverA');
+  }
 
   iniciarSesion(): void {
     this.errorLogin = '';
@@ -32,6 +39,7 @@ export class Logincomponent {
       return;
     }
 
-    this.router.navigateByUrl('/');
+    const volverA = this.route.snapshot.queryParamMap.get('volverA');
+    this.router.navigateByUrl(this.authguardService.destinoSeguro(volverA));
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Authservice } from '../../services/authservice';
+import { Authguardservice } from '../../services/authguardservice';
 
 @Component({
   selector: 'app-registrocomponent',
@@ -16,6 +17,8 @@ export class Registrocomponent {
 
   constructor(
     private authService: Authservice,
+    private authguardService: Authguardservice,
+    private route: ActivatedRoute,
     private router: Router,
   ) {}
 
@@ -49,6 +52,7 @@ export class Registrocomponent {
       return;
     }
 
-    this.router.navigateByUrl('/');
+    const volverA = this.route.snapshot.queryParamMap.get('volverA');
+    this.router.navigateByUrl(this.authguardService.destinoSeguro(volverA));
   }
 }

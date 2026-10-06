@@ -1,14 +1,24 @@
 <section class="container py-4">
   <h1 class="h4 text-white mb-4">
-    <i class="fa-solid fa-house-circle-check me-2"></i>Publica tu alojamiento
+    <i class="fa-solid fa-house-circle-check me-2"></i>{{ esEdicion() ? 'Editar alojamiento' : 'Publica tu alojamiento' }}
   </h1>
 
   <div *ngIf="usuarioActual() as usuario; else invitado">
-    <p class="text-secondary small mb-4">
-      Publicando como {{ usuario.nombre }}. Tu alojamiento aparecerá en el listado y en las búsquedas apenas lo publiques.
+    <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert" *ngIf="publicacionNoEncontrada()">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>
+        No encontramos esa publicación entre las tuyas. Vuelve a <a routerLink="/perfil" class="alert-link">tu perfil</a>.
+      </span>
+    </div>
+
+    <p class="text-secondary small mb-4" *ngIf="!publicacionNoEncontrada()">
+      <span *ngIf="!esEdicion()">
+        Publicando como {{ usuario.nombre }}. Tu alojamiento aparecerá en el listado y en las búsquedas apenas lo publiques.
+      </span>
+      <span *ngIf="esEdicion()">Editando una de tus publicaciones. Los cambios se ven apenas los guardes.</span>
     </p>
 
-    <div class="row g-4">
+    <div class="row g-4" *ngIf="!publicacionNoEncontrada()">
       <div class="col-12 col-lg-7">
         <div class="publicar-panel p-3 mb-4">
           <h2 class="h6 text-white mb-3">
@@ -156,7 +166,8 @@
         </div>
 
         <button type="button" class="btn btn-primary w-100" (click)="publicar()">
-          <i class="fa-solid fa-upload me-1"></i>Publicar alojamiento
+          <span *ngIf="!esEdicion()"><i class="fa-solid fa-upload me-1"></i>Publicar alojamiento</span>
+          <span *ngIf="esEdicion()"><i class="fa-solid fa-floppy-disk me-1"></i>Guardar cambios</span>
         </button>
         <p class="small text-secondary mt-2 mb-0">
           Como la app no tiene backend, el alojamiento se guarda solo mientras no recargues la página.
