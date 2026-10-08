@@ -3324,7 +3324,40 @@
     "No fumar",
     "No fiestas"
   ]
-}
+},
+    {
+      "id": 102,
+      "nombre": "Casa de los besos apasionados",
+      "descripcion": "Casa cerca a la universidad el bosque donde los vengadores van a besarse apasionados",
+      "ciudad": "Bogotá",
+      "pais": "Colombia",
+      "ubicacion": "Universidad el Bosque, Usaquen",
+      "tipo": "Casa",
+      "capacidad": 100,
+      "habitaciones": 1,
+      "camas": 1,
+      "banos": 1,
+      "precioNoche": 11000,
+      "tarifaLimpieza": 150000,
+      "calificacion": 5,
+      "activo": true,
+      "imagenPrincipal": "assets/images/beso.png",
+      "imagenes": [
+        "assets/images/beso.png",
+        "assets/images/beso-2.png"
+      ],
+      "servicios": [
+        "Wi-Fi",
+        "Calefacción",
+        "Cocina",
+        "Ascensor"
+      ],
+      "reglas": [
+        "No fumar",
+        "No fiestas"
+      ]
+    }
+
   ],
   "resenas": [
     {
@@ -4185,8 +4218,15 @@
       "id": 123,
       "alojamientoId": 101,
       "usuario": "Diego Fernando Montoya Montoya",
-      "calificacion": 4,
+      "calificacion": 5,
       "comentario": "Buena casa y muy bien ubicado, el aire acondicionado funciona perfecto, ademas yo nací allá entonces recorde mi infancia."
+    },
+    {
+      "id": 124,
+      "alojamientoId": 102,
+      "usuario": "Capitan America y Spiderman",
+      "calificacion": 5,
+      "comentario": "Dios que buenos besos me dieron alla, necesito volver un dia despues de clase"
     }
   ]
 }
