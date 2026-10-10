@@ -2,6 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Alojamientosservice, Alojamiento, Filtros, FILTROS_VACIOS } from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
+import { Comparadorservice } from '../../services/comparadorservice';
 
 @Component({
   selector: 'app-listadocomponent',
@@ -22,6 +23,7 @@ export class Listadocomponent implements OnInit {
   constructor(
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
+    private comparadorService: Comparadorservice,
     private router: Router,
   ) {}
 
@@ -72,6 +74,16 @@ export class Listadocomponent implements OnInit {
     if (!this.favoritosService.alternar(id)) {
       this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
     }
+  }
+
+  estaEnComparador(id: number): boolean {
+    return this.comparadorService.estaEnComparador(id);
+  }
+
+  alternarComparador(id: number, event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+    this.comparadorService.alternar(id);
   }
 
   onImgError(event: Event, id: number): void {

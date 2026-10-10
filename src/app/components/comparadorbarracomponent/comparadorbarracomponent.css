@@ -1,0 +1,26 @@
+.comparador-barra {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  z-index: 1060;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: min(560px, calc(100vw - 32px));
+  padding: 0.65rem 0.85rem;
+  background-color: #1c1f29;
+  color: #dfe2ef;
+  border: 1px solid rgba(13, 202, 240, 0.3);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 576px) {
+  .comparador-barra {
+    flex-direction: column;
+    border-radius: 0.75rem;
+  }
+}

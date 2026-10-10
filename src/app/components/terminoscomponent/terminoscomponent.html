@@ -1,3 +1,49 @@
-<a routerLink="/" class="back-link">
-  <i class="fa-solid fa-arrow-left me-1"></i>Volver al inicio
-</a>
+<section class="container py-4">
+  <h1 class="h4 text-white mb-2">
+    <i class="fa-solid fa-file-contract me-2"></i>Términos y condiciones
+  </h1>
+  <p class="text-secondary small mb-4">
+    Las reglas para usar Nocturna Stays. Última actualización: {{ ACTUALIZACION }}.
+  </p>
+
+  <div class="row g-4">
+    <aside class="col-12 col-lg-3">
+      <div class="legal-panel legal-indice p-3">
+        <h2 class="h6 text-white mb-3">
+          <i class="fa-solid fa-list me-2"></i>Contenido
+        </h2>
+        <nav class="d-flex flex-column gap-1">
+          <button
+            type="button"
+            class="legal-indice__item"
+            *ngFor="let seccion of SECCIONES; let i = index"
+            (click)="irASeccion(seccion.id)"
+          >
+            {{ i + 1 }}. {{ seccion.titulo }}
+          </button>
+        </nav>
+        <a routerLink="/privacidad" class="d-block small mt-3">
+          <i class="fa-solid fa-user-shield me-1"></i>Ver política de privacidad
+        </a>
+      </div>
+    </aside>
+
+    <div class="col-12 col-lg-9">
+      <article class="legal-panel legal-seccion p-3 p-md-4 mb-3" *ngFor="let seccion of SECCIONES; let i = index" [id]="seccion.id">
+        <h2 class="h6 text-white d-flex align-items-center gap-2 mb-3">
+          <span class="legal-numero">{{ i + 1 }}</span>
+          <i class="fa-solid {{ seccion.icono }} text-info"></i>{{ seccion.titulo }}
+        </h2>
+        <p class="small text-secondary mb-2" *ngFor="let parrafo of seccion.parrafos">{{ parrafo }}</p>
+        <ul class="small text-secondary mb-0" *ngIf="seccion.puntos">
+          <li class="mb-1" *ngFor="let punto of seccion.puntos">{{ punto }}</li>
+        </ul>
+      </article>
+
+      <div class="alert alert-secondary d-flex align-items-center gap-2 mb-0" role="note">
+        <i class="fa-solid fa-circle-question"></i>
+        <span>¿Tienes dudas sobre estos términos? <a routerLink="/contacto" class="alert-link">Escríbenos</a>.</span>
+      </div>
+    </div>
+  </div>
+</section>

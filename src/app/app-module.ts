@@ -25,6 +25,10 @@ import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncom
 import { Toastcomponent } from './components/toastcomponent/toastcomponent';
 import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
 import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
+import { Comprobantecomponent } from './components/comprobantecomponent/comprobantecomponent';
+import { Comparadorcomponent } from './components/comparadorcomponent/comparadorcomponent';
+import { Comparadorbarracomponent } from './components/comparadorbarracomponent/comparadorbarracomponent';
+import { Contactocomponent } from './components/contactocomponent/contactocomponent';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import { Privacidadcomponent } from './components/privacidadcomponent/privacidad
     Toastcomponent,
     Terminoscomponent,
     Privacidadcomponent,
+    Comprobantecomponent,
+    Comparadorcomponent,
+    Comparadorbarracomponent,
+    Contactocomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

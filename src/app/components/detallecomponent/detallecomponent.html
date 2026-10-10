@@ -49,15 +49,28 @@
       <div class="col-12 col-lg-5">
         <div class="d-flex justify-content-between align-items-start gap-2">
           <h1 class="h3 text-white">{{ a.nombre }}</h1>
-          <button
-            type="button"
-            class="btn btn-outline-light btn-sm flex-shrink-0"
-            [class.text-danger]="esFavorito(a.id)"
-            (click)="alternarFavorito(a.id)"
-            [attr.aria-label]="esFavorito(a.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
-          >
-            <i class="fa-solid fa-heart"></i>
-          </button>
+          <div class="d-flex gap-2 flex-shrink-0">
+            <button
+              type="button"
+              class="btn btn-sm"
+              [class.btn-info]="estaEnComparador(a.id)"
+              [class.btn-outline-light]="!estaEnComparador(a.id)"
+              (click)="alternarComparador(a.id)"
+              [attr.aria-label]="estaEnComparador(a.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
+              [title]="estaEnComparador(a.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
+            >
+              <i class="fa-solid fa-code-compare"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-light btn-sm"
+              [class.text-danger]="esFavorito(a.id)"
+              (click)="alternarFavorito(a.id)"
+              [attr.aria-label]="esFavorito(a.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+            >
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </div>
         </div>
         <p class="text-secondary mb-2">
           <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}, {{ a.pais }}

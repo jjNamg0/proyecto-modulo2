@@ -1,0 +1,29 @@
+.contacto-panel {
+  background-color: #181b25;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+}
+
+#preguntas-frecuentes {
+  scroll-margin-top: 84px;
+}
+
+.contacto-solicitud + .contacto-solicitud,
+.contacto-pregunta + .contacto-pregunta {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contacto-pregunta__boton {
+  width: 100%;
+  padding: 0.75rem 0;
+  border: none;
+  background-color: transparent;
+  color: #dfe2ef;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.contacto-pregunta__boton:hover,
+.contacto-pregunta__boton[aria-expanded='true'] {
+  color: #6ea8fe;
+}

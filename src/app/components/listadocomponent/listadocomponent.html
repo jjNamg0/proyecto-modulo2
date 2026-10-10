@@ -50,6 +50,18 @@
                 >
                   <i class="fa-solid fa-heart"></i>
                 </button>
+                <button
+                  type="button"
+                  class="btn btn-sm position-absolute bottom-0 start-0 m-2"
+                  style="z-index: 2;"
+                  [class.btn-info]="estaEnComparador(alojamiento.id)"
+                  [class.btn-dark]="!estaEnComparador(alojamiento.id)"
+                  (click)="alternarComparador(alojamiento.id, $event)"
+                  [attr.aria-label]="estaEnComparador(alojamiento.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
+                  [title]="estaEnComparador(alojamiento.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
+                >
+                  <i class="fa-solid fa-code-compare"></i>
+                </button>
               </div>
               <div class="card-body d-flex flex-column">
                 <h3 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h3>
