@@ -1,7 +1,13 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { Alojamientosservice, Alojamiento, Filtros, FILTROS_VACIOS } from '../../services/alojamientosservice';
+import {
+  Alojamientosservice,
+  Alojamiento,
+  Filtros,
+  FILTROS_VACIOS
+} from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
+import { ToastService } from '../../services/toastservice';
 
 @Component({
   selector: 'app-listadocomponent',
@@ -23,6 +29,7 @@ export class Listadocomponent implements OnInit {
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
     private router: Router,
+    private toastService: ToastService,
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +40,11 @@ export class Listadocomponent implements OnInit {
 
   aplicarFiltros(filtros: Filtros): void {
     this.cargando.set(true);
-    this.alojamientosService.obtenerCiudades(filtros.pais).subscribe((ciudades) => this.ciudades.set(ciudades));
+
+    this.alojamientosService.obtenerCiudades(filtros.pais).subscribe((ciudades) => {
+      this.ciudades.set(ciudades);
+    });
+
     this.alojamientosService.filtrar(filtros).subscribe((alojamientos) => {
       this.alojamientos.set(alojamientos);
       this.paginaActual.set(1);
@@ -46,18 +57,26 @@ export class Listadocomponent implements OnInit {
   }
 
   paginas(): number[] {
-    return Array.from({ length: this.totalPaginas() }, (_, indice) => indice + 1);
+    return Array.from(
+      { length: this.totalPaginas() },
+      (_, indice) => indice + 1
+    );
   }
 
   alojamientosDePagina(): Alojamiento[] {
     const inicio = (this.paginaActual() - 1) * this.TAMANO_PAGINA;
-    return this.alojamientos().slice(inicio, inicio + this.TAMANO_PAGINA);
+
+    return this.alojamientos().slice(
+      inicio,
+      inicio + this.TAMANO_PAGINA
+    );
   }
 
   irAPagina(pagina: number): void {
     if (pagina < 1 || pagina > this.totalPaginas()) {
       return;
     }
+
     this.paginaActual.set(pagina);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -69,8 +88,20 @@ export class Listadocomponent implements OnInit {
   alternarFavorito(id: number, event: Event): void {
     event.stopPropagation();
     event.preventDefault();
-    if (!this.favoritosService.alternar(id)) {
-      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
+
+    const resultado = this.favoritosService.alternar(id);
+
+    if (!resultado) {
+      this.router.navigate(['/login'], {
+        queryParams: { volverA: this.router.url }
+      });
+      return;
+    }
+
+    if (this.favoritosService.esFavorito(id)) {
+      this.toastService.mostrar('Alojamiento agregado a favoritos');
+    } else {
+      this.toastService.mostrar('Alojamiento eliminado de favoritos');
     }
   }
 
