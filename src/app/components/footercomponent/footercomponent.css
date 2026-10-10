@@ -13,10 +13,17 @@
   color: #bec8d2;
   text-decoration: none;
   font-size: 0.9rem;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-link:hover {
   color: #ffffff;
+  transform: translateX(3px);
+}
+
+.footer-divider {
+  border-color: rgba(255, 255, 255, 0.08);
+  opacity: 1;
 }
 
 .footer-divider {
