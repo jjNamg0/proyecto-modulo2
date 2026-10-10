@@ -8,33 +8,95 @@
       </span>
     </a>
 
-    <button
-      type="button"
-      class="btn btn-outline-light d-lg-none"
-      (click)="toggleMenu()"
-      aria-label="Abrir menú"
-    >
-      <i class="fa-solid fa-bars"></i>
-    </button>
+    <div class="d-flex align-items-center gap-2">
+      <nav class="d-none d-lg-flex align-items-center gap-2">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill">Inicio</a>
+        <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill">Listado</a>
+        <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill">Mis reservas</a>
+        <a routerLink="/favoritos" routerLinkActive="active" class="nav-link-pill">Favoritos</a>
+        <a routerLink="/publicar" routerLinkActive="active" class="nav-link-pill">Publicar</a>
 
-    <nav class="d-none d-lg-flex align-items-center gap-2">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill">Inicio</a>
-      <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill">Listado</a>
-      <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill">Mis reservas</a>
-      <a routerLink="/favoritos" routerLinkActive="active" class="nav-link-pill">Favoritos</a>
-      <a routerLink="/publicar" routerLinkActive="active" class="nav-link-pill">Publicar</a>
+        <ng-container *ngIf="usuarioActual() as usuario; else invitadoDesktop">
+          <a routerLink="/perfil" class="usuario-pill px-3 py-1 rounded-pill small text-decoration-none" title="Mi perfil">
+            <i class="fa-solid fa-circle-user me-1"></i>{{ usuario.nombre }}
+          </a>
+          <button type="button" class="btn btn-outline-light btn-sm" (click)="cerrarSesion()">Cerrar sesión</button>
+        </ng-container>
+        <ng-template #invitadoDesktop>
+          <a routerLink="/login" routerLinkActive="active" class="nav-link-pill">Iniciar sesión</a>
+          <a routerLink="/registro" routerLinkActive="active" class="nav-link-pill">Registrarse</a>
+        </ng-template>
+      </nav>
 
-      <ng-container *ngIf="usuarioActual() as usuario; else invitadoDesktop">
-        <a routerLink="/perfil" class="usuario-pill px-3 py-1 rounded-pill small text-decoration-none" title="Mi perfil">
-          <i class="fa-solid fa-circle-user me-1"></i>{{ usuario.nombre }}
-        </a>
-        <button type="button" class="btn btn-outline-light btn-sm" (click)="cerrarSesion()">Cerrar sesión</button>
-      </ng-container>
-      <ng-template #invitadoDesktop>
-        <a routerLink="/login" routerLinkActive="active" class="nav-link-pill">Iniciar sesión</a>
-        <a routerLink="/registro" routerLinkActive="active" class="nav-link-pill">Registrarse</a>
-      </ng-template>
-    </nav>
+      <div class="position-relative" *ngIf="usuarioActual()">
+        <button
+          type="button"
+          class="btn-navbar-icon"
+          aria-label="Notificaciones"
+          [attr.aria-expanded]="panelNotificacionesAbierto()"
+          (click)="toggleNotificaciones()"
+        >
+          <i class="fa-solid fa-bell"></i>
+          <span class="notificacion-contador" *ngIf="cantidadNoLeidas() > 0">{{ cantidadNoLeidas() }}</span>
+        </button>
+
+        <div class="panel-notificaciones animate__animated animate__fadeIn" *ngIf="panelNotificacionesAbierto()">
+          <div class="panel-notificaciones-header">
+            <strong class="text-white">Notificaciones</strong>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              aria-label="Cerrar notificaciones"
+              (click)="toggleNotificaciones()"
+            ></button>
+          </div>
+
+          <div class="notificaciones-vacio" *ngIf="notificaciones().length === 0">
+            <i class="fa-regular fa-bell-slash fs-3 mb-2"></i>
+            <p class="mb-0">No tienes notificaciones</p>
+          </div>
+
+          <div class="notificaciones-lista" *ngIf="notificaciones().length > 0">
+            <div
+              class="notificacion-item"
+              [class.no-leida]="!notificacion.leida"
+              *ngFor="let notificacion of notificaciones()"
+            >
+              <span class="notificacion-icono"><i class="fa-solid fa-bell"></i></span>
+              <div class="notificacion-contenido">
+                <p class="small mb-0">{{ notificacion.mensaje }}</p>
+                <small class="text-secondary">{{ notificacion.fecha | date: 'dd/MM HH:mm' }}</small>
+              </div>
+              <button
+                type="button"
+                class="btn-leida"
+                title="Marcar como leída"
+                aria-label="Marcar como leída"
+                *ngIf="!notificacion.leida"
+                (click)="marcarComoLeida(notificacion.id)"
+              >
+                <i class="fa-solid fa-check"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="panel-notificaciones-footer" *ngIf="cantidadNoLeidas() > 0">
+            <button type="button" class="btn btn-link btn-sm" (click)="marcarTodasComoLeidas()">
+              Marcar todas como leídas
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-outline-light d-lg-none"
+        (click)="toggleMenu()"
+        aria-label="Abrir menú"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
   </div>
 
   <nav

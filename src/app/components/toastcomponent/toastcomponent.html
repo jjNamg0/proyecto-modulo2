@@ -1,0 +1,12 @@
+<div
+  class="toast-notificacion animate__animated animate__fadeInRight"
+  [class.toast-error]="esError()"
+  role="status"
+  aria-live="polite"
+  *ngIf="mensaje()"
+>
+  <span class="toast-icono" *ngIf="!esError()"><i class="fa-solid fa-check"></i></span>
+  <span class="toast-icono" *ngIf="esError()"><i class="fa-solid fa-xmark"></i></span>
+  <span class="flex-grow-1">{{ mensaje() }}</span>
+  <button type="button" class="btn-close btn-close-white" aria-label="Cerrar aviso" (click)="cerrar()"></button>
+</div>

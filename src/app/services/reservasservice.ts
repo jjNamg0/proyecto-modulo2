@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Notificacionservice } from './notificacionservice';
 
 export type EstadoReserva = 'CONFIRMADA' | 'CANCELADA';
 
@@ -43,6 +44,8 @@ export class Reservasservice {
   private reservas: Reserva[] = [];
   private siguienteId = 1;
 
+  constructor(private notificacionService: Notificacionservice) {}
+
   crearReserva(datos: DatosReserva): Reserva {
     const reserva: Reserva = {
       ...datos,
@@ -52,6 +55,7 @@ export class Reservasservice {
     };
 
     this.reservas.push(reserva);
+    this.notificacionService.agregar(`Tu reserva en ${reserva.nombreAlojamiento} fue creada correctamente.`);
     return reserva;
   }
 
@@ -63,6 +67,7 @@ export class Reservasservice {
     const reserva = this.reservas.find((r) => r.id === id);
     if (reserva) {
       reserva.estado = 'CANCELADA';
+      this.notificacionService.agregar(`Tu reserva en ${reserva.nombreAlojamiento} fue cancelada correctamente.`);
     }
   }
 

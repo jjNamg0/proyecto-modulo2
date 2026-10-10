@@ -1,20 +1,56 @@
 <footer class="footer-marketplace mt-5">
-  <div class="container py-4 d-flex flex-column flex-md-row justify-content-between gap-3">
-    <div class="d-flex align-items-center gap-2">
-      <img src="assets/images/logo.png" alt="Nocturna Stays" class="footer-logo" />
-      <div class="d-flex flex-column lh-1">
-        <strong class="text-white">Nocturna Stays</strong>
-        <small class="text-secondary">Marketplace de Alojamientos</small>
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="assets/images/logo.png" alt="Nocturna Stays" class="footer-logo" />
+          <div class="d-flex flex-column lh-1">
+            <strong class="text-white">Nocturna Stays</strong>
+            <small class="text-secondary">Marketplace de Alojamientos</small>
+          </div>
+        </div>
+        <p class="text-secondary small">
+          Encuentra alojamientos temporales de forma fácil, segura y rápida. Explora diferentes opciones y encuentra
+          el lugar ideal para tu próxima estancia.
+        </p>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <h6 class="text-white fw-bold mb-3">Explorar</h6>
+        <nav class="d-flex flex-column gap-2">
+          <a routerLink="/" class="footer-link">Inicio</a>
+          <a routerLink="/listado" class="footer-link">Alojamientos</a>
+          <a routerLink="/favoritos" class="footer-link">Favoritos</a>
+          <a routerLink="/mis-reservas" class="footer-link">Mis reservas</a>
+        </nav>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <h6 class="text-white fw-bold mb-3">Cuenta</h6>
+        <nav class="d-flex flex-column gap-2">
+          <a routerLink="/login" class="footer-link">Iniciar sesión</a>
+          <a routerLink="/registro" class="footer-link">Registrarse</a>
+          <a routerLink="/perfil" class="footer-link">Mi perfil</a>
+          <a routerLink="/publicar" class="footer-link">Publicar alojamiento</a>
+        </nav>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <h6 class="text-white fw-bold mb-3">Ayuda</h6>
+        <nav class="d-flex flex-column gap-2">
+          <a href="mailto:soporte@nocturnastays.com" class="footer-link">Contacto</a>
+          <a href="mailto:soporte@nocturnastays.com" class="footer-link">Soporte</a>
+          <a routerLink="/terminos" class="footer-link">Términos y condiciones</a>
+          <a routerLink="/privacidad" class="footer-link">Política de privacidad</a>
+        </nav>
       </div>
     </div>
-    <nav class="d-flex flex-wrap gap-3">
-      <a href="#" class="footer-link">Contacto</a>
-      <a href="#" class="footer-link">Términos y condiciones</a>
-      <a href="#" class="footer-link">Privacidad</a>
-      <a href="#" class="footer-link">Soporte</a>
-    </nav>
-  </div>
-  <div class="container pb-3 small text-secondary">
-    © {{ anioActual }} Marketplace de Alojamientos — Todos los derechos reservados.
+
+    <hr class="footer-divider my-4" />
+
+    <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span class="small text-secondary">© {{ anioActual }} Nocturna Stays — Todos los derechos reservados.</span>
+      <span class="small text-secondary">Una mejor experiencia para encontrar tu alojamiento.</span>
+    </div>
   </div>
 </footer>

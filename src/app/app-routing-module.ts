@@ -10,6 +10,8 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
+import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
+import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
 import { Authguardservice } from './services/authguardservice';
 
 const requiereSesion: CanActivateFn = (_ruta, estado) => inject(Authguardservice).verificarSesion(estado.url);

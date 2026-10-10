@@ -22,6 +22,9 @@ import { Resenaformcomponent } from './components/resenaformcomponent/resenaform
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
+import { Toastcomponent } from './components/toastcomponent/toastcomponent';
+import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
+import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncom
     Publicarcomponent,
     Perfilcomponent,
     Iaopinioncomponent,
+    Toastcomponent,
+    Terminoscomponent,
+    Privacidadcomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
