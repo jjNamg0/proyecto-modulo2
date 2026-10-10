@@ -3,22 +3,6 @@ import { Notificacionservice } from './notificacionservice';
 
 export type EstadoReserva = 'CONFIRMADA' | 'CANCELADA';
 
-export interface Reserva {
-  id: number;
-  alojamientoId: number;
-  nombreAlojamiento: string;
-  ciudad: string;
-  nombreHuesped: string;
-  correoHuesped: string;
-  fechaInicio: string;
-  fechaFin: string;
-  noches: number;
-  huespedes: number;
-  total: number;
-  estado: EstadoReserva;
-  fechaCreacion: Date;
-}
-
 export interface DatosReserva {
   alojamientoId: number;
   nombreAlojamiento: string;
@@ -29,7 +13,19 @@ export interface DatosReserva {
   fechaFin: string;
   noches: number;
   huespedes: number;
+  precioNoche: number;
+  subtotal: number;
+  tarifaLimpieza: number;
+  tarifaServicio: number;
+  codigoCupon: string | null;
+  descuento: number;
   total: number;
+}
+
+export interface Reserva extends DatosReserva {
+  id: number;
+  estado: EstadoReserva;
+  fechaCreacion: Date;
 }
 
 export interface RangoFechas {
@@ -61,6 +57,10 @@ export class Reservasservice {
 
   obtenerReservasDe(correo: string): Reserva[] {
     return this.reservas.filter((r) => r.correoHuesped === correo).sort((a, b) => b.id - a.id);
+  }
+
+  obtenerReservaDe(id: number, correo: string): Reserva | undefined {
+    return this.reservas.find((r) => r.id === id && r.correoHuesped === correo);
   }
 
   cancelarReserva(id: number): void {

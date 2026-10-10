@@ -44,19 +44,29 @@
               <i class="fa-solid fa-user me-1"></i>{{ reserva.nombreHuesped }} · {{ reserva.correoHuesped }}
             </p>
 
+            <p class="small text-success mb-2" *ngIf="reserva.codigoCupon">
+              <i class="fa-solid fa-ticket me-1"></i>Cupón {{ reserva.codigoCupon }}
+              (-{{ reserva.descuento | currency: 'COP' : 'symbol-narrow' : '1.0-0' }})
+            </p>
+
             <div class="border-top border-secondary-subtle pt-2 mt-auto d-flex justify-content-between align-items-center">
               <span class="text-secondary small">Reserva #{{ reserva.id }}</span>
               <span class="fw-bold">{{ reserva.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
             </div>
 
-            <button
-              type="button"
-              class="btn btn-outline-danger btn-sm mt-3"
-              *ngIf="reserva.estado === 'CONFIRMADA'"
-              (click)="cancelar(reserva)"
-            >
-              <i class="fa-solid fa-ban me-1"></i>Cancelar reserva
-            </button>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <a [routerLink]="['/mis-reservas', reserva.id]" class="btn btn-outline-light btn-sm">
+                <i class="fa-solid fa-receipt me-1"></i>Ver comprobante
+              </a>
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                *ngIf="reserva.estado === 'CONFIRMADA'"
+                (click)="cancelar(reserva)"
+              >
+                <i class="fa-solid fa-ban me-1"></i>Cancelar reserva
+              </button>
+            </div>
           </div>
         </div>
       </div>

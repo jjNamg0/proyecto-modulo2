@@ -7,6 +7,7 @@ import { Climaservice, Clima, PronosticoEstancia } from '../../services/climaser
 import { Exchangerateservice, Moneda } from '../../services/exchangerateservice';
 import { Favoritosservice } from '../../services/favoritosservice';
 import { Paisesservice, DatosPais, Festivo } from '../../services/paisesservice';
+import { Comparadorservice } from '../../services/comparadorservice';
 import { Cotizacion, Cotizadorcomponent } from '../cotizadorcomponent/cotizadorcomponent';
 
 @Component({
@@ -43,6 +44,7 @@ export class Detallecomponent implements OnInit {
     private exchangeRateService: Exchangerateservice,
     private favoritosService: Favoritosservice,
     private paisesService: Paisesservice,
+    private comparadorService: Comparadorservice,
     private router: Router,
   ) {}
 
@@ -62,6 +64,14 @@ export class Detallecomponent implements OnInit {
     if (!this.favoritosService.alternar(id)) {
       this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
     }
+  }
+
+  estaEnComparador(id: number): boolean {
+    return this.comparadorService.estaEnComparador(id);
+  }
+
+  alternarComparador(id: number): void {
+    this.comparadorService.alternar(id);
   }
 
   monedas(): Moneda[] {

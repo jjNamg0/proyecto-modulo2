@@ -12,6 +12,9 @@ import { Publicarcomponent } from './components/publicarcomponent/publicarcompon
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
 import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
+import { Comprobantecomponent } from './components/comprobantecomponent/comprobantecomponent';
+import { Comparadorcomponent } from './components/comparadorcomponent/comparadorcomponent';
+import { Contactocomponent } from './components/contactocomponent/contactocomponent';
 import { Authguardservice } from './services/authguardservice';
 
 const requiereSesion: CanActivateFn = (_ruta, estado) => inject(Authguardservice).verificarSesion(estado.url);
@@ -37,6 +40,17 @@ const routes: Routes = [
     component: Misreservascomponent,
     canActivate: [requiereSesion],
     title: 'Nocturna Stays — Mis reservas',
+  },
+  {
+    path: 'mis-reservas/:id',
+    component: Comprobantecomponent,
+    canActivate: [requiereSesion],
+    title: 'Nocturna Stays — Comprobante de reserva',
+  },
+  {
+    path: 'comparar',
+    component: Comparadorcomponent,
+    title: 'Nocturna Stays — Comparar alojamientos',
   },
   {
     path: 'login',
@@ -83,6 +97,11 @@ const routes: Routes = [
     title: 'Nocturna Stays — Política de privacidad',
   },
   {
+    path: 'contacto',
+    component: Contactocomponent,
+    title: 'Nocturna Stays — Contacto y soporte',
+  },
+  {
     path: '**',
     component: Notfoundcomponent,
     title: 'Nocturna Stays — Página no encontrada',
@@ -90,7 +109,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      scrollOffset: [0, 84],
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

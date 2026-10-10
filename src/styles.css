@@ -39,3 +39,18 @@ a {
   border-color: rgba(255, 255, 255, 0.08);
   color: #dfe2ef;
 }
+
+@media print {
+  app-navbarcomponent,
+  app-footercomponent,
+  app-toastcomponent,
+  app-comparadorbarracomponent {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background-color: #ffffff;
+    color: #111827;
+  }
+}

@@ -1,0 +1,109 @@
+<section class="container py-4">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+    <h1 class="h4 text-white mb-0">
+      <i class="fa-solid fa-code-compare me-2"></i>Comparar alojamientos
+    </h1>
+    <button type="button" class="btn btn-outline-secondary btn-sm" *ngIf="alojamientos().length > 0" (click)="limpiar()">
+      <i class="fa-solid fa-trash-can me-1"></i>Vaciar comparador
+    </button>
+  </div>
+
+  <p class="text-secondary" *ngIf="cargando()">Cargando alojamientos...</p>
+
+  <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert" *ngIf="!cargando() && alojamientos().length === 0">
+    <i class="fa-solid fa-circle-info"></i>
+    <span>
+      No tienes alojamientos para comparar. Ve al <a routerLink="/listado" class="alert-link">listado</a> y dale al
+      botón <i class="fa-solid fa-code-compare"></i> de hasta {{ maximo() }} alojamientos.
+    </span>
+  </div>
+
+  <div class="alert alert-secondary d-flex align-items-center gap-2" role="status" *ngIf="!cargando() && alojamientos().length === 1">
+    <i class="fa-solid fa-circle-info"></i>
+    <span>Agrega al menos otro alojamiento desde el <a routerLink="/listado" class="alert-link">listado</a> para compararlos.</span>
+  </div>
+
+  <div class="comparador-panel table-responsive" *ngIf="!cargando() && alojamientos().length > 0">
+    <table class="table comparador-tabla align-middle mb-0">
+      <thead>
+        <tr>
+          <th scope="col" class="comparador-etiqueta"></th>
+          <th scope="col" class="comparador-columna" *ngFor="let a of alojamientos()">
+            <div class="position-relative">
+              <img
+                [src]="a.imagenPrincipal"
+                (error)="onImgError($event, a.id)"
+                class="comparador-img rounded mb-2"
+                [alt]="a.nombre"
+              />
+              <button
+                type="button"
+                class="btn btn-sm btn-dark position-absolute top-0 end-0 m-1"
+                [attr.aria-label]="'Quitar ' + a.nombre + ' del comparador'"
+                (click)="quitar(a.id)"
+              >
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="text-white fw-semibold">{{ a.nombre }}</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Ubicación</th>
+          <td *ngFor="let a of alojamientos()">{{ a.ciudad }}, {{ a.pais }}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Tipo</th>
+          <td *ngFor="let a of alojamientos()">{{ a.tipo }}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Precio por noche</th>
+          <td *ngFor="let a of alojamientos()" [class.comparador-mejor]="esMasBarato(a)">
+            <span class="fw-bold">{{ a.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</span>
+            <span class="badge text-bg-success ms-1" *ngIf="esMasBarato(a)">Más barato</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Tarifa de limpieza</th>
+          <td *ngFor="let a of alojamientos()">{{ a.tarifaLimpieza | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}</td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Calificación</th>
+          <td *ngFor="let a of alojamientos()" [class.comparador-mejor]="esMejorCalificado(a)">
+            <i class="fa-solid fa-star text-warning me-1"></i>{{ a.calificacion || 'Nuevo' }}
+            <span class="badge text-bg-success ms-1" *ngIf="esMejorCalificado(a)">Mejor calificado</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Capacidad</th>
+          <td *ngFor="let a of alojamientos()" [class.comparador-mejor]="tieneMasCapacidad(a)">
+            {{ a.capacidad }} huéspedes
+            <span class="badge text-bg-success ms-1" *ngIf="tieneMasCapacidad(a)">Más capacidad</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Habitaciones</th>
+          <td *ngFor="let a of alojamientos()">{{ a.habitaciones }} habitaciones · {{ a.camas }} camas · {{ a.banos }} baños</td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta">Servicios</th>
+          <td *ngFor="let a of alojamientos()">
+            <div class="d-flex flex-wrap gap-1">
+              <span class="badge text-bg-dark" *ngFor="let servicio of a.servicios">{{ servicio }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row" class="comparador-etiqueta"></th>
+          <td *ngFor="let a of alojamientos()">
+            <a [routerLink]="['/alojamientos', a.id]" class="btn btn-sm btn-primary">
+              Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
