@@ -20,11 +20,13 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
+import{Toastcomponent} from './components/toastcomponent/toastcomponent';
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
 import { Toastcomponent } from './components/toastcomponent/toastcomponent';
 import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
 import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,7 @@ import { Privacidadcomponent } from './components/privacidadcomponent/privacidad
     Terminoscomponent,
     Privacidadcomponent,
   ],
-  imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule,Toastcomponent ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
   bootstrap: [App],
 })

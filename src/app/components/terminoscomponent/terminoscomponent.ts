@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
+  imports: [RouterLink],
   selector: 'app-terminoscomponent',
-  standalone: false,
   styleUrl: './terminoscomponent.css',
   templateUrl: './terminoscomponent.html',
 })

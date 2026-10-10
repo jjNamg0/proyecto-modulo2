@@ -1,7 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Authservice } from './authservice';
-import { Notificacionservice } from './notificacionservice';
-import { Toastservice } from './toastservice';
+import { NotificacionService } from './notificacionservice';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +10,7 @@ export class Favoritosservice {
 
   constructor(
     private authService: Authservice,
-    private notificacionService: Notificacionservice,
-    private toastService: Toastservice,
+    private notificacionService: NotificacionService,
   ) {}
 
   esFavorito(id: number): boolean {
@@ -21,23 +19,36 @@ export class Favoritosservice {
 
   alternar(id: number): boolean {
     const usuario = this.authService.usuarioActual();
+
     if (!usuario) {
       return false;
     }
 
     const actuales = this.obtenerIds();
-    const yaEraFavorito = actuales.includes(id);
-    const nuevos = yaEraFavorito ? actuales.filter((favorito) => favorito !== id) : [...actuales, id];
-    this.favoritosPorUsuario.update((favoritos) => ({ ...favoritos, [usuario.correo]: nuevos }));
 
-    const mensaje = yaEraFavorito
-      ? 'El alojamiento fue eliminado de tus favoritos.'
-      : 'El alojamiento fue agregado a tus favoritos.';
-    this.toastService.mostrar(mensaje);
-    this.notificacionService.agregar(mensaje);
+    const yaEsFavorito = actuales.includes(id);
+
+    const nuevos = yaEsFavorito
+      ? actuales.filter((favorito) => favorito !== id)
+      : [...actuales, id];
+
+    this.favoritosPorUsuario.update((favoritos) => ({
+      ...favoritos,
+      [usuario.correo]: nuevos
+    }));
+
+    if (yaEsFavorito) {
+      this.notificacionService.agregar(
+        'El alojamiento fue eliminado de tus favoritos.'
+      );
+    } else {
+      this.notificacionService.agregar(
+        'El alojamiento fue agregado a tus favoritos.'
+      );
+    }
+
     return true;
   }
-
   obtenerIds(): number[] {
     const usuario = this.authService.usuarioActual();
     return usuario ? (this.favoritosPorUsuario()[usuario.correo] ?? []) : [];

@@ -13,8 +13,11 @@ import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
 import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
 import { Authguardservice } from './services/authguardservice';
+import{Privacidadcomponent} from './components/privacidadcomponent/privacidadcomponent';
+import{Terminoscomponent} from './components/terminoscomponent/terminoscomponent';
 
-const requiereSesion: CanActivateFn = (_ruta, estado) => inject(Authguardservice).verificarSesion(estado.url);
+const requiereSesion: CanActivateFn = (_ruta, estado) =>
+  inject(Authguardservice).verificarSesion(estado.url);
 
 const routes: Routes = [
   {
