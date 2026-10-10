@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Perfilcomponent } from './perfilcomponent';
+import { Privacidadcomponent } from './privacidadcomponent';
 
-describe('Perfilcomponent', () => {
-  let component: Perfilcomponent;
-  let fixture: ComponentFixture<Perfilcomponent>;
+describe('Privacidadcomponent', () => {
+  let component: Privacidadcomponent;
+  let fixture: ComponentFixture<Privacidadcomponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Perfilcomponent],
+      declarations: [Privacidadcomponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Perfilcomponent);
+    fixture = TestBed.createComponent(Privacidadcomponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

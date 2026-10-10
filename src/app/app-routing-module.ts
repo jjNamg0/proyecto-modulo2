@@ -73,6 +73,16 @@ const routes: Routes = [
     title: 'Nocturna Stays — Mi perfil',
   },
   {
+    path: 'terminos',
+    component: Terminoscomponent,
+    title: 'Nocturna Stays — Términos y condiciones',
+  },
+  {
+    path: 'privacidad',
+    component: Privacidadcomponent,
+    title: 'Nocturna Stays — Política de privacidad',
+  },
+  {
     path: '**',
     component: Notfoundcomponent,
     title: 'Nocturna Stays — Página no encontrada',

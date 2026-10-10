@@ -7,7 +7,7 @@ describe('Iaopinioncomponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Iaopinioncomponent],
+      declarations: [Iaopinioncomponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Iaopinioncomponent);
