@@ -8,7 +8,6 @@ import { Exchangerateservice, Moneda } from '../../services/exchangerateservice'
 import { Favoritosservice } from '../../services/favoritosservice';
 import { Paisesservice, DatosPais, Festivo } from '../../services/paisesservice';
 import { Cotizacion, Cotizadorcomponent } from '../cotizadorcomponent/cotizadorcomponent';
-import {ToastService} from '../../services/toastservice';
 
 @Component({
   selector: 'app-detallecomponent',
@@ -45,7 +44,6 @@ export class Detallecomponent implements OnInit {
     private favoritosService: Favoritosservice,
     private paisesService: Paisesservice,
     private router: Router,
-    private toastService: ToastService,
   ) {}
 
   ngOnInit(): void {
@@ -61,21 +59,11 @@ export class Detallecomponent implements OnInit {
   }
 
   alternarFavorito(id: number): void {
-    const resultado = this.favoritosService.alternar(id);
-
-    if (!resultado) {
-      this.router.navigate(['/login'], {
-        queryParams: { volverA: this.router.url }
-      });
-      return;
-    }
-
-    if (this.favoritosService.esFavorito(id)) {
-      this.toastService.mostrar('Alojamiento agregado a favoritos');
-    } else {
-      this.toastService.mostrar('Alojamiento eliminado de favoritos');
+    if (!this.favoritosService.alternar(id)) {
+      this.router.navigate(['/login'], { queryParams: { volverA: this.router.url } });
     }
   }
+
   monedas(): Moneda[] {
     return this.exchangeRateService.MONEDAS;
   }
