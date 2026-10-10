@@ -1,7 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Alojamientosservice, Alojamiento } from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
-import {ToastService} from '../../services/toastservice';
 
 @Component({
   selector: 'app-favoritoscomponent',
@@ -16,23 +15,19 @@ export class Favoritoscomponent implements OnInit {
   constructor(
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
-    private toastService: ToastService,
   ) {}
 
   ngOnInit(): void {
     const idsFavoritos = this.favoritosService.obtenerIds();
-
     this.alojamientosService.obtenerAlojamientos().subscribe((alojamientos) => {
       this.favoritos.set(alojamientos.filter((a) => idsFavoritos.includes(a.id)));
       this.cargando.set(false);
-
     });
   }
 
   quitarFavorito(id: number): void {
     this.favoritosService.alternar(id);
     this.favoritos.update((lista) => lista.filter((a) => a.id !== id));
-    this.toastService.mostrar('Alojamiento eliminado de favoritos');
   }
 
   onImgError(event: Event, id: number): void {

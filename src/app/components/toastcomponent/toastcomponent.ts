@@ -1,14 +1,24 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ToastService } from '../../services/toastservice';
+import { Toastservice } from '../../services/toastservice';
 
 @Component({
   selector: 'app-toastcomponent',
-  standalone: true,
-  imports: [CommonModule],
+  standalone: false,
+  styleUrl: './toastcomponent.css',
   templateUrl: './toastcomponent.html',
-  styleUrl: './toastcomponent.css'
 })
 export class Toastcomponent {
-  constructor(public toastService: ToastService) {}
+  constructor(private toastService: Toastservice) {}
+
+  mensaje(): string {
+    return this.toastService.mensaje();
+  }
+
+  esError(): boolean {
+    return this.toastService.tipo() === 'error';
+  }
+
+  cerrar(): void {
+    this.toastService.cerrar();
+  }
 }
