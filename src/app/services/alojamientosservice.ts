@@ -65,6 +65,8 @@ interface MarketplaceData {
   providedIn: 'root',
 })
 export class Alojamientosservice {
+  readonly IMAGEN_RESPALDO = 'assets/images/sin-imagen.webp';
+
   private datos$: Observable<MarketplaceData> | null = null;
 
   private resenasAgregadas: Resena[] = [];
@@ -74,6 +76,13 @@ export class Alojamientosservice {
   private siguienteIdAlojamiento = 1000;
 
   constructor(private http: HttpClient) {}
+
+  usarImagenRespaldo(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    if (!img.src.endsWith(this.IMAGEN_RESPALDO)) {
+      img.src = this.IMAGEN_RESPALDO;
+    }
+  }
 
   private cargarDatos(): Observable<MarketplaceData> {
     if (!this.datos$) {

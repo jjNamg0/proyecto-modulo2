@@ -127,10 +127,8 @@ export class Detallecomponent implements OnInit {
     this.imagenActiva.set(url);
   }
 
-  onImgError(event: Event, id: number): void {
-    const img = event.target as HTMLImageElement;
-    img.onerror = null;
-    img.src = `https://picsum.photos/seed/alojamiento-${id}/800/500`;
+  onImgError(event: Event): void {
+    this.alojamientosService.usarImagenRespaldo(event);
   }
 
   private cargarAlojamiento(id: number): void {

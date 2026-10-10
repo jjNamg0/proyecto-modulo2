@@ -86,9 +86,7 @@ export class Listadocomponent implements OnInit {
     this.comparadorService.alternar(id);
   }
 
-  onImgError(event: Event, id: number): void {
-    const img = event.target as HTMLImageElement;
-    img.onerror = null;
-    img.src = `https://picsum.photos/seed/alojamiento-${id}/600/400`;
+  onImgError(event: Event): void {
+    this.alojamientosService.usarImagenRespaldo(event);
   }
 }
