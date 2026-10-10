@@ -7,7 +7,7 @@ describe('Terminoscomponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Terminoscomponent],
+      declarations: [Terminoscomponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Terminoscomponent);

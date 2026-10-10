@@ -7,7 +7,7 @@ describe('Privacidadcomponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Privacidadcomponent],
+      declarations: [Privacidadcomponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Privacidadcomponent);
