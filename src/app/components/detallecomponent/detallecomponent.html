@@ -14,7 +14,7 @@
       <div class="col-12 col-lg-7">
         <img
           [src]="imagenActiva()"
-          (error)="onImgError($event, a.id)"
+          (error)="onImgError($event)"
           class="img-fluid rounded detalle-imagen-principal"
           [alt]="a.nombre"
         />
@@ -22,7 +22,7 @@
           <img
             *ngFor="let img of a.imagenes"
             [src]="img"
-            (error)="onImgError($event, a.id)"
+            (error)="onImgError($event)"
             (click)="cambiarImagen(img)"
             class="detalle-miniatura"
             [class.detalle-miniatura--activa]="img === imagenActiva()"

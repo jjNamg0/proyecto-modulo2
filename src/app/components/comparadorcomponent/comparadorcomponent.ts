@@ -54,10 +54,8 @@ export class Comparadorcomponent implements OnInit {
     return this.hayVarios() && alojamiento.capacidad === Math.max(...this.alojamientos().map((a) => a.capacidad));
   }
 
-  onImgError(event: Event, id: number): void {
-    const img = event.target as HTMLImageElement;
-    img.onerror = null;
-    img.src = `https://picsum.photos/seed/alojamiento-${id}/800/500`;
+  onImgError(event: Event): void {
+    this.alojamientosService.usarImagenRespaldo(event);
   }
 
   private hayVarios(): boolean {

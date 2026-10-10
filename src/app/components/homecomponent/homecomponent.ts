@@ -73,9 +73,7 @@ export class Homecomponent implements OnInit, OnDestroy {
     }
   }
 
-  onImgError(event: Event, id: number): void {
-    const img = event.target as HTMLImageElement;
-    img.onerror = null;
-    img.src = `https://picsum.photos/seed/alojamiento-${id}/1200/600`;
+  onImgError(event: Event): void {
+    this.alojamientosService.usarImagenRespaldo(event);
   }
 }
