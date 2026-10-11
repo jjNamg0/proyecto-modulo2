@@ -29,6 +29,7 @@ import { Comprobantecomponent } from './components/comprobantecomponent/comproba
 import { Comparadorcomponent } from './components/comparadorcomponent/comparadorcomponent';
 import { Comparadorbarracomponent } from './components/comparadorbarracomponent/comparadorbarracomponent';
 import { Contactocomponent } from './components/contactocomponent/contactocomponent';
+import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicomponent';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { Contactocomponent } from './components/contactocomponent/contactocompon
     Comparadorcomponent,
     Comparadorbarracomponent,
     Contactocomponent,
+    Mapamundicomponent,
   ],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],

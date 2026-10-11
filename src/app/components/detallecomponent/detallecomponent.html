@@ -132,17 +132,29 @@
               </span>
               <small class="text-secondary"> / noche</small>
             </div>
-            <div class="btn-group btn-group-sm" role="group" aria-label="Moneda" *ngIf="hayTasas()">
+            <div class="dropdown" *ngIf="hayTasas()">
               <button
                 type="button"
-                class="btn"
-                *ngFor="let moneda of monedas()"
-                [class.btn-primary]="moneda === monedaActiva()"
-                [class.btn-outline-secondary]="moneda !== monedaActiva()"
-                (click)="cambiarMoneda(moneda)"
+                class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Moneda"
               >
-                {{ moneda }}
+                <i class="fa-solid fa-globe me-1"></i>{{ monedaActiva() }}
               </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li *ngFor="let moneda of monedas()">
+                  <button
+                    type="button"
+                    class="dropdown-item d-flex justify-content-between align-items-center"
+                    [class.active]="moneda === monedaActiva()"
+                    (click)="cambiarMoneda(moneda)"
+                  >
+                    {{ moneda }}
+                    <i class="fa-solid fa-check" *ngIf="moneda === monedaActiva()"></i>
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
           <small class="text-secondary d-block mt-1" *ngIf="monedaActiva() !== 'COP'">

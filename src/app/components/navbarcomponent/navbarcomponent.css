@@ -13,6 +13,63 @@
   object-fit: contain;
 }
 
+.navbar-izquierda {
+  min-width: 0;
+}
+
+.buscador-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #bec8d2;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.buscador-navbar:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #0d6efd;
+  color: #ffffff;
+}
+
+.buscador-navbar__texto {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px), (min-width: 1400px) {
+  .buscador-navbar {
+    width: auto;
+    height: auto;
+    min-width: 230px;
+    padding: 0.45rem 1rem;
+    justify-content: flex-start;
+    border-radius: 999px;
+  }
+
+  .buscador-navbar__texto {
+    display: inline;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar-izquierda {
+    gap: 0.5rem !important;
+  }
+
+  .navbar-logo {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 .nav-link-pill {
   color: #bec8d2;
   text-decoration: none;
@@ -136,6 +193,7 @@
 .notificacion-contenido {
   flex: 1;
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .btn-leida {

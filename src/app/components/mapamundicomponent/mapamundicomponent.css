@@ -1,0 +1,79 @@
+.mapamundi-panel {
+  background-color: #181b25;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+}
+
+.mapamundi-lienzo {
+  overflow: hidden;
+  background-color: #0f131c;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+}
+
+.mapamundi-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mapamundi-pais {
+  fill: #1c2433;
+  stroke: #2f3a4f;
+  stroke-width: 0.8;
+  transition: fill 0.2s ease;
+}
+
+.mapamundi-pais--disponible {
+  fill: #2864b7;
+  stroke: #4b91ed;
+  cursor: pointer;
+}
+
+.mapamundi-pais--disponible:hover {
+  fill: #4a9aff;
+}
+
+.mapamundi-pais--activo {
+  fill: #35c5f5;
+  stroke: #e0f5ff;
+  stroke-width: 1.5;
+}
+
+.mapamundi-pais:focus-visible {
+  outline: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+.mapamundi-punto {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.mapamundi-punto--disponible {
+  background-color: #2864b7;
+}
+
+.mapamundi-punto--activo {
+  background-color: #35c5f5;
+}
+
+.mapamundi-card {
+  background-color: #1c1f29;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #dfe2ef;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mapamundi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.mapamundi-card__img {
+  height: 190px;
+  object-fit: cover;
+}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Notificacionservice } from './notificacionservice';
+import { Emailservice } from './emailservice';
 
 export type EstadoReserva = 'CONFIRMADA' | 'CANCELADA';
 
@@ -40,7 +41,10 @@ export class Reservasservice {
   private reservas: Reserva[] = [];
   private siguienteId = 1;
 
-  constructor(private notificacionService: Notificacionservice) {}
+  constructor(
+    private notificacionService: Notificacionservice,
+    private emailService: Emailservice,
+  ) {}
 
   crearReserva(datos: DatosReserva): Reserva {
     const reserva: Reserva = {
@@ -52,6 +56,7 @@ export class Reservasservice {
 
     this.reservas.push(reserva);
     this.notificacionService.agregar(`Tu reserva en ${reserva.nombreAlojamiento} fue creada correctamente.`);
+    this.enviarConfirmacion(reserva);
     return reserva;
   }
 
@@ -82,5 +87,24 @@ export class Reservasservice {
     return !this.obtenerFechasOcupadas(alojamientoId).some(
       (ocupada) => fechaInicio < ocupada.fechaFin && fechaFin > ocupada.fechaInicio,
     );
+  }
+
+  private enviarConfirmacion(reserva: Reserva): void {
+    this.emailService
+      .enviarConfirmacion({
+        correo: reserva.correoHuesped,
+        nombre: reserva.nombreHuesped,
+        alojamiento: reserva.nombreAlojamiento,
+        fechaEntrada: reserva.fechaInicio,
+        fechaSalida: reserva.fechaFin,
+        valor: reserva.total.toLocaleString('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }),
+      })
+      .subscribe((enviado) => {
+        this.notificacionService.agregar(
+          enviado
+            ? `Enviamos la confirmación de tu reserva al correo ${reserva.correoHuesped}.`
+            : 'La reserva se creó, pero no pudimos enviar el correo de confirmación.',
+        );
+      });
   }
 }
