@@ -1,10 +1,18 @@
 <div class="filtros-panel p-3">
   <h2 class="h6 text-white mb-3">
+<<<<<<< Updated upstream
     <i class="fa-solid fa-sliders me-2"></i>Filtros
   </h2>
 
   <div class="mb-3">
     <label class="form-label small text-secondary" for="filtroTexto">Buscar</label>
+=======
+    <i class="fa-solid fa-sliders me-2"></i>{{ traducir('filtros.titulo') }}
+  </h2>
+
+  <div class="mb-3">
+    <label class="form-label small text-secondary" for="filtroTexto">{{ traducir('filtros.buscar') }}</label>
+>>>>>>> Stashed changes
     <div class="input-group input-group-sm">
       <span class="input-group-text">
         <i class="fa-solid fa-magnifying-glass"></i>
@@ -13,7 +21,11 @@
         id="filtroTexto"
         type="search"
         class="form-control"
+<<<<<<< Updated upstream
         placeholder="Nombre, ciudad, servicio..."
+=======
+        [placeholder]="traducir('filtros.buscarPlaceholder')"
+>>>>>>> Stashed changes
         [(ngModel)]="filtros.texto"
         (ngModelChange)="emitirCambio()"
       />
@@ -21,88 +33,144 @@
   </div>
 
   <div class="mb-3">
+<<<<<<< Updated upstream
     <label class="form-label small text-secondary" for="filtroPais">País</label>
+=======
+    <label class="form-label small text-secondary" for="filtroPais">{{ traducir('filtros.pais') }}</label>
+>>>>>>> Stashed changes
     <select
       id="filtroPais"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.pais"
       (ngModelChange)="cambiarPais()"
     >
+<<<<<<< Updated upstream
       <option value="">Todos los países</option>
+=======
+      <option value="">{{ traducir('filtros.todosPaises') }}</option>
+>>>>>>> Stashed changes
       <option *ngFor="let pais of paises" [value]="pais">{{ pais }}</option>
     </select>
   </div>
 
   <div class="mb-3">
+<<<<<<< Updated upstream
     <label class="form-label small text-secondary" for="filtroCiudad">Ciudad</label>
+=======
+    <label class="form-label small text-secondary" for="filtroCiudad">{{ traducir('filtros.ciudad') }}</label>
+>>>>>>> Stashed changes
     <select
       id="filtroCiudad"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.ciudad"
       (ngModelChange)="emitirCambio()"
     >
+<<<<<<< Updated upstream
       <option value="">Todas las ciudades</option>
+=======
+      <option value="">{{ traducir('filtros.todasCiudades') }}</option>
+>>>>>>> Stashed changes
       <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
     </select>
   </div>
 
   <div class="mb-3">
+<<<<<<< Updated upstream
     <label class="form-label small text-secondary" for="filtroHuespedes">Número de huéspedes</label>
+=======
+    <label class="form-label small text-secondary" for="filtroHuespedes">{{ traducir('filtros.huespedes') }}</label>
+>>>>>>> Stashed changes
     <input
       id="filtroHuespedes"
       type="number"
       min="1"
       class="form-control form-control-sm"
+<<<<<<< Updated upstream
       placeholder="Cualquier cantidad"
+=======
+      [placeholder]="traducir('filtros.cualquierCantidad')"
+>>>>>>> Stashed changes
       [(ngModel)]="filtros.huespedes"
       (ngModelChange)="emitirCambio()"
     />
   </div>
 
   <div class="mb-3">
+<<<<<<< Updated upstream
     <label class="form-label small text-secondary" for="filtroTipo">Tipo de alojamiento</label>
+=======
+    <label class="form-label small text-secondary" for="filtroTipo">{{ traducir('filtros.tipo') }}</label>
+>>>>>>> Stashed changes
     <select
       id="filtroTipo"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.tipo"
       (ngModelChange)="emitirCambio()"
     >
+<<<<<<< Updated upstream
       <option value="">Todos los tipos</option>
+=======
+      <option value="">{{ traducir('filtros.todosTipos') }}</option>
+>>>>>>> Stashed changes
       <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
     </select>
   </div>
 
   <div class="mb-3">
+<<<<<<< Updated upstream
     <label class="form-label small text-secondary" for="filtroPrecio">Precio máximo por noche</label>
+=======
+    <label class="form-label small text-secondary" for="filtroPrecio">{{ traducir('filtros.precioMaximo') }}</label>
+>>>>>>> Stashed changes
     <input
       id="filtroPrecio"
       type="number"
       min="0"
       step="10000"
       class="form-control form-control-sm"
+<<<<<<< Updated upstream
       placeholder="Sin límite"
+=======
+      [placeholder]="traducir('filtros.sinLimite')"
+>>>>>>> Stashed changes
       [(ngModel)]="filtros.precioMaximo"
       (ngModelChange)="emitirCambio()"
     />
   </div>
 
   <div class="mb-3">
+<<<<<<< Updated upstream
     <label class="form-label small text-secondary" for="filtroOrden">Ordenar por</label>
+=======
+    <label class="form-label small text-secondary" for="filtroOrden">{{ traducir('filtros.ordenar') }}</label>
+>>>>>>> Stashed changes
     <select
       id="filtroOrden"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.orden"
       (ngModelChange)="emitirCambio()"
     >
+<<<<<<< Updated upstream
       <option value="">Recomendados</option>
       <option value="precio-asc">Precio: menor a mayor</option>
       <option value="precio-desc">Precio: mayor a menor</option>
       <option value="calificacion-desc">Mejor calificados</option>
       <option value="nombre-asc">Nombre (A-Z)</option>
+=======
+      <option value="">{{ traducir('filtros.recomendados') }}</option>
+      <option value="precio-asc">{{ traducir('filtros.precioAsc') }}</option>
+      <option value="precio-desc">{{ traducir('filtros.precioDesc') }}</option>
+      <option value="calificacion-desc">{{ traducir('filtros.mejorCalificados') }}</option>
+      <option value="nombre-asc">{{ traducir('filtros.nombreAsc') }}</option>
+>>>>>>> Stashed changes
     </select>
   </div>
 
   <button type="button" class="btn btn-outline-light btn-sm w-100" (click)="limpiarFiltros()">
+<<<<<<< Updated upstream
     <i class="fa-solid fa-rotate-left me-1"></i>Limpiar filtros
+=======
+    <i class="fa-solid fa-rotate-left me-1"></i>{{ traducir('filtros.limpiar') }}
+>>>>>>> Stashed changes
   </button>
 </div>

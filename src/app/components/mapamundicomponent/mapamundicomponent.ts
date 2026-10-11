@@ -1,6 +1,29 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
-import type { GeometryCollection, Topology } from 'topojson-specification';
 import { Alojamientosservice, Alojamiento } from '../../services/alojamientosservice';
+import { Idiomaservice } from '../../services/idiomaservice';
+import { Mapaservice, MundoTopologia } from '../../services/mapaservice';
+
+interface PaisGeo {
+  id?: string | number;
+  properties: { name: string };
+}
+
+interface ColeccionPaises {
+  features: PaisGeo[];
+}
+
+interface Proyeccion {
+  fitSize(tamano: [number, number], objeto: ColeccionPaises): Proyeccion;
+}
+
+declare const d3: {
+  geoNaturalEarth1(): Proyeccion;
+  geoPath(proyeccion: Proyeccion): (pais: PaisGeo) => string | null;
+};
+
+declare const topojson: {
+  feature(topologia: MundoTopologia, objeto: object): ColeccionPaises;
+};
 
 interface PaisMapa {
   clave: string;
@@ -115,7 +138,11 @@ export class Mapamundicomponent implements OnInit {
       .map(([ciudad, alojamientos]) => ({ ciudad, alojamientos }));
   });
 
-  constructor(private alojamientosService: Alojamientosservice) {}
+  constructor(
+    private alojamientosService: Alojamientosservice,
+    private mapaService: Mapaservice,
+    private idiomaService: Idiomaservice,
+  ) {}
 
   ngOnInit(): void {
     this.dibujarMapa();
@@ -143,17 +170,19 @@ export class Mapamundicomponent implements OnInit {
     this.alojamientosService.usarImagenRespaldo(event);
   }
 
-  private async dibujarMapa(): Promise<void> {
-    try {
-      const [{ geoNaturalEarth1, geoPath }, { feature }, mundo] = await Promise.all([
-        import('d3-geo'),
-        import('topojson-client'),
-        import('world-atlas/countries-110m.json'),
-      ]);
+  traducir(clave: string, parametros?: Record<string, string | number>): string {
+    return this.idiomaService.traducir(clave, parametros);
+  }
 
-      const topologia = mundo.default as unknown as Topology<{ countries: GeometryCollection<{ name: string }> }>;
-      const geo = feature(topologia, topologia.objects.countries);
-      const generarRuta = geoPath(geoNaturalEarth1().fitSize([this.ANCHO, this.ALTO], geo));
+  private dibujarMapa(): void {
+    this.mapaService.obtenerMundo().subscribe((topologia) => {
+      if (!topologia || typeof d3 === 'undefined' || typeof topojson === 'undefined') {
+        this.errorMapa.set(true);
+        return;
+      }
+
+      const geo = topojson.feature(topologia, topologia.objects.countries);
+      const generarRuta = d3.geoPath(d3.geoNaturalEarth1().fitSize([this.ANCHO, this.ALTO], geo));
 
       this.paises.set(
         geo.features.map((pais) => {
@@ -166,10 +195,7 @@ export class Mapamundicomponent implements OnInit {
           };
         }),
       );
-    } catch {
-      this.paises.set([]);
-      this.errorMapa.set(true);
-    }
+    });
   }
 
   private claveDePais(pais: string): string {

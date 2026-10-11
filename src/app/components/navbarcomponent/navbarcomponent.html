@@ -5,23 +5,37 @@
         <img src="assets/images/logo.png" alt="Nocturna Stays" class="navbar-logo" />
         <span class="d-flex flex-column lh-1">
           <strong class="text-white">Nocturna Stays</strong>
+<<<<<<< Updated upstream
           <small class="text-secondary">Marketplace de Alojamientos</small>
+=======
+          <small class="text-secondary">{{ traducir('nav.subtitulo') }}</small>
+>>>>>>> Stashed changes
         </span>
       </a>
       <a
         routerLink="/listado"
         class="buscador-navbar text-decoration-none"
+<<<<<<< Updated upstream
         title="Buscar alojamientos"
         aria-label="Buscar alojamientos"
         (click)="cerrarMenu()"
       >
         <i class="fa-solid fa-magnifying-glass"></i>
         <span class="buscador-navbar__texto">Buscar alojamientos</span>
+=======
+        [title]="traducir('nav.buscarAlojamientos')"
+        [attr.aria-label]="traducir('nav.buscarAlojamientos')"
+        (click)="cerrarMenu()"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="buscador-navbar__texto">{{ traducir('nav.buscarAlojamientos') }}</span>
+>>>>>>> Stashed changes
       </a>
     </div>
 
     <div class="d-flex align-items-center gap-2">
       <nav class="d-none d-lg-flex align-items-center gap-2">
+<<<<<<< Updated upstream
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill">Inicio</a>
         <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill">Listado</a>
         <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill">Mis reservas</a>
@@ -101,11 +115,124 @@
         </div>
       </div>
 
+=======
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill">{{ traducir('nav.inicio') }}</a>
+        <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill">{{ traducir('nav.alojamientos') }}</a>
+        <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill">{{ traducir('nav.reservas') }}</a>
+        <a routerLink="/favoritos" routerLinkActive="active" class="nav-link-pill">{{ traducir('nav.favoritos') }}</a>
+        <a routerLink="/publicar" routerLinkActive="active" class="nav-link-pill">{{ traducir('nav.publicar') }}</a>
+
+        <ng-container *ngIf="usuarioActual() as usuario; else invitadoDesktop">
+          <a routerLink="/perfil" class="usuario-pill px-3 py-1 rounded-pill small text-decoration-none" [title]="traducir('nav.perfil')">
+            <i class="fa-solid fa-circle-user me-1"></i>{{ usuario.nombre }}
+          </a>
+          <button type="button" class="btn btn-outline-light btn-sm" (click)="cerrarSesion()">{{ traducir('nav.cerrarSesion') }}</button>
+        </ng-container>
+        <ng-template #invitadoDesktop>
+          <a routerLink="/login" routerLinkActive="active" class="nav-link-pill">{{ traducir('nav.ingresar') }}</a>
+          <a routerLink="/registro" routerLinkActive="active" class="nav-link-pill">{{ traducir('nav.registrarse') }}</a>
+        </ng-template>
+      </nav>
+
+      <div class="dropdown">
+        <button
+          type="button"
+          class="btn-navbar-icon selector-idioma"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          [title]="traducir('nav.idioma')"
+          [attr.aria-label]="traducir('nav.idioma')"
+        >
+          <i class="fa-solid fa-language"></i>
+          <span class="selector-idioma__codigo">{{ idiomaActual() }}</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+          <li *ngFor="let idioma of idiomas()">
+            <button
+              type="button"
+              class="dropdown-item d-flex justify-content-between align-items-center gap-3"
+              [class.active]="idioma.codigo === idiomaActual()"
+              [attr.lang]="idioma.codigo"
+              (click)="cambiarIdioma(idioma.codigo)"
+            >
+              {{ idioma.nombre }}
+              <span *ngIf="idioma.codigo === idiomaActual()"><i class="fa-solid fa-check"></i></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="position-relative" *ngIf="usuarioActual()">
+        <button
+          type="button"
+          class="btn-navbar-icon"
+          [title]="traducir('nav.notificaciones')"
+          [attr.aria-label]="traducir('nav.notificaciones')"
+          [attr.aria-expanded]="panelNotificacionesAbierto()"
+          (click)="toggleNotificaciones()"
+        >
+          <i class="fa-solid fa-bell"></i>
+          <span class="notificacion-contador" *ngIf="cantidadNoLeidas() > 0">{{ cantidadNoLeidas() }}</span>
+        </button>
+
+        <div class="panel-notificaciones animate__animated animate__fadeIn" *ngIf="panelNotificacionesAbierto()">
+          <div class="panel-notificaciones-header">
+            <strong class="text-white">{{ traducir('nav.notificaciones') }}</strong>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              [attr.aria-label]="traducir('common.cerrar')"
+              (click)="toggleNotificaciones()"
+            ></button>
+          </div>
+
+          <div class="notificaciones-vacio" *ngIf="notificaciones().length === 0">
+            <i class="fa-regular fa-bell-slash fs-3 mb-2"></i>
+            <p class="mb-0">{{ traducir('nav.sinNotificaciones') }}</p>
+          </div>
+
+          <div class="notificaciones-lista" *ngIf="notificaciones().length > 0">
+            <div
+              class="notificacion-item"
+              [class.no-leida]="!notificacion.leida"
+              *ngFor="let notificacion of notificaciones()"
+            >
+              <span class="notificacion-icono"><i class="fa-solid fa-bell"></i></span>
+              <div class="notificacion-contenido">
+                <p class="small mb-0">{{ notificacion.mensaje }}</p>
+                <small class="text-secondary">{{ notificacion.fecha | date: 'dd/MM HH:mm' }}</small>
+              </div>
+              <button
+                type="button"
+                class="btn-leida"
+                [title]="traducir('nav.marcarLeida')"
+                [attr.aria-label]="traducir('nav.marcarLeida')"
+                *ngIf="!notificacion.leida"
+                (click)="marcarComoLeida(notificacion.id)"
+              >
+                <i class="fa-solid fa-check"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="panel-notificaciones-footer" *ngIf="cantidadNoLeidas() > 0">
+            <button type="button" class="btn btn-link btn-sm" (click)="marcarTodasComoLeidas()">
+              {{ traducir('nav.marcarTodasLeidas') }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+>>>>>>> Stashed changes
       <button
         type="button"
         class="btn btn-outline-light d-lg-none"
         (click)="toggleMenu()"
+<<<<<<< Updated upstream
         aria-label="Abrir menú"
+=======
+        [attr.aria-label]="traducir('nav.abrirMenu')"
+>>>>>>> Stashed changes
       >
         <i class="fa-solid fa-bars"></i>
       </button>
@@ -116,6 +243,7 @@
     *ngIf="menuAbierto()"
     class="d-lg-none container pb-3 d-flex flex-column gap-2 animate__animated animate__fadeIn"
   >
+<<<<<<< Updated upstream
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill" (click)="cerrarMenu()">Inicio</a>
     <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Listado</a>
     <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Mis reservas</a>
@@ -131,6 +259,23 @@
     <ng-template #invitadoMovil>
       <a routerLink="/login" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Iniciar sesión</a>
       <a routerLink="/registro" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">Registrarse</a>
+=======
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link-pill" (click)="cerrarMenu()">{{ traducir('nav.inicio') }}</a>
+    <a routerLink="/listado" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">{{ traducir('nav.alojamientos') }}</a>
+    <a routerLink="/mis-reservas" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">{{ traducir('nav.reservas') }}</a>
+    <a routerLink="/favoritos" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">{{ traducir('nav.favoritos') }}</a>
+    <a routerLink="/publicar" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">{{ traducir('nav.publicar') }}</a>
+
+    <ng-container *ngIf="usuarioActual() as usuario; else invitadoMovil">
+      <a routerLink="/perfil" class="usuario-pill px-3 py-1 rounded-pill small text-decoration-none" (click)="cerrarMenu()">
+        <i class="fa-solid fa-circle-user me-1"></i>{{ usuario.nombre }} · {{ traducir('nav.perfil') }}
+      </a>
+      <button type="button" class="btn btn-outline-light btn-sm" (click)="cerrarSesion()">{{ traducir('nav.cerrarSesion') }}</button>
+    </ng-container>
+    <ng-template #invitadoMovil>
+      <a routerLink="/login" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">{{ traducir('nav.ingresar') }}</a>
+      <a routerLink="/registro" routerLinkActive="active" class="nav-link-pill" (click)="cerrarMenu()">{{ traducir('nav.registrarse') }}</a>
+>>>>>>> Stashed changes
     </ng-template>
   </nav>
 </header>

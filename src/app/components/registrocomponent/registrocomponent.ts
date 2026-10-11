@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Authservice } from '../../services/authservice';
 import { Authguardservice } from '../../services/authguardservice';
+import { Idiomaservice } from '../../services/idiomaservice';
 
 @Component({
   selector: 'app-registrocomponent',
@@ -20,6 +21,7 @@ export class Registrocomponent {
     private authguardService: Authguardservice,
     private route: ActivatedRoute,
     private router: Router,
+    private idiomaService: Idiomaservice,
   ) {}
 
   registrar(): void {
@@ -54,5 +56,9 @@ export class Registrocomponent {
 
     const volverA = this.route.snapshot.queryParamMap.get('volverA');
     this.router.navigateByUrl(this.authguardService.destinoSeguro(volverA));
+  }
+
+  traducir(clave: string, parametros?: Record<string, string | number>): string {
+    return this.idiomaService.traducir(clave, parametros);
   }
 }

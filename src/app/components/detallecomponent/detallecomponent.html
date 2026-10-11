@@ -151,7 +151,7 @@
                     (click)="cambiarMoneda(moneda)"
                   >
                     {{ moneda }}
-                    <i class="fa-solid fa-check" *ngIf="moneda === monedaActiva()"></i>
+                    <span *ngIf="moneda === monedaActiva()"><i class="fa-solid fa-check"></i></span>
                   </button>
                 </li>
               </ul>
