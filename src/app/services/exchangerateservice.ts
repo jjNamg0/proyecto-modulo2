@@ -21,23 +21,35 @@ export class Exchangerateservice {
   monedaSeleccionada = signal<Moneda>('COP');
   tasas = signal<Record<string, number> | null>(null);
 
-  private tasasDesdeCop$: Observable<Record<string, number> | null> | null = null;
+  private tasasDesdeCop$: Observable<Record<string, number> | null> | null =
+    null;
 
-  obtenerUltimasTasas(monedaBase: string): Observable<HttpResponse<RespuestaTasas>> {
-    return this.cliente.get<RespuestaTasas>(`${this.URL_BASE}/latest/${monedaBase}`, {
-      observe: 'response',
-    });
+  obtenerUltimasTasas(
+    monedaBase: string,
+  ): Observable<HttpResponse<RespuestaTasas>> {
+    return this.cliente.get<RespuestaTasas>(
+      `${this.URL_BASE}/latest/${monedaBase}`,
+      {
+        observe: 'response',
+      },
+    );
   }
 
   cargarTasas(): Observable<Record<string, number> | null> {
     if (!this.tasasDesdeCop$) {
       this.tasasDesdeCop$ = this.obtenerUltimasTasas('COP').pipe(
-        map((respuesta) => (respuesta.body?.result === 'success' ? respuesta.body.rates : null)),
+        map((respuesta) =>
+          respuesta.body?.result === 'success'
+            ? respuesta.body.rates
+            : null,
+        ),
         catchError(() => of(null)),
         shareReplay(1),
       );
+
       this.tasasDesdeCop$.subscribe((tasas) => this.tasas.set(tasas));
     }
+
     return this.tasasDesdeCop$;
   }
 
@@ -50,9 +62,11 @@ export class Exchangerateservice {
   convertir(valorEnCop: number): number {
     const moneda = this.monedaSeleccionada();
     const tasa = this.tasas()?.[moneda];
+
     if (moneda === 'COP' || !tasa) {
       return valorEnCop;
     }
+
     return valorEnCop * tasa;
   }
 
@@ -64,3 +78,4 @@ export class Exchangerateservice {
     return this.monedaActiva() === 'COP' ? '1.0-0' : '1.2-2';
   }
 }
+

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Navbarcomponent } from './components/navbarcomponent/navbarcomponent';
@@ -20,9 +21,10 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
+import { Toastcomponent } from './components/toastcomponent/toastcomponent';
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
-import { Toastcomponent } from './components/toastcomponent/toastcomponent';
+import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicomponent';
 import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
 import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
 import { Comprobantecomponent } from './components/comprobantecomponent/comprobantecomponent';
@@ -51,6 +53,7 @@ import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicom
     Publicarcomponent,
     Perfilcomponent,
     Iaopinioncomponent,
+    Mapamundicomponent,
     Toastcomponent,
     Terminoscomponent,
     Privacidadcomponent,
@@ -60,8 +63,17 @@ import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicom
     Contactocomponent,
     Mapamundicomponent,
   ],
-  imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    AppRoutingModule,
+    RouterModule,
+  ],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

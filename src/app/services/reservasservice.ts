@@ -61,31 +61,52 @@ export class Reservasservice {
   }
 
   obtenerReservasDe(correo: string): Reserva[] {
-    return this.reservas.filter((r) => r.correoHuesped === correo).sort((a, b) => b.id - a.id);
+    return this.reservas
+      .filter((r) => r.correoHuesped === correo)
+      .sort((a, b) => b.id - a.id);
   }
 
   obtenerReservaDe(id: number, correo: string): Reserva | undefined {
-    return this.reservas.find((r) => r.id === id && r.correoHuesped === correo);
+    return this.reservas.find(
+      (r) => r.id === id && r.correoHuesped === correo
+    );
   }
 
   cancelarReserva(id: number): void {
     const reserva = this.reservas.find((r) => r.id === id);
+
     if (reserva) {
       reserva.estado = 'CANCELADA';
-      this.notificacionService.agregar(`Tu reserva en ${reserva.nombreAlojamiento} fue cancelada correctamente.`);
+
+      this.notificacionService.agregar(
+        `Tu reserva en ${reserva.nombreAlojamiento} fue cancelada correctamente.`
+      );
     }
   }
 
   obtenerFechasOcupadas(alojamientoId: number): RangoFechas[] {
     return this.reservas
-      .filter((r) => r.alojamientoId === alojamientoId && r.estado === 'CONFIRMADA')
-      .map((r) => ({ fechaInicio: r.fechaInicio, fechaFin: r.fechaFin }))
+      .filter(
+        (r) =>
+          r.alojamientoId === alojamientoId &&
+          r.estado === 'CONFIRMADA'
+      )
+      .map((r) => ({
+        fechaInicio: r.fechaInicio,
+        fechaFin: r.fechaFin,
+      }))
       .sort((a, b) => a.fechaInicio.localeCompare(b.fechaInicio));
   }
 
-  estaDisponible(alojamientoId: number, fechaInicio: string, fechaFin: string): boolean {
+  estaDisponible(
+    alojamientoId: number,
+    fechaInicio: string,
+    fechaFin: string
+  ): boolean {
     return !this.obtenerFechasOcupadas(alojamientoId).some(
-      (ocupada) => fechaInicio < ocupada.fechaFin && fechaFin > ocupada.fechaInicio,
+      (ocupada) =>
+        fechaInicio < ocupada.fechaFin &&
+        fechaFin > ocupada.fechaInicio
     );
   }
 
@@ -108,3 +129,4 @@ export class Reservasservice {
       });
   }
 }
+
