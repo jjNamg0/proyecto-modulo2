@@ -20,10 +20,11 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
-import{Toastcomponent} from './components/toastcomponent/toastcomponent';
+import { Toastcomponent } from './components/toastcomponent/toastcomponent';
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
-
+import { RouterModule } from '@angular/router';
+import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicomponent';
 
 @NgModule({
   declarations: [
@@ -45,9 +46,20 @@ import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncom
     Publicarcomponent,
     Perfilcomponent,
     Iaopinioncomponent,
+    Mapamundicomponent
   ],
-  imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule,Toastcomponent ],
-  providers: [provideBrowserGlobalErrorListeners(), provideHttpClient()],
+  imports: [
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    AppRoutingModule,
+    RouterModule,
+    Toastcomponent
+  ],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient()
+  ],
   bootstrap: [App],
 })
 export class AppModule {}

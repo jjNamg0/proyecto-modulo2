@@ -1,0 +1,173 @@
+
+<section class="container destinos-section py-5">
+  <header class="destinos-heading mb-4">
+    <span class="destinos-eyebrow">NOCTURNA STAYS</span>
+    <h2 class="destinos-titulo">Explora nuestros destinos</h2>
+    <p class="destinos-descripcion">
+      Descubre alojamientos únicos alrededor del mundo.
+    </p>
+  </header>
+
+  @if (cargando()) {
+    <div class="destinos-estado">
+      <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+      Cargando alojamientos...
+    </div>
+  }
+
+  <div class="mapamundi-panel">
+    <div class="mapamundi-panel__heading">
+      <div>
+        <h3>Explora el mundo</h3>
+        <p>Selecciona un país azul para descubrir sus alojamientos.</p>
+      </div>
+
+      <span class="mapamundi-indicador">
+        <span></span>
+        {{ paisesDisponibles().length }} destinos disponibles
+      </span>
+    </div>
+
+    <div class="mapamundi-lienzo">
+      @if (paises().length > 0) {
+        <svg
+          class="mapamundi-svg"
+          viewBox="0 0 960 500"
+          role="group"
+          aria-label="Mapa mundial interactivo"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          @for (pais of paises(); track pais.clave) {
+            <path
+              [attr.d]="pais.ruta"
+              [attr.aria-label]="pais.nombre"
+              [attr.aria-pressed]="seleccionado() === pais.clave"
+              [attr.tabindex]="esDisponible(pais.clave) ? 0 : -1"
+              [attr.role]="esDisponible(pais.clave) ? 'button' : null"
+              [attr.class]="
+                'mapamundi-pais' +
+                (esDisponible(pais.clave) ? ' mapamundi-pais--disponible' : '') +
+                (seleccionado() === pais.clave ? ' mapamundi-pais--activo' : '')
+              "
+              (click)="seleccionarPorClave(pais.clave)"
+              (keydown.enter)="seleccionarPorClave(pais.clave)"
+              (keydown.space)="seleccionarPorClave(pais.clave); $event.preventDefault()"
+            >
+              <title>{{ pais.nombre }}</title>
+            </path>
+          }
+        </svg>
+      } @else if (!cargando()) {
+        <div class="destinos-estado">
+          No se pudo cargar el mapa mundial.
+          Verifica la instalación de D3 y TopoJSON.
+        </div>
+      }
+    </div>
+
+    <div class="mapamundi-leyenda">
+      <span>
+        <i class="mapamundi-punto mapamundi-punto--disponible"></i>
+        Países con alojamientos
+      </span>
+
+      <span>
+        <i class="mapamundi-punto mapamundi-punto--activo"></i>
+        País seleccionado
+      </span>
+    </div>
+  </div>
+
+  @if (paisActivo(); as pais) {
+    <section class="destino-seleccionado mt-4">
+      <div class="destino-seleccionado__encabezado">
+        <div class="destino-seleccionado__identidad">
+          <div class="destino-seleccionado__icono">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+
+          <div>
+            <span class="destino-seleccionado__etiqueta">
+              DESTINO SELECCIONADO
+            </span>
+            <h3>{{ pais.nombre }}</h3>
+            <p>
+              {{ pais.cantidad }}
+              {{ pais.cantidad === 1 ? 'alojamiento disponible' : 'alojamientos disponibles' }}
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="destino-seleccionado__cerrar"
+          aria-label="Cerrar selección del país"
+          title="Cerrar selección"
+          (click)="limpiarSeleccion()"
+        >
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      @for (grupo of ciudadesDelPais(); track grupo.ciudad) {
+        <div class="destino-ciudad">
+          <h4 class="destino-ciudad__titulo">
+            <i class="bi bi-geo-alt"></i>
+            {{ grupo.ciudad }}
+            <span>{{ grupo.alojamientos.length }}</span>
+          </h4>
+
+          <div class="row g-3">
+            @for (alojamiento of grupo.alojamientos; track alojamiento.id) {
+              <div class="col-12 col-md-6 col-xl-4">
+                <article class="card-alojamiento h-100">
+                  <img
+                    class="card-alojamiento__img"
+
+                    [src]="alojamiento.imagenes?.[0] || 'https://picsum.photos/seed/alojamiento/600/400'"
+
+                    [alt]="alojamiento.nombre"
+                    loading="lazy"
+                    (error)="onImgError($event, alojamiento.id)"
+                  />
+
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                      {{ alojamiento.nombre }}
+                    </h5>
+
+                    <p class="card-alojamiento__ubicacion">
+                      <i class="bi bi-geo-alt-fill me-1"></i>
+                      {{ alojamiento.ciudad }}, {{ alojamiento.pais }}
+                    </p>
+
+                    <div class="card-alojamiento__pie mt-auto">
+                      <span class="card-alojamiento__precio">
+                        {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
+                        <small>/ noche</small>
+                      </span>
+
+                      <a
+                        class="btn btn-primary btn-sm"
+                        [routerLink]="['/alojamientos', alojamiento.id]"
+                      >
+                        Ver detalles
+                        <i class="bi bi-arrow-right ms-1"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      @if (ciudadesDelPais().length === 0) {
+        <div class="destino-sin-resultados">
+          No hay alojamientos registrados para este destino.
+        </div>
+      }
+    </section>
+  }
+</section>

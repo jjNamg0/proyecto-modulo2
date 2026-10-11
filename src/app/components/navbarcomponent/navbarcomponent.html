@@ -1,35 +1,41 @@
 <header class="navbar-marketplace">
-
   <div class="container d-flex align-items-center justify-content-between py-2">
+    <div class="navbar-izquierda d-flex align-items-center gap-3">
+      <a
+        routerLink="/"
+        class="navbar-brand d-flex align-items-center gap-2 text-decoration-none me-0"
+        (click)="cerrarMenu()"
+      >
+        <img
+          src="assets/images/logo.png"
+          alt="Nocturna Stays"
+          class="navbar-logo"
+        />
 
+        <span class="d-flex flex-column lh-1">
+          <strong class="text-white">Nocturna Stays</strong>
+          <small class="text-secondary">Marketplace de Alojamientos</small>
+        </span>
+      </a>
 
-    <a
-      routerLink="/"
-      class="navbar-brand d-flex align-items-center gap-2 text-decoration-none"
-      (click)="cerrarMenu()"
-    >
-      <img
-        src="assets/images/logo.png"
-        alt="Nocturna Stays"
-        class="navbar-logo"
-      />
-
-      <span class="d-flex flex-column lh-1">
-        <strong class="text-white">Nocturna Stays</strong>
-
-        <small class="text-secondary">
-          Marketplace de Alojamientos
-        </small>
-      </span>
-    </a>
-
+      <a
+        routerLink="/listado"
+        class="buscador-navbar text-decoration-none"
+        title="Buscar alojamientos"
+        aria-label="Buscar alojamientos"
+        (click)="cerrarMenu()"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="buscador-navbar__texto">Buscar alojamientos</span>
+      </a>
+    </div>
 
     <div class="navbar-acciones d-flex align-items-center gap-1">
-
       <button
         type="button"
         class="btn-navbar-icon"
         title="Notificaciones"
+        aria-label="Notificaciones"
         (click)="toggleNotificaciones()"
       >
         <i class="fa-solid fa-bell"></i>
@@ -42,43 +48,30 @@
         </span>
       </button>
 
-
       <div
         *ngIf="panelNotificacionesAbierto()"
         class="panel-notificaciones"
       >
-
         <div class="panel-notificaciones-header">
-
-          <strong>
-            Notificaciones
-          </strong>
+          <strong>Notificaciones</strong>
 
           <button
             type="button"
             class="btn-cerrar-notificaciones"
-            (click)="toggleNotificaciones()"
             aria-label="Cerrar notificaciones"
+            (click)="toggleNotificaciones()"
           >
-
+            <i class="fa-solid fa-xmark"></i>
           </button>
-
         </div>
-
 
         <div
           *ngIf="notificacionService.notificaciones().length === 0"
           class="notificaciones-vacio"
         >
-
           <i class="fa-regular fa-bell-slash"></i>
-
-          <p>
-            No tienes notificaciones
-          </p>
-
+          <p>No tienes notificaciones</p>
         </div>
-
 
         <div
           *ngFor="let notificacion of notificacionService.notificaciones()"
@@ -86,52 +79,38 @@
           [class.no-leida]="!notificacion.leida"
         >
           <div class="notificacion-icono">
-
             <i class="fa-solid fa-bell"></i>
-
           </div>
+
           <div class="notificacion-contenido">
-
-            <p>
-              {{ notificacion.mensaje }}
-            </p>
-
-            <small>
-              {{ notificacion.fecha | date:'short' }}
-            </small>
-
+            <p>{{ notificacion.mensaje }}</p>
+            <small>{{ notificacion.fecha | date:'short' }}</small>
           </div>
-
 
           <button
             *ngIf="!notificacion.leida"
             type="button"
             class="btn-leida"
             title="Marcar como leída"
+            aria-label="Marcar como leída"
             (click)="notificacionService.marcarComoLeida(notificacion.id)"
           >
-
+            <i class="fa-solid fa-check"></i>
           </button>
-
         </div>
-
 
         <div
           *ngIf="notificacionService.notificaciones().length > 0"
           class="panel-notificaciones-footer"
         >
-
           <button
             type="button"
             (click)="notificacionService.marcarTodasComoLeidas()"
           >
             Marcar todas como leídas
           </button>
-
         </div>
-
       </div>
-
 
       <button
         type="button"
@@ -141,12 +120,9 @@
       >
         <i class="fa-solid fa-bars"></i>
       </button>
-
     </div>
 
-
     <nav class="d-none d-lg-flex align-items-center gap-2">
-
       <a
         routerLink="/"
         routerLinkActive="active"
@@ -188,21 +164,15 @@
         Publicar
       </a>
 
-
-      <ng-container
-        *ngIf="usuarioActual() as usuario; else invitadoDesktop"
-      >
-
+      <ng-container *ngIf="usuarioActual() as usuario; else invitadoDesktop">
         <a
           routerLink="/perfil"
           class="usuario-pill px-3 py-1 rounded-pill small text-decoration-none"
           title="Mi perfil"
         >
           <i class="fa-solid fa-circle-user me-1"></i>
-
           {{ usuario.nombre }}
         </a>
-
 
         <button
           type="button"
@@ -211,12 +181,9 @@
         >
           Cerrar sesión
         </button>
-
       </ng-container>
 
-
       <ng-template #invitadoDesktop>
-
         <a
           routerLink="/login"
           routerLinkActive="active"
@@ -232,19 +199,14 @@
         >
           Registrarse
         </a>
-
       </ng-template>
-
     </nav>
-
   </div>
-
 
   <nav
     *ngIf="menuAbierto()"
     class="d-lg-none container pb-3 d-flex flex-column gap-2 animate__animated animate__fadeIn"
   >
-
     <a
       routerLink="/"
       routerLinkActive="active"
@@ -255,7 +217,6 @@
       Inicio
     </a>
 
-
     <a
       routerLink="/listado"
       routerLinkActive="active"
@@ -264,7 +225,6 @@
     >
       Listado
     </a>
-
 
     <a
       routerLink="/mis-reservas"
@@ -275,7 +235,6 @@
       Mis reservas
     </a>
 
-
     <a
       routerLink="/favoritos"
       routerLinkActive="active"
@@ -284,7 +243,6 @@
     >
       Favoritos
     </a>
-
 
     <a
       routerLink="/publicar"
@@ -295,21 +253,15 @@
       Publicar
     </a>
 
-
-    <ng-container
-      *ngIf="usuarioActual() as usuario; else invitadoMovil"
-    >
-
+    <ng-container *ngIf="usuarioActual() as usuario; else invitadoMovil">
       <a
         routerLink="/perfil"
         class="usuario-pill px-3 py-1 rounded-pill small text-decoration-none"
         (click)="cerrarMenu()"
       >
         <i class="fa-solid fa-circle-user me-1"></i>
-
         {{ usuario.nombre }} · Mi perfil
       </a>
-
 
       <button
         type="button"
@@ -318,12 +270,9 @@
       >
         Cerrar sesión
       </button>
-
     </ng-container>
 
-
     <ng-template #invitadoMovil>
-
       <a
         routerLink="/login"
         routerLinkActive="active"
@@ -333,7 +282,6 @@
         Iniciar sesión
       </a>
 
-
       <a
         routerLink="/registro"
         routerLinkActive="active"
@@ -342,9 +290,6 @@
       >
         Registrarse
       </a>
-
     </ng-template>
-
   </nav>
-
 </header>
