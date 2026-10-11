@@ -1,15 +1,12 @@
-
 <section class="hero-marketplace text-center py-5">
   <div class="container">
     <span class="badge rounded-pill text-bg-primary-subtle text-primary-emphasis mb-3">
       <i class="fa-solid fa-shield-halved me-1"></i>
       {{ 'home.insignia' | translate }}
     </span>
-
     <h1 class="display-5 fw-bold text-white animate__animated animate__fadeInDown">
       Nocturna Stays
     </h1>
-
     <p class="lead text-secondary col-lg-8 mx-auto animate__animated animate__fadeIn">
       {{ 'home.descripcion' | translate }}
     </p>
@@ -35,7 +32,6 @@
         {{ 'home.destacadosTitulo' | translate }}
       </h2>
     </div>
-
     <a routerLink="/listado" class="small">
       {{ 'home.verTodos' | translate }}
       <i class="fa-solid fa-arrow-right ms-1"></i>
@@ -76,11 +72,7 @@
             {{ alojamiento.ciudad }}, {{ alojamiento.pais }} ·
             {{ ('home.tipo.' + alojamiento.tipo) | translate }}
           </p>
-
-          <h3 class="h4 text-white mb-2">
-            {{ alojamiento.nombre }}
-          </h3>
-
+          <h3 class="h4 text-white mb-2">{{ alojamiento.nombre }}</h3>
           <div class="d-flex flex-wrap align-items-center gap-2">
             <span class="fw-bold fs-5 text-white me-2">
               {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
@@ -97,7 +89,6 @@
               {{ 'home.verDetalle' | translate }}
               <i class="fa-solid fa-arrow-right ms-1"></i>
             </a>
-
             <button
               type="button"
               class="btn btn-sm btn-dark"
@@ -153,6 +144,4 @@
   </div>
 </section>
 
-<section class="container py-5">
-  <app-mapamundicomponent></app-mapamundicomponent>
-</section>
+<app-mapamundicomponent />

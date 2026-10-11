@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import emailjs from '@emailjs/browser';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable, catchError, map, of } from 'rxjs';
 
 export interface DatosConfirmacion {
-  to_email: string;
-  to_name: string;
+  correo: string;
+  nombre: string;
   alojamiento: string;
-  fecha_entrada: string;
-  fecha_salida: string;
+  fechaEntrada: string;
+  fechaSalida: string;
   valor: string;
 }
 
@@ -14,29 +15,37 @@ export interface DatosConfirmacion {
   providedIn: 'root',
 })
 export class Emailservice {
-  private readonly serviceId = 'service_f5wbz52';
-  private readonly templateId = 'template_h3s78zl';
-  private readonly publicKey = 'c_ohAoJRsWFtTEGc-';
+  private cliente: HttpClient = inject(HttpClient);
+  private readonly URL_BASE: string = 'https://api.emailjs.com/api/v1.0';
+  private readonly SERVICE_ID = 'service_f5wbz52';
+  private readonly TEMPLATE_ID = 'template_h3s78zl';
+  private readonly PUBLIC_KEY = 'c_ohAoJRsWFtTEGc-';
 
-  enviarConfirmacion(
-    datos: DatosConfirmacion
-  ): Promise<unknown> {
-    const parametros: Record<string, unknown> = {
-      to_email: datos.to_email,
-      to_name: datos.to_name,
-      alojamiento: datos.alojamiento,
-      fecha_entrada: datos.fecha_entrada,
-      fecha_salida: datos.fecha_salida,
-      valor: datos.valor,
+  enviarCorreo(cuerpo: object): Observable<HttpResponse<string>> {
+    return this.cliente.post(`${this.URL_BASE}/email/send`, cuerpo, {
+      observe: 'response',
+      responseType: 'text',
+    });
+  }
+
+  enviarConfirmacion(datos: DatosConfirmacion): Observable<boolean> {
+    const cuerpo = {
+      service_id: this.SERVICE_ID,
+      template_id: this.TEMPLATE_ID,
+      user_id: this.PUBLIC_KEY,
+      template_params: {
+        to_email: datos.correo,
+        to_name: datos.nombre,
+        alojamiento: datos.alojamiento,
+        fecha_entrada: datos.fechaEntrada,
+        fecha_salida: datos.fechaSalida,
+        valor: datos.valor,
+      },
     };
 
-    return emailjs.send(
-      this.serviceId,
-      this.templateId,
-      parametros as Record<string, string>,
-      {
-        publicKey: this.publicKey,
-      }
+    return this.enviarCorreo(cuerpo).pipe(
+      map((respuesta) => respuesta.ok),
+      catchError(() => of(false)),
     );
   }
 }

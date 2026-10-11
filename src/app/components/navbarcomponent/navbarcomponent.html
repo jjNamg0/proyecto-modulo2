@@ -1,345 +1,171 @@
-<header class="navbar-marketplace">
-  <div class="container d-flex align-items-center justify-content-between py-2">
+<section class="container destinos-section py-5">
+  <header class="destinos-heading mb-4">
+    <span class="destinos-eyebrow">NOCTURNA STAYS</span>
+    <h2 class="destinos-titulo">{{ 'map.titulo' | translate }}</h2>
+    <p class="destinos-descripcion">
+      {{ 'map.subtitulo' | translate }}
+    </p>
+  </header>
 
-    <div class="navbar-izquierda d-flex align-items-center gap-3">
-      <a
-        routerLink="/"
-        class="navbar-brand d-flex align-items-center gap-2 text-decoration-none me-0"
-        (click)="cerrarMenu()"
-      >
-        <img
-          src="assets/images/logo.png"
-          alt="Nocturna Stays"
-          class="navbar-logo"
-        />
+  @if (cargando()) {
+    <div class="destinos-estado">
+      <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+      {{ 'map.cargandoAlojamientos' | translate }}
+    </div>
+  }
 
-        <span class="d-flex flex-column lh-1">
-          <strong class="text-white">Nocturna Stays</strong>
-          <small class="text-secondary">{{ 'nav.subtitulo' | translate }}</small>
-        </span>
-      </a>
+  <div class="mapamundi-panel">
+    <div class="mapamundi-panel__heading">
+      <div>
+        <h3>{{ 'map.explorarMundo' | translate }}</h3>
+        <p>{{ 'map.descripcion' | translate }}</p>
+      </div>
 
-      <a
-        routerLink="/listado"
-        class="buscador-navbar text-decoration-none"
-        [title]="'nav.buscarAlojamientos' | translate"
-        [attr.aria-label]="'nav.buscarAlojamientos' | translate"
-        (click)="cerrarMenu()"
-      >
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <span class="buscador-navbar__texto">{{ 'nav.buscarAlojamientos' | translate }}</span>
-      </a>
+      <span class="mapamundi-indicador">
+        <span></span>
+        {{ 'map.destinosDisponibles' | translate: { n: paisesDisponibles().length } }}
+      </span>
     </div>
 
-    <div class="d-flex align-items-center gap-2 navbar-derecha">
-
-      <nav class="navbar-enlaces d-none d-lg-flex align-items-center gap-2">
-        <a
-          routerLink="/"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-          class="nav-link-pill"
+    <div class="mapamundi-lienzo">
+      @if (paises().length > 0) {
+        <svg
+          class="mapamundi-svg"
+          viewBox="0 0 960 500"
+          role="group"
+          aria-label="Mapa mundial interactivo"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          {{ 'nav.inicio' | translate }}
-        </a>
-
-        <a
-          routerLink="/listado"
-          routerLinkActive="active"
-          class="nav-link-pill"
-        >
-          {{ 'nav.alojamientos' | translate }}
-        </a>
-
-        <a
-          routerLink="/mis-reservas"
-          routerLinkActive="active"
-          class="nav-link-pill"
-        >
-          {{ 'nav.reservas' | translate }}
-        </a>
-
-        <a
-          routerLink="/favoritos"
-          routerLinkActive="active"
-          class="nav-link-pill"
-        >
-          {{ 'nav.favoritos' | translate }}
-        </a>
-
-        <a
-          routerLink="/publicar"
-          routerLinkActive="active"
-          class="nav-link-pill"
-        >
-          {{ 'nav.publicar' | translate }}
-        </a>
-
-        <ng-container *ngIf="usuarioActual() as usuario; else invitadoDesktop">
-          <a
-            routerLink="/perfil"
-            routerLinkActive="active"
-            class="usuario-pill px-3 py-1 rounded-pill small text-decoration-none"
-            [title]="'nav.perfil' | translate"
-          >
-            <i class="fa-solid fa-circle-user me-1"></i>
-            {{ usuario.nombre }}
-          </a>
-
-          <button
-            type="button"
-            class="btn btn-outline-light btn-sm"
-            (click)="cerrarSesion()"
-          >
-            {{ 'nav.cerrarSesion' | translate }}
-          </button>
-        </ng-container>
-
-        <ng-template #invitadoDesktop>
-          <a
-            routerLink="/login"
-            routerLinkActive="active"
-            class="nav-link-pill"
-          >
-            {{ 'nav.ingresar' | translate }}
-          </a>
-
-          <a
-            routerLink="/registro"
-            routerLinkActive="active"
-            class="nav-link-pill"
-          >
-            {{ 'nav.registrarse' | translate }}
-          </a>
-        </ng-template>
-      </nav>
-
-      <div class="dropdown selector-idioma">
-        <button
-          type="button"
-          class="btn btn-outline-light btn-sm dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          [attr.aria-label]="'nav.idioma' | translate"
-        >
-          <i class="fa-solid fa-globe me-1"></i>
-          {{ idiomaActual | uppercase }}
-        </button>
-
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li>
-            <button type="button" class="dropdown-item" (click)="cambiarIdioma('es')">
-              🇨🇴 Español
-            </button>
-          </li>
-          <li>
-            <button type="button" class="dropdown-item" (click)="cambiarIdioma('en')">
-              🇺🇸 English
-            </button>
-          </li>
-          <li>
-            <button type="button" class="dropdown-item" (click)="cambiarIdioma('ja')">
-              🇯🇵 日本語
-            </button>
-          </li>
-          <li>
-            <button type="button" class="dropdown-item" (click)="cambiarIdioma('pt')">
-              🇵🇹 Português
-            </button>
-          </li>
-        </ul>
-      </div>
-
-      <div class="position-relative" *ngIf="usuarioActual()">
-        <button
-          type="button"
-          class="btn-navbar-icon"
-          [title]="'nav.notificaciones' | translate"
-          [attr.aria-label]="'nav.notificaciones' | translate"
-          [attr.aria-expanded]="panelNotificacionesAbierto()"
-          (click)="toggleNotificaciones()"
-        >
-          <i class="fa-solid fa-bell"></i>
-
-          <span
-            class="notificacion-contador"
-            *ngIf="cantidadNoLeidas() > 0"
-          >
-            {{ cantidadNoLeidas() }}
-          </span>
-        </button>
-
-        <div
-          class="panel-notificaciones animate__animated animate__fadeIn"
-          *ngIf="panelNotificacionesAbierto()"
-        >
-          <div class="panel-notificaciones-header">
-            <strong class="text-white">{{ 'nav.notificaciones' | translate }}</strong>
-
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              [attr.aria-label]="'common.cerrar' | translate"
-              (click)="toggleNotificaciones()"
-            ></button>
-          </div>
-
-          <div
-            class="notificaciones-vacio"
-            *ngIf="notificaciones().length === 0"
-          >
-            <i class="fa-regular fa-bell-slash fs-3 mb-2"></i>
-            <p class="mb-0">{{ 'nav.sinNotificaciones' | translate }}</p>
-          </div>
-
-          <div
-            class="notificaciones-lista"
-            *ngIf="notificaciones().length > 0"
-          >
-            <div
-              class="notificacion-item"
-              [class.no-leida]="!notificacion.leida"
-              *ngFor="let notificacion of notificaciones()"
+          @for (pais of paises(); track pais.clave) {
+            <path
+              [attr.d]="pais.ruta"
+              [attr.aria-label]="pais.nombre"
+              [attr.aria-pressed]="seleccionado() === pais.clave"
+              [attr.tabindex]="esDisponible(pais.clave) ? 0 : -1"
+              [attr.role]="esDisponible(pais.clave) ? 'button' : null"
+              [attr.class]="
+                'mapamundi-pais' +
+                (esDisponible(pais.clave) ? ' mapamundi-pais--disponible' : '') +
+                (seleccionado() === pais.clave ? ' mapamundi-pais--activo' : '')
+              "
+              (click)="seleccionarPorClave(pais.clave)"
+              (keydown.enter)="seleccionarPorClave(pais.clave)"
+              (keydown.space)="seleccionarPorClave(pais.clave); $event.preventDefault()"
             >
-              <span class="notificacion-icono">
-                <i class="fa-solid fa-bell"></i>
-              </span>
-
-              <div class="notificacion-contenido">
-                <p class="small mb-0">{{ notificacion.mensaje }}</p>
-                <small class="text-secondary">
-                  {{ notificacion.fecha | date: 'dd/MM HH:mm' }}
-                </small>
-              </div>
-
-              <button
-                type="button"
-                class="btn-leida"
-                [title]="'nav.marcarLeida' | translate"
-                [attr.aria-label]="'nav.marcarLeida' | translate"
-                *ngIf="!notificacion.leida"
-                (click)="marcarComoLeida(notificacion.id)"
-              >
-                <i class="fa-solid fa-check"></i>
-              </button>
-            </div>
-          </div>
-
-          <div
-            class="panel-notificaciones-footer"
-            *ngIf="cantidadNoLeidas() > 0"
-          >
-            <button
-              type="button"
-              class="btn btn-link btn-sm"
-              (click)="marcarTodasComoLeidas()"
-            >
-              {{ 'nav.marcarTodasLeidas' | translate }}
-            </button>
-          </div>
+              <title>{{ pais.nombre }}</title>
+            </path>
+          }
+        </svg>
+      } @else if (!cargando()) {
+        <div class="destinos-estado">
+          {{ 'map.errorMapa' | translate }}
         </div>
-      </div>
+      }
+    </div>
 
-      <button
-        type="button"
-        class="btn btn-outline-light d-lg-none"
-        (click)="toggleMenu()"
-        [attr.aria-label]="'nav.abrirMenu' | translate"
-        [attr.aria-expanded]="menuAbierto()"
-      >
-        <i class="fa-solid fa-bars"></i>
-      </button>
+    <div class="mapamundi-leyenda">
+      <span>
+        <i class="mapamundi-punto mapamundi-punto--disponible"></i>
+        {{ 'map.paisesConAlojamientos' | translate }}
+      </span>
+
+      <span>
+        <i class="mapamundi-punto mapamundi-punto--activo"></i>
+        {{ 'map.paisSeleccionado' | translate }}
+      </span>
     </div>
   </div>
 
-  <nav
-    *ngIf="menuAbierto()"
-    class="navbar-menu-movil d-lg-none container pb-3 d-flex flex-column gap-2 animate__animated animate__fadeIn"
-  >
-    <a
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="nav-link-pill"
-      (click)="cerrarMenu()"
-    >
-      {{ 'nav.inicio' | translate }}
-    </a>
+  @if (paisActivo(); as pais) {
+    <section class="destino-seleccionado mt-4">
+      <div class="destino-seleccionado__encabezado">
+        <div class="destino-seleccionado__identidad">
+          <div class="destino-seleccionado__icono">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
 
-    <a
-      routerLink="/listado"
-      routerLinkActive="active"
-      class="nav-link-pill"
-      (click)="cerrarMenu()"
-    >
-      {{ 'nav.alojamientos' | translate }}
-    </a>
+          <div>
+            <span class="destino-seleccionado__etiqueta">
+              {{ 'map.destinoSeleccionado' | translate }}
+            </span>
+            <h3>{{ pais.nombre }}</h3>
+            <p>
+              {{ pais.cantidad }}
+              {{ (pais.cantidad === 1 ? 'map.alojamientoDisponible' : 'map.alojamientosDisponibles') | translate }}
+            </p>
+          </div>
+        </div>
 
-    <a
-      routerLink="/mis-reservas"
-      routerLinkActive="active"
-      class="nav-link-pill"
-      (click)="cerrarMenu()"
-    >
-      {{ 'nav.reservas' | translate }}
-    </a>
+        <button
+          type="button"
+          class="destino-seleccionado__cerrar"
+          [attr.aria-label]="'map.cerrarSeleccionPais' | translate"
+          [title]="'map.cerrarSeleccion' | translate"
+          (click)="limpiarSeleccion()"
+        >
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
 
-    <a
-      routerLink="/favoritos"
-      routerLinkActive="active"
-      class="nav-link-pill"
-      (click)="cerrarMenu()"
-    >
-      {{ 'nav.favoritos' | translate }}
-    </a>
+      @for (grupo of ciudadesDelPais(); track grupo.ciudad) {
+        <div class="destino-ciudad">
+          <h4 class="destino-ciudad__titulo">
+            <i class="bi bi-geo-alt"></i>
+            {{ grupo.ciudad }}
+            <span>{{ grupo.alojamientos.length }}</span>
+          </h4>
 
-    <a
-      routerLink="/publicar"
-      routerLinkActive="active"
-      class="nav-link-pill"
-      (click)="cerrarMenu()"
-    >
-      {{ 'nav.publicar' | translate }}
-    </a>
+          <div class="row g-3">
+            @for (alojamiento of grupo.alojamientos; track alojamiento.id) {
+              <div class="col-12 col-md-6 col-xl-4">
+                <article class="card-alojamiento h-100">
+                  <img
+                    class="card-alojamiento__img"
 
-    <ng-container *ngIf="usuarioActual() as usuario; else invitadoMovil">
-      <a
-        routerLink="/perfil"
-        routerLinkActive="active"
-        class="usuario-pill px-3 py-2 rounded-pill small text-decoration-none"
-        (click)="cerrarMenu()"
-      >
-        <i class="fa-solid fa-circle-user me-1"></i>
-        {{ usuario.nombre }} · {{ 'nav.perfil' | translate }}
-      </a>
+                    [src]="alojamiento.imagenes?.[0] || 'https://picsum.photos/seed/alojamiento/600/400'"
 
-      <button
-        type="button"
-        class="btn btn-outline-light btn-sm"
-        (click)="cerrarSesion()"
-      >
-        {{ 'nav.cerrarSesion' | translate }}
-      </button>
-    </ng-container>
+                    [alt]="alojamiento.nombre"
+                    loading="lazy"
+                    (error)="onImgError($event, alojamiento.id)"
+                  />
 
-    <ng-template #invitadoMovil>
-      <a
-        routerLink="/login"
-        routerLinkActive="active"
-        class="nav-link-pill"
-        (click)="cerrarMenu()"
-      >
-        {{ 'nav.ingresar' | translate }}
-      </a>
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">
+                      {{ alojamiento.nombre }}
+                    </h5>
 
-      <a
-        routerLink="/registro"
-        routerLinkActive="active"
-        class="nav-link-pill"
-        (click)="cerrarMenu()"
-      >
-        {{ 'nav.registrarse' | translate }}
-      </a>
-    </ng-template>
-  </nav>
-</header>
+                    <p class="card-alojamiento__ubicacion">
+                      <i class="bi bi-geo-alt-fill me-1"></i>
+                      {{ alojamiento.ciudad }}, {{ alojamiento.pais }}
+                    </p>
+
+                    <div class="card-alojamiento__pie mt-auto">
+                      <span class="card-alojamiento__precio">
+                        {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
+                        <small>/ {{ 'map.porNoche' | translate }}</small>
+                      </span>
+
+                      <a
+                        class="btn btn-primary btn-sm"
+                        [routerLink]="['/alojamientos', alojamiento.id]"
+                      >
+                        {{ 'map.verDetalles' | translate }}
+                        <i class="bi bi-arrow-right ms-1"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      @if (ciudadesDelPais().length === 0) {
+        <div class="destino-sin-resultados">
+          {{ 'map.sinAlojamientos' | translate }}
+        </div>
+      }
+    </section>
+  }
+</section>

@@ -46,13 +46,16 @@ export class Privacidadcomponent {
       id: 'privacidad-servicios',
       titulo: 'Servicios externos',
       icono: 'fa-globe',
-      parrafos: ['Para mostrar información extra consultamos estos servicios. Ninguno recibe tu nombre, tu correo ni tu contraseña:'],
+      parrafos: [
+        'Para mostrar información extra y confirmar tus reservas usamos estos servicios. Ninguno recibe tu contraseña ni los datos de tu tarjeta:',
+      ],
       puntos: [
         'geocode.maps.co recibe la dirección del alojamiento para ubicarlo en el mapa.',
         'Open-Meteo recibe las coordenadas del alojamiento para el clima y el pronóstico.',
         'open.er-api.com da las tasas de cambio desde pesos colombianos.',
         'Nager.Date y flagcdn reciben el país del alojamiento para los festivos, los países vecinos y la bandera.',
         'Gemini recibe los datos de la estancia (alojamiento, ciudad, fechas, huéspedes y pronóstico), solo si tú le pides su opinión.',
+        'EmailJS recibe tu nombre, tu correo y los datos de la reserva (alojamiento, fechas y valor) para mandarte el correo de confirmación cuando reservas.',
       ],
     },
     {

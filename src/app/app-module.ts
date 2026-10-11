@@ -1,10 +1,8 @@
-
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing-module';
 
 import { App } from './app';
@@ -23,16 +21,16 @@ import { Favoritoscomponent } from './components/favoritoscomponent/favoritoscom
 import { Notfoundcomponent } from './components/notfoundcomponent/notfoundcomponent';
 import { Resenaformcomponent } from './components/resenaformcomponent/resenaformcomponent';
 import { Publicarcomponent } from './components/publicarcomponent/publicarcomponent';
-import { Toastcomponent } from './components/toastcomponent/toastcomponent';
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
-import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicomponent';
+import { Toastcomponent } from './components/toastcomponent/toastcomponent';
 import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
 import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
 import { Comprobantecomponent } from './components/comprobantecomponent/comprobantecomponent';
 import { Comparadorcomponent } from './components/comparadorcomponent/comparadorcomponent';
 import { Comparadorbarracomponent } from './components/comparadorbarracomponent/comparadorbarracomponent';
 import { Contactocomponent } from './components/contactocomponent/contactocomponent';
+import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicomponent';
 
 import {
   TranslatePipe,
@@ -62,7 +60,6 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
     Publicarcomponent,
     Perfilcomponent,
     Iaopinioncomponent,
-    Mapamundicomponent,
     Toastcomponent,
     Terminoscomponent,
     Privacidadcomponent,
@@ -70,13 +67,13 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
     Comparadorcomponent,
     Comparadorbarracomponent,
     Contactocomponent,
+    Mapamundicomponent,
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
     AppRoutingModule,
-    RouterModule,
     TranslatePipe,
     TranslateDirective,
   ],

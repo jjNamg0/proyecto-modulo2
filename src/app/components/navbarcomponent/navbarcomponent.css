@@ -1,4 +1,3 @@
-
 .navbar-marketplace {
   position: sticky;
   top: 0;
@@ -18,11 +17,6 @@
   min-width: 0;
 }
 
-.navbar-acciones {
-  position: relative;
-  margin-left: auto;
-}
-
 .buscador-navbar {
   display: flex;
   align-items: center;
@@ -30,8 +24,9 @@
   gap: 0.6rem;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.06);
   color: #bec8d2;
   font-size: 0.9rem;
@@ -39,15 +34,40 @@
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
+.buscador-navbar:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #0d6efd;
+  color: #ffffff;
+}
+
 .buscador-navbar__texto {
   display: none;
 }
 
-.buscador-navbar:hover {
-  background-color: rgba(255, 255, 255, 0.1);
- border-color: #0d6efd;
-  border-color: #0d6efd;
-  color: #ffffff;
+@media (min-width: 768px) and (max-width: 991.98px), (min-width: 1400px) {
+  .buscador-navbar {
+    width: auto;
+    height: auto;
+    min-width: 230px;
+    padding: 0.45rem 1rem;
+    justify-content: flex-start;
+    border-radius: 999px;
+  }
+
+  .buscador-navbar__texto {
+    display: inline;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .navbar-izquierda {
+    gap: 0.5rem !important;
+  }
+
+  .navbar-logo {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .nav-link-pill {
@@ -71,8 +91,8 @@
 }
 
 .usuario-pill {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #e5e7eb;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #dfe2ef;
   font-weight: 600;
 }
 
@@ -117,7 +137,7 @@
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  z-index: 2000;
+  z-index: 1040;
   width: 340px;
   background-color: #181b25;
   color: #dfe2ef;
@@ -176,23 +196,11 @@
   overflow-wrap: anywhere;
 }
 
-.notificacion-contenido p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-.notificacion-contenido small {
-  color: #6b7280;
-}
-
 .btn-leida {
   border: none;
   background-color: transparent;
-  color: #198754;
+  color: #75b798;
   padding: 0.25rem;
-  cursor: pointer;
-  font-size: 1.1rem;
-  flex-shrink: 0;
 }
 
 .btn-leida:hover {
@@ -211,48 +219,5 @@
     left: 16px;
     right: 16px;
     width: auto;
-  }
-}
-
-.btn-tema:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  transform: scale(1.05);
-}
-
-.btn-tema:active {
-  transform: scale(0.95);
-}
-
-@media (min-width: 768px) and (max-width: 991.98px), (min-width: 1400px) {
-  .buscador-navbar {
-    width: auto;
-    height: auto;
-    min-width: 230px;
-    padding: 0.45rem 1rem;
-    justify-content: flex-start;
-    border-radius: 999px;
-  }
-
-  .buscador-navbar__texto {
-    display: inline;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .navbar-izquierda {
-    gap: 0.5rem !important;
-  }
-
-  .navbar-logo {
-    width: 36px;
-    height: 36px;
-  }
-
-  .buscador-navbar {
-    flex-shrink: 0;
-  }
-
-  .panel-notificaciones {
-    right: -48px;
   }
 }
