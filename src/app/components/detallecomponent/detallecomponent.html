@@ -1,4 +1,3 @@
-```html
 <section class="container py-4" *ngIf="!cargando()">
   <div class="alert alert-danger d-flex align-items-center gap-2" role="alert" *ngIf="noEncontrado()">
     <i class="fa-solid fa-circle-exclamation"></i>
@@ -19,7 +18,6 @@
           class="img-fluid rounded detalle-imagen-principal"
           [alt]="a.nombre"
         />
-
         <div class="d-flex gap-2 mt-2 flex-wrap">
           <img
             *ngFor="let img of a.imagenes"
@@ -36,23 +34,14 @@
           <h2 class="h6 text-white mb-2">
             <i class="fa-solid fa-map-location-dot me-2"></i>Ubicación
           </h2>
-
           <iframe
             class="detalle-mapa w-100 rounded border border-secondary-subtle"
             [src]="mapa"
             [title]="'Mapa de ' + a.nombre"
             loading="lazy"
           ></iframe>
-
-          <a
-            *ngIf="ubicacionMapaUrl()"
-            [href]="ubicacionMapaUrl()"
-            target="_blank"
-            rel="noopener"
-            class="small"
-          >
-            Abrir en Google Maps
-            <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
+          <a *ngIf="ubicacionMapaUrl()" [href]="ubicacionMapaUrl()" target="_blank" rel="noopener" class="small">
+            Abrir en Google Maps <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i>
           </a>
         </div>
       </div>
@@ -60,7 +49,6 @@
       <div class="col-12 col-lg-5">
         <div class="d-flex justify-content-between align-items-start gap-2">
           <h1 class="h3 text-white">{{ a.nombre }}</h1>
-
           <div class="d-flex gap-2 flex-shrink-0">
             <button
               type="button"
@@ -73,7 +61,6 @@
             >
               <i class="fa-solid fa-code-compare"></i>
             </button>
-
             <button
               type="button"
               class="btn btn-outline-light btn-sm"
@@ -85,64 +72,35 @@
             </button>
           </div>
         </div>
-
         <p class="text-secondary mb-2">
-          <i class="fa-solid fa-location-dot me-1"></i>
-          {{ a.ubicacion }}, {{ a.ciudad }}, {{ a.pais }}
+          <i class="fa-solid fa-location-dot me-1"></i>{{ a.ubicacion }}, {{ a.ciudad }}, {{ a.pais }}
         </p>
-
-        <div
-          class="d-flex align-items-center gap-2 small text-secondary mb-2"
-          *ngIf="datosPais() as pais"
-        >
-          <img
-            [src]="pais.bandera"
-            [alt]="'Bandera de ' + pais.nombre"
-            class="detalle-bandera rounded-1"
-          />
-
+        <div class="d-flex align-items-center gap-2 small text-secondary mb-2" *ngIf="datosPais() as pais">
+          <img [src]="pais.bandera" [alt]="'Bandera de ' + pais.nombre" class="detalle-bandera rounded-1" />
           <span>
             {{ pais.nombre }} · {{ pais.region }}
-            <span *ngIf="pais.vecinos.length > 0">
-              · Limita con {{ pais.vecinos.join(', ') }}
-            </span>
+            <span *ngIf="pais.vecinos.length > 0"> · Limita con {{ pais.vecinos.join(', ') }}</span>
           </span>
         </div>
-
         <p class="small text-secondary mb-2" *ngIf="a.publicadoPor">
-          <i class="fa-solid fa-user-pen me-1"></i>
-          Publicado por {{ a.publicadoPor }}
+          <i class="fa-solid fa-user-pen me-1"></i>Publicado por {{ a.publicadoPor }}
         </p>
-
         <p class="mb-3">
           <span class="badge text-bg-dark">
-            <i class="fa-solid fa-star text-warning"></i>
-            {{ a.calificacion || 'Nuevo' }}
-
+            <i class="fa-solid fa-star text-warning"></i> {{ a.calificacion || 'Nuevo' }}
             <span class="fw-normal" *ngIf="resenas().length > 0">
-              · {{ resenas().length }}
-              {{ resenas().length === 1 ? 'reseña' : 'reseñas' }}
+              · {{ resenas().length }} {{ resenas().length === 1 ? 'reseña' : 'reseñas' }}
             </span>
           </span>
-
           <span class="badge text-bg-secondary ms-1">{{ a.tipo }}</span>
         </p>
 
-        <div
-          class="clima-actual d-flex align-items-center gap-3 rounded border border-secondary-subtle p-2 mb-3"
-          *ngIf="clima() as c"
-        >
+        <div class="clima-actual d-flex align-items-center gap-3 rounded border border-secondary-subtle p-2 mb-3" *ngIf="clima() as c">
           <i class="fa-solid {{ c.icono }} fs-3 text-info"></i>
-
           <div>
-            <div class="fw-semibold">
-              {{ c.temperatura }}°C · {{ c.descripcion }}
-            </div>
-
+            <div class="fw-semibold">{{ c.temperatura }}°C · {{ c.descripcion }}</div>
             <small class="text-secondary">
-              Sensación {{ c.sensacion }}°C ·
-              Humedad {{ c.humedad }}% ·
-              Viento {{ c.viento }} km/h
+              Sensación {{ c.sensacion }}°C · Humedad {{ c.humedad }}% · Viento {{ c.viento }} km/h
             </small>
           </div>
         </div>
@@ -150,30 +108,17 @@
         <p>{{ a.descripcion }}</p>
 
         <ul class="list-unstyled small text-secondary">
-          <li>
-            <i class="fa-solid fa-user-group me-2"></i>
-            Capacidad: {{ a.capacidad }} huéspedes
-          </li>
-          <li>
-            <i class="fa-solid fa-bed me-2"></i>
-            {{ a.habitaciones }} habitaciones · {{ a.camas }} camas
-          </li>
-          <li>
-            <i class="fa-solid fa-bath me-2"></i>
-            {{ a.banos }} baños
-          </li>
+          <li><i class="fa-solid fa-user-group me-2"></i>Capacidad: {{ a.capacidad }} huéspedes</li>
+          <li><i class="fa-solid fa-bed me-2"></i>{{ a.habitaciones }} habitaciones · {{ a.camas }} camas</li>
+          <li><i class="fa-solid fa-bath me-2"></i>{{ a.banos }} baños</li>
         </ul>
 
         <h2 class="h6 text-white mt-4">Servicios</h2>
-
         <div class="d-flex flex-wrap gap-2">
-          <span class="badge text-bg-dark" *ngFor="let servicio of a.servicios">
-            {{ servicio }}
-          </span>
+          <span class="badge text-bg-dark" *ngFor="let servicio of a.servicios">{{ servicio }}</span>
         </div>
 
         <h2 class="h6 text-white mt-4">Reglas</h2>
-
         <ul class="small text-secondary">
           <li *ngFor="let regla of a.reglas">{{ regla }}</li>
         </ul>
@@ -185,7 +130,6 @@
                 {{ convertir(a.precioNoche) | currency: monedaActiva() : 'symbol-narrow' : formatoDecimales() }}
                 {{ monedaActiva() }}
               </span>
-
               <small class="text-secondary"> / noche</small>
             </div>
             <div class="dropdown" *ngIf="hayTasas()">
@@ -213,62 +157,34 @@
               </ul>
             </div>
           </div>
-
-          <small
-            class="text-secondary d-block mt-1"
-            *ngIf="monedaActiva() !== 'COP'"
-          >
-            <i class="fa-solid fa-money-bill-transfer me-1"></i>
-            Precio convertido con la tasa del día. El pago se cobra en pesos colombianos.
+          <small class="text-secondary d-block mt-1" *ngIf="monedaActiva() !== 'COP'">
+            <i class="fa-solid fa-money-bill-transfer me-1"></i>Precio convertido con la tasa del día. El pago se cobra en pesos colombianos.
           </small>
         </div>
 
-        <app-cotizadorcomponent
-          [alojamiento]="a"
-          (cotizacionLista)="onCotizacionLista($event)"
-        />
+        <app-cotizadorcomponent [alojamiento]="a" (cotizacionLista)="onCotizacionLista($event)" />
 
-        <div
-          class="alert alert-info small py-2 mt-3 mb-0 d-flex gap-2"
-          role="status"
-          *ngIf="cotizacionActual() && festivos().length > 0"
-        >
+        <div class="alert alert-info small py-2 mt-3 mb-0 d-flex gap-2" role="status" *ngIf="cotizacionActual() && festivos().length > 0">
           <i class="fa-solid fa-calendar-day mt-1"></i>
-
           <div>
-            <strong>
-              Tu estancia incluye
-              {{ festivos().length === 1 ? 'un festivo' : festivos().length + ' festivos' }}
-              en {{ a.pais }}:
-            </strong>
-
+            <strong>Tu estancia incluye {{ festivos().length === 1 ? 'un festivo' : festivos().length + ' festivos' }} en {{ a.pais }}:</strong>
             <span *ngFor="let festivo of festivos(); let ultimo = last">
               {{ festivo.etiqueta }} {{ festivo.nombre }}{{ ultimo ? '.' : ',' }}
             </span>
-
-            <div class="mt-1">
-              Puede haber más demanda y algunos comercios cerrados esos días.
-            </div>
+            <div class="mt-1">Puede haber más demanda y algunos comercios cerrados esos días.</div>
           </div>
         </div>
 
-        <div
-          class="pronostico-panel p-3 mt-3"
-          *ngIf="cotizacionActual() && coordenadas()"
-        >
+        <div class="pronostico-panel p-3 mt-3" *ngIf="cotizacionActual() && coordenadas()">
           <h2 class="h6 text-white mb-3">
-            <i class="fa-solid fa-cloud-sun-rain me-2"></i>
-            Pronóstico para tu estancia
+            <i class="fa-solid fa-cloud-sun-rain me-2"></i>Pronóstico para tu estancia
           </h2>
 
           <p class="small text-secondary mb-0" *ngIf="pronosticoFueraDeRango()">
-            El pronóstico solo está disponible hasta el {{ fechaLimitePronostico() }}.
-            Vuelve a revisarlo cuando se acerque tu viaje.
+            El pronóstico solo está disponible hasta el {{ fechaLimitePronostico() }}. Vuelve a revisarlo cuando se acerque tu viaje.
           </p>
 
-          <p class="small text-secondary mb-0" *ngIf="cargandoPronostico()">
-            Consultando el pronóstico...
-          </p>
+          <p class="small text-secondary mb-0" *ngIf="cargandoPronostico()">Consultando el pronóstico...</p>
 
           <div *ngIf="pronostico() as p">
             <div
@@ -283,32 +199,18 @@
             </div>
 
             <div class="d-flex gap-2 overflow-auto pb-1">
-              <div
-                class="pronostico-dia text-center rounded p-2"
-                *ngFor="let dia of p.dias"
-              >
+              <div class="pronostico-dia text-center rounded p-2" *ngFor="let dia of p.dias">
                 <div class="small text-secondary">{{ dia.etiqueta }}</div>
-
-                <i
-                  class="fa-solid {{ dia.icono }} text-info my-1"
-                  [title]="dia.descripcion"
-                ></i>
-
-                <div class="small fw-semibold">
-                  {{ dia.maxima }}° / {{ dia.minima }}°
-                </div>
-
+                <i class="fa-solid {{ dia.icono }} text-info my-1" [title]="dia.descripcion"></i>
+                <div class="small fw-semibold">{{ dia.maxima }}° / {{ dia.minima }}°</div>
                 <div class="small text-secondary">
-                  <i class="fa-solid fa-droplet me-1"></i>
-                  {{ dia.probabilidadLluvia }}%
+                  <i class="fa-solid fa-droplet me-1"></i>{{ dia.probabilidadLluvia }}%
                 </div>
               </div>
             </div>
 
             <small class="text-secondary d-block mt-2" *ngIf="p.incompleto">
-              Solo se muestran los días hasta
-              {{ p.dias[p.dias.length - 1].etiqueta }},
-              que es lo que alcanza el pronóstico.
+              Solo se muestran los días hasta el {{ p.dias[p.dias.length - 1].etiqueta }}, que es lo que alcanza el pronóstico.
             </small>
 
             <app-iaopinioncomponent
@@ -332,9 +234,7 @@
     <div class="mt-5">
       <h2 class="h5 text-white mb-3">Reseñas</h2>
 
-      <p class="text-secondary" *ngIf="resenas().length === 0">
-        Este alojamiento todavía no tiene reseñas.
-      </p>
+      <p class="text-secondary" *ngIf="resenas().length === 0">Este alojamiento todavía no tiene reseñas.</p>
 
       <div class="row g-3" *ngIf="resenas().length > 0">
         <div class="col-12 col-md-6" *ngFor="let resena of resenas()">
@@ -342,26 +242,15 @@
             <div class="card-body">
               <p class="mb-1">
                 <strong>{{ resena.usuario }}</strong>
-
-                <span class="text-warning ms-2">
-                  <i class="fa-solid fa-star"></i>
-                  {{ resena.calificacion }}
-                </span>
+                <span class="text-warning ms-2"><i class="fa-solid fa-star"></i> {{ resena.calificacion }}</span>
               </p>
-
-              <p class="small text-secondary mb-0">
-                {{ resena.comentario }}
-              </p>
+              <p class="small text-secondary mb-0">{{ resena.comentario }}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <app-resenaformcomponent
-        [alojamientoId]="a.id"
-        (resenaAgregada)="recargarResenas(a.id)"
-      />
+      <app-resenaformcomponent [alojamientoId]="a.id" (resenaAgregada)="recargarResenas(a.id)" />
     </div>
   </div>
 </section>
-```
