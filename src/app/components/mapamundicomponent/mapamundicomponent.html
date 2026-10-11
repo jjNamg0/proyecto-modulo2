@@ -1,173 +1,107 @@
+<section class="container py-5">
+  <div class="text-center mb-4">
+    <span class="text-primary text-uppercase small fw-semibold">Nocturna Stays</span>
+    <h2 class="h3 text-white mb-1">Explora nuestros destinos</h2>
+    <p class="text-secondary mb-0">Descubre alojamientos únicos alrededor del mundo.</p>
+  </div>
 
-<section class="container destinos-section py-5">
-  <header class="destinos-heading mb-4">
-    <span class="destinos-eyebrow">NOCTURNA STAYS</span>
-    <h2 class="destinos-titulo">Explora nuestros destinos</h2>
-    <p class="destinos-descripcion">
-      Descubre alojamientos únicos alrededor del mundo.
-    </p>
-  </header>
-
-  @if (cargando()) {
-    <div class="destinos-estado">
-      <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-      Cargando alojamientos...
-    </div>
-  }
-
-  <div class="mapamundi-panel">
-    <div class="mapamundi-panel__heading">
+  <div class="mapamundi-panel p-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
       <div>
-        <h3>Explora el mundo</h3>
-        <p>Selecciona un país azul para descubrir sus alojamientos.</p>
+        <h3 class="h6 text-white mb-1">Explora el mundo</h3>
+        <p class="small text-secondary mb-0">Selecciona un país azul para ver sus alojamientos.</p>
       </div>
-
-      <span class="mapamundi-indicador">
-        <span></span>
-        {{ paisesDisponibles().length }} destinos disponibles
+      <span class="small text-secondary">
+        <span class="mapamundi-punto mapamundi-punto--disponible me-1"></span>{{ paisesDisponibles().length }}
+        destinos disponibles
       </span>
     </div>
+
+    <p class="small text-secondary text-center mb-0" *ngIf="cargando()">Cargando alojamientos...</p>
 
     <div class="mapamundi-lienzo">
-      @if (paises().length > 0) {
-        <svg
-          class="mapamundi-svg"
-          viewBox="0 0 960 500"
-          role="group"
-          aria-label="Mapa mundial interactivo"
-          xmlns="http://www.w3.org/2000/svg"
+      <svg
+        class="mapamundi-svg"
+        viewBox="0 0 960 500"
+        role="group"
+        aria-label="Mapa mundial interactivo"
+        xmlns="http://www.w3.org/2000/svg"
+        *ngIf="paises().length > 0"
+      >
+        <path
+          *ngFor="let pais of paises()"
+          class="mapamundi-pais"
+          [class.mapamundi-pais--disponible]="esDisponible(pais.clave)"
+          [class.mapamundi-pais--activo]="seleccionado() === pais.clave"
+          [attr.d]="pais.ruta"
+          [attr.aria-label]="pais.nombre"
+          [attr.aria-pressed]="seleccionado() === pais.clave"
+          [attr.tabindex]="esDisponible(pais.clave) ? 0 : -1"
+          [attr.role]="esDisponible(pais.clave) ? 'button' : null"
+          (click)="seleccionarPais(pais.clave)"
+          (keydown.enter)="seleccionarPais(pais.clave)"
         >
-          @for (pais of paises(); track pais.clave) {
-            <path
-              [attr.d]="pais.ruta"
-              [attr.aria-label]="pais.nombre"
-              [attr.aria-pressed]="seleccionado() === pais.clave"
-              [attr.tabindex]="esDisponible(pais.clave) ? 0 : -1"
-              [attr.role]="esDisponible(pais.clave) ? 'button' : null"
-              [attr.class]="
-                'mapamundi-pais' +
-                (esDisponible(pais.clave) ? ' mapamundi-pais--disponible' : '') +
-                (seleccionado() === pais.clave ? ' mapamundi-pais--activo' : '')
-              "
-              (click)="seleccionarPorClave(pais.clave)"
-              (keydown.enter)="seleccionarPorClave(pais.clave)"
-              (keydown.space)="seleccionarPorClave(pais.clave); $event.preventDefault()"
-            >
-              <title>{{ pais.nombre }}</title>
-            </path>
-          }
-        </svg>
-      } @else if (!cargando()) {
-        <div class="destinos-estado">
-          No se pudo cargar el mapa mundial.
-          Verifica la instalación de D3 y TopoJSON.
-        </div>
-      }
+          <title>{{ pais.nombre }}</title>
+        </path>
+      </svg>
+
+      <p class="small text-secondary text-center p-3 mb-0" *ngIf="errorMapa()">No se pudo cargar el mapa mundial.</p>
     </div>
 
-    <div class="mapamundi-leyenda">
-      <span>
-        <i class="mapamundi-punto mapamundi-punto--disponible"></i>
-        Países con alojamientos
-      </span>
-
-      <span>
-        <i class="mapamundi-punto mapamundi-punto--activo"></i>
-        País seleccionado
-      </span>
+    <div class="d-flex justify-content-center flex-wrap gap-4 small text-secondary pt-3">
+      <span><span class="mapamundi-punto mapamundi-punto--disponible me-1"></span>Países con alojamientos</span>
+      <span><span class="mapamundi-punto mapamundi-punto--activo me-1"></span>País seleccionado</span>
     </div>
   </div>
 
-  @if (paisActivo(); as pais) {
-    <section class="destino-seleccionado mt-4">
-      <div class="destino-seleccionado__encabezado">
-        <div class="destino-seleccionado__identidad">
-          <div class="destino-seleccionado__icono">
-            <i class="bi bi-geo-alt-fill"></i>
-          </div>
-
-          <div>
-            <span class="destino-seleccionado__etiqueta">
-              DESTINO SELECCIONADO
-            </span>
-            <h3>{{ pais.nombre }}</h3>
-            <p>
-              {{ pais.cantidad }}
-              {{ pais.cantidad === 1 ? 'alojamiento disponible' : 'alojamientos disponibles' }}
-            </p>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          class="destino-seleccionado__cerrar"
-          aria-label="Cerrar selección del país"
-          title="Cerrar selección"
-          (click)="limpiarSeleccion()"
-        >
-          <i class="bi bi-x-lg"></i>
-        </button>
+  <div class="mapamundi-panel p-3 p-md-4 mt-4 animate__animated animate__fadeIn" *ngIf="paisActivo() as pais">
+    <div class="d-flex justify-content-between align-items-start gap-3 pb-3 mb-3 border-bottom border-secondary-subtle">
+      <div>
+        <span class="text-primary text-uppercase small fw-semibold">Destino seleccionado</span>
+        <h3 class="h4 text-white mb-1">{{ pais.nombre }}</h3>
+        <p class="small text-secondary mb-0">
+          {{ pais.cantidad }} {{ pais.cantidad === 1 ? 'alojamiento disponible' : 'alojamientos disponibles' }}
+        </p>
       </div>
+      <button type="button" class="btn btn-outline-secondary btn-sm" aria-label="Cerrar selección del país" (click)="limpiarSeleccion()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
 
-      @for (grupo of ciudadesDelPais(); track grupo.ciudad) {
-        <div class="destino-ciudad">
-          <h4 class="destino-ciudad__titulo">
-            <i class="bi bi-geo-alt"></i>
-            {{ grupo.ciudad }}
-            <span>{{ grupo.alojamientos.length }}</span>
-          </h4>
+    <div class="mb-4" *ngFor="let grupo of ciudadesDelPais()">
+      <h4 class="h6 text-white mb-3">
+        <i class="fa-solid fa-location-dot text-primary me-2"></i>{{ grupo.ciudad }}
+        <span class="badge text-bg-dark ms-1">{{ grupo.alojamientos.length }}</span>
+      </h4>
 
-          <div class="row g-3">
-            @for (alojamiento of grupo.alojamientos; track alojamiento.id) {
-              <div class="col-12 col-md-6 col-xl-4">
-                <article class="card-alojamiento h-100">
-                  <img
-                    class="card-alojamiento__img"
-
-                    [src]="alojamiento.imagenes?.[0] || 'https://picsum.photos/seed/alojamiento/600/400'"
-
-                    [alt]="alojamiento.nombre"
-                    loading="lazy"
-                    (error)="onImgError($event, alojamiento.id)"
-                  />
-
-                  <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">
-                      {{ alojamiento.nombre }}
-                    </h5>
-
-                    <p class="card-alojamiento__ubicacion">
-                      <i class="bi bi-geo-alt-fill me-1"></i>
-                      {{ alojamiento.ciudad }}, {{ alojamiento.pais }}
-                    </p>
-
-                    <div class="card-alojamiento__pie mt-auto">
-                      <span class="card-alojamiento__precio">
-                        {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
-                        <small>/ noche</small>
-                      </span>
-
-                      <a
-                        class="btn btn-primary btn-sm"
-                        [routerLink]="['/alojamientos', alojamiento.id]"
-                      >
-                        Ver detalles
-                        <i class="bi bi-arrow-right ms-1"></i>
-                      </a>
-                    </div>
-                  </div>
-                </article>
+      <div class="row g-3">
+        <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of grupo.alojamientos">
+          <div class="card h-100 mapamundi-card">
+            <img
+              [src]="alojamiento.imagenPrincipal"
+              loading="lazy"
+              (error)="onImgError($event)"
+              class="card-img-top mapamundi-card__img"
+              [alt]="alojamiento.nombre"
+            />
+            <div class="card-body d-flex flex-column">
+              <h5 class="h6 card-title mb-1">{{ alojamiento.nombre }}</h5>
+              <p class="text-secondary small mb-3">
+                <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }}, {{ alojamiento.pais }}
+              </p>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
+                <span class="fw-bold">
+                  {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+                  <small class="text-secondary fw-normal">/ noche</small>
+                </span>
+                <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary">
+                  Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
               </div>
-            }
+            </div>
           </div>
         </div>
-      }
-
-      @if (ciudadesDelPais().length === 0) {
-        <div class="destino-sin-resultados">
-          No hay alojamientos registrados para este destino.
-        </div>
-      }
-    </section>
-  }
+      </div>
+    </div>
+  </div>
 </section>

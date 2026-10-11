@@ -188,19 +188,16 @@
 
               <small class="text-secondary"> / noche</small>
             </div>
-
-            <!-- Selector desplegable de monedas -->
-            <div class="dropdown selector-moneda" *ngIf="hayTasas()">
+            <div class="dropdown" *ngIf="hayTasas()">
               <button
                 type="button"
                 class="btn btn-outline-secondary btn-sm dropdown-toggle"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                aria-label="Moneda"
               >
-                <i class="fa-solid fa-globe me-1"></i>
-                {{ monedaActiva() }}
+                <i class="fa-solid fa-globe me-1"></i>{{ monedaActiva() }}
               </button>
-
               <ul class="dropdown-menu dropdown-menu-end">
                 <li *ngFor="let moneda of monedas()">
                   <button
@@ -209,12 +206,8 @@
                     [class.active]="moneda === monedaActiva()"
                     (click)="cambiarMoneda(moneda)"
                   >
-                    <span>{{ moneda }}</span>
-
-                    <i
-                      *ngIf="moneda === monedaActiva()"
-                      class="fa-solid fa-check"
-                    ></i>
+                    {{ moneda }}
+                    <i class="fa-solid fa-check" *ngIf="moneda === monedaActiva()"></i>
                   </button>
                 </li>
               </ul>

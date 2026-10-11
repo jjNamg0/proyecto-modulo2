@@ -2,18 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, map, catchError, of, shareReplay } from 'rxjs';
 
-export type Moneda =
-  | 'COP'
-  | 'USD'
-  | 'EUR'
-  | 'BRL'
-  | 'ARS'
-  | 'MXN'
-  | 'CLP'
-  | 'PEN'
-  | 'UYU'
-  | 'GBP'
-  | 'JPY';
+export type Moneda = 'COP' | 'USD' | 'EUR' | 'BRL' | 'ARS' | 'MXN' | 'CLP' | 'PEN' | 'UYU' | 'GBP' | 'JPY';
 
 interface RespuestaTasas {
   result: string;
@@ -27,19 +16,7 @@ export class Exchangerateservice {
   private cliente: HttpClient = inject(HttpClient);
   private readonly URL_BASE: string = 'https://open.er-api.com/v6';
 
-  readonly MONEDAS: Moneda[] = [
-    'COP',
-    'USD',
-    'EUR',
-    'BRL',
-    'ARS',
-    'MXN',
-    'CLP',
-    'PEN',
-    'UYU',
-    'GBP',
-    'JPY',
-  ];
+  readonly MONEDAS: Moneda[] = ['COP', 'USD', 'EUR', 'BRL', 'ARS', 'MXN', 'CLP', 'PEN', 'UYU', 'GBP', 'JPY'];
 
   monedaSeleccionada = signal<Moneda>('COP');
   tasas = signal<Record<string, number> | null>(null);
