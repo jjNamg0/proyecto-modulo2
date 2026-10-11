@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Navbarcomponent } from './components/navbarcomponent/navbarcomponent';
@@ -23,8 +24,13 @@ import { Publicarcomponent } from './components/publicarcomponent/publicarcompon
 import { Toastcomponent } from './components/toastcomponent/toastcomponent';
 import { Perfilcomponent } from './components/perfilcomponent/perfilcomponent';
 import { Iaopinioncomponent } from './components/iaopinioncomponent/iaopinioncomponent';
-import { RouterModule } from '@angular/router';
 import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicomponent';
+import { Terminoscomponent } from './components/terminoscomponent/terminoscomponent';
+import { Privacidadcomponent } from './components/privacidadcomponent/privacidadcomponent';
+import { Comprobantecomponent } from './components/comprobantecomponent/comprobantecomponent';
+import { Comparadorcomponent } from './components/comparadorcomponent/comparadorcomponent';
+import { Comparadorbarracomponent } from './components/comparadorbarracomponent/comparadorbarracomponent';
+import { Contactocomponent } from './components/contactocomponent/contactocomponent';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,14 @@ import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicom
     Publicarcomponent,
     Perfilcomponent,
     Iaopinioncomponent,
-    Mapamundicomponent
+    Mapamundicomponent,
+    Toastcomponent,
+    Terminoscomponent,
+    Privacidadcomponent,
+    Comprobantecomponent,
+    Comparadorcomponent,
+    Comparadorbarracomponent,
+    Contactocomponent,
   ],
   imports: [
     BrowserModule,
@@ -54,11 +67,10 @@ import { Mapamundicomponent } from './components/mapamundicomponent/mapamundicom
     FormsModule,
     AppRoutingModule,
     RouterModule,
-    Toastcomponent
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient()
+    provideHttpClient(),
   ],
   bootstrap: [App],
 })

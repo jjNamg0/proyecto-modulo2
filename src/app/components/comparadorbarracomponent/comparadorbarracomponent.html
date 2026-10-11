@@ -1,0 +1,14 @@
+<div class="comparador-barra animate__animated animate__fadeInUp" role="region" aria-label="Comparador" *ngIf="visible()">
+  <div class="d-flex align-items-center gap-2">
+    <i class="fa-solid fa-code-compare text-info"></i>
+    <span class="small">
+      <strong>{{ cantidad() }} de {{ maximo() }}</strong> alojamientos para comparar
+    </span>
+  </div>
+  <div class="d-flex gap-2">
+    <button type="button" class="btn btn-outline-secondary btn-sm" (click)="limpiar()">Limpiar</button>
+    <a routerLink="/comparar" class="btn btn-primary btn-sm">
+      Comparar <i class="fa-solid fa-arrow-right ms-1"></i>
+    </a>
+  </div>
+</div>

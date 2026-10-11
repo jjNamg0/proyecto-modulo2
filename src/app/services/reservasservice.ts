@@ -1,24 +1,8 @@
 import { Injectable } from '@angular/core';
-import { NotificacionService } from './notificacionservice';
+import { Notificacionservice } from './notificacionservice';
 import { Emailservice } from './emailservice';
 
 export type EstadoReserva = 'CONFIRMADA' | 'CANCELADA';
-
-export interface Reserva {
-  id: number;
-  alojamientoId: number;
-  nombreAlojamiento: string;
-  ciudad: string;
-  nombreHuesped: string;
-  correoHuesped: string;
-  fechaInicio: string;
-  fechaFin: string;
-  noches: number;
-  huespedes: number;
-  total: number;
-  estado: EstadoReserva;
-  fechaCreacion: Date;
-}
 
 export interface DatosReserva {
   alojamientoId: number;
@@ -30,7 +14,19 @@ export interface DatosReserva {
   fechaFin: string;
   noches: number;
   huespedes: number;
+  precioNoche: number;
+  subtotal: number;
+  tarifaLimpieza: number;
+  tarifaServicio: number;
+  codigoCupon: string | null;
+  descuento: number;
   total: number;
+}
+
+export interface Reserva extends DatosReserva {
+  id: number;
+  estado: EstadoReserva;
+  fechaCreacion: Date;
 }
 
 export interface RangoFechas {
@@ -46,7 +42,7 @@ export class Reservasservice {
   private siguienteId = 1;
 
   constructor(
-    private notificacionService: NotificacionService,
+    private notificacionService: Notificacionservice,
     private emailservice: Emailservice
   ) {}
 
@@ -98,6 +94,12 @@ export class Reservasservice {
       .sort((a, b) => b.id - a.id);
   }
 
+  obtenerReservaDe(id: number, correo: string): Reserva | undefined {
+    return this.reservas.find(
+      (r) => r.id === id && r.correoHuesped === correo
+    );
+  }
+
   cancelarReserva(id: number): void {
     const reserva = this.reservas.find((r) => r.id === id);
 
@@ -136,3 +138,4 @@ export class Reservasservice {
     );
   }
 }
+

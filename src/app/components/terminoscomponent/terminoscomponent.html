@@ -1,168 +1,49 @@
-<section class="legal-page">
+<section class="container py-4">
+  <h1 class="h4 text-white mb-2">
+    <i class="fa-solid fa-file-contract me-2"></i>Términos y condiciones
+  </h1>
+  <p class="text-secondary small mb-4">
+    Las reglas para usar Nocturna Stays. Última actualización: {{ ACTUALIZACION }}.
+  </p>
 
-  <div class="legal-hero">
-    <div class="container">
-      <span class="legal-badge">NOCTURNA STAYS</span>
-
-      <h1>Términos y condiciones</h1>
-
-      <p>
-        Conoce las condiciones para utilizar nuestra plataforma y disfrutar
-        de una experiencia segura al buscar y gestionar alojamientos.
-      </p>
-    </div>
-  </div>
-
-  <div class="container py-5">
-
-    <div class="legal-card">
-
-      <div class="legal-intro">
-        <span class="section-number">01</span>
-
-        <div>
-          <h2>Información general</h2>
-
-          <p>
-            Bienvenido a Nocturna Stays, un marketplace de alojamientos
-            diseñado para facilitar la búsqueda, consulta y gestión de
-            estancias temporales.
-          </p>
-
-          <p>
-            Al acceder o utilizar nuestra plataforma, aceptas los presentes
-            términos y condiciones. Si no estás de acuerdo con alguno de
-            ellos, te recomendamos no utilizar nuestros servicios.
-          </p>
-        </div>
-      </div>
-
-      <div class="legal-section">
-        <span class="section-number">02</span>
-
-        <div>
-          <h2>Uso de la plataforma</h2>
-
-          <p>
-            Nocturna Stays permite a los usuarios explorar alojamientos,
-            consultar información disponible y utilizar las funcionalidades
-            ofrecidas por la plataforma.
-          </p>
-
-          <p>
-            El usuario se compromete a utilizar el sitio de manera responsable,
-            respetuosa y conforme a la legislación aplicable.
-          </p>
-        </div>
-      </div>
-
-      <div class="legal-section">
-        <span class="section-number">03</span>
-
-        <div>
-          <h2>Registro y cuenta</h2>
-
-          <p>
-            Algunas funcionalidades pueden requerir la creación de una cuenta.
-            El usuario debe proporcionar información correcta y mantener la
-            confidencialidad de sus credenciales de acceso.
-          </p>
-
-          <p>
-            El usuario es responsable de las actividades realizadas desde
-            su cuenta.
-          </p>
-        </div>
-      </div>
-
-      <div class="legal-section">
-        <span class="section-number">04</span>
-
-        <div>
-          <h2>Alojamientos y reservas</h2>
-
-          <p>
-            La información relacionada con los alojamientos puede incluir
-            disponibilidad, características, ubicación y condiciones
-            establecidas por cada publicación.
-          </p>
-
-          <p>
-            Las reservas están sujetas a la disponibilidad y a las condiciones
-            correspondientes al alojamiento seleccionado.
-          </p>
-        </div>
-      </div>
-
-      <div class="legal-section">
-        <span class="section-number">05</span>
-
-        <div>
-          <h2>Responsabilidades del usuario</h2>
-
-          <ul>
-            <li>Proporcionar información verdadera y actualizada.</li>
-            <li>Utilizar la plataforma de forma adecuada.</li>
-            <li>Respetar las condiciones de cada alojamiento.</li>
-            <li>No utilizar la plataforma para actividades fraudulentas.</li>
-            <li>Proteger sus datos de acceso.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="legal-section">
-        <span class="section-number">06</span>
-
-        <div>
-          <h2>Disponibilidad del servicio</h2>
-
-          <p>
-            Nocturna Stays busca mantener la plataforma disponible y
-            funcionando correctamente. Sin embargo, pueden presentarse
-            interrupciones ocasionadas por mantenimiento, actualizaciones,
-            problemas técnicos o circunstancias externas.
-          </p>
-        </div>
-      </div>
-
-      <div class="legal-section">
-        <span class="section-number">07</span>
-
-        <div>
-          <h2>Aceptación de los términos</h2>
-
-          <p>
-            El uso de Nocturna Stays implica la aceptación de estos términos
-            y condiciones. Estos pueden actualizarse cuando sea necesario
-            para reflejar cambios en la plataforma o en sus funcionalidades.
-          </p>
-        </div>
-      </div>
-
-      <div class="legal-contact">
-        <h2>¿Necesitas ayuda?</h2>
-
-        <p>
-          Si tienes preguntas sobre estos términos, puedes comunicarte con
-          nuestro equipo de soporte.
-        </p>
-
-        <a
-          href="mailto:soporte@nocturnastays.com"
-          class="btn btn-light"
-        >
-          Contactar soporte
+  <div class="row g-4">
+    <aside class="col-12 col-lg-3">
+      <div class="legal-panel legal-indice p-3">
+        <h2 class="h6 text-white mb-3">
+          <i class="fa-solid fa-list me-2"></i>Contenido
+        </h2>
+        <nav class="d-flex flex-column gap-1">
+          <button
+            type="button"
+            class="legal-indice__item"
+            *ngFor="let seccion of SECCIONES; let i = index"
+            (click)="irASeccion(seccion.id)"
+          >
+            {{ i + 1 }}. {{ seccion.titulo }}
+          </button>
+        </nav>
+        <a routerLink="/privacidad" class="d-block small mt-3">
+          <i class="fa-solid fa-user-shield me-1"></i>Ver política de privacidad
         </a>
       </div>
+    </aside>
 
+    <div class="col-12 col-lg-9">
+      <article class="legal-panel legal-seccion p-3 p-md-4 mb-3" *ngFor="let seccion of SECCIONES; let i = index" [id]="seccion.id">
+        <h2 class="h6 text-white d-flex align-items-center gap-2 mb-3">
+          <span class="legal-numero">{{ i + 1 }}</span>
+          <i class="fa-solid {{ seccion.icono }} text-info"></i>{{ seccion.titulo }}
+        </h2>
+        <p class="small text-secondary mb-2" *ngFor="let parrafo of seccion.parrafos">{{ parrafo }}</p>
+        <ul class="small text-secondary mb-0" *ngIf="seccion.puntos">
+          <li class="mb-1" *ngFor="let punto of seccion.puntos">{{ punto }}</li>
+        </ul>
+      </article>
+
+      <div class="alert alert-secondary d-flex align-items-center gap-2 mb-0" role="note">
+        <i class="fa-solid fa-circle-question"></i>
+        <span>¿Tienes dudas sobre estos términos? <a routerLink="/contacto" class="alert-link">Escríbenos</a>.</span>
+      </div>
     </div>
-
-    <div class="legal-back">
-      <a routerLink="/" class="back-link">
-        ← Volver al inicio
-      </a>
-    </div>
-
   </div>
-
 </section>
