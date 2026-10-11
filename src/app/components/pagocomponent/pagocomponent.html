@@ -10,7 +10,40 @@
     </div>
     <div class="text-end">
       <p class="small text-secondary mb-0">Total a pagar</p>
-      <p class="fw-bold fs-5 mb-0">{{ cotizacion.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }} COP</p>
+      <p class="small text-secondary text-decoration-line-through mb-0" *ngIf="descuento > 0">
+        {{ cotizacion.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
+      </p>
+      <p class="fw-bold fs-5 mb-0">{{ totalAPagar() | currency: 'COP' : 'symbol-narrow' : '1.0-0' }} COP</p>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label small text-secondary" for="codigoCupon">¿Tienes un cupón?</label>
+
+    <div class="input-group input-group-sm" *ngIf="!cuponAplicado">
+      <input
+        id="codigoCupon"
+        type="text"
+        class="form-control text-uppercase"
+        placeholder="Ej: BOSQUE10"
+        autocomplete="off"
+        [(ngModel)]="codigoCupon"
+        (keyup.enter)="aplicarCupon()"
+      />
+      <button type="button" class="btn btn-outline-light" (click)="aplicarCupon()">Aplicar</button>
+    </div>
+
+    <div class="cupon-aplicado d-flex justify-content-between align-items-center p-2" *ngIf="cuponAplicado as cupon">
+      <span class="small">
+        <i class="fa-solid fa-ticket me-1 text-success"></i>
+        <strong>{{ cupon.codigo }}</strong> · {{ cupon.porcentaje }}% sobre las noches
+        (-{{ descuento | currency: 'COP' : 'symbol-narrow' : '1.0-0' }})
+      </span>
+      <button type="button" class="btn btn-link btn-sm text-danger p-0" (click)="quitarCupon()">Quitar</button>
+    </div>
+
+    <div class="alert alert-warning small py-2 mt-2 mb-0" role="alert" *ngIf="errorCupon">
+      <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ errorCupon }}
     </div>
   </div>
 
@@ -73,7 +106,7 @@
 
   <button type="button" class="btn btn-primary btn-sm w-100" (click)="pagar()">
     <i class="fa-solid fa-lock me-1"></i>
-    Pagar ({{ cotizacion.total | currency: 'COP' : 'symbol-narrow' : '1.0-0' }})
+    Pagar ({{ totalAPagar() | currency: 'COP' : 'symbol-narrow' : '1.0-0' }})
   </button>
 </div>
 

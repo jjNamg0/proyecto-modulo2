@@ -1,0 +1,107 @@
+<section class="container py-4">
+  <h1 class="h4 text-white mb-2">
+    <i class="fa-solid fa-headset me-2"></i>Contacto y soporte
+  </h1>
+  <p class="text-secondary small mb-4">
+    Cuéntanos si tienes un problema o una duda. Tu solicitud queda registrada en la app y también puedes revisar las
+    preguntas frecuentes.
+  </p>
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-7">
+      <div class="contacto-panel p-3 p-md-4">
+        <h2 class="h6 text-white mb-3">
+          <i class="fa-solid fa-comment-dots me-2"></i>Envíanos un mensaje
+        </h2>
+
+        <div class="small text-secondary mb-3" *ngIf="usuarioActual() as usuario">
+          <i class="fa-solid fa-circle-user me-1"></i>Escribiendo como {{ usuario.nombre }}
+        </div>
+
+        <div class="mb-2" *ngIf="!usuarioActual()">
+          <label class="form-label small text-secondary" for="nombreContacto">Nombre</label>
+          <input id="nombreContacto" type="text" class="form-control form-control-sm" autocomplete="name" [(ngModel)]="nombre" />
+          <div class="form-text">
+            <a routerLink="/login">Inicia sesión</a> si quieres ver después tus solicitudes en esta página.
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="form-label small text-secondary" for="asuntoContacto">Asunto</label>
+          <select id="asuntoContacto" class="form-select form-select-sm" [(ngModel)]="asunto">
+            <option value="">Elige un asunto</option>
+            <option *ngFor="let opcion of asuntos()" [value]="opcion">{{ opcion }}</option>
+          </select>
+        </div>
+
+        <div class="mb-2" *ngIf="pideReserva() && misReservas().length > 0">
+          <label class="form-label small text-secondary" for="reservaContacto">¿Sobre cuál reserva?</label>
+          <select id="reservaContacto" class="form-select form-select-sm" [(ngModel)]="reservaId">
+            <option [ngValue]="null">Ninguna en particular</option>
+            <option *ngFor="let reserva of misReservas()" [ngValue]="reserva.id">
+              #{{ reserva.id }} · {{ reserva.nombreAlojamiento }} ({{ reserva.fechaInicio }})
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label small text-secondary" for="mensajeContacto">Mensaje</label>
+          <textarea
+            id="mensajeContacto"
+            rows="5"
+            class="form-control form-control-sm"
+            placeholder="Cuéntanos qué pasó o qué necesitas"
+            [attr.maxlength]="MAXIMO_MENSAJE"
+            [(ngModel)]="mensaje"
+          ></textarea>
+          <div class="form-text text-end">{{ mensaje.length }} / {{ MAXIMO_MENSAJE }}</div>
+        </div>
+
+        <div class="alert alert-warning small py-2 mb-2" role="alert" *ngIf="error">
+          <i class="fa-solid fa-triangle-exclamation me-1"></i>{{ error }}
+        </div>
+
+        <button type="button" class="btn btn-primary btn-sm" (click)="enviar()">
+          <i class="fa-solid fa-paper-plane me-1"></i>Enviar mensaje
+        </button>
+      </div>
+
+      <div class="contacto-panel p-3 mt-4" *ngIf="solicitudes().length > 0">
+        <h2 class="h6 text-white mb-3">
+          <i class="fa-solid fa-inbox me-2"></i>Tus solicitudes
+        </h2>
+        <div class="contacto-solicitud py-2" *ngFor="let solicitud of solicitudes()">
+          <div class="d-flex justify-content-between align-items-start gap-2">
+            <span class="small fw-semibold">#{{ solicitud.id }} · {{ solicitud.asunto }}</span>
+            <span class="badge text-bg-info">Recibida</span>
+          </div>
+          <div class="small text-secondary">
+            {{ solicitud.fecha | date: 'dd/MM HH:mm' }}
+            <span *ngIf="solicitud.reservaId"> · Reserva #{{ solicitud.reservaId }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="contacto-panel p-3" id="preguntas-frecuentes">
+        <h2 class="h6 text-white mb-3">
+          <i class="fa-solid fa-circle-question me-2"></i>Preguntas frecuentes
+        </h2>
+        <div class="contacto-pregunta" *ngFor="let item of PREGUNTAS; let i = index">
+          <button
+            type="button"
+            class="contacto-pregunta__boton d-flex justify-content-between align-items-center gap-2"
+            [attr.aria-expanded]="preguntaAbierta() === i"
+            (click)="alternarPregunta(i)"
+          >
+            <span>{{ item.pregunta }}</span>
+            <span *ngIf="preguntaAbierta() !== i"><i class="fa-solid fa-plus"></i></span>
+            <span *ngIf="preguntaAbierta() === i"><i class="fa-solid fa-minus"></i></span>
+          </button>
+          <p class="small text-secondary mb-0 pb-3" *ngIf="preguntaAbierta() === i">{{ item.respuesta }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

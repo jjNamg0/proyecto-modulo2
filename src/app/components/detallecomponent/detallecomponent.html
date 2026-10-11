@@ -1,4 +1,4 @@
-
+```html
 <section class="container py-4" *ngIf="!cargando()">
   <div class="alert alert-danger d-flex align-items-center gap-2" role="alert" *ngIf="noEncontrado()">
     <i class="fa-solid fa-circle-exclamation"></i>
@@ -15,7 +15,7 @@
       <div class="col-12 col-lg-7">
         <img
           [src]="imagenActiva()"
-          (error)="onImgError($event, a.id)"
+          (error)="onImgError($event)"
           class="img-fluid rounded detalle-imagen-principal"
           [alt]="a.nombre"
         />
@@ -24,7 +24,7 @@
           <img
             *ngFor="let img of a.imagenes"
             [src]="img"
-            (error)="onImgError($event, a.id)"
+            (error)="onImgError($event)"
             (click)="cambiarImagen(img)"
             class="detalle-miniatura"
             [class.detalle-miniatura--activa]="img === imagenActiva()"
@@ -61,15 +61,29 @@
         <div class="d-flex justify-content-between align-items-start gap-2">
           <h1 class="h3 text-white">{{ a.nombre }}</h1>
 
-          <button
-            type="button"
-            class="btn btn-outline-light btn-sm flex-shrink-0"
-            [class.text-danger]="esFavorito(a.id)"
-            (click)="alternarFavorito(a.id)"
-            [attr.aria-label]="esFavorito(a.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
-          >
-            <i class="fa-solid fa-heart"></i>
-          </button>
+          <div class="d-flex gap-2 flex-shrink-0">
+            <button
+              type="button"
+              class="btn btn-sm"
+              [class.btn-info]="estaEnComparador(a.id)"
+              [class.btn-outline-light]="!estaEnComparador(a.id)"
+              (click)="alternarComparador(a.id)"
+              [attr.aria-label]="estaEnComparador(a.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
+              [title]="estaEnComparador(a.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
+            >
+              <i class="fa-solid fa-code-compare"></i>
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-outline-light btn-sm"
+              [class.text-danger]="esFavorito(a.id)"
+              (click)="alternarFavorito(a.id)"
+              [attr.aria-label]="esFavorito(a.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+            >
+              <i class="fa-solid fa-heart"></i>
+            </button>
+          </div>
         </div>
 
         <p class="text-secondary mb-2">
@@ -357,3 +371,4 @@
     </div>
   </div>
 </section>
+```
