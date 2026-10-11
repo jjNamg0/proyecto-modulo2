@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Authservice, Usuario } from '../../services/authservice';
+import { Idioma, Idiomaservice, OpcionIdioma } from '../../services/idiomaservice';
 import { Notificacion, Notificacionservice } from '../../services/notificacionservice';
 
 @Component({
@@ -18,8 +19,29 @@ export class Navbarcomponent {
   constructor(
     private authService: Authservice,
     private notificacionService: Notificacionservice,
+    private idiomaService: Idiomaservice,
     private router: Router,
   ) {}
+<<<<<<< Updated upstream
+=======
+
+  idiomas(): OpcionIdioma[] {
+    return this.idiomaService.IDIOMAS;
+  }
+
+  idiomaActual(): Idioma {
+    return this.idiomaService.idiomaActual();
+  }
+
+  cambiarIdioma(idioma: Idioma): void {
+    this.idiomaService.cambiarIdioma(idioma);
+    this.cerrarMenu();
+  }
+
+  traducir(clave: string): string {
+    return this.idiomaService.traducir(clave);
+  }
+>>>>>>> Stashed changes
 
   usuarioActual(): Usuario | null {
     return this.authService.usuarioActual();

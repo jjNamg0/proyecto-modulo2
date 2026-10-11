@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Alojamientosservice, Alojamiento, Filtros, FILTROS_VACIOS } from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
 import { Comparadorservice } from '../../services/comparadorservice';
+import { Idiomaservice } from '../../services/idiomaservice';
 
 @Component({
   selector: 'app-listadocomponent',
@@ -25,6 +26,7 @@ export class Listadocomponent implements OnInit {
     private favoritosService: Favoritosservice,
     private comparadorService: Comparadorservice,
     private router: Router,
+    private idiomaService: Idiomaservice,
   ) {}
 
   ngOnInit(): void {
@@ -88,5 +90,9 @@ export class Listadocomponent implements OnInit {
 
   onImgError(event: Event): void {
     this.alojamientosService.usarImagenRespaldo(event);
+  }
+
+  traducir(clave: string, parametros?: Record<string, string | number>): string {
+    return this.idiomaService.traducir(clave, parametros);
   }
 }

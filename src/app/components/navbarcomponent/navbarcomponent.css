@@ -116,6 +116,19 @@
   color: #ffffff;
 }
 
+.selector-idioma {
+  width: auto;
+  gap: 0.35rem;
+  padding: 0 0.6rem;
+  border-radius: 999px;
+}
+
+.selector-idioma__codigo {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .notificacion-contador {
   position: absolute;
   top: 2px;

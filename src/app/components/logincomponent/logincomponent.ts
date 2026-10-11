@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Authservice } from '../../services/authservice';
 import { Authguardservice } from '../../services/authguardservice';
+import { Idiomaservice } from '../../services/idiomaservice';
 
 @Component({
   selector: 'app-logincomponent',
@@ -19,6 +20,7 @@ export class Logincomponent {
     private authguardService: Authguardservice,
     private route: ActivatedRoute,
     private router: Router,
+    private idiomaService: Idiomaservice,
   ) {}
 
   vieneDeRutaProtegida(): boolean {
@@ -41,5 +43,9 @@ export class Logincomponent {
 
     const volverA = this.route.snapshot.queryParamMap.get('volverA');
     this.router.navigateByUrl(this.authguardService.destinoSeguro(volverA));
+  }
+
+  traducir(clave: string, parametros?: Record<string, string | number>): string {
+    return this.idiomaService.traducir(clave, parametros);
   }
 }

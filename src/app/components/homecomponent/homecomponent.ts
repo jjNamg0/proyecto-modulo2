@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Alojamientosservice, Alojamiento } from '../../services/alojamientosservice';
 import { Favoritosservice } from '../../services/favoritosservice';
+import { Idiomaservice } from '../../services/idiomaservice';
 
 @Component({
   selector: 'app-homecomponent',
@@ -20,6 +21,7 @@ export class Homecomponent implements OnInit, OnDestroy {
     private alojamientosService: Alojamientosservice,
     private favoritosService: Favoritosservice,
     private router: Router,
+    private idiomaService: Idiomaservice,
   ) {}
 
   ngOnInit(): void {
@@ -75,5 +77,9 @@ export class Homecomponent implements OnInit, OnDestroy {
 
   onImgError(event: Event): void {
     this.alojamientosService.usarImagenRespaldo(event);
+  }
+
+  traducir(clave: string, parametros?: Record<string, string | number>): string {
+    return this.idiomaService.traducir(clave, parametros);
   }
 }
