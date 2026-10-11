@@ -1,3 +1,4 @@
+
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -5,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing-module';
+
 import { App } from './app';
 import { Navbarcomponent } from './components/navbarcomponent/navbarcomponent';
 import { Footercomponent } from './components/footercomponent/footercomponent';
@@ -31,6 +33,14 @@ import { Comprobantecomponent } from './components/comprobantecomponent/comproba
 import { Comparadorcomponent } from './components/comparadorcomponent/comparadorcomponent';
 import { Comparadorbarracomponent } from './components/comparadorbarracomponent/comparadorbarracomponent';
 import { Contactocomponent } from './components/contactocomponent/contactocomponent';
+
+import {
+  TranslatePipe,
+  TranslateDirective,
+  provideTranslateService,
+} from '@ngx-translate/core';
+
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -67,10 +77,19 @@ import { Contactocomponent } from './components/contactocomponent/contactocompon
     FormsModule,
     AppRoutingModule,
     RouterModule,
+    TranslatePipe,
+    TranslateDirective,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/assets/i18n/',
+        suffix: '.json',
+      }),
+      fallbackLang: 'es',
+    }),
   ],
   bootstrap: [App],
 })

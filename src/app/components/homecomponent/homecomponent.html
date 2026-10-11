@@ -1,8 +1,9 @@
+
 <section class="hero-marketplace text-center py-5">
   <div class="container">
     <span class="badge rounded-pill text-bg-primary-subtle text-primary-emphasis mb-3">
       <i class="fa-solid fa-shield-halved me-1"></i>
-      Plataforma oficial de estancias exclusivas
+      {{ 'home.insignia' | translate }}
     </span>
 
     <h1 class="display-5 fw-bold text-white animate__animated animate__fadeInDown">
@@ -10,8 +11,7 @@
     </h1>
 
     <p class="lead text-secondary col-lg-8 mx-auto animate__animated animate__fadeIn">
-      Marketplace de alojamientos temporales: descubre cabañas, apartamentos y casas verificadas,
-      cotiza tu estancia y reserva en minutos, sin complicaciones.
+      {{ 'home.descripcion' | translate }}
     </p>
 
     <a
@@ -19,7 +19,7 @@
       class="btn btn-primary btn-lg mt-3 animate__animated animate__fadeInUp"
     >
       <i class="fa-solid fa-magnifying-glass me-2"></i>
-      Buscar alojamientos
+      {{ 'home.buscarAlojamientos' | translate }}
     </a>
   </div>
 </section>
@@ -28,19 +28,22 @@
   <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
     <div>
       <span class="text-primary text-uppercase small fw-semibold">
-        Alojamientos destacados
+        {{ 'home.destacadosEtiqueta' | translate }}
       </span>
-      <h2 class="h3 text-white mb-0">Estancias recomendadas para ti</h2>
+
+      <h2 class="h3 text-white mb-0">
+        {{ 'home.destacadosTitulo' | translate }}
+      </h2>
     </div>
 
     <a routerLink="/listado" class="small">
-      Ver todos los alojamientos
+      {{ 'home.verTodos' | translate }}
       <i class="fa-solid fa-arrow-right ms-1"></i>
     </a>
   </div>
 
   <p class="text-secondary" *ngIf="destacados().length === 0">
-    Cargando alojamientos destacados...
+    {{ 'home.cargandoDestacados' | translate }}
   </p>
 
   <div
@@ -64,13 +67,14 @@
 
         <span class="badge text-bg-dark position-absolute top-0 end-0 m-3 fs-6">
           <i class="fa-solid fa-star text-warning"></i>
-          {{ alojamiento.calificacion || 'Nuevo' }}
+          {{ alojamiento.calificacion || ('home.nuevo' | translate) }}
         </span>
 
         <div class="carrusel-destacados__caption position-absolute bottom-0 start-0 end-0">
           <p class="small carrusel-destacados__ubicacion mb-1">
             <i class="fa-solid fa-location-dot me-1"></i>
-            {{ alojamiento.ciudad }}, {{ alojamiento.pais }} · {{ alojamiento.tipo }}
+            {{ alojamiento.ciudad }}, {{ alojamiento.pais }} ·
+            {{ ('home.tipo.' + alojamiento.tipo) | translate }}
           </p>
 
           <h3 class="h4 text-white mb-2">
@@ -80,14 +84,17 @@
           <div class="d-flex flex-wrap align-items-center gap-2">
             <span class="fw-bold fs-5 text-white me-2">
               {{ alojamiento.precioNoche | currency:'COP':'symbol-narrow':'1.0-0' }}
-              <small class="text-secondary fw-normal fs-6">/ noche</small>
+
+              <small class="text-secondary fw-normal fs-6">
+                / {{ 'home.porNoche' | translate }}
+              </small>
             </span>
 
             <a
               [routerLink]="['/alojamientos', alojamiento.id]"
               class="btn btn-sm btn-primary"
             >
-              Ver detalle
+              {{ 'home.verDetalle' | translate }}
               <i class="fa-solid fa-arrow-right ms-1"></i>
             </a>
 
@@ -96,7 +103,16 @@
               class="btn btn-sm btn-dark"
               [class.text-danger]="esFavorito(alojamiento.id)"
               (click)="alternarFavorito(alojamiento.id, $event)"
-              [attr.aria-label]="esFavorito(alojamiento.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+              [attr.aria-label]="
+                (esFavorito(alojamiento.id)
+                  ? 'home.quitarFavoritos'
+                  : 'home.agregarFavoritos') | translate
+              "
+              [title]="
+                (esFavorito(alojamiento.id)
+                  ? 'home.quitarFavoritos'
+                  : 'home.agregarFavoritos') | translate
+              "
             >
               <i class="fa-solid fa-heart"></i>
             </button>
@@ -112,7 +128,7 @@
         *ngFor="let alojamiento of destacados(); let i = index"
         [class.active]="i === indiceActivo()"
         [attr.aria-current]="i === indiceActivo() ? 'true' : null"
-        [attr.aria-label]="'Ver ' + alojamiento.nombre"
+        [attr.aria-label]="'home.verAlojamiento' | translate: { nombre: alojamiento.nombre }"
         (click)="irA(i)"
       ></button>
     </div>
@@ -121,7 +137,7 @@
       type="button"
       class="carousel-control-prev"
       (click)="anterior()"
-      aria-label="Anterior"
+      [attr.aria-label]="'home.anterior' | translate"
     >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     </button>
@@ -130,7 +146,7 @@
       type="button"
       class="carousel-control-next"
       (click)="siguiente()"
-      aria-label="Siguiente"
+      [attr.aria-label]="'home.siguiente' | translate"
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </button>

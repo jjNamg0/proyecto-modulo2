@@ -1,6 +1,6 @@
 <section class="container py-4">
   <h1 class="h4 text-white mb-4">
-    <i class="fa-solid fa-house-chimney me-2"></i>Explora alojamientos
+    <i class="fa-solid fa-house-chimney me-2"></i>{{ 'listado.titulo' | translate }}
   </h1>
 
   <div class="row g-4">
@@ -14,17 +14,17 @@
     </aside>
 
     <div class="col-12 col-lg-9">
-      <p class="text-secondary" *ngIf="cargando()">Cargando alojamientos...</p>
+      <p class="text-secondary" *ngIf="cargando()">{{ 'listado.cargando' | translate }}</p>
 
       <div class="alert alert-secondary d-flex align-items-center gap-2" role="alert" *ngIf="!cargando() && alojamientos().length === 0">
         <i class="fa-solid fa-circle-info"></i>
-        No se encontraron alojamientos con los filtros seleccionados.
+        {{ 'listado.sinResultados' | translate }}
       </div>
 
       <div *ngIf="!cargando() && alojamientos().length > 0">
         <p class="text-secondary small mb-3">
-          {{ alojamientos().length }} alojamientos encontrados
-          <span *ngIf="totalPaginas() > 1"> · página {{ paginaActual() }} de {{ totalPaginas() }}</span>
+          {{ 'listado.encontrados' | translate: { total: alojamientos().length } }}
+          <span *ngIf="totalPaginas() > 1"> · {{ 'listado.pagina' | translate: { actual: paginaActual(), total: totalPaginas() } }}</span>
         </p>
         <div class="row g-4">
           <div class="col-12 col-md-6 col-xl-4" *ngFor="let alojamiento of alojamientosDePagina()">
@@ -38,7 +38,7 @@
                   [alt]="alojamiento.nombre"
                 />
                 <span class="badge text-bg-dark position-absolute top-0 end-0 m-2">
-                  <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion || 'Nuevo' }}
+                  <i class="fa-solid fa-star text-warning"></i> {{ alojamiento.calificacion || ('listado.nuevo' | translate) }}
                 </span>
                 <button
                   type="button"
@@ -46,7 +46,7 @@
                   style="z-index: 2;"
                   [class.text-danger]="esFavorito(alojamiento.id)"
                   (click)="alternarFavorito(alojamiento.id, $event)"
-                  [attr.aria-label]="esFavorito(alojamiento.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+                  [attr.aria-label]="(esFavorito(alojamiento.id) ? 'listado.quitarFavoritos' : 'listado.agregarFavoritos') | translate"
                 >
                   <i class="fa-solid fa-heart"></i>
                 </button>
@@ -57,8 +57,8 @@
                   [class.btn-info]="estaEnComparador(alojamiento.id)"
                   [class.btn-dark]="!estaEnComparador(alojamiento.id)"
                   (click)="alternarComparador(alojamiento.id, $event)"
-                  [attr.aria-label]="estaEnComparador(alojamiento.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
-                  [title]="estaEnComparador(alojamiento.id) ? 'Quitar del comparador' : 'Agregar al comparador'"
+                  [attr.aria-label]="(estaEnComparador(alojamiento.id) ? 'listado.quitarComparador' : 'listado.agregarComparador') | translate"
+                  [title]="(estaEnComparador(alojamiento.id) ? 'listado.quitarComparador' : 'listado.agregarComparador') | translate"
                 >
                   <i class="fa-solid fa-code-compare"></i>
                 </button>
@@ -69,7 +69,7 @@
                   <i class="fa-solid fa-location-dot me-1"></i>{{ alojamiento.ciudad }}, {{ alojamiento.pais }} · {{ alojamiento.tipo }}
                 </p>
                 <p class="small mb-2">
-                  <i class="fa-solid fa-user-group me-1"></i>Capacidad: {{ alojamiento.capacidad }} huéspedes
+                  <i class="fa-solid fa-user-group me-1"></i>{{ 'listado.capacidad' | translate: { n: alojamiento.capacidad } }}
                 </p>
                 <div class="d-flex flex-wrap gap-1 mb-2">
                   <span class="badge text-bg-dark small" *ngFor="let servicio of alojamiento.servicios.slice(0, 3)">
@@ -82,10 +82,10 @@
                 <div class="mt-auto d-flex justify-content-between align-items-center">
                   <span class="fw-bold">
                     {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
-                    <small class="text-secondary fw-normal">/ noche</small>
+                    <small class="text-secondary fw-normal">/ {{ 'listado.porNoche' | translate }}</small>
                   </span>
                   <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary">
-                    Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
+                    {{ 'listado.verDetalle' | translate }} <i class="fa-solid fa-arrow-right ms-1"></i>
                   </a>
                 </div>
               </div>
@@ -93,10 +93,10 @@
           </div>
         </div>
 
-        <nav class="mt-4" aria-label="Páginas del listado" *ngIf="totalPaginas() > 1">
+        <nav class="mt-4" [attr.aria-label]="'listado.paginasAria' | translate" *ngIf="totalPaginas() > 1">
           <ul class="pagination pagination-sm justify-content-center flex-wrap mb-0">
             <li class="page-item" [class.disabled]="paginaActual() === 1">
-              <button type="button" class="page-link" (click)="irAPagina(paginaActual() - 1)" aria-label="Página anterior">
+              <button type="button" class="page-link" (click)="irAPagina(paginaActual() - 1)" [attr.aria-label]="'listado.anterior' | translate">
                 <i class="fa-solid fa-chevron-left"></i>
               </button>
             </li>
@@ -104,7 +104,7 @@
               <button type="button" class="page-link" (click)="irAPagina(pagina)">{{ pagina }}</button>
             </li>
             <li class="page-item" [class.disabled]="paginaActual() === totalPaginas()">
-              <button type="button" class="page-link" (click)="irAPagina(paginaActual() + 1)" aria-label="Página siguiente">
+              <button type="button" class="page-link" (click)="irAPagina(paginaActual() + 1)" [attr.aria-label]="'listado.siguiente' | translate">
                 <i class="fa-solid fa-chevron-right"></i>
               </button>
             </li>

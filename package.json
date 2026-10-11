@@ -19,6 +19,8 @@
     "@angular/router": "^22.1.0",
     "@emailjs/browser": "^5.0.3",
     "@google/genai": "^2.27.0",
+    "@ngx-translate/core": "^18.0.0",
+    "@ngx-translate/http-loader": "^18.0.0",
     "d3-geo": "^3.1.1",
     "rxjs": "~7.8.0",
     "topojson-client": "^3.1.0",

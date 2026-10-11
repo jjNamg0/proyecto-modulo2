@@ -3,26 +3,26 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
       <div class="card card-auth p-4">
         <h1 class="h4 text-white mb-4 text-center">
-          <i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión
+          <i class="fa-solid fa-right-to-bracket me-2"></i>{{ 'auth.iniciarSesion' | translate }}
         </h1>
 
         <div class="alert alert-info small py-2 mb-3" role="status" *ngIf="vieneDeRutaProtegida()">
-          <i class="fa-solid fa-lock me-1"></i>Inicia sesión para continuar.
+          <i class="fa-solid fa-lock me-1"></i>{{ 'auth.avisoProtegida' | translate }}
         </div>
 
         <div class="mb-3">
-          <label class="form-label small text-secondary" for="correoLogin">Correo electrónico</label>
+          <label class="form-label small text-secondary" for="correoLogin">{{ 'auth.correo' | translate }}</label>
           <input
             id="correoLogin"
             type="email"
             class="form-control"
-            placeholder="tucorreo@ejemplo.com"
+            [placeholder]="'auth.correoPlaceholder' | translate"
             [(ngModel)]="correo"
           />
         </div>
 
         <div class="mb-3">
-          <label class="form-label small text-secondary" for="passwordLogin">Contraseña</label>
+          <label class="form-label small text-secondary" for="passwordLogin">{{ 'auth.password' | translate }}</label>
           <input
             id="passwordLogin"
             type="password"
@@ -37,11 +37,11 @@
         </div>
 
         <button type="button" class="btn btn-primary w-100 mb-3" (click)="iniciarSesion()">
-          <i class="fa-solid fa-right-to-bracket me-1"></i>Iniciar sesión
+          <i class="fa-solid fa-right-to-bracket me-1"></i>{{ 'auth.iniciarSesion' | translate }}
         </button>
 
         <p class="text-center small text-secondary mb-0">
-          ¿No tienes cuenta? <a routerLink="/registro" queryParamsHandling="preserve">Regístrate</a>
+          {{ 'auth.noTienesCuenta' | translate }} <a routerLink="/registro" queryParamsHandling="preserve">{{ 'auth.registrate' | translate }}</a>
         </p>
       </div>
     </div>

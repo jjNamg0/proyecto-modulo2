@@ -1,10 +1,10 @@
 <div class="filtros-panel p-3">
   <h2 class="h6 text-white mb-3">
-    <i class="fa-solid fa-sliders me-2"></i>Filtros
+    <i class="fa-solid fa-sliders me-2"></i>{{ 'filtros.titulo' | translate }}
   </h2>
 
   <div class="mb-3">
-    <label class="form-label small text-secondary" for="filtroTexto">Buscar</label>
+    <label class="form-label small text-secondary" for="filtroTexto">{{ 'filtros.buscar' | translate }}</label>
     <div class="input-group input-group-sm">
       <span class="input-group-text">
         <i class="fa-solid fa-magnifying-glass"></i>
@@ -13,7 +13,7 @@
         id="filtroTexto"
         type="search"
         class="form-control"
-        placeholder="Nombre, ciudad, servicio..."
+        [placeholder]="'filtros.buscarPlaceholder' | translate"
         [(ngModel)]="filtros.texto"
         (ngModelChange)="emitirCambio()"
       />
@@ -21,88 +21,88 @@
   </div>
 
   <div class="mb-3">
-    <label class="form-label small text-secondary" for="filtroPais">País</label>
+    <label class="form-label small text-secondary" for="filtroPais">{{ 'filtros.pais' | translate }}</label>
     <select
       id="filtroPais"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.pais"
       (ngModelChange)="cambiarPais()"
     >
-      <option value="">Todos los países</option>
+      <option value="">{{ 'filtros.todosPaises' | translate }}</option>
       <option *ngFor="let pais of paises" [value]="pais">{{ pais }}</option>
     </select>
   </div>
 
   <div class="mb-3">
-    <label class="form-label small text-secondary" for="filtroCiudad">Ciudad</label>
+    <label class="form-label small text-secondary" for="filtroCiudad">{{ 'filtros.ciudad' | translate }}</label>
     <select
       id="filtroCiudad"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.ciudad"
       (ngModelChange)="emitirCambio()"
     >
-      <option value="">Todas las ciudades</option>
+      <option value="">{{ 'filtros.todasCiudades' | translate }}</option>
       <option *ngFor="let ciudad of ciudades" [value]="ciudad">{{ ciudad }}</option>
     </select>
   </div>
 
   <div class="mb-3">
-    <label class="form-label small text-secondary" for="filtroHuespedes">Número de huéspedes</label>
+    <label class="form-label small text-secondary" for="filtroHuespedes">{{ 'filtros.huespedes' | translate }}</label>
     <input
       id="filtroHuespedes"
       type="number"
       min="1"
       class="form-control form-control-sm"
-      placeholder="Cualquier cantidad"
+      [placeholder]="'filtros.cualquierCantidad' | translate"
       [(ngModel)]="filtros.huespedes"
       (ngModelChange)="emitirCambio()"
     />
   </div>
 
   <div class="mb-3">
-    <label class="form-label small text-secondary" for="filtroTipo">Tipo de alojamiento</label>
+    <label class="form-label small text-secondary" for="filtroTipo">{{ 'filtros.tipo' | translate }}</label>
     <select
       id="filtroTipo"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.tipo"
       (ngModelChange)="emitirCambio()"
     >
-      <option value="">Todos los tipos</option>
+      <option value="">{{ 'filtros.todosTipos' | translate }}</option>
       <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
     </select>
   </div>
 
   <div class="mb-3">
-    <label class="form-label small text-secondary" for="filtroPrecio">Precio máximo por noche</label>
+    <label class="form-label small text-secondary" for="filtroPrecio">{{ 'filtros.precioMaximo' | translate }}</label>
     <input
       id="filtroPrecio"
       type="number"
       min="0"
       step="10000"
       class="form-control form-control-sm"
-      placeholder="Sin límite"
+      [placeholder]="'filtros.sinLimite' | translate"
       [(ngModel)]="filtros.precioMaximo"
       (ngModelChange)="emitirCambio()"
     />
   </div>
 
   <div class="mb-3">
-    <label class="form-label small text-secondary" for="filtroOrden">Ordenar por</label>
+    <label class="form-label small text-secondary" for="filtroOrden">{{ 'filtros.ordenar' | translate }}</label>
     <select
       id="filtroOrden"
       class="form-select form-select-sm"
       [(ngModel)]="filtros.orden"
       (ngModelChange)="emitirCambio()"
     >
-      <option value="">Recomendados</option>
-      <option value="precio-asc">Precio: menor a mayor</option>
-      <option value="precio-desc">Precio: mayor a menor</option>
-      <option value="calificacion-desc">Mejor calificados</option>
-      <option value="nombre-asc">Nombre (A-Z)</option>
+      <option value="">{{ 'filtros.recomendados' | translate }}</option>
+      <option value="precio-asc">{{ 'filtros.precioAsc' | translate }}</option>
+      <option value="precio-desc">{{ 'filtros.precioDesc' | translate }}</option>
+      <option value="calificacion-desc">{{ 'filtros.mejorCalificados' | translate }}</option>
+      <option value="nombre-asc">{{ 'filtros.nombreAsc' | translate }}</option>
     </select>
   </div>
 
   <button type="button" class="btn btn-outline-light btn-sm w-100" (click)="limpiarFiltros()">
-    <i class="fa-solid fa-rotate-left me-1"></i>Limpiar filtros
+    <i class="fa-solid fa-rotate-left me-1"></i>{{ 'filtros.limpiar' | translate }}
   </button>
 </div>
