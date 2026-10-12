@@ -1,30 +1,13 @@
 <section class="container py-5">
   <div class="text-center mb-4">
     <span class="text-primary text-uppercase small fw-semibold">Nocturna Stays</span>
-<<<<<<< Updated upstream
-    <h2 class="h3 text-white mb-1">Explora nuestros destinos</h2>
-    <p class="text-secondary mb-0">Descubre alojamientos únicos alrededor del mundo.</p>
-=======
     <h2 class="h3 text-white mb-1">{{ traducir('map.titulo') }}</h2>
     <p class="text-secondary mb-0">{{ traducir('map.subtitulo') }}</p>
->>>>>>> Stashed changes
   </div>
 
   <div class="mapamundi-panel p-3">
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
       <div>
-<<<<<<< Updated upstream
-        <h3 class="h6 text-white mb-1">Explora el mundo</h3>
-        <p class="small text-secondary mb-0">Selecciona un país azul para ver sus alojamientos.</p>
-      </div>
-      <span class="small text-secondary">
-        <span class="mapamundi-punto mapamundi-punto--disponible me-1"></span>{{ paisesDisponibles().length }}
-        destinos disponibles
-      </span>
-    </div>
-
-    <p class="small text-secondary text-center mb-0" *ngIf="cargando()">Cargando alojamientos...</p>
-=======
         <h3 class="h6 text-white mb-1">{{ traducir('map.explorarMundo') }}</h3>
         <p class="small text-secondary mb-0">{{ traducir('map.descripcion') }}</p>
       </div>
@@ -34,18 +17,13 @@
     </div>
 
     <p class="small text-secondary text-center mb-0" *ngIf="cargando()">{{ traducir('map.cargandoAlojamientos') }}</p>
->>>>>>> Stashed changes
 
     <div class="mapamundi-lienzo">
       <svg
         class="mapamundi-svg"
         viewBox="0 0 960 500"
         role="group"
-<<<<<<< Updated upstream
-        aria-label="Mapa mundial interactivo"
-=======
         [attr.aria-label]="traducir('map.explorarMundo')"
->>>>>>> Stashed changes
         xmlns="http://www.w3.org/2000/svg"
         *ngIf="paises().length > 0"
       >
@@ -66,36 +44,18 @@
         </path>
       </svg>
 
-<<<<<<< Updated upstream
-      <p class="small text-secondary text-center p-3 mb-0" *ngIf="errorMapa()">No se pudo cargar el mapa mundial.</p>
-    </div>
-
-    <div class="d-flex justify-content-center flex-wrap gap-4 small text-secondary pt-3">
-      <span><span class="mapamundi-punto mapamundi-punto--disponible me-1"></span>Países con alojamientos</span>
-      <span><span class="mapamundi-punto mapamundi-punto--activo me-1"></span>País seleccionado</span>
-=======
       <p class="small text-secondary text-center p-3 mb-0" *ngIf="errorMapa()">{{ traducir('map.errorMapa') }}</p>
     </div>
 
     <div class="d-flex justify-content-center flex-wrap gap-4 small text-secondary pt-3">
       <span><span class="mapamundi-punto mapamundi-punto--disponible me-1"></span>{{ traducir('map.paisesConAlojamientos') }}</span>
       <span><span class="mapamundi-punto mapamundi-punto--activo me-1"></span>{{ traducir('map.paisSeleccionado') }}</span>
->>>>>>> Stashed changes
     </div>
   </div>
 
   <div class="mapamundi-panel p-3 p-md-4 mt-4 animate__animated animate__fadeIn" *ngIf="paisActivo() as pais">
     <div class="d-flex justify-content-between align-items-start gap-3 pb-3 mb-3 border-bottom border-secondary-subtle">
       <div>
-<<<<<<< Updated upstream
-        <span class="text-primary text-uppercase small fw-semibold">Destino seleccionado</span>
-        <h3 class="h4 text-white mb-1">{{ pais.nombre }}</h3>
-        <p class="small text-secondary mb-0">
-          {{ pais.cantidad }} {{ pais.cantidad === 1 ? 'alojamiento disponible' : 'alojamientos disponibles' }}
-        </p>
-      </div>
-      <button type="button" class="btn btn-outline-secondary btn-sm" aria-label="Cerrar selección del país" (click)="limpiarSeleccion()">
-=======
         <span class="text-primary text-uppercase small fw-semibold">{{ traducir('map.destinoSeleccionado') }}</span>
         <h3 class="h4 text-white mb-1">{{ pais.nombre }}</h3>
         <p class="small text-secondary mb-0">
@@ -103,7 +63,6 @@
         </p>
       </div>
       <button type="button" class="btn btn-outline-secondary btn-sm" [attr.aria-label]="traducir('map.cerrarSeleccionPais')" (click)="limpiarSeleccion()">
->>>>>>> Stashed changes
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
@@ -132,17 +91,10 @@
               <div class="mt-auto d-flex justify-content-between align-items-center">
                 <span class="fw-bold">
                   {{ alojamiento.precioNoche | currency: 'COP' : 'symbol-narrow' : '1.0-0' }}
-<<<<<<< Updated upstream
-                  <small class="text-secondary fw-normal">/ noche</small>
-                </span>
-                <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary">
-                  Ver detalle <i class="fa-solid fa-arrow-right ms-1"></i>
-=======
                   <small class="text-secondary fw-normal">/ {{ traducir('map.porNoche') }}</small>
                 </span>
                 <a [routerLink]="['/alojamientos', alojamiento.id]" class="btn btn-sm btn-primary">
                   {{ traducir('map.verDetalle') }} <i class="fa-solid fa-arrow-right ms-1"></i>
->>>>>>> Stashed changes
                 </a>
               </div>
             </div>
