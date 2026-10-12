@@ -22,8 +22,6 @@ export class Navbarcomponent {
     private idiomaService: Idiomaservice,
     private router: Router,
   ) {}
-<<<<<<< Updated upstream
-=======
 
   idiomas(): OpcionIdioma[] {
     return this.idiomaService.IDIOMAS;
@@ -41,7 +39,6 @@ export class Navbarcomponent {
   traducir(clave: string): string {
     return this.idiomaService.traducir(clave);
   }
->>>>>>> Stashed changes
 
   usuarioActual(): Usuario | null {
     return this.authService.usuarioActual();

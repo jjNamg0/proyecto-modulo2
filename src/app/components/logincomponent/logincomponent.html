@@ -3,17 +3,6 @@
     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
       <div class="card card-auth p-4">
         <h1 class="h4 text-white mb-4 text-center">
-<<<<<<< Updated upstream
-          <i class="fa-solid fa-right-to-bracket me-2"></i>Iniciar sesión
-        </h1>
-
-        <div class="alert alert-info small py-2 mb-3" role="status" *ngIf="vieneDeRutaProtegida()">
-          <i class="fa-solid fa-lock me-1"></i>Inicia sesión para continuar.
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label small text-secondary" for="correoLogin">Correo electrónico</label>
-=======
           <i class="fa-solid fa-right-to-bracket me-2"></i>{{ traducir('auth.iniciarSesion') }}
         </h1>
 
@@ -23,26 +12,17 @@
 
         <div class="mb-3">
           <label class="form-label small text-secondary" for="correoLogin">{{ traducir('auth.correo') }}</label>
->>>>>>> Stashed changes
           <input
             id="correoLogin"
             type="email"
             class="form-control"
-<<<<<<< Updated upstream
-            placeholder="tucorreo@ejemplo.com"
-=======
             [placeholder]="traducir('auth.correoPlaceholder')"
->>>>>>> Stashed changes
             [(ngModel)]="correo"
           />
         </div>
 
         <div class="mb-3">
-<<<<<<< Updated upstream
-          <label class="form-label small text-secondary" for="passwordLogin">Contraseña</label>
-=======
           <label class="form-label small text-secondary" for="passwordLogin">{{ traducir('auth.password') }}</label>
->>>>>>> Stashed changes
           <input
             id="passwordLogin"
             type="password"
@@ -57,19 +37,11 @@
         </div>
 
         <button type="button" class="btn btn-primary w-100 mb-3" (click)="iniciarSesion()">
-<<<<<<< Updated upstream
-          <i class="fa-solid fa-right-to-bracket me-1"></i>Iniciar sesión
-        </button>
-
-        <p class="text-center small text-secondary mb-0">
-          ¿No tienes cuenta? <a routerLink="/registro" queryParamsHandling="preserve">Regístrate</a>
-=======
           <i class="fa-solid fa-right-to-bracket me-1"></i>{{ traducir('auth.iniciarSesion') }}
         </button>
 
         <p class="text-center small text-secondary mb-0">
           {{ traducir('auth.noTienesCuenta') }} <a routerLink="/registro" queryParamsHandling="preserve">{{ traducir('auth.registrate') }}</a>
->>>>>>> Stashed changes
         </p>
       </div>
     </div>

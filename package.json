@@ -17,12 +17,6 @@
     "@angular/forms": "^22.1.0",
     "@angular/platform-browser": "^22.1.0",
     "@angular/router": "^22.1.0",
-<<<<<<< Updated upstream
-    "@emailjs/browser": "^5.0.3",
-    "@google/genai": "^2.27.0",
-    "d3-geo": "^3.1.1",
-=======
->>>>>>> Stashed changes
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
